@@ -59,6 +59,7 @@ namespace DSharpPlus.Entities
         [JsonProperty("emoji", NullValueHandling = NullValueHandling.Ignore)]
         public DiscordComponentEmoji Emoji { get; internal set; }
 
+
         public DiscordSelectComponentOption(string label, string value, string description = null, bool isDefault = false, DiscordComponentEmoji emoji = null)
         {
             this.Label = label;

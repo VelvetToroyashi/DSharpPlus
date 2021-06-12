@@ -37,30 +37,49 @@ namespace DSharpPlus.Entities
         /// The custom Id of this component.
         /// </summary>
         [JsonProperty("custom_id", NullValueHandling = NullValueHandling.Ignore)]
-        public new string CustomId { get; set; }
+        public new string CustomId { get; internal set; }
 
         /// <summary>
         /// The options to pick from on this component.
         /// </summary>
         [JsonProperty("options", NullValueHandling = NullValueHandling.Ignore)]
-        public DiscordSelectComponentOption[] Options { get; set; } = Array.Empty<DiscordSelectComponentOption>();
+        public DiscordSelectComponentOption[] Options { get; internal set; } = Array.Empty<DiscordSelectComponentOption>();
 
         /// <summary>
         /// The text to show when no option is selected.
         /// </summary>
         [JsonProperty("placeholder", NullValueHandling = NullValueHandling.Ignore)]
-        public string Placeholder { get; set; }
+        public string Placeholder { get; internal set; }
 
         /// <summary>
         /// The minimum amount of options that can be selected. Must be greater than zero and less than or equal to <see cref="MaximumSelectedValues"/>. Defaults to one.
         /// </summary>
         [JsonProperty("min_values", NullValueHandling = NullValueHandling.Ignore)]
-        public int? MinimumSelectedValues { get; set; }
+        public int? MinimumSelectedValues { get; internal set; }
 
         /// <summary>
         /// The maximum amount of options that can be selected. Must be greater than zero and or equal to <see cref="MinimumSelectedValues"/>. Defaults to 1.
         /// </summary>
         [JsonProperty("max_values", NullValueHandling = NullValueHandling.Ignore)]
-        public int? MaximumSelectedValues { get; set; }
+        public int? MaximumSelectedValues { get; internal set; }
+
+        // For JSON.NET //
+        internal DiscordSelectComponent() { }
+
+        public DiscordSelectComponent(string customId, string placeholder, int? minimumSelectedValues, int? maximumSelectedValues)
+        {
+            this.CustomId = customId;
+            this.Placeholder = placeholder;
+            this.MinimumSelectedValues = minimumSelectedValues;
+            this.MaximumSelectedValues = maximumSelectedValues;
+        }
+
+        public DiscordSelectComponent(DiscordSelectComponent other)
+        {
+            this.CustomId = other.CustomId;
+            this.Placeholder = other.Placeholder;
+            this.MinimumSelectedValues = other.MinimumSelectedValues;
+            this.MaximumSelectedValues = other.MaximumSelectedValues;
+        }
     }
 }

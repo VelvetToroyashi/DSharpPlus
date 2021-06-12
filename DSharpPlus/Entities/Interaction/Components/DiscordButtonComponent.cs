@@ -39,30 +39,27 @@ namespace DSharpPlus.Entities
         /// The style of the button.
         /// </summary>
         [JsonProperty("style", NullValueHandling = NullValueHandling.Ignore)]
-        public ButtonStyle Style { get; set; }
+        public ButtonStyle Style { get; internal set; }
 
         /// <summary>
         /// The text to apply to the button. If this is not specified <see cref="Emoji"/> becomes required.
         /// </summary>
         [JsonProperty("label", NullValueHandling = NullValueHandling.Ignore)]
-        public string Label { get; set; }
+        public string Label { get; internal set; }
 
         /// <summary>
         /// Whether this button can be pressed.
         /// </summary>
         [JsonProperty("disabled", NullValueHandling = NullValueHandling.Ignore)]
-        public bool Disabled { get; set; }
+        public bool Disabled { get; internal set; }
 
         /// <summary>
         /// The emoji to add to the button. Can be used in conjunction with a label, or as standalone. Must be added if label is not specified.
         /// </summary>
         [JsonProperty("emoji", NullValueHandling = NullValueHandling.Ignore)]
-        public DiscordComponentEmoji Emoji { get; set; }
-
-        /// <summary>
-        /// Constructs a new <see cref="DiscordButtonComponent"/>.
-        /// </summary>
-        public DiscordButtonComponent() { }
+        public DiscordComponentEmoji Emoji { get; internal set; }
+        
+        internal DiscordButtonComponent() { }
 
         /// <summary>
         /// Constructs a new button with the specified options.
@@ -79,6 +76,16 @@ namespace DSharpPlus.Entities
             this.CustomId = customId;
             this.Disabled = disabled;
             this.Emoji = emoji;
+            this.Type = ComponentType.Button;
+        }
+
+        public DiscordButtonComponent(DiscordButtonComponent other)
+        {
+            this.Style = other.Style;
+            this.Label = other.Label;
+            this.CustomId = other.CustomId;
+            this.Disabled = other.Disabled;
+            this.Emoji = other.Emoji;
             this.Type = ComponentType.Button;
         }
     }
