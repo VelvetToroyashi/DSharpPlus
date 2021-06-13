@@ -20,7 +20,10 @@
 // LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
 // OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
 // SOFTWARE.
+using System;
+using System.Collections.Generic;
 using Newtonsoft.Json;
+using Newtonsoft.Json.Linq;
 
 namespace DSharpPlus.Entities
 {
@@ -42,5 +45,48 @@ namespace DSharpPlus.Entities
         public string CustomId { get; internal set; }
 
         internal DiscordComponent() { }
+
+
+        internal sealed class DiscordActionRowComponentConverter : JsonConverter
+        {
+            public override bool CanWrite => false;
+            public override void WriteJson(JsonWriter writer, object value, JsonSerializer serializer) => throw new NotImplementedException();
+            public override object ReadJson(JsonReader reader, Type objectType, object existingValue, JsonSerializer serializer)
+            {
+                if (reader.Value == null)
+                    return null;
+
+                var jtoken = JToken.Load(reader);
+                if (jtoken["type"].Value<int>() is 1)
+                    throw new InvalidOperationException("Nested ActionRows are not supported.");
+
+                var components = new List<DiscordComponent>();
+                var type = jtoken["type"]?.Value<ComponentType>();
+
+                if (type == null)
+                    throw new ArgumentException($"Type does not inherit from DiscordComponent. {nameof(existingValue)}");
+
+                foreach (var token in jtoken["components"])
+                {
+                    var currentComp = type switch
+                    {
+                        ComponentType.Button => new DiscordButtonComponent(jtoken["style"].ToObject<ButtonStyle>(), jtoken["custom_id"].ToObject<string>(), jtoken["label"]?.ToObject<string>(), jtoken["disabled"]!.ToObject<bool>(), jtoken["emoji"]?.ToObject<DiscordComponentEmoji>()),
+                        ComponentType.Select => new DiscordSelectComponent(),
+                        _ => new DiscordComponent() { Type = ComponentType.Unknown, CustomId = jtoken["custom_id"]?.ToObject<string>() }
+                    };
+                    components.Add(currentComp);
+                }
+
+
+                return components;
+            }
+            public override bool CanConvert(Type objectType)
+            {
+                _ = true;
+                return false;
+            }
+
+        }
     }
+
 }
