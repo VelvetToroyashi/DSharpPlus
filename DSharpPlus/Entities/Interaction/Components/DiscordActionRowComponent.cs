@@ -31,24 +31,24 @@ namespace DSharpPlus.Entities
     /// <summary>
     /// Represents a row of components. Acion rows can have up to five components.
     /// </summary>
-    [JsonConverter(typeof(DiscordActionRowComponentConverter))]
     public sealed class DiscordActionRowComponent : DiscordComponent
     {
+        /// <summary>
+        /// The type of component this represents. Always returns type 1.
+        /// </summary>
+        [JsonProperty("type", NullValueHandling = NullValueHandling.Ignore)]
+        internal ComponentType Type { get; set; } = ComponentType.ActionRow;
+
         /// <summary>
         /// The components contained within the action row.
         /// </summary>
         [JsonProperty("components", NullValueHandling = NullValueHandling.Ignore)]
-
         public IReadOnlyCollection<DiscordComponent> Components { get; internal set; }
 
-        public DiscordActionRowComponent(IEnumerable<DiscordComponent> components) : this()
+        public DiscordActionRowComponent(IEnumerable<DiscordComponent> components)
         {
             this.Components = components.ToList().AsReadOnly();
         }
-        // For Json.NET
-        internal DiscordActionRowComponent()
-        {
-            this.Type = ComponentType.ActionRow;
-        }
+        internal DiscordActionRowComponent() { } // For Json.NET
     }
 }
