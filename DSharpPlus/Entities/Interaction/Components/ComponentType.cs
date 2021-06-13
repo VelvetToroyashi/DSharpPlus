@@ -28,6 +28,10 @@ namespace DSharpPlus.Entities
     public enum ComponentType
     {
         /// <summary>
+        /// An unknown component type.
+        /// </summary>
+        Unknown = -1,
+        /// <summary>
         /// A row of components.
         /// </summary>
         ActionRow = 1,

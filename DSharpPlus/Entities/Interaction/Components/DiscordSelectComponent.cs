@@ -21,6 +21,8 @@
 // OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
 // SOFTWARE.
 using System;
+using System.Collections.Generic;
+using System.Linq;
 using Newtonsoft.Json;
 
 namespace DSharpPlus.Entities
@@ -62,5 +64,17 @@ namespace DSharpPlus.Entities
         /// </summary>
         [JsonProperty("max_values", NullValueHandling = NullValueHandling.Ignore)]
         public int? MaximumSelectedValues { get; set; }
+
+        internal DiscordSelectComponent() { }
+
+        public DiscordSelectComponent(string customId, string placeholder, int? minimumSelectedValues, int? maximumSelectedValues, IEnumerable<DiscordSelectComponentOption> options)
+        {
+            this.Options = options.ToArray();
+            this.CustomId = customId;
+            this.Placeholder = placeholder;
+            this.MinimumSelectedValues = minimumSelectedValues;
+            this.MaximumSelectedValues = maximumSelectedValues;
+        }
+
     }
 }
