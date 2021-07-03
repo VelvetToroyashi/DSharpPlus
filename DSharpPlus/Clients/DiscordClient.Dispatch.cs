@@ -1842,7 +1842,13 @@ namespace DSharpPlus
         internal async Task OnInteractionCreateAsync(ulong? guildId, ulong channelId, TransportUser user, TransportMember member, DiscordInteraction interaction)
         {
             var usr = new DiscordUser(user) { Discord = this };
-            this.UserCache.AddOrUpdate(usr.Id, usr, (old, @new) => @new);
+            this.UserCache.AddOrUpdate(usr.Id, usr, (id, old) =>
+            {
+                old.Username = user.Username;
+                old.Discriminator = user.Discriminator;
+                old.AvatarHash = user.AvatarHash;
+                return old;
+            });
 
             if (member != null)
                 usr = new DiscordMember(member) { _guild_id = guildId.Value, Discord = this };
