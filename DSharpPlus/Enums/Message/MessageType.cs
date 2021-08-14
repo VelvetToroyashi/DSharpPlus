@@ -119,13 +119,17 @@ namespace DSharpPlus
         Reply = 19,
 
         /// <summary>
-        /// Message indicating an application command was invoked.
+        /// Message indicating a slash command was invoked.
         /// </summary>
-        ApplicationCommand = 20,
+        SlashCommand = 20,
 
         /// <summary>
         /// Message reminding you to invite people to help you build the server.
         /// </summary>
-        GuildInviteReminder = 22
+        GuildInviteReminder = 22,
+        /// <summary>
+        /// A message indicating a context menu was invoked.
+        /// </summary>
+        ContextMenuCommand = 23,
     }
 }
