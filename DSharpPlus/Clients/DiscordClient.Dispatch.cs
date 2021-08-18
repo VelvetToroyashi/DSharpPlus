@@ -378,16 +378,16 @@ namespace DSharpPlus
                     await this.OnApplicationCommandDeleteAsync(dat.ToObject<DiscordApplicationCommand>(), (ulong?)dat["guild_id"]).ConfigureAwait(false);
                     break;
 
-                // The following are not documented and thus ignored for the time being.
-                // Please update these if they are documented :)
-
                 case "integration_create":
+                    await this.OnIntegrationCreateAsync(dat.ToObject<DiscordIntegration>(), (ulong)dat["guild_id"]).ConfigureAwait(false);
                     break;
 
                 case "integration_update":
+                    await this.OnIntegrationUpdateAsync(dat.ToObject<DiscordIntegration>(), (ulong)dat["guild_id"]).ConfigureAwait(false);
                     break;
 
                 case "integration_delete":
+                    await this.OnIntegrationDeleteAsync((ulong)dat["id"], (ulong)dat["guild_id"], (ulong?)dat["application_id"]).ConfigureAwait(false);
                     break;
 
                 #endregion
@@ -1853,6 +1853,77 @@ namespace DSharpPlus
 
         #endregion
 
+        #region Integration
+
+        internal async Task OnIntegrationCreateAsync(DiscordIntegration integration, ulong guild_id)
+        {
+            var guild = this.InternalGetCachedGuild(guild_id);
+
+            if (guild == null)
+            {
+                guild = new DiscordGuild
+                {
+                    Id = guild_id,
+                    Discord = this
+                };
+            }
+
+            var ea = new IntegrationCreateEventArgs
+            {
+                Guild = guild,
+                Integration = integration
+            };
+
+            await this._integrationCreated.InvokeAsync(this, ea).ConfigureAwait(false);
+        }
+
+        internal async Task OnIntegrationUpdateAsync(DiscordIntegration integration, ulong guild_id)
+        {
+            var guild = this.InternalGetCachedGuild(guild_id);
+
+            if (guild == null)
+            {
+                guild = new DiscordGuild
+                {
+                    Id = guild_id,
+                    Discord = this
+                };
+            }
+
+            var ea = new IntegrationUpdateEventArgs
+            {
+                Guild = guild,
+                Integration = integration
+            };
+
+            await this._integrationUpdated.InvokeAsync(this, ea).ConfigureAwait(false);
+        }
+
+        internal async Task OnIntegrationDeleteAsync(ulong integration_id, ulong guild_id, ulong? application_id)
+        {
+            var guild = this.InternalGetCachedGuild(guild_id);
+
+            if (guild == null)
+            {
+                guild = new DiscordGuild
+                {
+                    Id = guild_id,
+                    Discord = this
+                };
+            }
+
+            var ea = new IntegrationDeleteEventArgs
+            {
+                Guild = guild,
+                Applicationid = application_id,
+                IntegrationId = integration_id
+            };
+
+            await this._integrationDeleted.InvokeAsync(this, ea).ConfigureAwait(false);
+        }
+
+        #endregion
+
         #region Misc
 
         internal async Task OnInteractionCreateAsync(ulong? guildId, ulong channelId, TransportUser user, TransportMember member, DiscordInteraction interaction)
@@ -1915,6 +1986,17 @@ namespace DSharpPlus
                             c.Value._guild_id = guildId.Value;
                     }
                 }
+
+                if (resolved.Messages != null)
+                {
+                    foreach (var m in resolved.Messages)
+                    {
+                        m.Value.Discord = this;
+
+                        if (guildId.HasValue)
+                            m.Value.GuildId = guildId.Value;
+                    }
+                }
             }
 
             if (interaction.Type is InteractionType.Component)
@@ -1932,12 +2014,35 @@ namespace DSharpPlus
             }
             else
             {
-                var ea = new InteractionCreateEventArgs
+                if (interaction.Data.Target.HasValue) // Context-Menu. //
                 {
-                    Interaction = interaction
-                };
+                    var targetId = interaction.Data.Target.Value;
+                    DiscordUser targetUser = null;
+                    DiscordMember targetMember = null;
+                    DiscordMessage targetMessage = null;
 
-                await this._interactionCreated.InvokeAsync(this, ea).ConfigureAwait(false);
+                    interaction.Data.Resolved.Messages?.TryGetValue(targetId, out targetMessage);
+                    interaction.Data.Resolved.Members?.TryGetValue(targetId, out targetMember);
+                    interaction.Data.Resolved.Users?.TryGetValue(targetId, out targetUser);
+
+                    var ctea = new ContextMenuInteractionCreateEventArgs
+                    {
+                        Interaction = interaction,
+                        TargetUser = targetMember ?? targetUser,
+                        TargetMessage = targetMessage,
+                        Type = interaction.Data.Type,
+                    };
+                    await this._contextMenuInteractionCreated.InvokeAsync(this, ctea).ConfigureAwait(false);
+                }
+                else
+                {
+                    var ea = new InteractionCreateEventArgs
+                    {
+                        Interaction = interaction
+                    };
+
+                    await this._interactionCreated.InvokeAsync(this, ea).ConfigureAwait(false);
+                }
             }
         }
 

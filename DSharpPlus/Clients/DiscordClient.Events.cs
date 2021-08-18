@@ -98,6 +98,16 @@ namespace DSharpPlus
         }
         private AsyncEvent<DiscordClient, HeartbeatEventArgs> _heartbeated;
 
+        /// <summary>
+        /// Fired on heartbeat attempt cancellation due to too many failed heartbeats.
+        /// </summary>
+        public event AsyncEventHandler<DiscordClient, ZombiedEventArgs> Zombied
+        {
+            add => this._zombied.Register(value);
+            remove => this._zombied.Unregister(value);
+        }
+        private AsyncEvent<DiscordClient, ZombiedEventArgs> _zombied;
+
         #endregion
 
         #region Channel
@@ -602,6 +612,40 @@ namespace DSharpPlus
 
         #endregion
 
+        #region Integration
+
+        /// <summary>
+        /// Fired when an integration is created.
+        /// </summary>
+        public event AsyncEventHandler<DiscordClient, IntegrationCreateEventArgs> IntegrationCreated
+        {
+            add => this._integrationCreated.Register(value);
+            remove => this._integrationCreated.Unregister(value);
+        }
+        private AsyncEvent<DiscordClient, IntegrationCreateEventArgs> _integrationCreated;
+
+        /// <summary>
+        /// Fired when an integration is updated.
+        /// </summary>
+        public event AsyncEventHandler<DiscordClient, IntegrationUpdateEventArgs> IntegrationUpdated
+        {
+            add => this._integrationUpdated.Register(value);
+            remove => this._integrationUpdated.Unregister(value);
+        }
+        private AsyncEvent<DiscordClient, IntegrationUpdateEventArgs> _integrationUpdated;
+
+        /// <summary>
+        /// Fired when an integration is deleted.
+        /// </summary>
+        public event AsyncEventHandler<DiscordClient, IntegrationDeleteEventArgs> IntegrationDeleted
+        {
+            add => this._integrationDeleted.Register(value);
+            remove => this._integrationDeleted.Unregister(value);
+        }
+        private AsyncEvent<DiscordClient, IntegrationDeleteEventArgs> _integrationDeleted;
+
+        #endregion
+
         #region Misc
 
         /// <summary>
@@ -624,6 +668,17 @@ namespace DSharpPlus
         }
 
         private AsyncEvent<DiscordClient, ComponentInteractionCreateEventArgs> _componentInteractionCreated;
+
+        /// <summary>
+        /// Fired when a user uses a context menu.
+        /// </summary>
+        public event AsyncEventHandler<DiscordClient, ContextMenuInteractionCreateEventArgs> ContextMenuInteractionCreated
+        {
+            add => this._contextMenuInteractionCreated.Register(value);
+            remove => this._contextMenuInteractionCreated.Unregister(value);
+        }
+
+        private AsyncEvent<DiscordClient, ContextMenuInteractionCreateEventArgs> _contextMenuInteractionCreated;
 
         /// <summary>
         /// Fired when a user starts typing in a channel.

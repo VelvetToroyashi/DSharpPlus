@@ -550,7 +550,7 @@ namespace DSharpPlus
         /// <param name="content">New message content</param>
         /// <returns></returns>
         public Task<DiscordMessage> EditMessageAsync(ulong channel_id, ulong message_id, Optional<string> content)
-            => this.ApiClient.EditMessageAsync(channel_id, message_id, content, default, default, default, Array.Empty<DiscordMessageFile>(), null);
+            => this.ApiClient.EditMessageAsync(channel_id, message_id, content, default, default, default, Array.Empty<DiscordMessageFile>(), null, default);
 
         /// <summary>
         /// Edits a message
@@ -560,7 +560,7 @@ namespace DSharpPlus
         /// <param name="embed">New message embed</param>
         /// <returns></returns>
         public Task<DiscordMessage> EditMessageAsync(ulong channel_id, ulong message_id, Optional<DiscordEmbed> embed)
-            => this.ApiClient.EditMessageAsync(channel_id, message_id, default, embed.HasValue ? new[] {embed.Value} : Array.Empty<DiscordEmbed>(), default, default, Array.Empty<DiscordMessageFile>(), null);
+            => this.ApiClient.EditMessageAsync(channel_id, message_id, default, embed.HasValue ? new[] {embed.Value} : Array.Empty<DiscordEmbed>(), default, default, Array.Empty<DiscordMessageFile>(), null, default);
 
         /// <summary>
         /// Edits a message
@@ -569,12 +569,13 @@ namespace DSharpPlus
         /// <param name="message_id">Message id</param>
         /// <param name="builder">The builder of the message to edit.</param>
         /// <param name="suppressEmbeds">Whether to suppress embeds on the message.</param>
+        /// <param name="attachments">Attached files to keep.</param>
         /// <returns></returns>
-        public async Task<DiscordMessage> EditMessageAsync(ulong channel_id, ulong message_id, DiscordMessageBuilder builder, bool suppressEmbeds = false)
+        public async Task<DiscordMessage> EditMessageAsync(ulong channel_id, ulong message_id, DiscordMessageBuilder builder, bool suppressEmbeds = false, IEnumerable<DiscordAttachment> attachments = default)
         {
             builder.Validate(true);
 
-            return await this.ApiClient.EditMessageAsync(channel_id, message_id, builder.Content, new Optional<IEnumerable<DiscordEmbed>>(builder.Embeds), builder.Mentions, builder.Components, builder.Files, suppressEmbeds ? MessageFlags.SuppressedEmbeds : null).ConfigureAwait(false);
+            return await this.ApiClient.EditMessageAsync(channel_id, message_id, builder.Content, new Optional<IEnumerable<DiscordEmbed>>(builder.Embeds), builder.Mentions, builder.Components, builder.Files, suppressEmbeds ? MessageFlags.SuppressedEmbeds : null, attachments).ConfigureAwait(false);
         }
 
         /// <summary>
@@ -584,7 +585,7 @@ namespace DSharpPlus
         /// <param name="message_id">Message id</param>
         /// <param name="hideEmbeds">Whether to hide all embeds.</param>
         public Task ModifyEmbedSuppressionAsync(ulong channel_id, ulong message_id, bool hideEmbeds)
-            => this.ApiClient.EditMessageAsync(channel_id, message_id, default, default, default, default, Array.Empty<DiscordMessageFile>(), hideEmbeds ? MessageFlags.SuppressedEmbeds : null);
+            => this.ApiClient.EditMessageAsync(channel_id, message_id, default, default, default, default, Array.Empty<DiscordMessageFile>(), hideEmbeds ? MessageFlags.SuppressedEmbeds : null, default);
 
         /// <summary>
         /// Deletes a message
@@ -1128,9 +1129,10 @@ namespace DSharpPlus
         /// </summary>
         /// <param name="invite_code">The invite code.</param>
         /// <param name="withCounts">Whether to include presence and total member counts in the returned invite.</param>
+        /// <param name="withExpiration">Whether to include the expiration date in the returned invite.</param>
         /// <returns></returns>
-        public Task<DiscordInvite> GetInvite(string invite_code, bool? withCounts = null)
-            => this.ApiClient.GetInviteAsync(invite_code, withCounts);
+        public Task<DiscordInvite> GetInviteAsync(string invite_code, bool? withCounts = null, bool? withExpiration = null)
+            => this.ApiClient.GetInviteAsync(invite_code, withCounts, withExpiration);
 
         /// <summary>
         /// Removes an invite
@@ -1312,12 +1314,13 @@ namespace DSharpPlus
         /// <param name="webhook_token">Webhook token</param>
         /// <param name="messageId">The id of the message to edit.</param>
         /// <param name="builder">The builder of the message to edit.</param>
+        /// <param name="attachments">Attached files to keep.</param>
         /// <returns>The modified <see cref="DiscordMessage"/></returns>
-        public async Task<DiscordMessage> EditWebhookMessageAsync(ulong webhook_id, string webhook_token, ulong messageId, DiscordWebhookBuilder builder)
+        public async Task<DiscordMessage> EditWebhookMessageAsync(ulong webhook_id, string webhook_token, ulong messageId, DiscordWebhookBuilder builder, IEnumerable<DiscordAttachment> attachments = default)
         {
             builder.Validate(true);
 
-            return await this.ApiClient.EditWebhookMessageAsync(webhook_id, webhook_token, messageId, builder).ConfigureAwait(false);
+            return await this.ApiClient.EditWebhookMessageAsync(webhook_id, webhook_token, messageId, builder, attachments).ConfigureAwait(false);
         }
 
         /// <summary>
@@ -1399,16 +1402,16 @@ namespace DSharpPlus
             => this.ApiClient.DeleteAllReactionsAsync(channel_id, message_id, reason);
         #endregion
 
-        #region Slash Commands
+        #region Application Commands
         /// <summary>
-        /// Gets all the global slash commands for this application.
+        /// Gets all the global application commands for this application.
         /// </summary>
-        /// <returns>A list of global slash commands.</returns>
+        /// <returns>A list of global application commands.</returns>
         public Task<IReadOnlyList<DiscordApplicationCommand>> GetGlobalApplicationCommandsAsync() =>
             this.ApiClient.GetGlobalApplicationCommandsAsync(this.CurrentApplication.Id);
 
         /// <summary>
-        /// Overwrites the existing global slash commands. New commands are automatically created and missing commands are automatically deleted.
+        /// Overwrites the existing global application commands. New commands are automatically created and missing commands are automatically deleted.
         /// </summary>
         /// <param name="commands">The list of commands to overwrite with.</param>
         /// <returns>The list of global commands.</returns>
@@ -1416,7 +1419,7 @@ namespace DSharpPlus
             this.ApiClient.BulkOverwriteGlobalApplicationCommandsAsync(this.CurrentApplication.Id, commands);
 
         /// <summary>
-        /// Creates or overwrites a global slash command.
+        /// Creates or overwrites a global application command.
         /// </summary>
         /// <param name="command">The command to create.</param>
         /// <returns>The created command.</returns>
@@ -1424,7 +1427,7 @@ namespace DSharpPlus
             this.ApiClient.CreateGlobalApplicationCommandAsync(this.CurrentApplication.Id, command);
 
         /// <summary>
-        /// Gets a global slash command by its id.
+        /// Gets a global application command by its id.
         /// </summary>
         /// <param name="commandId">The id of the command to get.</param>
         /// <returns>The command with the id.</returns>
@@ -1432,7 +1435,7 @@ namespace DSharpPlus
             this.ApiClient.GetGlobalApplicationCommandAsync(this.CurrentApplication.Id, commandId);
 
         /// <summary>
-        /// Edits a global slash command.
+        /// Edits a global application command.
         /// </summary>
         /// <param name="commandId">The id of the command to edit.</param>
         /// <param name="action">Action to perform.</param>
@@ -1446,22 +1449,22 @@ namespace DSharpPlus
         }
 
         /// <summary>
-        /// Deletes a global slash command.
+        /// Deletes a global application command.
         /// </summary>
         /// <param name="commandId">The id of the command to delete.</param>
         public Task DeleteGlobalApplicationCommandAsync(ulong commandId) =>
             this.ApiClient.DeleteGlobalApplicationCommandAsync(this.CurrentApplication.Id, commandId);
 
         /// <summary>
-        /// Gets all the slash commands for a guild.
+        /// Gets all the application commands for a guild.
         /// </summary>
-        /// <param name="guildId">The id of the guild to get slash commands for.</param>
-        /// <returns>A list of slash commands in the guild.</returns>
+        /// <param name="guildId">The id of the guild to get application commands for.</param>
+        /// <returns>A list of application commands in the guild.</returns>
         public Task<IReadOnlyList<DiscordApplicationCommand>> GetGuildApplicationCommandsAsync(ulong guildId) =>
             this.ApiClient.GetGuildApplicationCommandsAsync(this.CurrentApplication.Id, guildId);
 
         /// <summary>
-        /// Overwrites the existing slash commands in a guild. New commands are automatically created and missing commands are automatically deleted.
+        /// Overwrites the existing application commands in a guild. New commands are automatically created and missing commands are automatically deleted.
         /// </summary>
         /// <param name="guildId">The id of the guild.</param>
         /// <param name="commands">The list of commands to overwrite with.</param>
@@ -1470,27 +1473,27 @@ namespace DSharpPlus
             this.ApiClient.BulkOverwriteGuildApplicationCommandsAsync(this.CurrentApplication.Id, guildId, commands);
 
         /// <summary>
-        /// Creates or overwrites a guild slash command.
+        /// Creates or overwrites a guild application command.
         /// </summary>
-        /// <param name="guildId">The id of the guild to create the slash command in.</param>
+        /// <param name="guildId">The id of the guild to create the application command in.</param>
         /// <param name="command">The command to create.</param>
         /// <returns>The created command.</returns>
         public Task<DiscordApplicationCommand> CreateGuildApplicationCommandAsync(ulong guildId, DiscordApplicationCommand command) =>
             this.ApiClient.CreateGuildApplicationCommandAsync(this.CurrentApplication.Id, guildId, command);
 
         /// <summary>
-        /// Gets a slash command in a guild by its id.
+        /// Gets a application command in a guild by its id.
         /// </summary>
-        /// <param name="guildId">The id of the guild the slash command is in.</param>
+        /// <param name="guildId">The id of the guild the application command is in.</param>
         /// <param name="commandId">The id of the command to get.</param>
         /// <returns>The command with the id.</returns>
         public Task<DiscordApplicationCommand> GetGuildApplicationCommandAsync(ulong guildId, ulong commandId) =>
              this.ApiClient.GetGuildApplicationCommandAsync(this.CurrentApplication.Id, guildId, commandId);
 
         /// <summary>
-        /// Edits a slash command in a guild.
+        /// Edits a application command in a guild.
         /// </summary>
-        /// <param name="guildId">The id of the guild the slash command is in.</param>
+        /// <param name="guildId">The id of the guild the application command is in.</param>
         /// <param name="commandId">The id of the command to edit.</param>
         /// <param name="action">Action to perform.</param>
         /// <returns>The edited command.</returns>
@@ -1503,9 +1506,9 @@ namespace DSharpPlus
         }
 
         /// <summary>
-        /// Deletes a slash command in a guild.
+        /// Deletes a application command in a guild.
         /// </summary>
-        /// <param name="guildId">The id of the guild to delete the slash command in.</param>
+        /// <param name="guildId">The id of the guild to delete the application command in.</param>
         /// <param name="commandId">The id of the command.</param>
         public Task DeleteGuildApplicationCommandAsync(ulong guildId, ulong commandId) =>
             this.ApiClient.DeleteGuildApplicationCommandAsync(this.CurrentApplication.Id, guildId, commandId);
@@ -1532,12 +1535,13 @@ namespace DSharpPlus
         /// </summary>
         /// <param name="interactionToken">The token of the interaction.</param>
         /// <param name="builder">The webhook builder.</param>
+        /// <param name="attachments">Attached files to keep.</param>
         /// <returns>The <see cref="DiscordMessage"/> edited.</returns>
-        public async Task<DiscordMessage> EditOriginalInteractionResponseAsync(string interactionToken, DiscordWebhookBuilder builder)
+        public async Task<DiscordMessage> EditOriginalInteractionResponseAsync(string interactionToken, DiscordWebhookBuilder builder, IEnumerable<DiscordAttachment> attachments = default)
         {
             builder.Validate(isInteractionResponse: true);
 
-            return await this.ApiClient.EditOriginalInteractionResponseAsync(this.CurrentApplication.Id, interactionToken, builder);
+            return await this.ApiClient.EditOriginalInteractionResponseAsync(this.CurrentApplication.Id, interactionToken, builder, attachments);
         }
 
         /// <summary>
@@ -1566,12 +1570,13 @@ namespace DSharpPlus
         /// <param name="interactionToken">The token of the interaction.</param>
         /// <param name="messageId">The id of the follow up message.</param>
         /// <param name="builder">The webhook builder.</param>
+        /// <param name="attachments">Attached files to keep.</param>
         /// <returns>The <see cref="DiscordMessage"/> edited.</returns>
-        public async Task<DiscordMessage> EditFollowupMessageAsync(string interactionToken, ulong messageId, DiscordWebhookBuilder builder)
+        public async Task<DiscordMessage> EditFollowupMessageAsync(string interactionToken, ulong messageId, DiscordWebhookBuilder builder, IEnumerable<DiscordAttachment> attachments = default)
         {
             builder.Validate(isFollowup: true);
 
-            return await this.ApiClient.EditFollowupMessageAsync(this.CurrentApplication.Id, interactionToken, messageId, builder);
+            return await this.ApiClient.EditFollowupMessageAsync(this.CurrentApplication.Id, interactionToken, messageId, builder, attachments);
         }
 
         /// <summary>
@@ -1583,7 +1588,7 @@ namespace DSharpPlus
             this.ApiClient.DeleteFollowupMessageAsync(this.CurrentApplication.Id, interactionToken, messageId);
 
         /// <summary>
-        /// Gets all slash command permissions in a guild.
+        /// Gets all application command permissions in a guild.
         /// </summary>
         /// <param name="guildId">The guild id.</param>
         /// <returns>A list of permissions.</returns>
@@ -1591,7 +1596,7 @@ namespace DSharpPlus
             => this.ApiClient.GetGuildApplicationCommandPermissionsAsync(this.CurrentApplication.Id, guildId);
 
         /// <summary>
-        /// Gets permissions for a slash command in a guild.
+        /// Gets permissions for a application command in a guild.
         /// </summary>
         /// <param name="guildId">The guild id.</param>
         /// <param name="commandId">The id of the command to get them for.</param>
@@ -1600,7 +1605,7 @@ namespace DSharpPlus
             => this.ApiClient.GetApplicationCommandPermissionsAsync(this.CurrentApplication.Id, guildId, commandId);
 
         /// <summary>
-        /// Edits permissions for a slash command in a guild.
+        /// Edits permissions for a application command in a guild.
         /// </summary>
         /// <param name="guildId">The guild id.</param>
         /// <param name="commandId">The id of the command to edit permissions for.</param>
@@ -1610,7 +1615,7 @@ namespace DSharpPlus
             => this.ApiClient.EditApplicationCommandPermissionsAsync(this.CurrentApplication.Id, guildId, commandId, permissions);
 
         /// <summary>
-        /// Batch edits permissions for a slash command in a guild.
+        /// Batch edits permissions for a application command in a guild.
         /// </summary>
         /// <param name="guildId">The guild id.</param>
         /// <param name="permissions">The list of permissions to use.</param>

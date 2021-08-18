@@ -190,6 +190,7 @@ namespace DSharpPlus
             this._messagesBulkDeleted = new AsyncEvent<DiscordClient, MessageBulkDeleteEventArgs>("MESSAGE_BULK_DELETED", EventExecutionLimit, this.EventErrorHandler);
             this._interactionCreated = new AsyncEvent<DiscordClient, InteractionCreateEventArgs>("INTERACTION_CREATED", EventExecutionLimit, this.EventErrorHandler);
             this._componentInteractionCreated = new AsyncEvent<DiscordClient, ComponentInteractionCreateEventArgs>("COMPONENT_INTERACTED", EventExecutionLimit, this.EventErrorHandler);
+            this._contextMenuInteractionCreated = new AsyncEvent<DiscordClient, ContextMenuInteractionCreateEventArgs>("CONTEXT_MENU_INTERACTED", EventExecutionLimit, this.EventErrorHandler);
             this._typingStarted = new AsyncEvent<DiscordClient, TypingStartEventArgs>("TYPING_STARTED", EventExecutionLimit, this.EventErrorHandler);
             this._userSettingsUpdated = new AsyncEvent<DiscordClient, UserSettingsUpdateEventArgs>("USER_SETTINGS_UPDATED", EventExecutionLimit, this.EventErrorHandler);
             this._userUpdated = new AsyncEvent<DiscordClient, UserUpdateEventArgs>("USER_UPDATED", EventExecutionLimit, this.EventErrorHandler);
@@ -203,9 +204,13 @@ namespace DSharpPlus
             this._messageReactionRemovedEmoji = new AsyncEvent<DiscordClient, MessageReactionRemoveEmojiEventArgs>("MESSAGE_REACTION_REMOVED_EMOJI", EventExecutionLimit, this.EventErrorHandler);
             this._webhooksUpdated = new AsyncEvent<DiscordClient, WebhooksUpdateEventArgs>("WEBHOOKS_UPDATED", EventExecutionLimit, this.EventErrorHandler);
             this._heartbeated = new AsyncEvent<DiscordClient, HeartbeatEventArgs>("HEARTBEATED", EventExecutionLimit, this.EventErrorHandler);
+            this._zombied = new AsyncEvent<DiscordClient, ZombiedEventArgs>("ZOMBIED", EventExecutionLimit, this.EventErrorHandler);
             this._applicationCommandCreated = new AsyncEvent<DiscordClient, ApplicationCommandEventArgs>("APPLICATION_COMMAND_CREATED", EventExecutionLimit, this.EventErrorHandler);
             this._applicationCommandUpdated = new AsyncEvent<DiscordClient, ApplicationCommandEventArgs>("APPLICATION_COMMAND_UPDATED", EventExecutionLimit, this.EventErrorHandler);
             this._applicationCommandDeleted = new AsyncEvent<DiscordClient, ApplicationCommandEventArgs>("APPLICATION_COMMAND_DELETED", EventExecutionLimit, this.EventErrorHandler);
+            this._integrationCreated = new AsyncEvent<DiscordClient, IntegrationCreateEventArgs>("INTEGRATION_CREATED", EventExecutionLimit, this.EventErrorHandler);
+            this._integrationUpdated = new AsyncEvent<DiscordClient, IntegrationUpdateEventArgs>("INTEGRATION_UPDATED", EventExecutionLimit, this.EventErrorHandler);
+            this._integrationDeleted = new AsyncEvent<DiscordClient, IntegrationDeleteEventArgs>("INTEGRATION_DELETED", EventExecutionLimit, this.EventErrorHandler);
 
             this._guilds.Clear();
 
@@ -553,12 +558,13 @@ namespace DSharpPlus
         /// </summary>
         /// <param name="code">The invite code.</param>
         /// <param name="withCounts">Whether to include presence and total member counts in the returned invite.</param>
+        /// <param name="withExpiration">Whether to include the expiration date in the returned invite.</param>
         /// <returns>The requested Invite.</returns>
         /// <exception cref="Exceptions.NotFoundException">Thrown when the invite does not exists.</exception>
         /// <exception cref="Exceptions.BadRequestException">Thrown when an invalid parameter was provided.</exception>
         /// <exception cref="Exceptions.ServerErrorException">Thrown when Discord is unable to process the request.</exception>
-        public Task<DiscordInvite> GetInviteByCodeAsync(string code, bool? withCounts = null)
-            => this.ApiClient.GetInviteAsync(code, withCounts);
+        public Task<DiscordInvite> GetInviteByCodeAsync(string code, bool? withCounts = null, bool? withExpiration = null)
+            => this.ApiClient.GetInviteAsync(code, withCounts, withExpiration);
 
         /// <summary>
         /// Gets a list of connections
@@ -639,14 +645,14 @@ namespace DSharpPlus
             => this.ApiClient.GetTemplateAsync(code);
 
         /// <summary>
-        /// Gets all the global slash commands for this application.
+        /// Gets all the global application commands for this application.
         /// </summary>
-        /// <returns>A list of global slash commands.</returns>
+        /// <returns>A list of global application commands.</returns>
         public Task<IReadOnlyList<DiscordApplicationCommand>> GetGlobalApplicationCommandsAsync() =>
             this.ApiClient.GetGlobalApplicationCommandsAsync(this.CurrentApplication.Id);
 
         /// <summary>
-        /// Overwrites the existing global slash commands. New commands are automatically created and missing commands are automatically deleted.
+        /// Overwrites the existing global application commands. New commands are automatically created and missing commands are automatically deleted.
         /// </summary>
         /// <param name="commands">The list of commands to overwrite with.</param>
         /// <returns>The list of global commands.</returns>
@@ -654,7 +660,7 @@ namespace DSharpPlus
             this.ApiClient.BulkOverwriteGlobalApplicationCommandsAsync(this.CurrentApplication.Id, commands);
 
         /// <summary>
-        /// Creates or overwrites a global slash command.
+        /// Creates or overwrites a global application command.
         /// </summary>
         /// <param name="command">The command to create.</param>
         /// <returns>The created command.</returns>
@@ -662,7 +668,7 @@ namespace DSharpPlus
             this.ApiClient.CreateGlobalApplicationCommandAsync(this.CurrentApplication.Id, command);
 
         /// <summary>
-        /// Gets a global slash command by its id.
+        /// Gets a global application command by its id.
         /// </summary>
         /// <param name="commandId">The id of the command to get.</param>
         /// <returns>The command with the id.</returns>
@@ -670,7 +676,7 @@ namespace DSharpPlus
             this.ApiClient.GetGlobalApplicationCommandAsync(this.CurrentApplication.Id, commandId);
 
         /// <summary>
-        /// Edits a global slash command.
+        /// Edits a global application command.
         /// </summary>
         /// <param name="commandId">The id of the command to edit.</param>
         /// <param name="action">Action to perform.</param>
@@ -684,22 +690,22 @@ namespace DSharpPlus
         }
 
         /// <summary>
-        /// Deletes a global slash command.
+        /// Deletes a global application command.
         /// </summary>
         /// <param name="commandId">The id of the command to delete.</param>
         public Task DeleteGlobalApplicationCommandAsync(ulong commandId) =>
             this.ApiClient.DeleteGlobalApplicationCommandAsync(this.CurrentApplication.Id, commandId);
 
         /// <summary>
-        /// Gets all the slash commands for a guild.
+        /// Gets all the application commands for a guild.
         /// </summary>
-        /// <param name="guildId">The id of the guild to get slash commands for.</param>
-        /// <returns>A list of slash commands in the guild.</returns>
+        /// <param name="guildId">The id of the guild to get application commands for.</param>
+        /// <returns>A list of application commands in the guild.</returns>
         public Task<IReadOnlyList<DiscordApplicationCommand>> GetGuildApplicationCommandsAsync(ulong guildId) =>
             this.ApiClient.GetGuildApplicationCommandsAsync(this.CurrentApplication.Id, guildId);
 
         /// <summary>
-        /// Overwrites the existing slash commands in a guild. New commands are automatically created and missing commands are automatically deleted.
+        /// Overwrites the existing application commands in a guild. New commands are automatically created and missing commands are automatically deleted.
         /// </summary>
         /// <param name="guildId">The id of the guild.</param>
         /// <param name="commands">The list of commands to overwrite with.</param>
@@ -708,27 +714,27 @@ namespace DSharpPlus
             this.ApiClient.BulkOverwriteGuildApplicationCommandsAsync(this.CurrentApplication.Id, guildId, commands);
 
         /// <summary>
-        /// Creates or overwrites a guild slash command.
+        /// Creates or overwrites a guild application command.
         /// </summary>
-        /// <param name="guildId">The id of the guild to create the slash command in.</param>
+        /// <param name="guildId">The id of the guild to create the application command in.</param>
         /// <param name="command">The command to create.</param>
         /// <returns>The created command.</returns>
         public Task<DiscordApplicationCommand> CreateGuildApplicationCommandAsync(ulong guildId, DiscordApplicationCommand command) =>
             this.ApiClient.CreateGuildApplicationCommandAsync(this.CurrentApplication.Id, guildId, command);
 
         /// <summary>
-        /// Gets a slash command in a guild by its id.
+        /// Gets a application command in a guild by its id.
         /// </summary>
-        /// <param name="guildId">The id of the guild the slash command is in.</param>
+        /// <param name="guildId">The id of the guild the application command is in.</param>
         /// <param name="commandId">The id of the command to get.</param>
         /// <returns>The command with the id.</returns>
         public Task<DiscordApplicationCommand> GetGuildApplicationCommandAsync(ulong guildId, ulong commandId) =>
              this.ApiClient.GetGuildApplicationCommandAsync(this.CurrentApplication.Id, guildId, commandId);
 
         /// <summary>
-        /// Edits a slash command in a guild.
+        /// Edits a application command in a guild.
         /// </summary>
-        /// <param name="guildId">The id of the guild the slash command is in.</param>
+        /// <param name="guildId">The id of the guild the application command is in.</param>
         /// <param name="commandId">The id of the command to edit.</param>
         /// <param name="action">Action to perform.</param>
         /// <returns>The edited command.</returns>
@@ -741,9 +747,9 @@ namespace DSharpPlus
         }
 
         /// <summary>
-        /// Deletes a slash command in a guild.
+        /// Deletes a application command in a guild.
         /// </summary>
-        /// <param name="guildId">The id of the guild to delete the slash command in.</param>
+        /// <param name="guildId">The id of the guild to delete the application command in.</param>
         /// <param name="commandId">The id of the command.</param>
         public Task DeleteGuildApplicationCommandAsync(ulong guildId, ulong commandId) =>
             this.ApiClient.DeleteGuildApplicationCommandAsync(this.CurrentApplication.Id, guildId, commandId);

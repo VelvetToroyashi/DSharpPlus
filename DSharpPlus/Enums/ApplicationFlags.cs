@@ -21,52 +21,42 @@
 // OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
 // SOFTWARE.
 
-using System;
-using System.Collections.Generic;
-using DSharpPlus.Entities;
 
-namespace DSharpPlus.Net.Models
+namespace DSharpPlus
 {
-    public class ApplicationCommandEditModel
+    /// <summary>
+    /// Represents flags for a discord application.
+    /// </summary>
+    public enum ApplicationFlags
     {
         /// <summary>
-        /// Sets the command's new name.
+        /// Indicates that the application is approved for the <see cref="DiscordIntents.GuildPresences"/> intent.
         /// </summary>
-        public Optional<string> Name
-        {
-            internal get => this._name;
-            set
-            {
-                if (value.Value.Length > 32)
-                    throw new ArgumentException("Application command name cannot exceed 32 characters.", nameof(value));
-                this._name = value;
-            }
-        }
-        private Optional<string> _name;
+        GatewayPresence = 1 << 12,
 
         /// <summary>
-        /// Sets the command's new description
+        /// Indicates that the application is awaiting approval for the <see cref="DiscordIntents.GuildPresences"/> intent.
         /// </summary>
-        public Optional<string> Description
-        {
-            internal get => this._description;
-            set
-            {
-                if (value.Value.Length > 100)
-                    throw new ArgumentException("Application command description cannot exceed 100 characters.", nameof(value));
-                this._description = value;
-            }
-        }
-        private Optional<string> _description;
+        GatewayPresenceLimited = 1 << 13,
 
         /// <summary>
-        /// Sets the command's new options.
+        /// Indicates that the application is approved for the <see cref="DiscordIntents.GuildMembers"/> intent.
         /// </summary>
-        public Optional<IReadOnlyCollection<DiscordApplicationCommandOption>> Options { internal get; set; }
+        GatewayGuildMembers = 1 << 14,
 
         /// <summary>
-        /// Sets whether the command is enabled by default when the application is added to a guild.
+        /// Indicates that the application is awaiting approval for the <see cref="DiscordIntents.GuildMembers"/> intent.
         /// </summary>
-        public Optional<bool?> DefaultPermission { internal get; set; }
+        GatewayGuildMembersLimited = 1 << 15,
+
+        /// <summary>
+        /// Indicates that the application is awaiting verification.
+        /// </summary>
+        VerificationPendingGuildLimit = 1 << 16,
+
+        /// <summary>
+        /// Indicates that the application is a voice channel application.
+        /// </summary>
+        Embedded = 1 << 17
     }
 }

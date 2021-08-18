@@ -20,37 +20,26 @@
 // LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
 // OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
 // SOFTWARE.
-using System.Linq;
-using System.Threading.Tasks;
-using DSharpPlus.CommandsNext;
-using DSharpPlus.CommandsNext.Attributes;
-using DSharpPlus.Entities;
 
-namespace DSharpPlus.Test
+using System;
+
+namespace DSharpPlus.EventArgs
 {
-    public class StickerTestCommands : BaseCommandModule
+    /// <summary>
+    /// Represents arguments for <see cref="DiscordClient.Zombied"/> event.
+    /// </summary>
+    public class ZombiedEventArgs : DiscordEventArgs
     {
-        [Command("send_sticker")]
-        public async Task SendStickerAsync(CommandContext ctx)
-        {
-            if (ctx.Message.Stickers.Count() is 0)
-            {
-                await ctx.RespondAsync("Send a sticker!");
-                return;
-            }
+        /// <summary>
+        /// Gets how many heartbeat failures have occured.
+        /// </summary>
+        public int Failures { get; internal set; }
 
-            var str = ctx.Message.Stickers.First();
+        /// <summary>
+        /// Gets whether the zombie event occured whilst guilds are downloading.
+        /// </summary>
+        public bool GuildDownloadCompleted { get; internal set; }
 
-            if (!ctx.Guild.Stickers.TryGetValue(str.Id, out _))
-            {
-                await ctx.RespondAsync("Send a sticker from this guild!");
-                return;
-            }
-
-            var builder = new DiscordMessageBuilder();
-            builder.Sticker = str;
-
-            await ctx.RespondAsync(builder);
-        }
+        internal ZombiedEventArgs() : base() { }
     }
 }

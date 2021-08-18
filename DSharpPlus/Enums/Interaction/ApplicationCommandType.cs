@@ -20,37 +20,24 @@
 // LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
 // OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
 // SOFTWARE.
-using System.Linq;
-using System.Threading.Tasks;
-using DSharpPlus.CommandsNext;
-using DSharpPlus.CommandsNext.Attributes;
-using DSharpPlus.Entities;
-
-namespace DSharpPlus.Test
+namespace DSharpPlus
 {
-    public class StickerTestCommands : BaseCommandModule
+    /// <summary>
+    /// Represents the type of an <see cref="Entities.DiscordApplicationCommand"/>.
+    /// </summary>
+    public enum ApplicationCommandType
     {
-        [Command("send_sticker")]
-        public async Task SendStickerAsync(CommandContext ctx)
-        {
-            if (ctx.Message.Stickers.Count() is 0)
-            {
-                await ctx.RespondAsync("Send a sticker!");
-                return;
-            }
-
-            var str = ctx.Message.Stickers.First();
-
-            if (!ctx.Guild.Stickers.TryGetValue(str.Id, out _))
-            {
-                await ctx.RespondAsync("Send a sticker from this guild!");
-                return;
-            }
-
-            var builder = new DiscordMessageBuilder();
-            builder.Sticker = str;
-
-            await ctx.RespondAsync(builder);
-        }
+        /// <summary>
+        /// This command is registered as a slash-command, aka "Chat Input".
+        /// </summary>
+        SlashCommand = 1,
+        /// <summary>
+        /// This command is registered as a user context menu, and is applicable when interacting a user.
+        /// </summary>
+        UserContextMenu,
+        /// <summary>
+        /// This command is registered as a message context menu, and is applicable when interacting with a message.
+        /// </summary>
+        MessageContextMenu
     }
 }
