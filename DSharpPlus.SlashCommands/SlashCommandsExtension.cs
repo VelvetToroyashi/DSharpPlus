@@ -109,9 +109,9 @@ namespace DSharpPlus.SlashCommands
             var types = assembly.ExportedTypes.Where(xt =>
                 typeof(ApplicationCommandModule).IsAssignableFrom(xt) &&
                 !xt.GetTypeInfo().IsNested);
-            
+
             foreach (Type xt in types)
-                RegisterCommands(xt, guildId);
+                this.RegisterCommands(xt, guildId);
         }
 
         //To be run on ready
