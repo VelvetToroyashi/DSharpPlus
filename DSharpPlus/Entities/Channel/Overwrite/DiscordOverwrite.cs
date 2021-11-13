@@ -36,19 +36,19 @@ namespace DSharpPlus.Entities
         /// Gets the type of the overwrite. Either "role" or "member".
         /// </summary>
         [JsonProperty("type", NullValueHandling = NullValueHandling.Ignore)]
-        public OverwriteType Type { get; internal set; }
+        public virtual OverwriteType Type { get; internal set; }
 
         /// <summary>
         /// Gets the allowed permission set.
         /// </summary>
         [JsonProperty("allow", NullValueHandling = NullValueHandling.Ignore)]
-        public Permissions Allowed { get; internal set; }
+        public virtual Permissions Allowed { get; internal set; }
 
         /// <summary>
         /// Gets the denied permission set.
         /// </summary>
         [JsonProperty("deny", NullValueHandling = NullValueHandling.Ignore)]
-        public Permissions Denied { get; internal set; }
+        public virtual Permissions Denied { get; internal set; }
 
         [JsonIgnore]
         internal ulong _channel_id;
@@ -59,7 +59,7 @@ namespace DSharpPlus.Entities
         /// </summary>
         /// <param name="reason">Reason as to why this overwrite gets deleted.</param>
         /// <returns></returns>
-        public Task DeleteAsync(string reason = null) => this.Discord.ApiClient.DeleteChannelPermissionAsync(this._channel_id, this.Id, reason);
+        public virtual Task DeleteAsync(string reason = null) => this.Discord.ApiClient.DeleteChannelPermissionAsync(this._channel_id, this.Id, reason);
 
         /// <summary>
         /// Updates this channel overwrite.
@@ -72,7 +72,7 @@ namespace DSharpPlus.Entities
         /// <exception cref="Exceptions.NotFoundException">Thrown when the overwrite does not exist.</exception>
         /// <exception cref="Exceptions.BadRequestException">Thrown when an invalid parameter was provided.</exception>
         /// <exception cref="Exceptions.ServerErrorException">Thrown when Discord is unable to process the request.</exception>
-        public Task UpdateAsync(Permissions? allow = null, Permissions? deny = null, string reason = null)
+        public virtual Task UpdateAsync(Permissions? allow = null, Permissions? deny = null, string reason = null)
             => this.Discord.ApiClient.EditChannelPermissionsAsync(this._channel_id, this.Id, allow ?? this.Allowed, deny ?? this.Denied, this.Type.ToString().ToLowerInvariant(), reason);
         #endregion
 

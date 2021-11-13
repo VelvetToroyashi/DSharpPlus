@@ -27,13 +27,13 @@ using Newtonsoft.Json;
 
 namespace DSharpPlus.Net.Abstractions
 {
-    internal sealed class RestChannelCreatePayload
+    internal class RestChannelCreatePayload
     {
         [JsonProperty("name")]
-        public string Name { get; set; }
+        public virtual string Name { get; set; }
 
         [JsonProperty("type")]
-        public ChannelType Type { get; set; }
+        public virtual ChannelType Type { get; set; }
 
         [JsonProperty("parent_id", NullValueHandling = NullValueHandling.Ignore)]
         public ulong? Parent { get; set; }
@@ -60,10 +60,10 @@ namespace DSharpPlus.Net.Abstractions
         public VideoQualityMode? QualityMode { get; set; }
     }
 
-    internal sealed class RestChannelModifyPayload
+    internal class RestChannelModifyPayload
     {
         [JsonProperty("name", NullValueHandling = NullValueHandling.Ignore)]
-        public string Name { get; set; }
+        public virtual string Name { get; set; }
 
         [JsonProperty("type")]
         public Optional<ChannelType> Type { get; set; }
@@ -102,16 +102,16 @@ namespace DSharpPlus.Net.Abstractions
     internal class RestChannelMessageEditPayload
     {
         [JsonProperty("content", NullValueHandling = NullValueHandling.Include)]
-        public string Content { get; set; }
+        public virtual string Content { get; set; }
 
         [JsonIgnore]
-        public bool HasContent { get; set; }
+        public virtual bool HasContent { get; set; }
 
         [JsonProperty("embeds", NullValueHandling = NullValueHandling.Ignore)]
         public IEnumerable<DiscordEmbed> Embeds { get; set; }
 
         [JsonProperty("allowed_mentions", NullValueHandling = NullValueHandling.Ignore)]
-        public DiscordMentions Mentions { get; set; }
+        public virtual DiscordMentions Mentions { get; set; }
 
         [JsonProperty("components", NullValueHandling = NullValueHandling.Ignore)]
         public IReadOnlyCollection<DiscordActionRowComponent> Components { get; set; }
@@ -123,7 +123,7 @@ namespace DSharpPlus.Net.Abstractions
         public IEnumerable<DiscordAttachment> Attachments { get; set; }
 
         [JsonIgnore]
-        public bool HasEmbed { get; set; }
+        public virtual bool HasEmbed { get; set; }
 
         public bool ShouldSerializeContent()
             => this.HasContent;
@@ -132,7 +132,7 @@ namespace DSharpPlus.Net.Abstractions
             => this.HasEmbed;
     }
 
-    internal sealed class RestChannelMessageCreatePayload : RestChannelMessageEditPayload
+    internal class RestChannelMessageCreatePayload : RestChannelMessageEditPayload
     {
         [JsonProperty("tts", NullValueHandling = NullValueHandling.Ignore)]
         public bool? IsTTS { get; set; }
@@ -145,10 +145,10 @@ namespace DSharpPlus.Net.Abstractions
 
     }
 
-    internal sealed class RestChannelMessageCreateMultipartPayload
+    internal class RestChannelMessageCreateMultipartPayload
     {
         [JsonProperty("content", NullValueHandling = NullValueHandling.Ignore)]
-        public string Content { get; set; }
+        public virtual string Content { get; set; }
 
         [JsonProperty("tts", NullValueHandling = NullValueHandling.Ignore)]
         public bool? IsTTS { get; set; }
@@ -157,79 +157,79 @@ namespace DSharpPlus.Net.Abstractions
         public IEnumerable<DiscordEmbed> Embeds { get; set; }
 
         [JsonProperty("allowed_mentions", NullValueHandling = NullValueHandling.Ignore)]
-        public DiscordMentions Mentions { get; set; }
+        public virtual DiscordMentions Mentions { get; set; }
 
         [JsonProperty("message_reference", NullValueHandling = NullValueHandling.Ignore)]
         public InternalDiscordMessageReference? MessageReference { get; set; }
     }
 
-    internal sealed class RestChannelMessageBulkDeletePayload
+    internal class RestChannelMessageBulkDeletePayload
     {
         [JsonProperty("messages", NullValueHandling = NullValueHandling.Ignore)]
         public IEnumerable<ulong> Messages { get; set; }
     }
 
-    internal sealed class RestChannelMessageSuppressEmbedsPayload
+    internal class RestChannelMessageSuppressEmbedsPayload
     {
         [JsonProperty("suppress", NullValueHandling = NullValueHandling.Ignore)]
         public bool? Suppress { get; set; }
     }
 
-    internal sealed class RestChannelInviteCreatePayload
+    internal class RestChannelInviteCreatePayload
     {
         [JsonProperty("max_age", NullValueHandling = NullValueHandling.Ignore)]
-        public int MaxAge { get; set; }
+        public virtual int MaxAge { get; set; }
 
         [JsonProperty("max_uses", NullValueHandling = NullValueHandling.Ignore)]
-        public int MaxUses { get; set; }
+        public virtual int MaxUses { get; set; }
 
         [JsonProperty("temporary", NullValueHandling = NullValueHandling.Ignore)]
-        public bool Temporary { get; set; }
+        public virtual bool Temporary { get; set; }
 
         [JsonProperty("unique", NullValueHandling = NullValueHandling.Ignore)]
-        public bool Unique { get; set; }
+        public virtual bool Unique { get; set; }
     }
 
-    internal sealed class RestChannelPermissionEditPayload
+    internal class RestChannelPermissionEditPayload
     {
         [JsonProperty("allow", NullValueHandling = NullValueHandling.Ignore)]
-        public Permissions Allow { get; set; }
+        public virtual Permissions Allow { get; set; }
 
         [JsonProperty("deny", NullValueHandling = NullValueHandling.Ignore)]
-        public Permissions Deny { get; set; }
+        public virtual Permissions Deny { get; set; }
 
         [JsonProperty("type", NullValueHandling = NullValueHandling.Ignore)]
-        public string Type { get; set; }
+        public virtual string Type { get; set; }
     }
 
-    internal sealed class RestChannelGroupDmRecipientAddPayload : IOAuth2Payload
+    internal class RestChannelGroupDmRecipientAddPayload : IOAuth2Payload
     {
         [JsonProperty("access_token")]
-        public string AccessToken { get; set; }
+        public virtual string AccessToken { get; set; }
 
         [JsonProperty("nick", NullValueHandling = NullValueHandling.Ignore)]
-        public string Nickname { get; set; }
+        public virtual string Nickname { get; set; }
     }
 
-    internal sealed class AcknowledgePayload
+    internal class AcknowledgePayload
     {
         [JsonProperty("token", NullValueHandling = NullValueHandling.Include)]
-        public string Token { get; set; }
+        public virtual string Token { get; set; }
     }
 
-    internal sealed class RestCreateStageInstancePayload
+    internal class RestCreateStageInstancePayload
     {
         [JsonProperty("channel_id")]
-        public ulong ChannelId { get; set; }
+        public virtual ulong ChannelId { get; set; }
 
         [JsonProperty("topic")]
-        public string Topic { get ; set; }
+        public virtual string Topic { get ; set; }
 
         [JsonProperty("privacy_level", NullValueHandling = NullValueHandling.Ignore)]
         public PrivacyLevel? PrivacyLevel { get; set; }
     }
 
-    internal sealed class RestModifyStageInstancePayload
+    internal class RestModifyStageInstancePayload
     {
         [JsonProperty("topic")]
         public Optional<string> Topic { get; set; }

@@ -32,12 +32,12 @@ namespace DSharpPlus.CommandsNext.Executors
     /// A command executor which uses a bounded pool of executors to execute commands. This can limit the impact of
     /// commands on system resources, such as CPU usage.
     /// </summary>
-    public sealed class ParallelQueuedCommandExecutor : ICommandExecutor
+    public class ParallelQueuedCommandExecutor : ICommandExecutor
     {
         /// <summary>
         /// Gets the degree of parallelism of this executor.
         /// </summary>
-        public int Parallelism { get; }
+        public virtual int Parallelism { get; }
 
         private readonly CancellationTokenSource _cts;
         private readonly CancellationToken _ct;

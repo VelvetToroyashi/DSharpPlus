@@ -36,7 +36,7 @@ namespace DSharpPlus.Entities
         /// Gets the guild's widget channel id.
         /// </summary>
         [JsonProperty("channel_id", NullValueHandling = NullValueHandling.Ignore)]
-        public ulong ChannelId { get; internal set; }
+        public virtual ulong ChannelId { get; internal set; }
 
         /// <summary>
         /// Gets the guild's widget channel.
@@ -48,6 +48,6 @@ namespace DSharpPlus.Entities
         /// Gets if the guild's widget is enabled.
         /// </summary>
         [JsonProperty("enabled", NullValueHandling = NullValueHandling.Ignore)]
-        public bool IsEnabled { get; internal set; }
+        public virtual bool IsEnabled { get; internal set; }
     }
 }

@@ -25,12 +25,12 @@ using Newtonsoft.Json;
 
 namespace DSharpPlus.VoiceNext.Entities
 {
-    internal sealed class VoiceSelectProtocolPayload
+    internal class VoiceSelectProtocolPayload
     {
         [JsonProperty("protocol")]
-        public string Protocol { get; set; }
+        public virtual string Protocol { get; set; }
 
         [JsonProperty("data")]
-        public VoiceSelectProtocolPayloadData Data { get; set; }
+        public virtual VoiceSelectProtocolPayloadData Data { get; set; }
     }
 }

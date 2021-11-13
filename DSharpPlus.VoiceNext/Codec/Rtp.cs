@@ -26,7 +26,7 @@ using System.Buffers.Binary;
 
 namespace DSharpPlus.VoiceNext.Codec
 {
-    internal sealed class Rtp : IDisposable
+    internal class Rtp : IDisposable
     {
         public const int HeaderSize = 12;
 

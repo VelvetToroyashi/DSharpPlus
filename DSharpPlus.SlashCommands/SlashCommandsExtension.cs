@@ -19,7 +19,7 @@ namespace DSharpPlus.SlashCommands
     /// <summary>
     /// A class that handles slash commands for a client.
     /// </summary>
-    public sealed class SlashCommandsExtension : BaseExtension
+    public class SlashCommandsExtension : BaseExtension
     {
         //A list of methods for top level commands
         private static List<CommandMethod> _commandMethods { get; set; } = new();
@@ -118,7 +118,7 @@ namespace DSharpPlus.SlashCommands
         internal Task Update(DiscordClient client, ReadyEventArgs e) => this.Update();
 
         //Actual method for registering, used for RegisterCommands and on Ready
-        internal Task Update()
+        internal virtual Task Update()
         {
             //Only update for shard 0
             if (this.Client.ShardId is 0)
@@ -1078,29 +1078,29 @@ namespace DSharpPlus.SlashCommands
 
     internal class CommandMethod
     {
-        public ulong CommandId { get; set; }
-        public string Name { get; set; }
-        public MethodInfo Method { get; set; }
+        public virtual ulong CommandId { get; set; }
+        public virtual string Name { get; set; }
+        public virtual MethodInfo Method { get; set; }
     }
 
     internal class GroupCommand
     {
-        public ulong CommandId { get; set; }
-        public string Name { get; set; }
+        public virtual ulong CommandId { get; set; }
+        public virtual string Name { get; set; }
         public List<KeyValuePair<string, MethodInfo>> Methods { get; set; } = null;
     }
 
     internal class SubGroupCommand
     {
-        public ulong CommandId { get; set; }
-        public string Name { get; set; }
+        public virtual ulong CommandId { get; set; }
+        public virtual string Name { get; set; }
         public List<GroupCommand> SubCommands { get; set; } = new List<GroupCommand>();
     }
 
     internal class ContextMenuCommand
     {
-        public ulong CommandId { get; set; }
-        public string Name { get; set; }
-        public MethodInfo Method { get; set; }
+        public virtual ulong CommandId { get; set; }
+        public virtual string Name { get; set; }
+        public virtual MethodInfo Method { get; set; }
     }
 }

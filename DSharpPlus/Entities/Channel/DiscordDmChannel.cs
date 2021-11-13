@@ -44,19 +44,19 @@ namespace DSharpPlus.Entities
         /// Gets the hash of this channel's icon.
         /// </summary>
         [JsonProperty("icon", NullValueHandling = NullValueHandling.Ignore)]
-        public string IconHash { get; internal set; }
+        public virtual string IconHash { get; internal set; }
 
         /// <summary>
         /// Gets the id of this direct message's creator.
         /// </summary>
         [JsonProperty("owner_id", NullValueHandling = NullValueHandling.Ignore)]
-        public ulong OwnerId { get; internal set; }
+        public virtual ulong OwnerId { get; internal set; }
 
         /// <summary>
         /// Gets the application id of the direct message's creator if it a bot.
         /// </summary>
         [JsonProperty("application_id", NullValueHandling = NullValueHandling.Ignore)]
-        public ulong ApplicationId { get; internal set; }
+        public virtual ulong ApplicationId { get; internal set; }
 
         /// <summary>
         /// Gets the URL of this channel's icon.
@@ -74,7 +74,7 @@ namespace DSharpPlus.Entities
         /// <exception cref="Exceptions.NotFoundException">Thrown when the channel does not exist.</exception>
         /// <exception cref="Exceptions.BadRequestException">Thrown when an invalid parameter was provided.</exception>
         /// <exception cref="Exceptions.ServerErrorException">Thrown when Discord is unable to process the request.</exception>
-        public Task AddDmRecipientAsync(ulong user_id, string accesstoken, string nickname)
+        public virtual Task AddDmRecipientAsync(ulong user_id, string accesstoken, string nickname)
             => this.Discord.ApiClient.AddGroupDmRecipientAsync(this.Id, user_id, accesstoken, nickname);
 
         /// <summary>
@@ -85,7 +85,7 @@ namespace DSharpPlus.Entities
         /// <exception cref="Exceptions.NotFoundException">Thrown when the channel does not exist.</exception>
         /// <exception cref="Exceptions.BadRequestException">Thrown when an invalid parameter was provided.</exception>
         /// <exception cref="Exceptions.ServerErrorException">Thrown when Discord is unable to process the request.</exception>
-        public Task RemoveDmRecipientAsync(ulong user_id, string accesstoken)
+        public virtual Task RemoveDmRecipientAsync(ulong user_id, string accesstoken)
             => this.Discord.ApiClient.RemoveGroupDmRecipientAsync(this.Id, user_id);
     }
 }

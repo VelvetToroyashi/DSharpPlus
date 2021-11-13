@@ -67,7 +67,7 @@ namespace DSharpPlus.Entities
         public static readonly UserMention All = new();
 
         /// <summary>
-        /// Optional Id of the user that is allowed to be mentioned. If null, then all user mentions will be allowed. 
+        /// Optional Id of the user that is allowed to be mentioned. If null, then all user mentions will be allowed.
         /// </summary>
         public ulong? Id { get; }
 
@@ -97,7 +97,7 @@ namespace DSharpPlus.Entities
         public static readonly RoleMention All = new();
 
         /// <summary>
-        /// Optional Id of the role that is allowed to be mentioned. If null, then all role mentions will be allowed. 
+        /// Optional Id of the role that is allowed to be mentioned. If null, then all role mentions will be allowed.
         /// </summary>
         public ulong? Id { get; }
 

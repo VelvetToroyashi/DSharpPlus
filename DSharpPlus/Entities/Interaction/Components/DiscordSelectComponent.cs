@@ -31,7 +31,7 @@ namespace DSharpPlus.Entities
     /// <summary>
     /// A select menu with multiple options to choose from.
     /// </summary>
-    public sealed class DiscordSelectComponent : DiscordComponent
+    public class DiscordSelectComponent : DiscordComponent
     {
         /// <summary>
         /// The options to pick from on this component.
@@ -43,13 +43,13 @@ namespace DSharpPlus.Entities
         /// The text to show when no option is selected.
         /// </summary>
         [JsonProperty("placeholder", NullValueHandling = NullValueHandling.Ignore)]
-        public string Placeholder { get; internal set; }
+        public virtual string Placeholder { get; internal set; }
 
         /// <summary>
         /// Whether this dropdown can be interacted with.
         /// </summary>
         [JsonProperty("disabled", NullValueHandling = NullValueHandling.Ignore)]
-        public bool Disabled { get; internal set; }
+        public virtual bool Disabled { get; internal set; }
 
         /// <summary>
         /// The minimum amount of options that can be selected. Must be less than or equal to <see cref="MaximumSelectedValues"/>. Defaults to one.

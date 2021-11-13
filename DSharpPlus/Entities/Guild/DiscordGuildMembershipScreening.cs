@@ -36,7 +36,7 @@ namespace DSharpPlus.Entities
         /// Gets when the fields were last updated.
         /// </summary>
         [JsonProperty("version")]
-        public DateTimeOffset Version { get; internal set; }
+        public virtual DateTimeOffset Version { get; internal set; }
 
         /// <summary>
         /// Gets the steps in the screening form.
@@ -48,6 +48,6 @@ namespace DSharpPlus.Entities
         /// Gets the server description shown in the screening form.
         /// </summary>
         [JsonProperty("description")]
-        public string Description { get; internal set; }
+        public virtual string Description { get; internal set; }
     }
 }

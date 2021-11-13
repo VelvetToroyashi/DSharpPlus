@@ -33,12 +33,12 @@ namespace DSharpPlus.EventArgs
         /// <summary>
         /// Gets the guild that was deleted.
         /// </summary>
-        public DiscordGuild Guild { get; internal set; }
+        public virtual DiscordGuild Guild { get; internal set; }
 
         /// <summary>
         /// Gets whether the guild is unavailable or not.
         /// </summary>
-        public bool Unavailable { get; internal set; }
+        public virtual bool Unavailable { get; internal set; }
 
         internal GuildDeleteEventArgs() : base() { }
     }

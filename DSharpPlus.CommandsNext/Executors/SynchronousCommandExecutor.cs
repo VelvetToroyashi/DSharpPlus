@@ -29,7 +29,7 @@ namespace DSharpPlus.CommandsNext.Executors
     /// <summary>
     /// Executes commands by awaiting them.
     /// </summary>
-    public sealed class SynchronousCommandExecutor : ICommandExecutor
+    public class SynchronousCommandExecutor : ICommandExecutor
     {
         async Task ICommandExecutor.ExecuteAsync(CommandContext ctx)
             => await ctx.CommandsNext.ExecuteCommandAsync(ctx).ConfigureAwait(false);

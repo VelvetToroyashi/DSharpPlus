@@ -27,19 +27,19 @@ using Newtonsoft.Json;
 
 namespace DSharpPlus.Entities
 {
-    public sealed class DiscordGuildEmoji : DiscordEmoji
+    public class DiscordGuildEmoji : DiscordEmoji
     {
         /// <summary>
         /// Gets the user that created this emoji.
         /// </summary>
         [JsonIgnore]
-        public DiscordUser User { get; internal set; }
+        public virtual DiscordUser User { get; internal set; }
 
         /// <summary>
         /// Gets the guild to which this emoji belongs.
         /// </summary>
         [JsonIgnore]
-        public DiscordGuild Guild { get; internal set; }
+        public virtual DiscordGuild Guild { get; internal set; }
 
         internal DiscordGuildEmoji() { }
 
@@ -66,7 +66,7 @@ namespace DSharpPlus.Entities
         /// <exception cref="Exceptions.NotFoundException">Thrown when the emoji does not exist.</exception>
         /// <exception cref="Exceptions.BadRequestException">Thrown when an invalid parameter was provided.</exception>
         /// <exception cref="Exceptions.ServerErrorException">Thrown when Discord is unable to process the request.</exception>
-        public Task DeleteAsync(string reason = null)
+        public virtual Task DeleteAsync(string reason = null)
             => this.Guild.DeleteEmojiAsync(this, reason);
     }
 }

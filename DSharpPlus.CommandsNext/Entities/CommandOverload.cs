@@ -29,7 +29,7 @@ namespace DSharpPlus.CommandsNext
     /// <summary>
     /// Represents a specific overload of a command.
     /// </summary>
-    public sealed class CommandOverload
+    public class CommandOverload
     {
         /// <summary>
         /// Gets this command overload's arguments.
@@ -39,7 +39,7 @@ namespace DSharpPlus.CommandsNext
         /// <summary>
         /// Gets this command overload's priority.
         /// </summary>
-        public int Priority { get; internal set; }
+        public virtual int Priority { get; internal set; }
 
         /// <summary>
         /// Gets this command overload's delegate.

@@ -31,8 +31,8 @@ namespace DSharpPlus.EventArgs
     public class InteractionCreateEventArgs : DiscordEventArgs
     {
         /// <summary>
-        /// Gets the interaction data that was invoked. 
+        /// Gets the interaction data that was invoked.
         /// </summary>
-        public DiscordInteraction Interaction { get; internal set; }
+        public virtual DiscordInteraction Interaction { get; internal set; }
     }
 }

@@ -36,7 +36,7 @@ namespace DSharpPlus.Interactivity.EventHandling
         /// <summary>
         /// The id to wait on. This should be uniquely formatted to avoid collisions.
         /// </summary>
-        public DiscordMessage Message { get; private set; }
+        public virtual DiscordMessage Message { get; private set; }
 
         /// <summary>
         /// The completion source that represents the result of the match.

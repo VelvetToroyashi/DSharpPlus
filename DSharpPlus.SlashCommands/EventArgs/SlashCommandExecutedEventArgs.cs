@@ -5,11 +5,11 @@ namespace DSharpPlus.SlashCommands.EventArgs
     /// <summary>
     /// Represents the arguments for a <see cref="SlashCommandsExtension.SlashCommandExecuted"/> event.
     /// </summary>
-    public sealed class SlashCommandExecutedEventArgs : AsyncEventArgs
+    public class SlashCommandExecutedEventArgs : AsyncEventArgs
     {
         /// <summary>
         /// The context of the command.
         /// </summary>
-        public InteractionContext Context { get; internal set; }
+        public virtual InteractionContext Context { get; internal set; }
     }
 }

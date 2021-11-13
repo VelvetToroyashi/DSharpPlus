@@ -28,12 +28,12 @@ using System.IO.Compression;
 
 namespace DSharpPlus.Net.WebSocket
 {
-    internal sealed class PayloadDecompressor : IDisposable
+    internal class PayloadDecompressor : IDisposable
     {
         private const uint ZlibFlush = 0x0000FFFF;
         private const byte ZlibPrefix = 0x78;
 
-        public GatewayCompressionLevel CompressionLevel { get; }
+        public virtual GatewayCompressionLevel CompressionLevel { get; }
 
         private MemoryStream CompressedStream { get; }
         private DeflateStream DecompressorStream { get; }

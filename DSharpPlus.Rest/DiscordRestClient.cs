@@ -105,7 +105,7 @@ namespace DSharpPlus
         /// </summary>
         /// <param name="id">guild id</param>
         /// <returns></returns>
-        public Task DeleteGuildAsync(ulong id)
+        public virtual Task DeleteGuildAsync(ulong id)
             => this.ApiClient.DeleteGuildAsync(id);
 
         /// <summary>
@@ -206,7 +206,7 @@ namespace DSharpPlus
         /// <param name="delete_message_days">Days to delete messages</param>
         /// <param name="reason">Reason why this member was banned</param>
         /// <returns></returns>
-        public Task CreateGuildBanAsync(ulong guild_id, ulong user_id, int delete_message_days, string reason)
+        public virtual Task CreateGuildBanAsync(ulong guild_id, ulong user_id, int delete_message_days, string reason)
             => this.ApiClient.CreateGuildBanAsync(guild_id, user_id, delete_message_days, reason);
 
         /// <summary>
@@ -216,7 +216,7 @@ namespace DSharpPlus
         /// <param name="user_id">User to unban</param>
         /// <param name="reason">Reason why this member was unbanned</param>
         /// <returns></returns>
-        public Task RemoveGuildBanAsync(ulong guild_id, ulong user_id, string reason)
+        public virtual Task RemoveGuildBanAsync(ulong guild_id, ulong user_id, string reason)
             => this.ApiClient.RemoveGuildBanAsync(guild_id, user_id, reason);
 
         /// <summary>
@@ -224,7 +224,7 @@ namespace DSharpPlus
         /// </summary>
         /// <param name="guild_id">Guild id</param>
         /// <returns></returns>
-        public Task LeaveGuildAsync(ulong guild_id)
+        public virtual Task LeaveGuildAsync(ulong guild_id)
             => this.ApiClient.LeaveGuildAsync(guild_id);
 
         /// <summary>
@@ -285,7 +285,7 @@ namespace DSharpPlus
         /// <param name="role_id">Role id</param>
         /// <param name="reason">Reason this role gets added</param>
         /// <returns></returns>
-        public Task AddGuildMemberRoleAsync(ulong guild_id, ulong user_id, ulong role_id, string reason)
+        public virtual Task AddGuildMemberRoleAsync(ulong guild_id, ulong user_id, ulong role_id, string reason)
             => this.ApiClient.AddGuildMemberRoleAsync(guild_id, user_id, role_id, reason);
 
         /// <summary>
@@ -296,7 +296,7 @@ namespace DSharpPlus
         /// <param name="role_id">Role id</param>
         /// <param name="reason">Reason this role gets removed</param>
         /// <returns></returns>
-        public Task RemoveGuildMemberRoleAsync(ulong guild_id, ulong user_id, ulong role_id, string reason)
+        public virtual Task RemoveGuildMemberRoleAsync(ulong guild_id, ulong user_id, ulong role_id, string reason)
             => this.ApiClient.RemoveGuildMemberRoleAsync(guild_id, user_id, role_id, reason);
 
         /// <summary>
@@ -307,7 +307,7 @@ namespace DSharpPlus
         /// <param name="position">Role position</param>
         /// <param name="reason">Reason this position was modified</param>
         /// <returns></returns>
-        public Task UpdateRolePositionAsync(ulong guild_id, ulong role_id, int position, string reason = null)
+        public virtual Task UpdateRolePositionAsync(ulong guild_id, ulong role_id, int position, string reason = null)
         {
             var rgrrps = new List<RestGuildRoleReorderPayload>()
             {
@@ -326,7 +326,7 @@ namespace DSharpPlus
         /// <param name="lockPermissions">Whether to sync channel permissions with the parent, if moving to a new category.</param>
         /// <param name="parentId">The new parent id if the channel is to be moved to a new category.</param>
         /// <returns></returns>
-        public Task UpdateChannelPositionAsync(ulong guild_id, ulong channel_id, int position, string reason, bool? lockPermissions = null, ulong? parentId = null)
+        public virtual Task UpdateChannelPositionAsync(ulong guild_id, ulong channel_id, int position, string reason, bool? lockPermissions = null, ulong? parentId = null)
         {
             var rgcrps = new List<RestGuildChannelReorderPayload>()
             {
@@ -398,7 +398,7 @@ namespace DSharpPlus
         /// <param name="channelId">The id of the channel.</param>
         /// <param name="suppress">Toggles the suppress state.</param>
         /// <param name="requestToSpeakTimestamp">Sets the time the user requested to speak.</param>
-        public Task UpdateCurrentUserVoiceStateAsync(ulong guildId, ulong channelId, bool? suppress, DateTimeOffset? requestToSpeakTimestamp = null)
+        public virtual Task UpdateCurrentUserVoiceStateAsync(ulong guildId, ulong channelId, bool? suppress, DateTimeOffset? requestToSpeakTimestamp = null)
             => this.ApiClient.UpdateCurrentUserVoiceStateAsync(guildId, channelId, suppress, requestToSpeakTimestamp);
 
         /// <summary>
@@ -409,7 +409,7 @@ namespace DSharpPlus
         /// <param name="channelId">The id of the stage channel.</param>
         /// <param name="suppress">Toggles the member's suppress state.</param>
         /// <returns></returns>
-        public Task UpdateUserVoiceStateAsync(ulong guildId, ulong userId, ulong channelId, bool? suppress)
+        public virtual Task UpdateUserVoiceStateAsync(ulong guildId, ulong userId, ulong channelId, bool? suppress)
             => this.ApiClient.UpdateUserVoiceStateAsync(guildId, userId, channelId, suppress);
         #endregion
 
@@ -455,7 +455,7 @@ namespace DSharpPlus
         /// <param name="permissionOverwrites">New channel permission overwrites.</param>
         /// <param name="reason">Reason why this channel was modified</param>
         /// <returns></returns>
-        public Task ModifyChannelAsync(ulong id, string name, int? position, Optional<string> topic, bool? nsfw, Optional<ulong?> parent, int? bitrate, int? userLimit, Optional<int?> perUserRateLimit, Optional<DiscordVoiceRegion> rtcRegion, VideoQualityMode? qualityMode, Optional<ChannelType> type, IEnumerable<DiscordOverwriteBuilder> permissionOverwrites, string reason)
+        public virtual Task ModifyChannelAsync(ulong id, string name, int? position, Optional<string> topic, bool? nsfw, Optional<ulong?> parent, int? bitrate, int? userLimit, Optional<int?> perUserRateLimit, Optional<DiscordVoiceRegion> rtcRegion, VideoQualityMode? qualityMode, Optional<ChannelType> type, IEnumerable<DiscordOverwriteBuilder> permissionOverwrites, string reason)
             => this.ApiClient.ModifyChannelAsync(id, name, position, topic, nsfw, parent, bitrate, userLimit, perUserRateLimit, rtcRegion.IfPresent(e => e?.Id), qualityMode, type, permissionOverwrites, reason);
 
         /// <summary>
@@ -464,7 +464,7 @@ namespace DSharpPlus
         /// <param name="channelId">Channel id</param>
         /// <param name="action">Channel modifications</param>
         /// <returns></returns>
-        public Task ModifyChannelAsync(ulong channelId, Action<ChannelEditModel> action)
+        public virtual Task ModifyChannelAsync(ulong channelId, Action<ChannelEditModel> action)
         {
             var mdl = new ChannelEditModel();
             action(mdl);
@@ -488,7 +488,7 @@ namespace DSharpPlus
         /// <param name="id">Channel id</param>
         /// <param name="reason">Reason why this channel was deleted</param>
         /// <returns></returns>
-        public Task DeleteChannelAsync(ulong id, string reason)
+        public virtual Task DeleteChannelAsync(ulong id, string reason)
             => this.ApiClient.DeleteChannelAsync(id, reason);
 
         /// <summary>
@@ -621,7 +621,7 @@ namespace DSharpPlus
         /// <param name="channel_id">Channel id</param>
         /// <param name="message_id">Message id</param>
         /// <param name="hideEmbeds">Whether to hide all embeds.</param>
-        public Task ModifyEmbedSuppressionAsync(ulong channel_id, ulong message_id, bool hideEmbeds)
+        public virtual Task ModifyEmbedSuppressionAsync(ulong channel_id, ulong message_id, bool hideEmbeds)
             => this.ApiClient.EditMessageAsync(channel_id, message_id, default, default, default, default, Array.Empty<DiscordMessageFile>(), hideEmbeds ? MessageFlags.SuppressedEmbeds : null, default);
 
         /// <summary>
@@ -631,7 +631,7 @@ namespace DSharpPlus
         /// <param name="message_id">Message id</param>
         /// <param name="reason">Why this message was deleted</param>
         /// <returns></returns>
-        public Task DeleteMessageAsync(ulong channel_id, ulong message_id, string reason)
+        public virtual Task DeleteMessageAsync(ulong channel_id, ulong message_id, string reason)
             => this.ApiClient.DeleteMessageAsync(channel_id, message_id, reason);
 
         /// <summary>
@@ -641,7 +641,7 @@ namespace DSharpPlus
         /// <param name="message_ids">Message ids</param>
         /// <param name="reason">Reason these messages were deleted</param>
         /// <returns></returns>
-        public Task DeleteMessagesAsync(ulong channel_id, IEnumerable<ulong> message_ids, string reason)
+        public virtual Task DeleteMessagesAsync(ulong channel_id, IEnumerable<ulong> message_ids, string reason)
             => this.ApiClient.DeleteMessagesAsync(channel_id, message_ids, reason);
 
         /// <summary>
@@ -672,7 +672,7 @@ namespace DSharpPlus
         /// <param name="overwrite_id">Overwrite id</param>
         /// <param name="reason">Reason it was deleted</param>
         /// <returns></returns>
-        public Task DeleteChannelPermissionAsync(ulong channel_id, ulong overwrite_id, string reason)
+        public virtual Task DeleteChannelPermissionAsync(ulong channel_id, ulong overwrite_id, string reason)
             => this.ApiClient.DeleteChannelPermissionAsync(channel_id, overwrite_id, reason);
 
         /// <summary>
@@ -685,7 +685,7 @@ namespace DSharpPlus
         /// <param name="type">Overwrite type</param>
         /// <param name="reason">Reason this overwrite was created</param>
         /// <returns></returns>
-        public Task EditChannelPermissionsAsync(ulong channel_id, ulong overwrite_id, Permissions allow, Permissions deny, string type, string reason)
+        public virtual Task EditChannelPermissionsAsync(ulong channel_id, ulong overwrite_id, Permissions allow, Permissions deny, string type, string reason)
             => this.ApiClient.EditChannelPermissionsAsync(channel_id, overwrite_id, allow, deny, type, reason);
 
         /// <summary>
@@ -693,7 +693,7 @@ namespace DSharpPlus
         /// </summary>
         /// <param name="channel_id">Channel id</param>
         /// <returns></returns>
-        public Task TriggerTypingAsync(ulong channel_id)
+        public virtual Task TriggerTypingAsync(ulong channel_id)
             => this.ApiClient.TriggerTypingAsync(channel_id);
 
         /// <summary>
@@ -710,7 +710,7 @@ namespace DSharpPlus
         /// <param name="channel_id">Channel id</param>
         /// <param name="message_id">Message id</param>
         /// <returns></returns>
-        public Task UnpinMessageAsync(ulong channel_id, ulong message_id)
+        public virtual Task UnpinMessageAsync(ulong channel_id, ulong message_id)
             => this.ApiClient.UnpinMessageAsync(channel_id, message_id);
 
         /// <summary>
@@ -719,7 +719,7 @@ namespace DSharpPlus
         /// <param name="channel_id">Channel id</param>
         /// <param name="nickname">Dm nickname</param>
         /// <returns></returns>
-        public Task JoinGroupDmAsync(ulong channel_id, string nickname)
+        public virtual Task JoinGroupDmAsync(ulong channel_id, string nickname)
             => this.ApiClient.AddGroupDmRecipientAsync(channel_id, this.CurrentUser.Id, this.Configuration.Token, nickname);
 
         /// <summary>
@@ -730,7 +730,7 @@ namespace DSharpPlus
         /// <param name="access_token">User's access token</param>
         /// <param name="nickname">Nickname for user</param>
         /// <returns></returns>
-        public Task GroupDmAddRecipientAsync(ulong channel_id, ulong user_id, string access_token, string nickname)
+        public virtual Task GroupDmAddRecipientAsync(ulong channel_id, ulong user_id, string access_token, string nickname)
             => this.ApiClient.AddGroupDmRecipientAsync(channel_id, user_id, access_token, nickname);
 
         /// <summary>
@@ -738,7 +738,7 @@ namespace DSharpPlus
         /// </summary>
         /// <param name="channel_id">Channel id</param>
         /// <returns></returns>
-        public Task LeaveGroupDmAsync(ulong channel_id)
+        public virtual Task LeaveGroupDmAsync(ulong channel_id)
             => this.ApiClient.RemoveGroupDmRecipientAsync(channel_id, this.CurrentUser.Id);
 
         /// <summary>
@@ -747,7 +747,7 @@ namespace DSharpPlus
         /// <param name="channel_id">Channel id</param>
         /// <param name="user_id">User id</param>
         /// <returns></returns>
-        public Task GroupDmRemoveRecipientAsync(ulong channel_id, ulong user_id)
+        public virtual Task GroupDmRemoveRecipientAsync(ulong channel_id, ulong user_id)
             => this.ApiClient.RemoveGroupDmRecipientAsync(channel_id, user_id);
 
         /// <summary>
@@ -837,7 +837,7 @@ namespace DSharpPlus
         /// </summary>
         /// <param name="channelId">The id of the channel to delete the stage instance of.</param>
         /// <param name="reason">The reason the stage instance was deleted.</param>
-        public Task DeleteStageInstanceAsync(ulong channelId, string reason = null)
+        public virtual Task DeleteStageInstanceAsync(ulong channelId, string reason = null)
             => this.ApiClient.DeleteStageInstanceAsync(channelId, reason);
 
         /// <summary>
@@ -845,7 +845,7 @@ namespace DSharpPlus
         /// </summary>
         /// <param name="channelId">The id of the channel the message is in.</param>
         /// <param name="messageId">The id of the message.</param>
-        public Task PinMessageAsync(ulong channelId, ulong messageId)
+        public virtual Task PinMessageAsync(ulong channelId, ulong messageId)
             => this.ApiClient.PinMessageAsync(channelId, messageId);
 
         #endregion
@@ -882,7 +882,7 @@ namespace DSharpPlus
         /// <param name="user_id">User id</param>
         /// <param name="reason">Why this user was removed</param>
         /// <returns></returns>
-        public Task RemoveGuildMemberAsync(ulong guild_id, ulong user_id, string reason)
+        public virtual Task RemoveGuildMemberAsync(ulong guild_id, ulong user_id, string reason)
             => this.ApiClient.RemoveGuildMemberAsync(guild_id, user_id, reason);
 
         /// <summary>
@@ -976,7 +976,7 @@ namespace DSharpPlus
         /// <param name="reason">Reason why you set it to this</param>
         /// <returns></returns>
         [Obsolete("This method is depreciated and will be removed in a future version. Please use ModifyCurrentMemberAsync instead.", false)]
-        public Task ModifyCurrentMemberNicknameAsync(ulong guild_id, string nick, string reason)
+        public virtual Task ModifyCurrentMemberNicknameAsync(ulong guild_id, string nick, string reason)
             => this.ApiClient.ModifyCurrentMemberAsync(guild_id, nick, reason);
 
         /// <summary>
@@ -986,7 +986,7 @@ namespace DSharpPlus
         /// <param name="nickname">Nickname to set</param>
         /// <param name="reason">Audit log reason</param>
         /// <returns></returns>
-        public Task ModifyCurrentMemberAsync(ulong guild_id, string nickname, string reason)
+        public virtual Task ModifyCurrentMemberAsync(ulong guild_id, string nickname, string reason)
             => this.ApiClient.ModifyCurrentMemberAsync(guild_id, nickname, reason);
 
         #endregion
@@ -1033,7 +1033,7 @@ namespace DSharpPlus
         /// <param name="guild_id">Guild id</param>
         /// <param name="action">Modifications</param>
         /// <returns></returns>
-        public Task ModifyGuildRoleAsync(ulong role_id, ulong guild_id, Action<RoleEditModel> action)
+        public virtual Task ModifyGuildRoleAsync(ulong role_id, ulong guild_id, Action<RoleEditModel> action)
         {
             var mdl = new RoleEditModel();
             action(mdl);
@@ -1048,7 +1048,7 @@ namespace DSharpPlus
         /// <param name="role_id">Role id</param>
         /// <param name="reason">Reason why this role was deleted</param>
         /// <returns></returns>
-        public Task DeleteGuildRoleAsync(ulong guild_id, ulong role_id, string reason)
+        public virtual Task DeleteGuildRoleAsync(ulong guild_id, ulong role_id, string reason)
             => this.ApiClient.DeleteRoleAsync(guild_id, role_id, reason);
 
         /// <summary>
@@ -1129,7 +1129,7 @@ namespace DSharpPlus
         /// <param name="guild_id">Guild id</param>
         /// <param name="integration">Integration to remove</param>
         /// <returns></returns>
-        public Task DeleteGuildIntegrationAsync(ulong guild_id, DiscordIntegration integration)
+        public virtual Task DeleteGuildIntegrationAsync(ulong guild_id, DiscordIntegration integration)
             => this.ApiClient.DeleteGuildIntegrationAsync(guild_id, integration);
 
         /// <summary>
@@ -1138,7 +1138,7 @@ namespace DSharpPlus
         /// <param name="guild_id">Guild id</param>
         /// <param name="integration_id">Integration id</param>
         /// <returns></returns>
-        public Task SyncGuildIntegrationAsync(ulong guild_id, ulong integration_id)
+        public virtual Task SyncGuildIntegrationAsync(ulong guild_id, ulong integration_id)
             => this.ApiClient.SyncGuildIntegrationAsync(guild_id, integration_id);
 
         /// <summary>
@@ -1394,7 +1394,7 @@ namespace DSharpPlus
         /// <param name="webhook_id">Webhook id</param>
         /// <param name="reason">Reason this webhook was deleted</param>
         /// <returns></returns>
-        public Task DeleteWebhookAsync(ulong webhook_id, string reason)
+        public virtual Task DeleteWebhookAsync(ulong webhook_id, string reason)
             => this.ApiClient.DeleteWebhookAsync(webhook_id, reason);
 
         /// <summary>
@@ -1404,7 +1404,7 @@ namespace DSharpPlus
         /// <param name="reason">Reason this webhook was removed</param>
         /// <param name="webhook_token">Webhook token</param>
         /// <returns></returns>
-        public Task DeleteWebhookAsync(ulong webhook_id, string reason, string webhook_token)
+        public virtual Task DeleteWebhookAsync(ulong webhook_id, string reason, string webhook_token)
             => this.ApiClient.DeleteWebhookAsync(webhook_id, webhook_token, reason);
 
         /// <summary>
@@ -1440,7 +1440,7 @@ namespace DSharpPlus
         /// <param name="webhook_token">Webhook token</param>
         /// <param name="messageId">The id of the message to delete</param>
         /// <returns></returns>
-        public Task DeleteWebhookMessageAsync(ulong webhook_id, string webhook_token, ulong messageId)
+        public virtual Task DeleteWebhookMessageAsync(ulong webhook_id, string webhook_token, ulong messageId)
             => this.ApiClient.DeleteWebhookMessageAsync(webhook_id, webhook_token, messageId);
         #endregion
 
@@ -1452,7 +1452,7 @@ namespace DSharpPlus
         /// <param name="message_id">Message id</param>
         /// <param name="emoji">Emoji to react</param>
         /// <returns></returns>
-        public Task CreateReactionAsync(ulong channel_id, ulong message_id, string emoji)
+        public virtual Task CreateReactionAsync(ulong channel_id, ulong message_id, string emoji)
             => this.ApiClient.CreateReactionAsync(channel_id, message_id, emoji);
 
         /// <summary>
@@ -1462,7 +1462,7 @@ namespace DSharpPlus
         /// <param name="message_id">Message id</param>
         /// <param name="emoji">Emoji to remove from reaction</param>
         /// <returns></returns>
-        public Task DeleteOwnReactionAsync(ulong channel_id, ulong message_id, string emoji)
+        public virtual Task DeleteOwnReactionAsync(ulong channel_id, ulong message_id, string emoji)
             => this.ApiClient.DeleteOwnReactionAsync(channel_id, message_id, emoji);
 
         /// <summary>
@@ -1474,7 +1474,7 @@ namespace DSharpPlus
         /// <param name="emoji">Emoji to remove</param>
         /// <param name="reason">Reason why this reaction was removed</param>
         /// <returns></returns>
-        public Task DeleteUserReactionAsync(ulong channel_id, ulong message_id, ulong user_id, string emoji, string reason)
+        public virtual Task DeleteUserReactionAsync(ulong channel_id, ulong message_id, ulong user_id, string emoji, string reason)
             => this.ApiClient.DeleteUserReactionAsync(channel_id, message_id, user_id, emoji, reason);
 
         /// <summary>
@@ -1508,7 +1508,7 @@ namespace DSharpPlus
         /// <param name="message_id">Message id</param>
         /// <param name="reason">Reason why all reactions were removed</param>
         /// <returns></returns>
-        public Task DeleteAllReactionsAsync(ulong channel_id, ulong message_id, string reason)
+        public virtual Task DeleteAllReactionsAsync(ulong channel_id, ulong message_id, string reason)
             => this.ApiClient.DeleteAllReactionsAsync(channel_id, message_id, reason);
 
         /// <summary>
@@ -1518,7 +1518,7 @@ namespace DSharpPlus
         /// <param name="messageId">The id of the message.</param>
         /// <param name="emoji">The emoji to clear.</param>
         /// <returns></returns>
-        public Task DeleteReactionsEmojiAsync(ulong channelid, ulong messageId, string emoji)
+        public virtual Task DeleteReactionsEmojiAsync(ulong channelid, ulong messageId, string emoji)
             => this.ApiClient.DeleteReactionsEmojiAsync(channelid, messageId, emoji);
 
         #endregion
@@ -1573,7 +1573,7 @@ namespace DSharpPlus
         /// Deletes a global application command.
         /// </summary>
         /// <param name="commandId">The id of the command to delete.</param>
-        public Task DeleteGlobalApplicationCommandAsync(ulong commandId) =>
+        public virtual Task DeleteGlobalApplicationCommandAsync(ulong commandId) =>
             this.ApiClient.DeleteGlobalApplicationCommandAsync(this.CurrentApplication.Id, commandId);
 
         /// <summary>
@@ -1631,7 +1631,7 @@ namespace DSharpPlus
         /// </summary>
         /// <param name="guildId">The id of the guild to delete the application command in.</param>
         /// <param name="commandId">The id of the command.</param>
-        public Task DeleteGuildApplicationCommandAsync(ulong guildId, ulong commandId) =>
+        public virtual Task DeleteGuildApplicationCommandAsync(ulong guildId, ulong commandId) =>
             this.ApiClient.DeleteGuildApplicationCommandAsync(this.CurrentApplication.Id, guildId, commandId);
 
         /// <summary>
@@ -1641,7 +1641,7 @@ namespace DSharpPlus
         /// <param name="interactionToken">The token of the interaction</param>
         /// <param name="type">The type of the response.</param>
         /// <param name="builder">The data, if any, to send.</param>
-        public Task CreateInteractionResponseAsync(ulong interactionId, string interactionToken, InteractionResponseType type, DiscordInteractionResponseBuilder builder = null) =>
+        public virtual Task CreateInteractionResponseAsync(ulong interactionId, string interactionToken, InteractionResponseType type, DiscordInteractionResponseBuilder builder = null) =>
             this.ApiClient.CreateInteractionResponseAsync(interactionId, interactionToken, type, builder);
 
         /// <summary>
@@ -1669,7 +1669,7 @@ namespace DSharpPlus
         /// Deletes the original interaction response.
         /// <param name="interactionToken">The token of the interaction.</param>
         /// </summary>>
-        public Task DeleteOriginalInteractionResponseAsync(string interactionToken) =>
+        public virtual Task DeleteOriginalInteractionResponseAsync(string interactionToken) =>
             this.ApiClient.DeleteOriginalInteractionResponseAsync(this.CurrentApplication.Id, interactionToken);
 
         /// <summary>
@@ -1705,7 +1705,7 @@ namespace DSharpPlus
         /// </summary>
         /// <param name="interactionToken">The token of the interaction.</param>
         /// <param name="messageId">The id of the follow up message.</param>
-        public Task DeleteFollowupMessageAsync(string interactionToken, ulong messageId) =>
+        public virtual Task DeleteFollowupMessageAsync(string interactionToken, ulong messageId) =>
             this.ApiClient.DeleteFollowupMessageAsync(this.CurrentApplication.Id, interactionToken, messageId);
 
         /// <summary>
@@ -1829,7 +1829,7 @@ namespace DSharpPlus
         /// <param name="stickerId">The id of the sticker.</param>
         /// <param name="reason">Reason for audit log.</param>
         /// <returns></returns>
-        public Task DeleteGuildStickerAsync(ulong guildId, ulong stickerId, string reason = null)
+        public virtual Task DeleteGuildStickerAsync(ulong guildId, ulong stickerId, string reason = null)
             => this.ApiClient.DeleteStickerAsync(guildId, stickerId, reason);
 
         #endregion
@@ -1863,14 +1863,14 @@ namespace DSharpPlus
          /// Joins a thread.
          /// </summary>
          /// <param name="threadId">The id of the thread.</param>
-         public Task JoinThreadAsync(ulong threadId)
+         public virtual Task JoinThreadAsync(ulong threadId)
              => this.ApiClient.JoinThreadAsync(threadId);
 
          /// <summary>
          /// Leaves a thread.
          /// </summary>
          /// <param name="threadId">The id of the thread.</param>
-         public Task LeaveThreadAsync(ulong threadId)
+         public virtual Task LeaveThreadAsync(ulong threadId)
              => this.ApiClient.LeaveThreadAsync(threadId);
 
          /// <summary>
@@ -1878,7 +1878,7 @@ namespace DSharpPlus
          /// </summary>
          /// <param name="threadId">The id of the thread.</param>
          /// <param name="userId">The id of the member.</param>
-         public Task AddThreadMemberAsync(ulong threadId, ulong userId)
+         public virtual Task AddThreadMemberAsync(ulong threadId, ulong userId)
              => this.ApiClient.AddThreadMemberAsync(threadId, userId);
 
          /// <summary>
@@ -1886,7 +1886,7 @@ namespace DSharpPlus
          /// </summary>
          /// <param name="threadId">The id of the thread.</param>
          /// <param name="userId">The id of the member.</param>
-         public Task RemoveThreadMemberAsync(ulong threadId, ulong userId)
+         public virtual Task RemoveThreadMemberAsync(ulong threadId, ulong userId)
              => this.ApiClient.RemoveThreadMemberAsync(threadId, userId);
 
          /// <summary>
@@ -1996,7 +1996,7 @@ namespace DSharpPlus
         /// <param name="guildId">The id of the guild.</param>
         /// <param name="emojiId">The id of the emoji.</param>
         /// <param name="reason">Reason for audit logs.</param>
-        public Task DeleteGuildEmojiAsync(ulong guildId, ulong emojiId, string reason = null)
+        public virtual Task DeleteGuildEmojiAsync(ulong guildId, ulong emojiId, string reason = null)
             => this.ApiClient.DeleteGuildEmojiAsync(guildId, emojiId, reason);
 
         #endregion

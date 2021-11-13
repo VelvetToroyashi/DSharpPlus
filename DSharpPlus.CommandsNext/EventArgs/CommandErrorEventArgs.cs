@@ -30,6 +30,6 @@ namespace DSharpPlus.CommandsNext
     /// </summary>
     public class CommandErrorEventArgs : CommandEventArgs
     {
-        public Exception Exception { get; internal set; }
+        public virtual Exception Exception { get; internal set; }
     }
 }

@@ -33,7 +33,7 @@ namespace DSharpPlus.EventArgs
         /// <summary>
         /// Gets the message for which the update occurred.
         /// </summary>
-        public DiscordMessage Message { get; internal set; }
+        public virtual DiscordMessage Message { get; internal set; }
 
         /// <summary>
         /// Gets the channel to which this message belongs.
@@ -48,17 +48,17 @@ namespace DSharpPlus.EventArgs
         /// <summary>
         /// Gets the users whose reaction was removed.
         /// </summary>
-        public DiscordUser User { get; internal set; }
+        public virtual DiscordUser User { get; internal set; }
 
         /// <summary>
         /// Gets the guild in which the reaction was deleted.
         /// </summary>
-        public DiscordGuild Guild { get; internal set; }
+        public virtual DiscordGuild Guild { get; internal set; }
 
         /// <summary>
         /// Gets the emoji used for this reaction.
         /// </summary>
-        public DiscordEmoji Emoji { get; internal set; }
+        public virtual DiscordEmoji Emoji { get; internal set; }
 
         internal MessageReactionRemoveEventArgs() : base() { }
     }

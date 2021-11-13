@@ -174,7 +174,7 @@ namespace DSharpPlus.Entities
     }
 
     /// <seealso cref="DiscordJson._serializer"/>
-    internal sealed class OptionalJsonContractResolver : DefaultContractResolver
+    internal class OptionalJsonContractResolver : DefaultContractResolver
     {
         protected override JsonProperty CreateProperty(MemberInfo member, MemberSerialization memberSerialization)
         {
@@ -185,7 +185,7 @@ namespace DSharpPlus.Entities
             if (!type.GetTypeInfo().ImplementedInterfaces.Contains(typeof(IOptional)))
                 return property;
 
-            // we cache the PropertyInfo object here (it's captured in closure). we don't have direct 
+            // we cache the PropertyInfo object here (it's captured in closure). we don't have direct
             // access to the property value so we have to reflect into it from the parent instance
             // we use UnderlyingName instead of PropertyName in case the C# name is different from the Json name.
             var declaringMember = property.DeclaringType.GetTypeInfo().DeclaredMembers
@@ -214,7 +214,7 @@ namespace DSharpPlus.Entities
         }
     }
 
-    internal sealed class OptionalJsonConverter : JsonConverter
+    internal class OptionalJsonConverter : JsonConverter
     {
         public override void WriteJson(JsonWriter writer, object value, JsonSerializer serializer)
         {

@@ -33,16 +33,16 @@ namespace DSharpPlus.Net.Abstractions
         string Reason { get; set; }
 
         //[JsonProperty("reason", NullValueHandling = NullValueHandling.Ignore)]
-        //public string Reason { get; set; }
+        //public virtual string Reason { get; set; }
     }
 
     internal class RestGuildCreatePayload
     {
         [JsonProperty("name", NullValueHandling = NullValueHandling.Ignore)]
-        public string Name { get; set; }
+        public virtual string Name { get; set; }
 
         [JsonProperty("region", NullValueHandling = NullValueHandling.Ignore)]
-        public string RegionId { get; set; }
+        public virtual string RegionId { get; set; }
 
         [JsonProperty("icon", NullValueHandling = NullValueHandling.Include)]
         public Optional<string> IconBase64 { get; set; }
@@ -63,16 +63,16 @@ namespace DSharpPlus.Net.Abstractions
         public SystemChannelFlags? SystemChannelFlags { get; set; }
     }
 
-    internal sealed class RestGuildCreateFromTemplatePayload
+    internal class RestGuildCreateFromTemplatePayload
     {
         [JsonProperty("name", NullValueHandling = NullValueHandling.Ignore)]
-        public string Name { get; set; }
+        public virtual string Name { get; set; }
 
         [JsonProperty("icon", NullValueHandling = NullValueHandling.Include)]
         public Optional<string> IconBase64 { get; set; }
     }
 
-    internal sealed class RestGuildModifyPayload
+    internal class RestGuildModifyPayload
     {
         [JsonProperty("name")]
         public Optional<string> Name { get; set; }
@@ -135,13 +135,13 @@ namespace DSharpPlus.Net.Abstractions
         public Optional<IEnumerable<string>> Features { get; set; }
     }
 
-    internal sealed class RestGuildMemberAddPayload : IOAuth2Payload
+    internal class RestGuildMemberAddPayload : IOAuth2Payload
     {
         [JsonProperty("access_token")]
-        public string AccessToken { get; set; }
+        public virtual string AccessToken { get; set; }
 
         [JsonProperty("nick", NullValueHandling = NullValueHandling.Ignore)]
-        public string Nickname { get; set; }
+        public virtual string Nickname { get; set; }
 
         [JsonProperty("roles", NullValueHandling = NullValueHandling.Ignore)]
         public IEnumerable<DiscordRole> Roles { get; set; }
@@ -153,13 +153,13 @@ namespace DSharpPlus.Net.Abstractions
         public bool? Deaf { get; set; }
     }
 
-    internal sealed class RestGuildChannelReorderPayload
+    internal class RestGuildChannelReorderPayload
     {
         [JsonProperty("id", NullValueHandling = NullValueHandling.Ignore)]
-        public ulong ChannelId { get; set; }
+        public virtual ulong ChannelId { get; set; }
 
         [JsonProperty("position", NullValueHandling = NullValueHandling.Ignore)]
-        public int Position { get; set; }
+        public virtual int Position { get; set; }
 
         [JsonProperty("lock_permissions", NullValueHandling = NullValueHandling.Ignore)]
         public bool? LockPermissions { get; set; }
@@ -168,16 +168,16 @@ namespace DSharpPlus.Net.Abstractions
         public ulong? ParentId { get; set; }
     }
 
-    internal sealed class RestGuildRoleReorderPayload
+    internal class RestGuildRoleReorderPayload
     {
         [JsonProperty("id", NullValueHandling = NullValueHandling.Ignore)]
-        public ulong RoleId { get; set; }
+        public virtual ulong RoleId { get; set; }
 
         [JsonProperty("position", NullValueHandling = NullValueHandling.Ignore)]
-        public int Position { get; set; }
+        public virtual int Position { get; set; }
     }
 
-    internal sealed class RestGuildMemberModifyPayload
+    internal class RestGuildMemberModifyPayload
     {
         [JsonProperty("nick")]
         public Optional<string> Nickname { get; set; }
@@ -195,10 +195,10 @@ namespace DSharpPlus.Net.Abstractions
         public Optional<ulong?> VoiceChannelId { get; set; }
     }
 
-    internal sealed class RestGuildRolePayload
+    internal class RestGuildRolePayload
     {
         [JsonProperty("name", NullValueHandling = NullValueHandling.Ignore)]
-        public string Name { get; set; }
+        public virtual string Name { get; set; }
 
         [JsonProperty("permissions", NullValueHandling = NullValueHandling.Ignore)]
         public Permissions? Permissions { get; set; }
@@ -213,28 +213,28 @@ namespace DSharpPlus.Net.Abstractions
         public bool? Mentionable { get; set; }
 
         [JsonProperty("unicode_emoji", NullValueHandling = NullValueHandling.Ignore)]
-        public string Emoji { get; set; }
+        public virtual string Emoji { get; set; }
 
         [JsonProperty("icon", NullValueHandling = NullValueHandling.Ignore)]
-        public string Icon { get; set; }
+        public virtual string Icon { get; set; }
     }
 
-    internal sealed class RestGuildPruneResultPayload
+    internal class RestGuildPruneResultPayload
     {
         [JsonProperty("pruned", NullValueHandling = NullValueHandling.Ignore)]
         public int? Pruned { get; set; }
     }
 
-    internal sealed class RestGuildIntegrationAttachPayload
+    internal class RestGuildIntegrationAttachPayload
     {
         [JsonProperty("type")]
-        public string Type { get; set; }
+        public virtual string Type { get; set; }
 
         [JsonProperty("id")]
-        public ulong Id { get; set; }
+        public virtual ulong Id { get; set; }
     }
 
-    internal sealed class RestGuildIntegrationModifyPayload
+    internal class RestGuildIntegrationModifyPayload
     {
         [JsonProperty("expire_behavior", NullValueHandling = NullValueHandling.Ignore)]
         public int? ExpireBehavior { get; set; }
@@ -249,10 +249,10 @@ namespace DSharpPlus.Net.Abstractions
     internal class RestGuildEmojiModifyPayload
     {
         [JsonProperty("name")]
-        public string Name { get; set; }
+        public virtual string Name { get; set; }
 
         [JsonProperty("roles", NullValueHandling = NullValueHandling.Ignore)]
-        public ulong[] Roles { get; set; }
+        public virtual ulong[] Roles { get; set; }
     }
 
     internal class RestGuildEmojiCreatePayload : RestGuildEmojiModifyPayload
@@ -273,10 +273,10 @@ namespace DSharpPlus.Net.Abstractions
     internal class RestGuildTemplateCreateOrModifyPayload
     {
         [JsonProperty("name", NullValueHandling = NullValueHandling.Include)]
-        public string Name { get; set; }
+        public virtual string Name { get; set; }
 
         [JsonProperty("description", NullValueHandling = NullValueHandling.Include)]
-        public string Description { get; set; }
+        public virtual string Description { get; set; }
     }
 
     internal class RestGuildMembershipScreeningFormModifyPayload
@@ -306,7 +306,7 @@ namespace DSharpPlus.Net.Abstractions
     internal class RestGuildUpdateCurrentUserVoiceStatePayload
     {
         [JsonProperty("channel_id")]
-        public ulong ChannelId { get; set; }
+        public virtual ulong ChannelId { get; set; }
 
         [JsonProperty("suppress", NullValueHandling = NullValueHandling.Ignore)]
         public bool? Suppress { get; set; }
@@ -318,7 +318,7 @@ namespace DSharpPlus.Net.Abstractions
     internal class RestGuildUpdateUserVoiceStatePayload
     {
         [JsonProperty("channel_id")]
-        public ulong ChannelId { get; set; }
+        public virtual ulong ChannelId { get; set; }
 
         [JsonProperty("suppress", NullValueHandling = NullValueHandling.Ignore)]
         public bool? Suppress { get; set; }

@@ -39,31 +39,31 @@ namespace DSharpPlus.Entities
         /// Gets the invite's code.
         /// </summary>
         [JsonProperty("code", NullValueHandling = NullValueHandling.Ignore)]
-        public string Code { get; internal set; }
+        public virtual string Code { get; internal set; }
 
         /// <summary>
         /// Gets the guild this invite is for.
         /// </summary>
         [JsonProperty("guild", NullValueHandling = NullValueHandling.Ignore)]
-        public DiscordInviteGuild Guild { get; internal set; }
+        public virtual DiscordInviteGuild Guild { get; internal set; }
 
         /// <summary>
         /// Gets the channel this invite is for.
         /// </summary>
         [JsonProperty("channel", NullValueHandling = NullValueHandling.Ignore)]
-        public DiscordInviteChannel Channel { get; internal set; }
+        public virtual DiscordInviteChannel Channel { get; internal set; }
 
         /// <summary>
         /// Gets the partial user that is currently livestreaming.
         /// </summary>
         [JsonProperty("target_user", NullValueHandling = NullValueHandling.Ignore)]
-        public DiscordUser TargetUser { get; internal set; }
+        public virtual DiscordUser TargetUser { get; internal set; }
 
         /// <summary>
         /// Gets the partial embedded application to open for a voice channel.
         /// </summary>
         [JsonProperty("target_application", NullValueHandling = NullValueHandling.Ignore)]
-        public DiscordApplication TargetApplication { get; internal set; }
+        public virtual DiscordApplication TargetApplication { get; internal set; }
 
         /// <summary>
         /// Gets the type of user who the invite is for.
@@ -85,7 +85,7 @@ namespace DSharpPlus.Entities
         public int? ApproximatePresenceCount { get; internal set; }
 
         /// <summary>
-        /// Gets the approximate guild total member count for the invite. 
+        /// Gets the approximate guild total member count for the invite.
         /// </summary>
         [JsonProperty("approximate_member_count")]
         public int? ApproximateMemberCount { get; internal set; }
@@ -94,43 +94,43 @@ namespace DSharpPlus.Entities
         /// Gets the user who created the invite.
         /// </summary>
         [JsonProperty("inviter", NullValueHandling = NullValueHandling.Ignore)]
-        public DiscordUser Inviter { get; internal set; }
+        public virtual DiscordUser Inviter { get; internal set; }
 
         /// <summary>
         /// Gets the number of times this invite has been used.
         /// </summary>
         [JsonProperty("uses", NullValueHandling = NullValueHandling.Ignore)]
-        public int Uses { get; internal set; }
+        public virtual int Uses { get; internal set; }
 
         /// <summary>
         /// Gets the max number of times this invite can be used.
         /// </summary>
         [JsonProperty("max_uses", NullValueHandling = NullValueHandling.Ignore)]
-        public int MaxUses { get; internal set; }
+        public virtual int MaxUses { get; internal set; }
 
         /// <summary>
         /// Gets duration in seconds after which the invite expires.
         /// </summary>
         [JsonProperty("max_age", NullValueHandling = NullValueHandling.Ignore)]
-        public int MaxAge { get; internal set; }
+        public virtual int MaxAge { get; internal set; }
 
         /// <summary>
         /// Gets whether this invite only grants temporary membership.
         /// </summary>
         [JsonProperty("temporary", NullValueHandling = NullValueHandling.Ignore)]
-        public bool IsTemporary { get; internal set; }
+        public virtual bool IsTemporary { get; internal set; }
 
         /// <summary>
         /// Gets the date and time this invite was created.
         /// </summary>
         [JsonProperty("created_at", NullValueHandling = NullValueHandling.Ignore)]
-        public DateTimeOffset CreatedAt { get; internal set; }
+        public virtual DateTimeOffset CreatedAt { get; internal set; }
 
         /// <summary>
         /// Gets whether this invite is revoked.
         /// </summary>
         [JsonProperty("revoked", NullValueHandling = NullValueHandling.Ignore)]
-        public bool IsRevoked { get; internal set; }
+        public virtual bool IsRevoked { get; internal set; }
 
         /// <summary>
         /// Gets the expiration date of this invite.
@@ -146,7 +146,7 @@ namespace DSharpPlus.Entities
         /// Gets stage instance data for this invite if it is for a stage instance channel.
         /// </summary>
         [JsonProperty("stage_instance")]
-        public DiscordStageInvite StageInstance { get; internal set; }
+        public virtual DiscordStageInvite StageInstance { get; internal set; }
 
         internal DiscordInvite() { }
 
@@ -164,13 +164,13 @@ namespace DSharpPlus.Entities
 
         /*
          * Disabled due to API restrictions.
-         * 
+         *
          * /// <summary>
          * /// Accepts an invite. Not available to bot accounts. Requires "guilds.join" scope or user token. Please note that accepting these via the API will get your account unverified.
          * /// </summary>
          * /// <returns></returns>
          * [Obsolete("Using this method will get your account unverified.")]
-         * public Task<DiscordInvite> AcceptAsync() 
+         * public Task<DiscordInvite> AcceptAsync()
          *     => this.Discord._rest_client.InternalAcceptInvite(Code);
          */
 

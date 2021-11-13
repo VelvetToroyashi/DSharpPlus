@@ -29,7 +29,7 @@ namespace DSharpPlus
 {
     internal class QueryUriBuilder
     {
-        public Uri SourceUri { get; }
+        public virtual Uri SourceUri { get; }
 
         public IReadOnlyList<KeyValuePair<string, string>> QueryParameters => this._queryParams;
         private readonly List<KeyValuePair<string, string>> _queryParams = new();

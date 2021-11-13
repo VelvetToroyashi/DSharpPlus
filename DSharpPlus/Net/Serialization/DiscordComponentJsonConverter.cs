@@ -27,7 +27,7 @@ using Newtonsoft.Json.Linq;
 
 namespace DSharpPlus.Net.Serialization
 {
-    internal sealed class DiscordComponentJsonConverter : JsonConverter
+    internal class DiscordComponentJsonConverter : JsonConverter
     {
         public override bool CanWrite => false;
         public override void WriteJson(JsonWriter writer, object value, JsonSerializer serializer) => throw new NotImplementedException();

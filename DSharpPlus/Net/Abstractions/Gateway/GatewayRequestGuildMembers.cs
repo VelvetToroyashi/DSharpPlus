@@ -27,16 +27,16 @@ using Newtonsoft.Json;
 
 namespace DSharpPlus.Net.Abstractions
 {
-    internal sealed class GatewayRequestGuildMembers
+    internal class GatewayRequestGuildMembers
     {
         [JsonProperty("guild_id")]
-        public ulong GuildId { get; }
+        public virtual ulong GuildId { get; }
 
         [JsonProperty("query", NullValueHandling = NullValueHandling.Ignore)]
-        public string Query { get; set; } = null;
+        public virtual string Query { get; set; } = null;
 
         [JsonProperty("limit")]
-        public int Limit { get; set; } = 0;
+        public virtual int Limit { get; set; } = 0;
 
         [JsonProperty("presences", NullValueHandling = NullValueHandling.Ignore)]
         public bool? Presences { get; set; } = null;
@@ -45,7 +45,7 @@ namespace DSharpPlus.Net.Abstractions
         public IEnumerable<ulong> UserIds { get; set; } = null;
 
         [JsonProperty("nonce", NullValueHandling = NullValueHandling.Ignore)]
-        public string Nonce { get; internal set; }
+        public virtual string Nonce { get; internal set; }
 
         public GatewayRequestGuildMembers(DiscordGuild guild)
         {

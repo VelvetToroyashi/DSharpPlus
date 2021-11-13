@@ -31,7 +31,7 @@ namespace DSharpPlus.CommandsNext.Builders
     /// <summary>
     /// Represents an interface to build a command group.
     /// </summary>
-    public sealed class CommandGroupBuilder : CommandBuilder
+    public class CommandGroupBuilder : CommandBuilder
     {
         /// <summary>
         /// Gets the list of child commands registered for this group.

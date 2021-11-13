@@ -33,17 +33,17 @@ namespace DSharpPlus.EventArgs
         /// <summary>
         /// Gets the users whose speaking state changed.
         /// </summary>
-        public DiscordUser User { get; internal set; }
+        public virtual DiscordUser User { get; internal set; }
 
         /// <summary>
         /// Gets the SSRC of the audio source.
         /// </summary>
-        public uint SSRC { get; internal set; }
+        public virtual uint SSRC { get; internal set; }
 
         /// <summary>
         /// Gets whether this user is speaking.
         /// </summary>
-        public bool Speaking { get; internal set; }
+        public virtual bool Speaking { get; internal set; }
 
         internal UserSpeakingEventArgs() : base() { }
     }

@@ -39,7 +39,7 @@ namespace DSharpPlus.Entities
         /// Gets the name of this emoji.
         /// </summary>
         [JsonProperty("name", NullValueHandling = NullValueHandling.Ignore)]
-        public string Name { get; internal set; }
+        public virtual string Name { get; internal set; }
 
         /// <summary>
         /// Gets IDs the roles this emoji is enabled for.
@@ -55,19 +55,19 @@ namespace DSharpPlus.Entities
         /// Gets whether this emoji requires colons to use.
         /// </summary>
         [JsonProperty("require_colons")]
-        public bool RequiresColons { get; internal set; }
+        public virtual bool RequiresColons { get; internal set; }
 
         /// <summary>
         /// Gets whether this emoji is managed by an integration.
         /// </summary>
         [JsonProperty("managed")]
-        public bool IsManaged { get; internal set; }
+        public virtual bool IsManaged { get; internal set; }
 
         /// <summary>
         /// Gets whether this emoji is animated.
         /// </summary>
         [JsonProperty("animated")]
-        public bool IsAnimated { get; internal set; }
+        public virtual bool IsAnimated { get; internal set; }
 
         /// <summary>
         /// Gets the image URL of this emoji.
@@ -87,11 +87,11 @@ namespace DSharpPlus.Entities
         }
 
         /// <summary>
-        /// Gets whether the emoji is available for use.  
+        /// Gets whether the emoji is available for use.
         /// An emoji may not be available due to loss of server boost.
         /// </summary>
         [JsonProperty("available", NullValueHandling = NullValueHandling.Ignore)]
-        public bool IsAvailable { get; internal set; }
+        public virtual bool IsAvailable { get; internal set; }
 
         internal DiscordEmoji()
         {
@@ -297,8 +297,8 @@ namespace DSharpPlus.Entities
         }
 
         /// <summary>
-        /// Creates an emoji obejct from emote name that includes colons (eg. :thinking:). This method also supports 
-        /// skin tone variations (eg. :ok_hand::skin-tone-2:), standard emoticons (eg. :D), as well as guild emoji 
+        /// Creates an emoji obejct from emote name that includes colons (eg. :thinking:). This method also supports
+        /// skin tone variations (eg. :ok_hand::skin-tone-2:), standard emoticons (eg. :D), as well as guild emoji
         /// (still specified by :name:).
         /// </summary>
         /// <param name="client"><see cref="BaseDiscordClient"/> to attach to the object.</param>
@@ -331,8 +331,8 @@ namespace DSharpPlus.Entities
         }
 
         /// <summary>
-        /// Attempts to create an emoji object from emote name that includes colons (eg. :thinking:). This method also 
-        /// supports skin tone variations (eg. :ok_hand::skin-tone-2:), standard emoticons (eg. :D), as well as guild 
+        /// Attempts to create an emoji object from emote name that includes colons (eg. :thinking:). This method also
+        /// supports skin tone variations (eg. :ok_hand::skin-tone-2:), standard emoticons (eg. :D), as well as guild
         /// emoji (still specified by :name:).
         /// </summary>
         /// <param name="client"><see cref="BaseDiscordClient"/> to attach to the object.</param>
@@ -343,8 +343,8 @@ namespace DSharpPlus.Entities
             => TryFromName(client, name, true, out emoji);
 
         /// <summary>
-        /// Attempts to create an emoji object from emote name that includes colons (eg. :thinking:). This method also 
-        /// supports skin tone variations (eg. :ok_hand::skin-tone-2:), standard emoticons (eg. :D), as well as guild 
+        /// Attempts to create an emoji object from emote name that includes colons (eg. :thinking:). This method also
+        /// supports skin tone variations (eg. :ok_hand::skin-tone-2:), standard emoticons (eg. :D), as well as guild
         /// emoji (still specified by :name:).
         /// </summary>
         /// <param name="client"><see cref="BaseDiscordClient"/> to attach to the object.</param>

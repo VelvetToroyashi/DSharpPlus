@@ -27,34 +27,34 @@ using Newtonsoft.Json;
 
 namespace DSharpPlus.Net.Abstractions
 {
-    internal sealed class RestWebhookPayload
+    internal class RestWebhookPayload
     {
         [JsonProperty("name")]
-        public string Name { get; set; }
+        public virtual string Name { get; set; }
 
         [JsonProperty("avatar", NullValueHandling = NullValueHandling.Include)]
         public string AvatarBase64 { get; set; }
 
         [JsonProperty("channel_id")]
-        public ulong ChannelId { get; set; }
+        public virtual ulong ChannelId { get; set; }
 
         [JsonProperty]
-        public bool AvatarSet { get; set; }
+        public virtual bool AvatarSet { get; set; }
 
         public bool ShouldSerializeAvatarBase64()
             => this.AvatarSet;
     }
 
-    internal sealed class RestWebhookExecutePayload
+    internal class RestWebhookExecutePayload
     {
         [JsonProperty("content", NullValueHandling = NullValueHandling.Ignore)]
-        public string Content { get; set; }
+        public virtual string Content { get; set; }
 
         [JsonProperty("username", NullValueHandling = NullValueHandling.Ignore)]
-        public string Username { get; set; }
+        public virtual string Username { get; set; }
 
         [JsonProperty("avatar_url", NullValueHandling = NullValueHandling.Ignore)]
-        public string AvatarUrl { get; set; }
+        public virtual string AvatarUrl { get; set; }
 
         [JsonProperty("tts", NullValueHandling = NullValueHandling.Ignore)]
         public bool? IsTTS { get; set; }
@@ -63,10 +63,10 @@ namespace DSharpPlus.Net.Abstractions
         public IEnumerable<DiscordEmbed> Embeds { get; set; }
 
         [JsonProperty("allowed_mentions", NullValueHandling = NullValueHandling.Ignore)]
-        public DiscordMentions Mentions { get; set; }
+        public virtual DiscordMentions Mentions { get; set; }
     }
 
-    internal sealed class RestWebhookMessageEditPayload
+    internal class RestWebhookMessageEditPayload
     {
         [JsonProperty("content", NullValueHandling = NullValueHandling.Ignore)]
         public Optional<string> Content { get; set; }

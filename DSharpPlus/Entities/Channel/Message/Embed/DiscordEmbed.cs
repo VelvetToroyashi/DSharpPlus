@@ -30,31 +30,31 @@ namespace DSharpPlus.Entities
     /// <summary>
     /// Represents a discord embed.
     /// </summary>
-    public sealed class DiscordEmbed
+    public class DiscordEmbed
     {
         /// <summary>
         /// Gets the embed's title.
         /// </summary>
         [JsonProperty("title", NullValueHandling = NullValueHandling.Ignore)]
-        public string Title { get; internal set; }
+        public virtual string Title { get; internal set; }
 
         /// <summary>
         /// Gets the embed's type.
         /// </summary>
         [JsonProperty("type", NullValueHandling = NullValueHandling.Ignore)]
-        public string Type { get; internal set; }
+        public virtual string Type { get; internal set; }
 
         /// <summary>
         /// Gets the embed's description.
         /// </summary>
         [JsonProperty("description", NullValueHandling = NullValueHandling.Ignore)]
-        public string Description { get; internal set; }
+        public virtual string Description { get; internal set; }
 
         /// <summary>
         /// Gets the embed's url.
         /// </summary>
         [JsonProperty("url", NullValueHandling = NullValueHandling.Ignore)]
-        public Uri Url { get; internal set; }
+        public virtual Uri Url { get; internal set; }
 
         /// <summary>
         /// Gets the embed's timestamp.
@@ -78,37 +78,37 @@ namespace DSharpPlus.Entities
         /// Gets the embed's footer.
         /// </summary>
         [JsonProperty("footer", NullValueHandling = NullValueHandling.Ignore)]
-        public DiscordEmbedFooter Footer { get; internal set; }
+        public virtual DiscordEmbedFooter Footer { get; internal set; }
 
         /// <summary>
         /// Gets the embed's image.
         /// </summary>
         [JsonProperty("image", NullValueHandling = NullValueHandling.Ignore)]
-        public DiscordEmbedImage Image { get; internal set; }
+        public virtual DiscordEmbedImage Image { get; internal set; }
 
         /// <summary>
         /// Gets the embed's thumbnail.
         /// </summary>
         [JsonProperty("thumbnail", NullValueHandling = NullValueHandling.Ignore)]
-        public DiscordEmbedThumbnail Thumbnail { get; internal set; }
+        public virtual DiscordEmbedThumbnail Thumbnail { get; internal set; }
 
         /// <summary>
         /// Gets the embed's video.
         /// </summary>
         [JsonProperty("video", NullValueHandling = NullValueHandling.Ignore)]
-        public DiscordEmbedVideo Video { get; internal set; }
+        public virtual DiscordEmbedVideo Video { get; internal set; }
 
         /// <summary>
         /// Gets the embed's provider.
         /// </summary>
         [JsonProperty("provider", NullValueHandling = NullValueHandling.Ignore)]
-        public DiscordEmbedProvider Provider { get; internal set; }
+        public virtual DiscordEmbedProvider Provider { get; internal set; }
 
         /// <summary>
         /// Gets the embed's author.
         /// </summary>
         [JsonProperty("author", NullValueHandling = NullValueHandling.Ignore)]
-        public DiscordEmbedAuthor Author { get; internal set; }
+        public virtual DiscordEmbedAuthor Author { get; internal set; }
 
         /// <summary>
         /// Gets the embed's fields.

@@ -33,7 +33,7 @@ namespace DSharpPlus.EventArgs
         /// <summary>
         /// Gets the direct message channel that was deleted.
         /// </summary>
-        public DiscordDmChannel Channel { get; internal set; }
+        public virtual DiscordDmChannel Channel { get; internal set; }
 
         internal DmChannelDeleteEventArgs() : base() { }
     }

@@ -6,12 +6,12 @@ namespace DSharpPlus.SlashCommands
     /// Sets the name for this enum choice.
     /// </summary>
     [AttributeUsage(AttributeTargets.All, AllowMultiple = false)]
-    public sealed class ChoiceNameAttribute : Attribute
+    public class ChoiceNameAttribute : Attribute
     {
         /// <summary>
         /// The name.
         /// </summary>
-        public string Name { get; }
+        public virtual string Name { get; }
 
         /// <summary>
         /// Sets the name for this enum choice.

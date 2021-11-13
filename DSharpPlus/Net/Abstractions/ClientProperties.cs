@@ -30,7 +30,7 @@ namespace DSharpPlus.Net.Abstractions
     /// <summary>
     /// Represents data for identify payload's client properties.
     /// </summary>
-    internal sealed class ClientProperties
+    internal class ClientProperties
     {
         /// <summary>
         /// Gets the client's operating system.

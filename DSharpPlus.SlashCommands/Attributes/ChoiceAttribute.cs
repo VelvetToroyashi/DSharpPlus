@@ -6,17 +6,17 @@ namespace DSharpPlus.SlashCommands
     /// Adds a choice for this slash command option.
     /// </summary>
     [AttributeUsage(AttributeTargets.Parameter, AllowMultiple = true)]
-    public sealed class ChoiceAttribute : Attribute
+    public class ChoiceAttribute : Attribute
     {
         /// <summary>
         /// Gets the name of the choice.
         /// </summary>
-        public string Name { get; }
+        public virtual string Name { get; }
 
         /// <summary>
         /// Gets the value of the choice.
         /// </summary>
-        public object Value { get; }
+        public virtual object Value { get; }
 
         /// <summary>
         /// Adds a choice to the slash command option.

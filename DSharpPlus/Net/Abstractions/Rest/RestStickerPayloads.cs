@@ -28,13 +28,13 @@ namespace DSharpPlus.Net.Abstractions
     internal class RestStickerCreatePayload
     {
         [JsonProperty("name", NullValueHandling = NullValueHandling.Ignore)]
-        public string Name { get; set; }
+        public virtual string Name { get; set; }
 
         [JsonProperty("description", NullValueHandling = NullValueHandling.Ignore)]
-        public string Description { get; set; }
+        public virtual string Description { get; set; }
 
         [JsonProperty("tags", NullValueHandling = NullValueHandling.Ignore)]
-        public string Tags { get; set; }
+        public virtual string Tags { get; set; }
     }
 
     internal class RestStickerModifyPayload

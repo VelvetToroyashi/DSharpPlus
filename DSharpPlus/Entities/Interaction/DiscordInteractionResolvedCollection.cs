@@ -29,7 +29,7 @@ namespace DSharpPlus.Entities
     /// <summary>
     /// Represents a collection of Discord snowflake objects resolved from interaction arguments.
     /// </summary>
-    public sealed class DiscordInteractionResolvedCollection
+    public class DiscordInteractionResolvedCollection
     {
         /// <summary>
         /// Gets the resolved user objects, if any.

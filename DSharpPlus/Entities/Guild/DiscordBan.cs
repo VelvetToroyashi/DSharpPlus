@@ -35,13 +35,13 @@ namespace DSharpPlus.Entities
         /// Gets the reason for the ban
         /// </summary>
         [JsonProperty("reason", NullValueHandling = NullValueHandling.Ignore)]
-        public string Reason { get; internal set; }
+        public virtual string Reason { get; internal set; }
 
         /// <summary>
         /// Gets the banned user
         /// </summary>
         [JsonIgnore]
-        public DiscordUser User { get; internal set; }
+        public virtual DiscordUser User { get; internal set; }
         [JsonProperty("user", NullValueHandling = NullValueHandling.Ignore)]
         internal TransportUser RawUser { get; set; }
 

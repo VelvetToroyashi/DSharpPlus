@@ -36,12 +36,12 @@ namespace DSharpPlus.CommandsNext.Exceptions
         /// <summary>
         /// Gets the command that was executed.
         /// </summary>
-        public Command Command { get; }
+        public virtual Command Command { get; }
 
         /// <summary>
         /// Gets the context in which given command was executed.
         /// </summary>
-        public CommandContext Context { get; }
+        public virtual CommandContext Context { get; }
 
         /// <summary>
         /// Gets the checks that failed.

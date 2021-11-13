@@ -29,31 +29,31 @@ namespace DSharpPlus.Entities
     /// <summary>
     /// Represents a button that can be pressed. Fires <see cref="ComponentInteractionCreateEventArgs"/> when pressed.
     /// </summary>
-    public sealed class DiscordButtonComponent : DiscordComponent
+    public class DiscordButtonComponent : DiscordComponent
     {
         /// <summary>
         /// The style of the button.
         /// </summary>
         [JsonProperty("style", NullValueHandling = NullValueHandling.Ignore)]
-        public ButtonStyle Style { get; internal set; }
+        public virtual ButtonStyle Style { get; internal set; }
 
         /// <summary>
         /// The text to apply to the button. If this is not specified <see cref="Emoji"/> becomes required.
         /// </summary>
         [JsonProperty("label", NullValueHandling = NullValueHandling.Ignore)]
-        public string Label { get; internal set; }
+        public virtual string Label { get; internal set; }
 
         /// <summary>
         /// Whether this button can be pressed.
         /// </summary>
         [JsonProperty("disabled", NullValueHandling = NullValueHandling.Ignore)]
-        public bool Disabled { get; internal set; }
+        public virtual bool Disabled { get; internal set; }
 
         /// <summary>
         /// The emoji to add to the button. Can be used in conjunction with a label, or as standalone. Must be added if label is not specified.
         /// </summary>
         [JsonProperty("emoji", NullValueHandling = NullValueHandling.Ignore)]
-        public DiscordComponentEmoji Emoji { get; internal set; }
+        public virtual DiscordComponentEmoji Emoji { get; internal set; }
 
         /// <summary>
         /// Enables this component if it was disabled before.

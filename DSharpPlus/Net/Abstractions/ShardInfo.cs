@@ -31,20 +31,20 @@ namespace DSharpPlus.Net.Abstractions
     /// Represents data for identify payload's shard info.
     /// </summary>
     [JsonConverter(typeof(ShardInfoConverter))]
-    internal sealed class ShardInfo
+    internal class ShardInfo
     {
         /// <summary>
         /// Gets or sets this client's shard id.
         /// </summary>
-        public int ShardId { get; set; }
+        public virtual int ShardId { get; set; }
 
         /// <summary>
         /// Gets or sets the total shard count for this token.
         /// </summary>
-        public int ShardCount { get; set; }
+        public virtual int ShardCount { get; set; }
     }
 
-    internal sealed class ShardInfoConverter : JsonConverter
+    internal class ShardInfoConverter : JsonConverter
     {
         public override void WriteJson(JsonWriter writer, object value, JsonSerializer serializer)
         {

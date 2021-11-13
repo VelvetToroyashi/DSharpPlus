@@ -61,7 +61,7 @@ namespace DSharpPlus.Entities
         Invisible = 5
     }
 
-    internal sealed class UserStatusConverter : JsonConverter
+    internal class UserStatusConverter : JsonConverter
     {
         public override void WriteJson(JsonWriter writer, object value, JsonSerializer serializer)
         {
@@ -113,32 +113,32 @@ namespace DSharpPlus.Entities
     /// <summary>
     /// Represents a game that a user is playing.
     /// </summary>
-    public sealed class DiscordActivity
+    public class DiscordActivity
     {
         /// <summary>
         /// Gets or sets the name of user's activity.
         /// </summary>
-        public string Name { get; set; }
+        public virtual string Name { get; set; }
 
         /// <summary>
         /// Gets or sets the stream URL, if applicable.
         /// </summary>
-        public string StreamUrl { get; set; }
+        public virtual string StreamUrl { get; set; }
 
         /// <summary>
         /// Gets or sets the activity type.
         /// </summary>
-        public ActivityType ActivityType { get; set; }
+        public virtual ActivityType ActivityType { get; set; }
 
         /// <summary>
         /// Gets the rich presence details, if present.
         /// </summary>
-        public DiscordRichPresence RichPresence { get; internal set; }
+        public virtual DiscordRichPresence RichPresence { get; internal set; }
 
         /// <summary>
         /// Gets the custom status of this activity, if present.
         /// </summary>
-        public DiscordCustomStatus CustomStatus { get; internal set; }
+        public virtual DiscordCustomStatus CustomStatus { get; internal set; }
 
         /// <summary>
         /// Creates a new, empty instance of a <see cref="DiscordActivity"/>.
@@ -211,17 +211,17 @@ namespace DSharpPlus.Entities
     /// <summary>
     /// Represents details for a custom status activity, attached to a <see cref="DiscordActivity"/>.
     /// </summary>
-    public sealed class DiscordCustomStatus
+    public class DiscordCustomStatus
     {
         /// <summary>
         /// Gets the name of this custom status.
         /// </summary>
-        public string Name { get; internal set; }
+        public virtual string Name { get; internal set; }
 
         /// <summary>
         /// Gets the emoji of this custom status, if any.
         /// </summary>
-        public DiscordEmoji Emoji { get; internal set; }
+        public virtual DiscordEmoji Emoji { get; internal set; }
 
         internal DiscordCustomStatus() { }
 
@@ -241,22 +241,22 @@ namespace DSharpPlus.Entities
     /// <summary>
     /// Represents details for Discord rich presence, attached to a <see cref="DiscordActivity"/>.
     /// </summary>
-    public sealed class DiscordRichPresence
+    public class DiscordRichPresence
     {
         /// <summary>
         /// Gets the details of this presence.
         /// </summary>
-        public string Details { get; internal set; }
+        public virtual string Details { get; internal set; }
 
         /// <summary>
         /// Gets the game state.
         /// </summary>
-        public string State { get; internal set; }
+        public virtual string State { get; internal set; }
 
         /// <summary>
         /// Gets the application for which the rich presence is for.
         /// </summary>
-        public DiscordApplication Application { get; internal set; }
+        public virtual DiscordApplication Application { get; internal set; }
 
         /// <summary>
         /// Gets the instance status.
@@ -266,22 +266,22 @@ namespace DSharpPlus.Entities
         /// <summary>
         /// Gets the large image for the rich presence.
         /// </summary>
-        public DiscordAsset LargeImage { get; internal set; }
+        public virtual DiscordAsset LargeImage { get; internal set; }
 
         /// <summary>
         /// Gets the hovertext for large image.
         /// </summary>
-        public string LargeImageText { get; internal set; }
+        public virtual string LargeImageText { get; internal set; }
 
         /// <summary>
         /// Gets the small image for the rich presence.
         /// </summary>
-        public DiscordAsset SmallImage { get; internal set; }
+        public virtual DiscordAsset SmallImage { get; internal set; }
 
         /// <summary>
         /// Gets the hovertext for small image.
         /// </summary>
-        public string SmallImageText { get; internal set; }
+        public virtual string SmallImageText { get; internal set; }
 
         /// <summary>
         /// Gets the current party size.
@@ -311,17 +311,17 @@ namespace DSharpPlus.Entities
         /// <summary>
         /// Gets the secret value enabling users to join your game.
         /// </summary>
-        public string JoinSecret { get; internal set; }
+        public virtual string JoinSecret { get; internal set; }
 
         /// <summary>
         /// Gets the secret value enabling users to receive notifications whenever your game state changes.
         /// </summary>
-        public string MatchSecret { get; internal set; }
+        public virtual string MatchSecret { get; internal set; }
 
         /// <summary>
         /// Gets the secret value enabling users to spectate your game.
         /// </summary>
-        public string SpectateSecret { get; internal set; }
+        public virtual string SpectateSecret { get; internal set; }
 
         /// <summary>
         /// Gets the buttons for the rich presence.

@@ -105,7 +105,7 @@ namespace DSharpPlus.Entities
         /// Gets the ID of the channel in which the message was sent.
         /// </summary>
         [JsonProperty("channel_id", NullValueHandling = NullValueHandling.Ignore)]
-        public ulong ChannelId { get; internal set; }
+        public virtual ulong ChannelId { get; internal set; }
 
 
         /// <summary>
@@ -118,13 +118,13 @@ namespace DSharpPlus.Entities
         /// Gets the user or member that sent the message.
         /// </summary>
         [JsonProperty("author", NullValueHandling = NullValueHandling.Ignore)]
-        public DiscordUser Author { get; internal set; }
+        public virtual DiscordUser Author { get; internal set; }
 
         /// <summary>
         /// Gets the message's content.
         /// </summary>
         [JsonProperty("content", NullValueHandling = NullValueHandling.Ignore)]
-        public string Content { get; internal set; }
+        public virtual string Content { get; internal set; }
 
         /// <summary>
         /// Gets the message's creation timestamp.
@@ -159,13 +159,13 @@ namespace DSharpPlus.Entities
         /// Gets whether the message is a text-to-speech message.
         /// </summary>
         [JsonProperty("tts", NullValueHandling = NullValueHandling.Ignore)]
-        public bool IsTTS { get; internal set; }
+        public virtual bool IsTTS { get; internal set; }
 
         /// <summary>
         /// Gets whether the message mentions everyone.
         /// </summary>
         [JsonProperty("mention_everyone", NullValueHandling = NullValueHandling.Ignore)]
-        public bool MentionEveryone { get; internal set; }
+        public virtual bool MentionEveryone { get; internal set; }
 
         /// <summary>
         /// Gets users or members mentioned by this message.
@@ -258,7 +258,7 @@ namespace DSharpPlus.Entities
         /// Gets whether the message is pinned.
         /// </summary>
         [JsonProperty("pinned", NullValueHandling = NullValueHandling.Ignore)]
-        public bool Pinned { get; internal set; }
+        public virtual bool Pinned { get; internal set; }
 
         /// <summary>
         /// Gets the id of the webhook that generated this message.
@@ -276,13 +276,13 @@ namespace DSharpPlus.Entities
         /// Gets the message activity in the Rich Presence embed.
         /// </summary>
         [JsonProperty("activity", NullValueHandling = NullValueHandling.Ignore)]
-        public DiscordMessageActivity Activity { get; internal set; }
+        public virtual DiscordMessageActivity Activity { get; internal set; }
 
         /// <summary>
         /// Gets the message application in the Rich Presence embed.
         /// </summary>
         [JsonProperty("application", NullValueHandling = NullValueHandling.Ignore)]
-        public DiscordMessageApplication Application { get; internal set; }
+        public virtual DiscordMessageApplication Application { get; internal set; }
 
         [JsonProperty("message_reference", NullValueHandling = NullValueHandling.Ignore)]
         internal InternalDiscordMessageReference? InternalReference { get; set; }
@@ -311,7 +311,7 @@ namespace DSharpPlus.Entities
         /// Gets the jump link to this message.
         /// </summary>
         [JsonIgnore]
-        public Uri JumpLink => this._jumpLink.Value;
+        public virtual Uri JumpLink => this._jumpLink.Value;
         private readonly Lazy<Uri> _jumpLink;
 
         /// <summary>
@@ -333,13 +333,13 @@ namespace DSharpPlus.Entities
         /// Gets the message object for the referenced message
         /// </summary>
         [JsonProperty("referenced_message", NullValueHandling = NullValueHandling.Ignore)]
-        public DiscordMessage ReferencedMessage { get; internal set; }
+        public virtual DiscordMessage ReferencedMessage { get; internal set; }
 
         /// <summary>
         /// Gets whether the message is a response to an interaction.
         /// </summary>
         [JsonProperty("interaction", NullValueHandling = NullValueHandling.Ignore)]
-        public DiscordMessageInteraction Interaction { get; internal set; }
+        public virtual DiscordMessageInteraction Interaction { get; internal set; }
 
         /// <summary>
         /// Gets the id of the interaction application, if a response to an interaction.
@@ -545,7 +545,7 @@ namespace DSharpPlus.Entities
         /// <exception cref="Exceptions.NotFoundException">Thrown when the member does not exist.</exception>
         /// <exception cref="Exceptions.BadRequestException">Thrown when an invalid parameter was provided.</exception>
         /// <exception cref="Exceptions.ServerErrorException">Thrown when Discord is unable to process the request.</exception>
-        public Task ModifyEmbedSuppressionAsync(bool hideEmbeds)
+        public virtual Task ModifyEmbedSuppressionAsync(bool hideEmbeds)
             => this.Discord.ApiClient.EditMessageAsync(this.ChannelId, this.Id, default, default, this.GetMentions(), default, Array.Empty<DiscordMessageFile>(), hideEmbeds ? MessageFlags.SuppressedEmbeds : null, default);
 
         /// <summary>
@@ -556,7 +556,7 @@ namespace DSharpPlus.Entities
         /// <exception cref="Exceptions.NotFoundException">Thrown when the member does not exist.</exception>
         /// <exception cref="Exceptions.BadRequestException">Thrown when an invalid parameter was provided.</exception>
         /// <exception cref="Exceptions.ServerErrorException">Thrown when Discord is unable to process the request.</exception>
-        public Task DeleteAsync(string reason = null)
+        public virtual Task DeleteAsync(string reason = null)
             => this.Discord.ApiClient.DeleteMessageAsync(this.ChannelId, this.Id, reason);
 
         /// <summary>
@@ -567,7 +567,7 @@ namespace DSharpPlus.Entities
         /// <exception cref="Exceptions.NotFoundException">Thrown when the member does not exist.</exception>
         /// <exception cref="Exceptions.BadRequestException">Thrown when an invalid parameter was provided.</exception>
         /// <exception cref="Exceptions.ServerErrorException">Thrown when Discord is unable to process the request.</exception>
-        public Task PinAsync()
+        public virtual Task PinAsync()
             => this.Discord.ApiClient.PinMessageAsync(this.ChannelId, this.Id);
 
         /// <summary>
@@ -578,7 +578,7 @@ namespace DSharpPlus.Entities
         /// <exception cref="Exceptions.NotFoundException">Thrown when the member does not exist.</exception>
         /// <exception cref="Exceptions.BadRequestException">Thrown when an invalid parameter was provided.</exception>
         /// <exception cref="Exceptions.ServerErrorException">Thrown when Discord is unable to process the request.</exception>
-        public Task UnpinAsync()
+        public virtual Task UnpinAsync()
             => this.Discord.ApiClient.UnpinMessageAsync(this.ChannelId, this.Id);
 
         /// <summary>
@@ -674,7 +674,7 @@ namespace DSharpPlus.Entities
         /// <exception cref="Exceptions.NotFoundException">Thrown when the emoji does not exist.</exception>
         /// <exception cref="Exceptions.BadRequestException">Thrown when an invalid parameter was provided.</exception>
         /// <exception cref="Exceptions.ServerErrorException">Thrown when Discord is unable to process the request.</exception>
-        public Task CreateReactionAsync(DiscordEmoji emoji)
+        public virtual Task CreateReactionAsync(DiscordEmoji emoji)
             => this.Discord.ApiClient.CreateReactionAsync(this.ChannelId, this.Id, emoji.ToReactionString());
 
         /// <summary>
@@ -685,7 +685,7 @@ namespace DSharpPlus.Entities
         /// <exception cref="Exceptions.NotFoundException">Thrown when the emoji does not exist.</exception>
         /// <exception cref="Exceptions.BadRequestException">Thrown when an invalid parameter was provided.</exception>
         /// <exception cref="Exceptions.ServerErrorException">Thrown when Discord is unable to process the request.</exception>
-        public Task DeleteOwnReactionAsync(DiscordEmoji emoji)
+        public virtual Task DeleteOwnReactionAsync(DiscordEmoji emoji)
             => this.Discord.ApiClient.DeleteOwnReactionAsync(this.ChannelId, this.Id, emoji.ToReactionString());
 
         /// <summary>
@@ -699,7 +699,7 @@ namespace DSharpPlus.Entities
         /// <exception cref="Exceptions.NotFoundException">Thrown when the emoji does not exist.</exception>
         /// <exception cref="Exceptions.BadRequestException">Thrown when an invalid parameter was provided.</exception>
         /// <exception cref="Exceptions.ServerErrorException">Thrown when Discord is unable to process the request.</exception>
-        public Task DeleteReactionAsync(DiscordEmoji emoji, DiscordUser user, string reason = null)
+        public virtual Task DeleteReactionAsync(DiscordEmoji emoji, DiscordUser user, string reason = null)
             => this.Discord.ApiClient.DeleteUserReactionAsync(this.ChannelId, this.Id, user.Id, emoji.ToReactionString(), reason);
 
         /// <summary>
@@ -724,7 +724,7 @@ namespace DSharpPlus.Entities
         /// <exception cref="Exceptions.NotFoundException">Thrown when the emoji does not exist.</exception>
         /// <exception cref="Exceptions.BadRequestException">Thrown when an invalid parameter was provided.</exception>
         /// <exception cref="Exceptions.ServerErrorException">Thrown when Discord is unable to process the request.</exception>
-        public Task DeleteAllReactionsAsync(string reason = null)
+        public virtual Task DeleteAllReactionsAsync(string reason = null)
             => this.Discord.ApiClient.DeleteAllReactionsAsync(this.ChannelId, this.Id, reason);
 
         /// <summary>
@@ -736,7 +736,7 @@ namespace DSharpPlus.Entities
         /// <exception cref="Exceptions.NotFoundException">Thrown when the emoji does not exist.</exception>
         /// <exception cref="Exceptions.BadRequestException">Thrown when an invalid parameter was provided.</exception>
         /// <exception cref="Exceptions.ServerErrorException">Thrown when Discord is unable to process the request.</exception>
-        public Task DeleteReactionsEmojiAsync(DiscordEmoji emoji)
+        public virtual Task DeleteReactionsEmojiAsync(DiscordEmoji emoji)
             => this.Discord.ApiClient.DeleteReactionsEmojiAsync(this.ChannelId, this.Id, emoji.ToReactionString());
 
         private async Task<IReadOnlyList<DiscordUser>> GetReactionsInternalAsync(DiscordEmoji emoji, int limit = 25, ulong? after = null)

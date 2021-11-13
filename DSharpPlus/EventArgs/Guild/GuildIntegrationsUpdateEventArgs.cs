@@ -33,7 +33,7 @@ namespace DSharpPlus.EventArgs
         /// <summary>
         /// Gets the guild that had its integrations updated.
         /// </summary>
-        public DiscordGuild Guild { get; internal set; }
+        public virtual DiscordGuild Guild { get; internal set; }
 
         internal GuildIntegrationsUpdateEventArgs() : base() { }
     }

@@ -30,13 +30,13 @@ namespace DSharpPlus.Entities
     /// <summary>
     /// Represents the inner data payload of a <see cref="DiscordInteraction"/>.
     /// </summary>
-    public sealed class DiscordInteractionData : SnowflakeObject
+    public class DiscordInteractionData : SnowflakeObject
     {
         /// <summary>
         /// Gets the name of the invoked interaction.
         /// </summary>
         [JsonProperty("name", NullValueHandling = NullValueHandling.Ignore)]
-        public string Name { get; internal set; }
+        public virtual string Name { get; internal set; }
 
         /// <summary>
         /// Gets the parameters and values of the invoked interaction.
@@ -48,13 +48,13 @@ namespace DSharpPlus.Entities
         /// Gets the Discord snowflake objects resolved from this interaction's arguments.
         /// </summary>
         [JsonProperty("resolved", NullValueHandling = NullValueHandling.Ignore)]
-        public DiscordInteractionResolvedCollection Resolved { get; internal set; }
+        public virtual DiscordInteractionResolvedCollection Resolved { get; internal set; }
 
         /// <summary>
         /// The Id of the component that invoked this interaction, if applicable.
         /// </summary>
         [JsonProperty("custom_id", NullValueHandling = NullValueHandling.Ignore)]
-        public string CustomId { get; internal set; }
+        public virtual string CustomId { get; internal set; }
 
         /// <summary>
         /// The Id of the target. Applicable for context menus.
@@ -66,12 +66,12 @@ namespace DSharpPlus.Entities
         /// The type of component that invoked this interaction, if applicable.
         /// </summary>
         [JsonProperty("component_type", NullValueHandling = NullValueHandling.Ignore)]
-        public ComponentType ComponentType { get; internal set; }
+        public virtual ComponentType ComponentType { get; internal set; }
 
         [JsonProperty("values", NullValueHandling = NullValueHandling.Ignore)]
-        public string[] Values { get; internal set; } = Array.Empty<string>();
+        public virtual string[] Values { get; internal set; } = Array.Empty<string>();
 
         [JsonProperty("type", NullValueHandling = NullValueHandling.Ignore)]
-        public ApplicationCommandType Type { get; internal set; }
+        public virtual ApplicationCommandType Type { get; internal set; }
     }
 }

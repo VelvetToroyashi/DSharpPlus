@@ -25,18 +25,18 @@ using Newtonsoft.Json;
 
 namespace DSharpPlus.Test
 {
-    internal sealed class TestBotConfig
+    internal class TestBotConfig
     {
         [JsonProperty("token")]
-        public string Token { get; private set; } = string.Empty;
+        public virtual string Token { get; private set; } = string.Empty;
 
         [JsonProperty("command_prefixes")]
-        public string[] CommandPrefixes { get; private set; } = new[] { "d#", "d#+" };
+        public virtual string[] CommandPrefixes { get; private set; } = new[] { "d#", "d#+" };
 
         [JsonProperty("shards")]
-        public int ShardCount { get; private set; } = 1;
+        public virtual int ShardCount { get; private set; } = 1;
 
         [JsonProperty("slash_command_guild")]
-        public ulong SlashCommandGuild { get; private set; }
+        public virtual ulong SlashCommandGuild { get; private set; }
     }
 }

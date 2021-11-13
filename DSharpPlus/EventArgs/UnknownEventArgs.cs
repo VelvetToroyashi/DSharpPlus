@@ -31,12 +31,12 @@ namespace DSharpPlus.EventArgs
         /// <summary>
         /// Gets the event's name.
         /// </summary>
-        public string EventName { get; internal set; }
+        public virtual string EventName { get; internal set; }
 
         /// <summary>
         /// Gets the event's data.
         /// </summary>
-        public string Json { get; internal set; }
+        public virtual string Json { get; internal set; }
 
         internal UnknownEventArgs() : base() { }
     }

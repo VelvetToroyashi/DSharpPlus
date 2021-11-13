@@ -51,17 +51,17 @@ namespace DSharpPlus
         /// <summary>
         /// Gets the string representing the version of D#+.
         /// </summary>
-        public string VersionString { get; }
+        public virtual string VersionString { get; }
 
         /// <summary>
         /// Gets the current user.
         /// </summary>
-        public DiscordUser CurrentUser { get; internal set; }
+        public virtual DiscordUser CurrentUser { get; internal set; }
 
         /// <summary>
         /// Gets the current application.
         /// </summary>
-        public DiscordApplication CurrentApplication { get; internal set; }
+        public virtual DiscordApplication CurrentApplication { get; internal set; }
 
         /// <summary>
         /// Gets the cached guilds for this client.

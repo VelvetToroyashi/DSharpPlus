@@ -31,7 +31,7 @@ using Newtonsoft.Json;
 
 namespace DSharpPlus.Test
 {
-    internal sealed class Program
+    internal class Program
     {
         public static CancellationTokenSource CancelTokenSource { get; } = new CancellationTokenSource();
         private static CancellationToken CancelToken => CancelTokenSource.Token;

@@ -33,7 +33,7 @@ namespace DSharpPlus.EventArgs
         /// <summary>
         /// Gets the user whose settings were updated.
         /// </summary>
-        public DiscordUser User { get; internal set; }
+        public virtual DiscordUser User { get; internal set; }
 
         internal UserSettingsUpdateEventArgs() : base() { }
     }

@@ -28,7 +28,7 @@ using Microsoft.Extensions.Logging;
 
 namespace DSharpPlus
 {
-    public sealed partial class DiscordClient
+    public partial class DiscordClient
     {
         internal static TimeSpan EventExecutionLimit { get; } = TimeSpan.FromSeconds(1);
 

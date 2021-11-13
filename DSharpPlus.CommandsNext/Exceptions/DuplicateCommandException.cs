@@ -33,7 +33,7 @@ namespace DSharpPlus.CommandsNext.Exceptions
         /// <summary>
         /// Gets the name of the command that already exists.
         /// </summary>
-        public string CommandName { get; }
+        public virtual string CommandName { get; }
 
         /// <summary>
         /// Creates a new exception indicating that given command name is already taken.

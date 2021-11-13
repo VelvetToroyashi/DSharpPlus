@@ -29,9 +29,9 @@ namespace DSharpPlus.Net.WebSocket
 {
     // Licensed from Clyde.NET (etc; I don't know how licenses work)
 
-    internal sealed class SocketLock : IDisposable
+    internal class SocketLock : IDisposable
     {
-        public ulong ApplicationId { get; }
+        public virtual ulong ApplicationId { get; }
 
         private SemaphoreSlim LockSemaphore { get; }
         private CancellationTokenSource TimeoutCancelSource { get; set; }
@@ -73,7 +73,7 @@ namespace DSharpPlus.Net.WebSocket
             _ = this.UnlockTask.ContinueWith(this.InternalUnlock);
         }
 
-        public Task WaitAsync()
+        public virtual Task WaitAsync()
             => this.LockSemaphore.WaitAsync();
 
         public void Dispose()

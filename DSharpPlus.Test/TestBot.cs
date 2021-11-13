@@ -47,12 +47,12 @@ using Microsoft.Extensions.Logging;
 
 namespace DSharpPlus.Test
 {
-    internal sealed class TestBot
+    internal class TestBot
     {
         internal static EventId TestBotEventId { get; } = new EventId(1000, "TestBot");
 
         private TestBotConfig Config { get; }
-        public DiscordClient Discord { get; }
+        public virtual DiscordClient Discord { get; }
         private VoiceNextExtension VoiceService { get; }
         private CommandsNextExtension CommandsNextService { get; }
         private InteractivityExtension InteractivityService { get; }

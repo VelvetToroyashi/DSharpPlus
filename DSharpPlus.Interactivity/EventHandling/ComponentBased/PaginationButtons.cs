@@ -30,11 +30,11 @@ namespace DSharpPlus.Interactivity.EventHandling
 {
     public class PaginationButtons
     {
-        public DiscordButtonComponent SkipLeft { internal get; set; }
-        public DiscordButtonComponent Left { internal get; set; }
-        public DiscordButtonComponent Stop { internal get; set; }
-        public DiscordButtonComponent Right { internal get; set; }
-        public DiscordButtonComponent SkipRight { internal get; set; }
+        public virtual DiscordButtonComponent SkipLeft { internal get; set; }
+        public virtual DiscordButtonComponent Left { internal get; set; }
+        public virtual DiscordButtonComponent Stop { internal get; set; }
+        public virtual DiscordButtonComponent Right { internal get; set; }
+        public virtual DiscordButtonComponent SkipRight { internal get; set; }
 
         internal DiscordButtonComponent[] ButtonArray => new[] // This isn't great but I can't figure out how to pass these elements by ref :(
         {                                                      // And yes, it should be by ref to begin with, but in testing it refuses to update.

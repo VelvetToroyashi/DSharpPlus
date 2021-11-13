@@ -33,7 +33,7 @@ namespace DSharpPlus.CommandsNext.Attributes
     /// Defines that usage of this command is restricted to members with specified role. Note that it's much preferred to restrict access using <see cref="RequirePermissionsAttribute"/>.
     /// </summary>
     [AttributeUsage(AttributeTargets.Method | AttributeTargets.Class, AllowMultiple = false, Inherited = false)]
-    public sealed class RequireRolesAttribute : CheckBaseAttribute
+    public class RequireRolesAttribute : CheckBaseAttribute
     {
         /// <summary>
         /// Gets the name of the role required to execute this command.
@@ -43,7 +43,7 @@ namespace DSharpPlus.CommandsNext.Attributes
         /// <summary>
         /// Gets the role checking mode. Refer to <see cref="RoleCheckMode"/> for more information.
         /// </summary>
-        public RoleCheckMode CheckMode { get; }
+        public virtual RoleCheckMode CheckMode { get; }
 
         /// <summary>
         /// Defines that usage of this command is restricted to members with specified role. Note that it's much preferred to restrict access using <see cref="RequirePermissionsAttribute"/>.

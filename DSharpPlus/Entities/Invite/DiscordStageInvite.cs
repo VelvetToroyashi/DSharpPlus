@@ -42,18 +42,18 @@ namespace DSharpPlus.Entities
         /// Gets the number of participants in the stage channel.
         /// </summary>
         [JsonProperty("participant_count")]
-        public int ParticipantCount { get; internal set; }
+        public virtual int ParticipantCount { get; internal set; }
 
         /// <summary>
         /// Gets the number of speakers in the stage channel.
         /// </summary>
         [JsonProperty("speaker_count")]
-        public int SpeakerCount { get; internal set; }
+        public virtual int SpeakerCount { get; internal set; }
 
         /// <summary>
         /// Gets the topic of the stage channel.
         /// </summary>
         [JsonProperty("topic")]
-        public string Topic { get; internal set; }
+        public virtual string Topic { get; internal set; }
     }
 }

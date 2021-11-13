@@ -32,25 +32,25 @@ namespace DSharpPlus.Entities
     /// <summary>
     /// Represents a parameter for a <see cref="DiscordApplicationCommand"/>.
     /// </summary>
-    public sealed class DiscordApplicationCommandOption
+    public class DiscordApplicationCommandOption
     {
         /// <summary>
         /// Gets the type of this command parameter.
         /// </summary>
         [JsonProperty("type")]
-        public ApplicationCommandOptionType Type { get; internal set; }
+        public virtual ApplicationCommandOptionType Type { get; internal set; }
 
         /// <summary>
         /// Gets the name of this command parameter.
         /// </summary>
         [JsonProperty("name")]
-        public string Name { get; internal set; }
+        public virtual string Name { get; internal set; }
 
         /// <summary>
         /// Gets the description of this command parameter.
         /// </summary>
         [JsonProperty("description")]
-        public string Description { get; internal set; }
+        public virtual string Description { get; internal set; }
 
         /// <summary>
         /// Gets whether this option will auto-complete.
@@ -86,13 +86,13 @@ namespace DSharpPlus.Entities
         /// Gets the minimum value for this slash command parameter.
         /// </summary>
         [JsonProperty("min_value", NullValueHandling = NullValueHandling.Ignore)]
-        public object MinValue { get; internal set; }
+        public virtual object MinValue { get; internal set; }
 
         /// <summary>
         /// Gets the maximum value for this slash command parameter.
         /// </summary>
         [JsonProperty("max_value", NullValueHandling = NullValueHandling.Ignore)]
-        public object MaxValue { get; internal set; }
+        public virtual object MaxValue { get; internal set; }
 
         /// <summary>
         /// Creates a new instance of a <see cref="DiscordApplicationCommandOption"/>.

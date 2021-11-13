@@ -33,12 +33,12 @@ namespace DSharpPlus.EventArgs
         /// <summary>
         /// Gets the guild that had its webhooks updated.
         /// </summary>
-        public DiscordGuild Guild { get; internal set; }
+        public virtual DiscordGuild Guild { get; internal set; }
 
         /// <summary>
         /// Gets the channel to which the webhook belongs to.
         /// </summary>
-        public DiscordChannel Channel { get; internal set; }
+        public virtual DiscordChannel Channel { get; internal set; }
 
         internal WebhooksUpdateEventArgs() : base() { }
     }

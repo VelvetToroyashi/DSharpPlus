@@ -36,13 +36,13 @@ namespace DSharpPlus.Entities
         /// Gets the type of the field.
         /// </summary>
         [JsonProperty("field_type", NullValueHandling = NullValueHandling.Ignore)]
-        public MembershipScreeningFieldType Type { get; internal set; }
+        public virtual MembershipScreeningFieldType Type { get; internal set; }
 
         /// <summary>
         /// Gets the title of the field.
         /// </summary>
         [JsonProperty("label", NullValueHandling = NullValueHandling.Ignore)]
-        public string Label { get; internal set; }
+        public virtual string Label { get; internal set; }
 
         /// <summary>
         /// Gets the list of rules
@@ -54,7 +54,7 @@ namespace DSharpPlus.Entities
         /// Gets whether the user has to fill out this field
         /// </summary>
         [JsonProperty("required", NullValueHandling = NullValueHandling.Ignore)]
-        public bool IsRequired { get; internal set; }
+        public virtual bool IsRequired { get; internal set; }
 
         public DiscordGuildMembershipScreeningField(MembershipScreeningFieldType type, string label, IEnumerable<string> values, bool required = true)
         {

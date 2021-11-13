@@ -8,7 +8,7 @@ namespace DSharpPlus.SlashCommands.Attributes
     /// Defines that this slash command is only usable within a direct message channel.
     /// </summary>
     [AttributeUsage(AttributeTargets.Method | AttributeTargets.Class, AllowMultiple = false, Inherited = false)]
-    public sealed class SlashRequireDirectMessageAttribute : SlashCheckBaseAttribute
+    public class SlashRequireDirectMessageAttribute : SlashCheckBaseAttribute
     {
         /// <summary>
         /// Defines that this command is only usable within a direct message channel.

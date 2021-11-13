@@ -34,7 +34,7 @@ namespace DSharpPlus.EventArgs
         /// <summary>
         /// Gets the guild that requested this chunk.
         /// </summary>
-        public DiscordGuild Guild { get; internal set; }
+        public virtual DiscordGuild Guild { get; internal set; }
 
         /// <summary>
         /// Gets the collection of members returned from this chunk.
@@ -44,12 +44,12 @@ namespace DSharpPlus.EventArgs
         /// <summary>
         /// Gets the current chunk index from the response.
         /// </summary>
-        public int ChunkIndex { get; internal set; }
+        public virtual int ChunkIndex { get; internal set; }
 
         /// <summary>
-        /// Gets the total amount of chunks for the request. 
+        /// Gets the total amount of chunks for the request.
         /// </summary>
-        public int ChunkCount { get; internal set; }
+        public virtual int ChunkCount { get; internal set; }
 
         /// <summary>
         /// Gets the collection of presences returned from this chunk, if specified.
@@ -64,7 +64,7 @@ namespace DSharpPlus.EventArgs
         /// <summary>
         /// Gets the unique string used to identify the request, if specified.
         /// </summary>
-        public string Nonce { get; set; }
+        public virtual string Nonce { get; set; }
 
         internal GuildMembersChunkEventArgs() : base() { }
     }

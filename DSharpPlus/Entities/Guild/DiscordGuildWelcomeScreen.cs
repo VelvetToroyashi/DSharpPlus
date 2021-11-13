@@ -35,7 +35,7 @@ namespace DSharpPlus.Entities
         /// Gets the server description shown in the welcome screen.
         /// </summary>
         [JsonProperty("description", NullValueHandling = NullValueHandling.Ignore)]
-        public string Description { get; internal set; }
+        public virtual string Description { get; internal set; }
 
         /// <summary>
         /// Gets the channels shown in the welcome screen.

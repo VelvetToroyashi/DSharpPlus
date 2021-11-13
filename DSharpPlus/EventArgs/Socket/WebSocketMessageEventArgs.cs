@@ -34,12 +34,12 @@ namespace DSharpPlus.EventArgs
     /// <summary>
     /// Represents arguments for text message websocket event.
     /// </summary>
-    public sealed class SocketTextMessageEventArgs : SocketMessageEventArgs
+    public class SocketTextMessageEventArgs : SocketMessageEventArgs
     {
         /// <summary>
         /// Gets the received message string.
         /// </summary>
-        public string Message { get; }
+        public virtual string Message { get; }
 
         /// <summary>
         /// Creates a new instance of text message event arguments.
@@ -54,12 +54,12 @@ namespace DSharpPlus.EventArgs
     /// <summary>
     /// Represents arguments for binary message websocket event.
     /// </summary>
-    public sealed class SocketBinaryMessageEventArgs : SocketMessageEventArgs
+    public class SocketBinaryMessageEventArgs : SocketMessageEventArgs
     {
         /// <summary>
         /// Gets the received message bytes.
         /// </summary>
-        public byte[] Message { get; }
+        public virtual byte[] Message { get; }
 
         /// <summary>
         /// Creates a new instance of binary message event arguments.

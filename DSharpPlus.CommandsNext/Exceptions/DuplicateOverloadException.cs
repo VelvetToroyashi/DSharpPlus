@@ -35,7 +35,7 @@ namespace DSharpPlus.CommandsNext.Exceptions
         /// <summary>
         /// Gets the name of the command that already has the overload.
         /// </summary>
-        public string CommandName { get; }
+        public virtual string CommandName { get; }
 
         /// <summary>
         /// Gets the ordered collection of argument types for the specified overload.

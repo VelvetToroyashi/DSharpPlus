@@ -72,7 +72,7 @@ namespace DSharpPlus.Entities
         /// Gets the member's avatar for the current guild.
         /// </summary>
         [JsonIgnore]
-        public string GuildAvatarHash => this._avatarHash ?? this.User.AvatarHash;
+        public virtual string GuildAvatarHash => this._avatarHash ?? this.User.AvatarHash;
 
         /// <summary>
         /// Gets the members avatar url for the current guild.
@@ -88,7 +88,7 @@ namespace DSharpPlus.Entities
         /// Gets this member's nickname.
         /// </summary>
         [JsonProperty("nick", NullValueHandling = NullValueHandling.Ignore)]
-        public string Nickname { get; internal set; }
+        public virtual string Nickname { get; internal set; }
 
         /// <summary>
         /// Gets this member's display name.
@@ -133,7 +133,7 @@ namespace DSharpPlus.Entities
         /// Date the user joined the guild
         /// </summary>
         [JsonProperty("joined_at", NullValueHandling = NullValueHandling.Ignore)]
-        public DateTimeOffset JoinedAt { get; internal set; }
+        public virtual DateTimeOffset JoinedAt { get; internal set; }
 
         /// <summary>
         /// Date the user started boosting this server
@@ -145,13 +145,13 @@ namespace DSharpPlus.Entities
         /// If the user is deafened
         /// </summary>
         [JsonProperty("is_deafened", NullValueHandling = NullValueHandling.Ignore)]
-        public bool IsDeafened { get; internal set; }
+        public virtual bool IsDeafened { get; internal set; }
 
         /// <summary>
         /// If the user is muted
         /// </summary>
         [JsonProperty("is_muted", NullValueHandling = NullValueHandling.Ignore)]
-        public bool IsMuted { get; internal set; }
+        public virtual bool IsMuted { get; internal set; }
 
         /// <summary>
         /// If the user has passed the guild's Membership Screening requirements
@@ -195,7 +195,7 @@ namespace DSharpPlus.Entities
         /// Gets the permissions for the current member.
         /// </summary>
         [JsonIgnore]
-        public Permissions Permissions => this.GetPermissions();
+        public virtual Permissions Permissions => this.GetPermissions();
 
 
 
@@ -415,7 +415,7 @@ namespace DSharpPlus.Entities
         /// <exception cref="Exceptions.NotFoundException">Thrown when the member does not exist.</exception>
         /// <exception cref="Exceptions.BadRequestException">Thrown when an invalid parameter was provided.</exception>
         /// <exception cref="Exceptions.ServerErrorException">Thrown when Discord is unable to process the request.</exception>
-        public Task SetMuteAsync(bool mute, string reason = null)
+        public virtual Task SetMuteAsync(bool mute, string reason = null)
             => this.Discord.ApiClient.ModifyGuildMemberAsync(this._guild_id, this.Id, default, default, mute, default, default, reason);
 
         /// <summary>
@@ -428,7 +428,7 @@ namespace DSharpPlus.Entities
         /// <exception cref="Exceptions.NotFoundException">Thrown when the member does not exist.</exception>
         /// <exception cref="Exceptions.BadRequestException">Thrown when an invalid parameter was provided.</exception>
         /// <exception cref="Exceptions.ServerErrorException">Thrown when Discord is unable to process the request.</exception>
-        public Task SetDeafAsync(bool deaf, string reason = null)
+        public virtual Task SetDeafAsync(bool deaf, string reason = null)
             => this.Discord.ApiClient.ModifyGuildMemberAsync(this._guild_id, this.Id, default, default, default, deaf, default, reason);
 
         /// <summary>
@@ -475,7 +475,7 @@ namespace DSharpPlus.Entities
         /// <exception cref="Exceptions.NotFoundException">Thrown when the member does not exist.</exception>
         /// <exception cref="Exceptions.BadRequestException">Thrown when an invalid parameter was provided.</exception>
         /// <exception cref="Exceptions.ServerErrorException">Thrown when Discord is unable to process the request.</exception>
-        public Task GrantRoleAsync(DiscordRole role, string reason = null)
+        public virtual Task GrantRoleAsync(DiscordRole role, string reason = null)
             => this.Discord.ApiClient.AddGuildMemberRoleAsync(this.Guild.Id, this.Id, role.Id, reason);
 
         /// <summary>
@@ -488,7 +488,7 @@ namespace DSharpPlus.Entities
         /// <exception cref="Exceptions.NotFoundException">Thrown when the member does not exist.</exception>
         /// <exception cref="Exceptions.BadRequestException">Thrown when an invalid parameter was provided.</exception>
         /// <exception cref="Exceptions.ServerErrorException">Thrown when Discord is unable to process the request.</exception>
-        public Task RevokeRoleAsync(DiscordRole role, string reason = null)
+        public virtual Task RevokeRoleAsync(DiscordRole role, string reason = null)
             => this.Discord.ApiClient.RemoveGuildMemberRoleAsync(this.Guild.Id, this.Id, role.Id, reason);
 
         /// <summary>
@@ -501,7 +501,7 @@ namespace DSharpPlus.Entities
         /// <exception cref="Exceptions.NotFoundException">Thrown when the member does not exist.</exception>
         /// <exception cref="Exceptions.BadRequestException">Thrown when an invalid parameter was provided.</exception>
         /// <exception cref="Exceptions.ServerErrorException">Thrown when Discord is unable to process the request.</exception>
-        public Task ReplaceRolesAsync(IEnumerable<DiscordRole> roles, string reason = null)
+        public virtual Task ReplaceRolesAsync(IEnumerable<DiscordRole> roles, string reason = null)
             => this.Discord.ApiClient.ModifyGuildMemberAsync(this.Guild.Id, this.Id, default,
                 new Optional<IEnumerable<ulong>>(roles.Select(xr => xr.Id)), default, default, default, reason);
 
@@ -515,14 +515,14 @@ namespace DSharpPlus.Entities
         /// <exception cref="Exceptions.NotFoundException">Thrown when the member does not exist.</exception>
         /// <exception cref="Exceptions.BadRequestException">Thrown when an invalid parameter was provided.</exception>
         /// <exception cref="Exceptions.ServerErrorException">Thrown when Discord is unable to process the request.</exception>
-        public Task BanAsync(int delete_message_days = 0, string reason = null)
+        public virtual Task BanAsync(int delete_message_days = 0, string reason = null)
             => this.Guild.BanMemberAsync(this, delete_message_days, reason);
 
         /// <exception cref = "Exceptions.UnauthorizedException" > Thrown when the client does not have the<see cref="Permissions.BanMembers"/> permission.</exception>
         /// <exception cref="Exceptions.NotFoundException">Thrown when the member does not exist.</exception>
         /// <exception cref="Exceptions.BadRequestException">Thrown when an invalid parameter was provided.</exception>
         /// <exception cref="Exceptions.ServerErrorException">Thrown when Discord is unable to process the request.</exception>
-        public Task UnbanAsync(string reason = null) => this.Guild.UnbanMemberAsync(this, reason);
+        public virtual Task UnbanAsync(string reason = null) => this.Guild.UnbanMemberAsync(this, reason);
 
         /// <summary>
         /// Kicks this member from their guild.
@@ -534,7 +534,7 @@ namespace DSharpPlus.Entities
         /// <exception cref="Exceptions.NotFoundException">Thrown when the member does not exist.</exception>
         /// <exception cref="Exceptions.BadRequestException">Thrown when an invalid parameter was provided.</exception>
         /// <exception cref="Exceptions.ServerErrorException">Thrown when Discord is unable to process the request.</exception>
-        public Task RemoveAsync(string reason = null)
+        public virtual Task RemoveAsync(string reason = null)
             => this.Discord.ApiClient.RemoveGuildMemberAsync(this._guild_id, this.Id, reason);
 
         /// <summary>
@@ -546,7 +546,7 @@ namespace DSharpPlus.Entities
         /// <exception cref="Exceptions.NotFoundException">Thrown when the member does not exist.</exception>
         /// <exception cref="Exceptions.BadRequestException">Thrown when an invalid parameter was provided.</exception>
         /// <exception cref="Exceptions.ServerErrorException">Thrown when Discord is unable to process the request.</exception>
-        public Task PlaceInAsync(DiscordChannel channel)
+        public virtual Task PlaceInAsync(DiscordChannel channel)
             => channel.PlaceMemberAsync(this);
 
         /// <summary>

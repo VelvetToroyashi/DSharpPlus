@@ -30,17 +30,17 @@ namespace DSharpPlus.CommandsNext.Builders
     /// <summary>
     /// Represents an interface to build a command module.
     /// </summary>
-    public sealed class CommandModuleBuilder
+    public class CommandModuleBuilder
     {
         /// <summary>
         /// Gets the type this build will construct a module out of.
         /// </summary>
-        public Type Type { get; private set; }
+        public virtual Type Type { get; private set; }
 
         /// <summary>
         /// Gets the lifespan for the built module.
         /// </summary>
-        public ModuleLifespan Lifespan { get; private set; }
+        public virtual ModuleLifespan Lifespan { get; private set; }
 
         /// <summary>
         /// Creates a new command module builder.

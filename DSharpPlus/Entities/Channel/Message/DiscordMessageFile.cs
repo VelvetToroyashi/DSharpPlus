@@ -42,12 +42,12 @@ namespace DSharpPlus.Entities
         /// <summary>
         /// Gets the FileName of the File.
         /// </summary>
-        public string FileName { get; internal set; }
+        public virtual string FileName { get; internal set; }
 
         /// <summary>
         /// Gets the stream of the File.
         /// </summary>
-        public Stream Stream { get; internal set; }
+        public virtual Stream Stream { get; internal set; }
 
         internal string FileType { get; set; }
 

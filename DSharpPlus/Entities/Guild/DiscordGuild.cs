@@ -50,13 +50,13 @@ namespace DSharpPlus.Entities
         /// Gets the guild's name.
         /// </summary>
         [JsonProperty("name", NullValueHandling = NullValueHandling.Ignore)]
-        public string Name { get; internal set; }
+        public virtual string Name { get; internal set; }
 
         /// <summary>
         /// Gets the guild icon's hash.
         /// </summary>
         [JsonProperty("icon", NullValueHandling = NullValueHandling.Ignore)]
-        public string IconHash { get; internal set; }
+        public virtual string IconHash { get; internal set; }
 
         /// <summary>
         /// Gets the guild icon's url.
@@ -69,7 +69,7 @@ namespace DSharpPlus.Entities
         /// Gets the guild splash's hash.
         /// </summary>
         [JsonProperty("splash", NullValueHandling = NullValueHandling.Ignore)]
-        public string SplashHash { get; internal set; }
+        public virtual string SplashHash { get; internal set; }
 
         /// <summary>
         /// Gets the guild splash's url.
@@ -82,7 +82,7 @@ namespace DSharpPlus.Entities
         /// Gets the guild discovery splash's hash.
         /// </summary>
         [JsonProperty("discovery_splash", NullValueHandling = NullValueHandling.Ignore)]
-        public string DiscoverySplashHash { get; internal set; }
+        public virtual string DiscoverySplashHash { get; internal set; }
 
         /// <summary>
         /// Gets the guild discovery splash's url.
@@ -96,13 +96,13 @@ namespace DSharpPlus.Entities
         /// <para>This is used for server discovery and notices from Discord. Defaults to en-US.</para>
         /// </summary>
         [JsonProperty("preferred_locale", NullValueHandling = NullValueHandling.Ignore)]
-        public string PreferredLocale { get; internal set; }
+        public virtual string PreferredLocale { get; internal set; }
 
         /// <summary>
         /// Gets the ID of the guild's owner.
         /// </summary>
         [JsonProperty("owner_id", NullValueHandling = NullValueHandling.Ignore)]
-        public ulong OwnerId { get; internal set; }
+        public virtual ulong OwnerId { get; internal set; }
 
         /// <summary>
         /// Gets permissions for the user in the guild (does not include channel overrides)
@@ -149,31 +149,31 @@ namespace DSharpPlus.Entities
         /// Gets the guild's AFK timeout.
         /// </summary>
         [JsonProperty("afk_timeout", NullValueHandling = NullValueHandling.Ignore)]
-        public int AfkTimeout { get; internal set; }
+        public virtual int AfkTimeout { get; internal set; }
 
         /// <summary>
         /// Gets the guild's verification level.
         /// </summary>
         [JsonProperty("verification_level", NullValueHandling = NullValueHandling.Ignore)]
-        public VerificationLevel VerificationLevel { get; internal set; }
+        public virtual VerificationLevel VerificationLevel { get; internal set; }
 
         /// <summary>
         /// Gets the guild's default notification settings.
         /// </summary>
         [JsonProperty("default_message_notifications", NullValueHandling = NullValueHandling.Ignore)]
-        public DefaultMessageNotifications DefaultMessageNotifications { get; internal set; }
+        public virtual DefaultMessageNotifications DefaultMessageNotifications { get; internal set; }
 
         /// <summary>
         /// Gets the guild's explicit content filter settings.
         /// </summary>
         [JsonProperty("explicit_content_filter")]
-        public ExplicitContentFilter ExplicitContentFilter { get; internal set; }
+        public virtual ExplicitContentFilter ExplicitContentFilter { get; internal set; }
 
         /// <summary>
         /// Gets the guild's nsfw level.
         /// </summary>
         [JsonProperty("nsfw_level")]
-        public NsfwLevel NsfwLevel { get; internal set; }
+        public virtual NsfwLevel NsfwLevel { get; internal set; }
 
         [JsonProperty("system_channel_id", NullValueHandling = NullValueHandling.Include)]
         internal ulong? SystemChannelId { get; set; }
@@ -182,7 +182,7 @@ namespace DSharpPlus.Entities
         /// Gets the channel where system messages (such as boost and welcome messages) are sent.
         /// </summary>
         [JsonIgnore]
-        public DiscordChannel SystemChannel => this.SystemChannelId.HasValue
+        public virtual DiscordChannel SystemChannel => this.SystemChannelId.HasValue
             ? this.GetChannel(this.SystemChannelId.Value)
             : null;
 
@@ -190,7 +190,7 @@ namespace DSharpPlus.Entities
         /// Gets the settings for this guild's system channel.
         /// </summary>
         [JsonProperty("system_channel_flags")]
-        public SystemChannelFlags SystemChannelFlags { get; internal set; }
+        public virtual SystemChannelFlags SystemChannelFlags { get; internal set; }
 
         /// <summary>
         /// Gets whether this guild's widget is enabled.
@@ -205,7 +205,7 @@ namespace DSharpPlus.Entities
         /// Gets the widget channel for this guild.
         /// </summary>
         [JsonIgnore]
-        public DiscordChannel WidgetChannel => this.WidgetChannelId.HasValue
+        public virtual DiscordChannel WidgetChannel => this.WidgetChannelId.HasValue
             ? this.GetChannel(this.WidgetChannelId.Value)
             : null;
 
@@ -217,7 +217,7 @@ namespace DSharpPlus.Entities
         /// <para>This is only available if the guild is considered "discoverable".</para>
         /// </summary>
         [JsonIgnore]
-        public DiscordChannel RulesChannel => this.RulesChannelId.HasValue
+        public virtual DiscordChannel RulesChannel => this.RulesChannelId.HasValue
             ? this.GetChannel(this.RulesChannelId.Value)
             : null;
 
@@ -229,7 +229,7 @@ namespace DSharpPlus.Entities
         /// <para>This is only available if the guild is considered "discoverable".</para>
         /// </summary>
         [JsonIgnore]
-        public DiscordChannel PublicUpdatesChannel => this.PublicUpdatesChannelId.HasValue
+        public virtual DiscordChannel PublicUpdatesChannel => this.PublicUpdatesChannelId.HasValue
             ? this.GetChannel(this.PublicUpdatesChannelId.Value)
             : null;
 
@@ -281,31 +281,31 @@ namespace DSharpPlus.Entities
         /// Gets the required multi-factor authentication level for this guild.
         /// </summary>
         [JsonProperty("mfa_level", NullValueHandling = NullValueHandling.Ignore)]
-        public MfaLevel MfaLevel { get; internal set; }
+        public virtual MfaLevel MfaLevel { get; internal set; }
 
         /// <summary>
         /// Gets this guild's join date.
         /// </summary>
         [JsonProperty("joined_at", NullValueHandling = NullValueHandling.Ignore)]
-        public DateTimeOffset JoinedAt { get; internal set; }
+        public virtual DateTimeOffset JoinedAt { get; internal set; }
 
         /// <summary>
         /// Gets whether this guild is considered to be a large guild.
         /// </summary>
         [JsonProperty("large", NullValueHandling = NullValueHandling.Ignore)]
-        public bool IsLarge { get; internal set; }
+        public virtual bool IsLarge { get; internal set; }
 
         /// <summary>
         /// Gets whether this guild is unavailable.
         /// </summary>
         [JsonProperty("unavailable", NullValueHandling = NullValueHandling.Ignore)]
-        public bool IsUnavailable { get; internal set; }
+        public virtual bool IsUnavailable { get; internal set; }
 
         /// <summary>
         /// Gets the total number of members in this guild.
         /// </summary>
         [JsonProperty("member_count", NullValueHandling = NullValueHandling.Ignore)]
-        public int MemberCount { get; internal set; }
+        public virtual int MemberCount { get; internal set; }
 
         /// <summary>
         /// Gets the maximum amount of members allowed for this guild.
@@ -416,19 +416,19 @@ namespace DSharpPlus.Entities
         /// Gets the vanity URL code for this guild, when applicable.
         /// </summary>
         [JsonProperty("vanity_url_code")]
-        public string VanityUrlCode { get; internal set; }
+        public virtual string VanityUrlCode { get; internal set; }
 
         /// <summary>
         /// Gets the guild description, when applicable.
         /// </summary>
         [JsonProperty("description")]
-        public string Description { get; internal set; }
+        public virtual string Description { get; internal set; }
 
         /// <summary>
         /// Gets this guild's banner hash, when applicable.
         /// </summary>
         [JsonProperty("banner")]
-        public string Banner { get; internal set; }
+        public virtual string Banner { get; internal set; }
 
         /// <summary>
         /// Gets this guild's banner in url form.
@@ -441,7 +441,7 @@ namespace DSharpPlus.Entities
         /// Gets this guild's premium tier (Nitro boosting).
         /// </summary>
         [JsonProperty("premium_tier")]
-        public PremiumTier PremiumTier { get; internal set; }
+        public virtual PremiumTier PremiumTier { get; internal set; }
 
         /// <summary>
         /// Gets the amount of members that boosted this guild.
@@ -453,7 +453,7 @@ namespace DSharpPlus.Entities
         /// Gets whether this guild is designated as NSFW.
         /// </summary>
         [JsonProperty("nsfw", NullValueHandling = NullValueHandling.Ignore)]
-        public bool IsNSFW { get; internal set; }
+        public virtual bool IsNSFW { get; internal set; }
 
         /// <summary>
         /// Gets the stage instances in this guild.
@@ -520,7 +520,7 @@ namespace DSharpPlus.Entities
         /// <returns></returns>
         /// <exception cref="Exceptions.UnauthorizedException">Thrown when the client is not the owner of the guild.</exception>
         /// <exception cref="Exceptions.ServerErrorException">Thrown when Discord is unable to process the request.</exception>
-        public Task DeleteAsync()
+        public virtual Task DeleteAsync()
             => this.Discord.ApiClient.DeleteGuildAsync(this.Id);
 
         /// <summary>
@@ -573,7 +573,7 @@ namespace DSharpPlus.Entities
         /// <exception cref="Exceptions.NotFoundException">Thrown when the member does not exist.</exception>
         /// <exception cref="Exceptions.BadRequestException">Thrown when an invalid parameter was provided.</exception>
         /// <exception cref="Exceptions.ServerErrorException">Thrown when Discord is unable to process the request.</exception>
-        public Task BanMemberAsync(DiscordMember member, int delete_message_days = 0, string reason = null)
+        public virtual Task BanMemberAsync(DiscordMember member, int delete_message_days = 0, string reason = null)
             => this.Discord.ApiClient.CreateGuildBanAsync(this.Id, member.Id, delete_message_days, reason);
 
         /// <summary>
@@ -587,7 +587,7 @@ namespace DSharpPlus.Entities
         /// <exception cref="Exceptions.NotFoundException">Thrown when the member does not exist.</exception>
         /// <exception cref="Exceptions.BadRequestException">Thrown when an invalid parameter was provided.</exception>
         /// <exception cref="Exceptions.ServerErrorException">Thrown when Discord is unable to process the request.</exception>
-        public Task BanMemberAsync(ulong user_id, int delete_message_days = 0, string reason = null)
+        public virtual Task BanMemberAsync(ulong user_id, int delete_message_days = 0, string reason = null)
             => this.Discord.ApiClient.CreateGuildBanAsync(this.Id, user_id, delete_message_days, reason);
 
         /// <summary>
@@ -600,7 +600,7 @@ namespace DSharpPlus.Entities
         /// <exception cref="Exceptions.NotFoundException">Thrown when the user does not exist.</exception>
         /// <exception cref="Exceptions.BadRequestException">Thrown when an invalid parameter was provided.</exception>
         /// <exception cref="Exceptions.ServerErrorException">Thrown when Discord is unable to process the request.</exception>
-        public Task UnbanMemberAsync(DiscordUser user, string reason = null)
+        public virtual Task UnbanMemberAsync(DiscordUser user, string reason = null)
             => this.Discord.ApiClient.RemoveGuildBanAsync(this.Id, user.Id, reason);
 
         /// <summary>
@@ -613,7 +613,7 @@ namespace DSharpPlus.Entities
         /// <exception cref="Exceptions.NotFoundException">Thrown when the user does not exist.</exception>
         /// <exception cref="Exceptions.BadRequestException">Thrown when an invalid parameter was provided.</exception>
         /// <exception cref="Exceptions.ServerErrorException">Thrown when Discord is unable to process the request.</exception>
-        public Task UnbanMemberAsync(ulong user_id, string reason = null)
+        public virtual Task UnbanMemberAsync(ulong user_id, string reason = null)
             => this.Discord.ApiClient.RemoveGuildBanAsync(this.Id, user_id, reason);
 
         /// <summary>
@@ -621,7 +621,7 @@ namespace DSharpPlus.Entities
         /// </summary>
         /// <returns></returns>
         /// <exception cref="Exceptions.ServerErrorException">Thrown when Discord is unable to process the request.</exception>
-        public Task LeaveAsync()
+        public virtual Task LeaveAsync()
             => this.Discord.ApiClient.LeaveGuildAsync(this.Id);
 
         /// <summary>
@@ -737,7 +737,7 @@ namespace DSharpPlus.Entities
         /// <para>Note that this is irreversible. Use carefully!</para>
         /// </summary>
         /// <returns></returns>
-        public Task DeleteAllChannelsAsync()
+        public virtual Task DeleteAllChannelsAsync()
         {
             var tasks = this.Channels.Values.Select(xc => xc.DeleteAsync());
             return Task.WhenAll(tasks);
@@ -854,7 +854,7 @@ namespace DSharpPlus.Entities
         /// <exception cref="Exceptions.NotFoundException">Thrown when the guild does not exist.</exception>
         /// <exception cref="Exceptions.BadRequestException">Thrown when an invalid parameter was provided.</exception>
         /// <exception cref="Exceptions.ServerErrorException">Thrown when Discord is unable to process the request.</exception>
-        public Task DeleteIntegrationAsync(DiscordIntegration integration)
+        public virtual Task DeleteIntegrationAsync(DiscordIntegration integration)
             => this.Discord.ApiClient.DeleteGuildIntegrationAsync(this.Id, integration);
 
         /// <summary>
@@ -866,7 +866,7 @@ namespace DSharpPlus.Entities
         /// <exception cref="Exceptions.NotFoundException">Thrown when the guild does not exist.</exception>
         /// <exception cref="Exceptions.BadRequestException">Thrown when an invalid parameter was provided.</exception>
         /// <exception cref="Exceptions.ServerErrorException">Thrown when Discord is unable to process the request.</exception>
-        public Task SyncIntegrationAsync(DiscordIntegration integration)
+        public virtual Task SyncIntegrationAsync(DiscordIntegration integration)
             => this.Discord.ApiClient.SyncGuildIntegrationAsync(this.Id, integration.Id);
 
         /// <summary>
@@ -2121,7 +2121,7 @@ namespace DSharpPlus.Entities
         /// <returns></returns>
         /// <exception cref="Exceptions.UnauthorizedException">Thrown when the client does not have the <see cref="Permissions.ManageEmojis"/> permission.</exception>
         /// <exception cref="Exceptions.ServerErrorException">Thrown when Discord is unable to process the request.</exception>
-        public Task DeleteEmojiAsync(DiscordGuildEmoji emoji, string reason = null)
+        public virtual Task DeleteEmojiAsync(DiscordGuildEmoji emoji, string reason = null)
         {
             if (emoji == null)
                 throw new ArgumentNullException(nameof(emoji));
@@ -2323,7 +2323,7 @@ namespace DSharpPlus.Entities
         /// </summary>
         /// <param name="stickerId">The id of the sticker.</param>
         /// <param name="reason">Reason for audit log.</param>
-        public Task DeleteStickerAsync(ulong stickerId, string reason = null)
+        public virtual Task DeleteStickerAsync(ulong stickerId, string reason = null)
             => this.Discord.ApiClient.DeleteStickerAsync(this.Id, stickerId, reason);
 
         /// <summary>
@@ -2331,7 +2331,7 @@ namespace DSharpPlus.Entities
         /// </summary>
         /// <param name="sticker">Sticker to delete.</param>
         /// <param name="reason">Reason for audit log.</param>
-        public Task DeleteStickerAsync(DiscordMessageSticker sticker, string reason = null)
+        public virtual Task DeleteStickerAsync(DiscordMessageSticker sticker, string reason = null)
             => this.Discord.ApiClient.DeleteStickerAsync(this.Id, sticker.Id, reason);
 
         /// <summary>

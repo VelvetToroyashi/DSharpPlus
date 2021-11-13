@@ -33,17 +33,17 @@ namespace DSharpPlus.Entities
     /// <summary>
     /// Constructs an interaction response.
     /// </summary>
-    public sealed class DiscordInteractionResponseBuilder
+    public class DiscordInteractionResponseBuilder
     {
         /// <summary>
         /// Whether this interaction response is text-to-speech.
         /// </summary>
-        public bool IsTTS { get; set; }
+        public virtual bool IsTTS { get; set; }
 
         /// <summary>
         /// Whether this interaction response should be ephemeral.
         /// </summary>
-        public bool IsEphemeral { get; set; }
+        public virtual bool IsEphemeral { get; set; }
 
         /// <summary>
         /// Content of the message to send.

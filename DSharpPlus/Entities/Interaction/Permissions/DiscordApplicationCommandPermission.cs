@@ -34,19 +34,19 @@ namespace DSharpPlus.Entities
         /// The id of the role or the user this permission is for.
         /// </summary>
         [JsonProperty("id")]
-        public ulong Id { get; internal set; }
+        public virtual ulong Id { get; internal set; }
 
         /// <summary>
         /// Gets the type of the permission.
         /// </summary>
         [JsonProperty("type")]
-        public ApplicationCommandPermissionType Type { get; internal set; }
+        public virtual ApplicationCommandPermissionType Type { get; internal set; }
 
         /// <summary>
         /// Gets whether the command is enabled for the role or user.
         /// </summary>
         [JsonProperty("permission")]
-        public bool Permission { get; internal set; }
+        public virtual bool Permission { get; internal set; }
 
         /// <summary>
         /// Represents a permission for a application command.

@@ -31,7 +31,7 @@ namespace DSharpPlus.Net.Models
         /// <summary>
         /// New role name
         /// </summary>
-		public string Name { internal get; set; }
+		public virtual string Name { internal get; set; }
         /// <summary>
         /// New role permissions
         /// </summary>
@@ -52,12 +52,12 @@ namespace DSharpPlus.Net.Models
         /// <summary>
         /// The emoji to set for role role icon; must be unicode.
         /// </summary>
-        public DiscordEmoji Emoji { internal get; set; }
+        public virtual DiscordEmoji Emoji { internal get; set; }
 
         /// <summary>
         /// The stream to use for uploading a new role icon.
         /// </summary>
-        public Stream Icon { internal get; set; }
+        public virtual Stream Icon { internal get; set; }
 
         internal RoleEditModel()
         {

@@ -30,13 +30,13 @@ namespace DSharpPlus.Net.Abstractions
     internal class RestApplicationCommandCreatePayload
     {
         [JsonProperty("type")]
-        public ApplicationCommandType Type { get; set; }
+        public virtual ApplicationCommandType Type { get; set; }
 
         [JsonProperty("name")]
-        public string Name { get; set; }
+        public virtual string Name { get; set; }
 
         [JsonProperty("description", NullValueHandling = NullValueHandling.Ignore)]
-        public string Description { get; set; }
+        public virtual string Description { get; set; }
 
         [JsonProperty("options", NullValueHandling = NullValueHandling.Ignore)]
         public IEnumerable<DiscordApplicationCommandOption> Options { get; set; }
@@ -63,16 +63,16 @@ namespace DSharpPlus.Net.Abstractions
     internal class RestInteractionResponsePayload
     {
         [JsonProperty("type", NullValueHandling = NullValueHandling.Ignore)]
-        public InteractionResponseType Type { get; set; }
+        public virtual InteractionResponseType Type { get; set; }
 
         [JsonProperty("data", NullValueHandling = NullValueHandling.Ignore)]
-        public DiscordInteractionApplicationCommandCallbackData Data { get; set; }
+        public virtual DiscordInteractionApplicationCommandCallbackData Data { get; set; }
     }
 
     internal class RestFollowupMessageCreatePayload
     {
         [JsonProperty("content", NullValueHandling = NullValueHandling.Ignore)]
-        public string Content { get; set; }
+        public virtual string Content { get; set; }
 
         [JsonProperty("tts", NullValueHandling = NullValueHandling.Ignore)]
         public bool? IsTTS { get; set; }
@@ -81,7 +81,7 @@ namespace DSharpPlus.Net.Abstractions
         public IEnumerable<DiscordEmbed> Embeds { get; set; }
 
         [JsonProperty("allowed_mentions", NullValueHandling = NullValueHandling.Ignore)]
-        public DiscordMentions Mentions { get; set; }
+        public virtual DiscordMentions Mentions { get; set; }
 
         [JsonProperty("flags", NullValueHandling = NullValueHandling.Ignore)]
         public int? Flags { get; set; }

@@ -87,12 +87,12 @@ namespace DSharpPlus.Test
 
     public class TestVariables
     {
-        public DiscordMessage Message { get; set; }
-        public DiscordChannel Channel { get; set; }
-        public DiscordGuild Guild { get; set; }
-        public DiscordUser User { get; set; }
-        public DiscordMember Member { get; set; }
-        public CommandContext Context { get; set; }
+        public virtual DiscordMessage Message { get; set; }
+        public virtual DiscordChannel Channel { get; set; }
+        public virtual DiscordGuild Guild { get; set; }
+        public virtual DiscordUser User { get; set; }
+        public virtual DiscordMember Member { get; set; }
+        public virtual CommandContext Context { get; set; }
 
         public TestVariables(DiscordMessage msg, DiscordClient client, CommandContext ctx)
         {

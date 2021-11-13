@@ -33,12 +33,12 @@ namespace DSharpPlus.EventArgs
         /// <summary>
         /// Gets the round-trip time of the heartbeat.
         /// </summary>
-        public int Ping { get; internal set; }
+        public virtual int Ping { get; internal set; }
 
         /// <summary>
         /// Gets the timestamp of the heartbeat.
         /// </summary>
-        public DateTimeOffset Timestamp { get; internal set; }
+        public virtual DateTimeOffset Timestamp { get; internal set; }
 
         internal HeartbeatEventArgs() : base() { }
     }

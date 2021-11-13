@@ -33,7 +33,7 @@ namespace DSharpPlus
     /// </summary>
     internal class AsyncManualResetEvent
     {
-        public bool IsSet => this._tsc != null && this._tsc.Task.IsCompleted;
+        public virtual bool IsSet => this._tsc != null && this._tsc.Task.IsCompleted;
 
         private TaskCompletionSource<bool> _tsc;
 
@@ -48,9 +48,9 @@ namespace DSharpPlus
             if (initialState) this._tsc.TrySetResult(true);
         }
 
-        public Task WaitAsync() => this._tsc.Task;
+        public virtual Task WaitAsync() => this._tsc.Task;
 
-        public Task SetAsync() => Task.Run(() => this._tsc.TrySetResult(true));
+        public virtual Task SetAsync() => Task.Run(() => this._tsc.TrySetResult(true));
 
         public void Reset()
         {

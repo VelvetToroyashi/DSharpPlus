@@ -27,16 +27,16 @@ using Newtonsoft.Json;
 
 namespace DSharpPlus.Lavalink.Entities
 {
-    internal sealed class LavalinkVoiceServerUpdate
+    internal class LavalinkVoiceServerUpdate
     {
         [JsonProperty("token")]
-        public string Token { get; }
+        public virtual string Token { get; }
 
         [JsonProperty("guild_id")]
-        public string GuildId { get; }
+        public virtual string GuildId { get; }
 
         [JsonProperty("endpoint")]
-        public string Endpoint { get; }
+        public virtual string Endpoint { get; }
 
         internal LavalinkVoiceServerUpdate(VoiceServerUpdateEventArgs vsu)
         {
@@ -46,10 +46,10 @@ namespace DSharpPlus.Lavalink.Entities
         }
     }
 
-    internal sealed class LavalinkVoiceUpdate : LavalinkPayload
+    internal class LavalinkVoiceUpdate : LavalinkPayload
     {
         [JsonProperty("sessionId")]
-        public string SessionId { get; }
+        public virtual string SessionId { get; }
 
         [JsonProperty("event")]
         internal LavalinkVoiceServerUpdate Event { get; }

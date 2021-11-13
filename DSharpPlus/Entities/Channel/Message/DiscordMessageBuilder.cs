@@ -33,7 +33,7 @@ namespace DSharpPlus.Entities
     /// <summary>
     /// Constructs a Message to be sent.
     /// </summary>
-    public sealed class DiscordMessageBuilder
+    public class DiscordMessageBuilder
     {
         /// <summary>
         /// Gets or Sets the Message to be sent.
@@ -64,7 +64,7 @@ namespace DSharpPlus.Entities
             }
         }
 
-        public DiscordMessageSticker Sticker { get; set; }
+        public virtual DiscordMessageSticker Sticker { get; set; }
 
         /// <summary>
         /// Gets the Embeds to be sent.
@@ -75,7 +75,7 @@ namespace DSharpPlus.Entities
         /// <summary>
         /// Gets or Sets if the message should be TTS.
         /// </summary>
-        public bool IsTTS { get; set; } = false;
+        public virtual bool IsTTS { get; set; } = false;
 
         /// <summary>
         /// Gets the Allowed Mentions for the message to be sent.
@@ -102,14 +102,14 @@ namespace DSharpPlus.Entities
         /// <summary>
         /// Gets if the Reply should mention the user.
         /// </summary>
-        public bool MentionOnReply { get; private set; } = false;
+        public virtual bool MentionOnReply { get; private set; } = false;
 
         /// <summary>
         /// Gets if the Reply will error if the Reply Message Id does not reference a valid message.
         /// <para>If set to false, invalid replies are send as a regular message.</para>
         /// <para>Defaults to false.</para>
         /// </summary>
-        public bool FailOnInvalidReply { get; set; }
+        public virtual bool FailOnInvalidReply { get; set; }
 
         /// <summary>
         /// Sets the Content of the Message.

@@ -31,7 +31,7 @@ namespace DSharpPlus.Interactivity.EventHandling
     /// <summary>
     /// Represents a component event that is being waited for.
     /// </summary>
-    internal sealed class ComponentCollectRequest : ComponentMatchRequest
+    internal class ComponentCollectRequest : ComponentMatchRequest
     {
         public ConcurrentBag<ComponentInteractionCreateEventArgs> Collected { get; private set; }
 

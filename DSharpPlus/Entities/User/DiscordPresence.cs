@@ -30,7 +30,7 @@ namespace DSharpPlus.Entities
     /// <summary>
     /// Represents a user presence.
     /// </summary>
-    public sealed class DiscordPresence
+    public class DiscordPresence
     {
         [JsonIgnore]
         internal DiscordClient Discord { get; set; }
@@ -50,7 +50,7 @@ namespace DSharpPlus.Entities
         /// Gets the user's current activity.
         /// </summary>
         [JsonIgnore]
-        public DiscordActivity Activity { get; internal set; }
+        public virtual DiscordActivity Activity { get; internal set; }
 
         internal TransportActivity RawActivity { get; set; }
 
@@ -70,7 +70,7 @@ namespace DSharpPlus.Entities
         /// Gets this user's status.
         /// </summary>
         [JsonProperty("status", NullValueHandling = NullValueHandling.Ignore)]
-        public UserStatus Status { get; internal set; }
+        public virtual UserStatus Status { get; internal set; }
 
         [JsonProperty("guild_id", NullValueHandling = NullValueHandling.Ignore)]
         internal ulong GuildId { get; set; }
@@ -86,7 +86,7 @@ namespace DSharpPlus.Entities
         /// Gets this user's platform-dependent status.
         /// </summary>
         [JsonProperty("client_status", NullValueHandling = NullValueHandling.Ignore)]
-        public DiscordClientStatus ClientStatus { get; internal set; }
+        public virtual DiscordClientStatus ClientStatus { get; internal set; }
 
         internal DiscordPresence() { }
 
@@ -102,7 +102,7 @@ namespace DSharpPlus.Entities
         }
     }
 
-    public sealed class DiscordClientStatus
+    public class DiscordClientStatus
     {
         /// <summary>
         /// Gets the user's status set for an active desktop (Windows, Linux, Mac) application session.

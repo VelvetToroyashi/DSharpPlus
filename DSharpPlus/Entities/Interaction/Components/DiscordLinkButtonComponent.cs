@@ -33,25 +33,25 @@ namespace DSharpPlus.Entities
         /// The url to open when pressing this button.
         /// </summary>
         [JsonProperty("url", NullValueHandling = NullValueHandling.Ignore)]
-        public string Url { get; set; }
+        public virtual string Url { get; set; }
 
         /// <summary>
         /// The text to add to this button. If this is not specified, <see cref="Emoji"/> must be.
         /// </summary>
         [JsonProperty("label", NullValueHandling = NullValueHandling.Ignore)]
-        public string Label { get; set; }
+        public virtual string Label { get; set; }
 
         /// <summary>
         /// Whether this button can be pressed.
         /// </summary>
         [JsonProperty("disabled", NullValueHandling = NullValueHandling.Ignore)]
-        public bool Disabled { get; set; }
+        public virtual bool Disabled { get; set; }
 
         /// <summary>
         /// The emoji to add to the button. Can be used in conjunction with a label, or as standalone. Must be added if label is not specified.
         /// </summary>
         [JsonProperty("emoji", NullValueHandling = NullValueHandling.Ignore)]
-        public DiscordComponentEmoji Emoji { get; set; }
+        public virtual DiscordComponentEmoji Emoji { get; set; }
 
         [JsonProperty("style", NullValueHandling = NullValueHandling.Ignore)]
         internal int Style { get; } = 5; // Link = 5; Discord throws 400 otherwise //

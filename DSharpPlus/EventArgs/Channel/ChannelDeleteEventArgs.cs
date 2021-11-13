@@ -33,12 +33,12 @@ namespace DSharpPlus.EventArgs
         /// <summary>
         /// Gets the channel that was deleted.
         /// </summary>
-        public DiscordChannel Channel { get; internal set; }
+        public virtual DiscordChannel Channel { get; internal set; }
 
         /// <summary>
         /// Gets the guild this channel belonged to.
         /// </summary>
-        public DiscordGuild Guild { get; internal set; }
+        public virtual DiscordGuild Guild { get; internal set; }
 
         internal ChannelDeleteEventArgs() : base() { }
     }

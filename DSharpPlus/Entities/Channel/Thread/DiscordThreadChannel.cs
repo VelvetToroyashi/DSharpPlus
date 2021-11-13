@@ -44,7 +44,7 @@ namespace DSharpPlus.Entities
         /// Gets the ID of this thread's creator.
         /// </summary>
         [JsonProperty("owner_id", NullValueHandling = NullValueHandling.Ignore)]
-        public ulong CreatorId { get; internal set; }
+        public virtual ulong CreatorId { get; internal set; }
 
         /// <summary>
         /// Gets the approximate count of messages in a thread, capped to 50.
@@ -62,13 +62,13 @@ namespace DSharpPlus.Entities
         /// Represents the current member for this thread. This will have a value if the user has joined the thread.
         /// </summary>
         [JsonProperty("member", NullValueHandling = NullValueHandling.Ignore)]
-        public DiscordThreadChannelMember CurrentMember { get; internal set; }
+        public virtual DiscordThreadChannelMember CurrentMember { get; internal set; }
 
         /// <summary>
         /// Gets the approximate count of members in a thread, up to 50.
         /// </summary>
         [JsonProperty("thread_metadata", NullValueHandling = NullValueHandling.Ignore)]
-        public DiscordThreadChannelMetadata ThreadMetadata { get; internal set; }
+        public virtual DiscordThreadChannelMetadata ThreadMetadata { get; internal set; }
 
         #region Methods
 

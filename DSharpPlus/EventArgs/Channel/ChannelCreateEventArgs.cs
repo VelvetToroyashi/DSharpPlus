@@ -33,12 +33,12 @@ namespace DSharpPlus.EventArgs
         /// <summary>
         /// Gets the channel that was created.
         /// </summary>
-        public DiscordChannel Channel { get; internal set; }
+        public virtual DiscordChannel Channel { get; internal set; }
 
         /// <summary>
         /// Gets the guild in which the channel was created.
         /// </summary>
-        public DiscordGuild Guild { get; internal set; }
+        public virtual DiscordGuild Guild { get; internal set; }
 
         internal ChannelCreateEventArgs() : base() { }
     }

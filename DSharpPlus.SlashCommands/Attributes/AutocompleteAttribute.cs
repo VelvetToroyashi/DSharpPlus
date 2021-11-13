@@ -34,7 +34,7 @@ namespace DSharpPlus.SlashCommands
         /// <summary>
         /// The provider for this autocomplete parameter.
         /// </summary>
-        public Type Provider { get; }
+        public virtual Type Provider { get; }
 
         /// <summary>
         /// Handles autocomplete choices for a slash command parameter.

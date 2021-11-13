@@ -6,22 +6,22 @@ namespace DSharpPlus.SlashCommands
     /// Marks this class a slash command group.
     /// </summary>
     [AttributeUsage(AttributeTargets.Class, AllowMultiple = false)]
-    public sealed class SlashCommandGroupAttribute : Attribute
+    public class SlashCommandGroupAttribute : Attribute
     {
         /// <summary>
         /// Gets the name of this slash command group.
         /// </summary>
-        public string Name { get; }
+        public virtual string Name { get; }
 
         /// <summary>
         /// Gets the description of this slash command group.
         /// </summary>
-        public string Description { get; }
+        public virtual string Description { get; }
 
         /// <summary>
         /// Gets whether this command is enabled on default.
         /// </summary>
-        public bool DefaultPermission { get; }
+        public virtual bool DefaultPermission { get; }
 
         /// <summary>
         /// Marks this class as a slash command group.

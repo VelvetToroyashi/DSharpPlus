@@ -36,17 +36,17 @@ namespace DSharpPlus.Net
         /// <summary>
         /// Gets the Id of the guild bucket.
         /// </summary>
-        public string GuildId { get; internal set; }
+        public virtual string GuildId { get; internal set; }
 
         /// <summary>
         /// Gets the Id of the channel bucket.
         /// </summary>
-        public string ChannelId { get; internal set; }
+        public virtual string ChannelId { get; internal set; }
 
         /// <summary>
         /// Gets the ID of the webhook bucket.
         /// </summary>
-        public string WebhookId { get; internal set; }
+        public virtual string WebhookId { get; internal set; }
 
         /// <summary>
         /// Gets the Id of the ratelimit bucket.
@@ -85,7 +85,7 @@ namespace DSharpPlus.Net
         /// <summary>
         /// Gets when this bucket was last called in a request.
         /// </summary>
-        public DateTimeOffset LastAttemptAt { get; internal set; }
+        public virtual DateTimeOffset LastAttemptAt { get; internal set; }
 
         /// <summary>
         /// Gets the number of uses left before pre-emptive rate limit is triggered.
@@ -96,12 +96,12 @@ namespace DSharpPlus.Net
         /// <summary>
         /// Gets the maximum number of uses within a single bucket.
         /// </summary>
-        public int Maximum { get; set; }
+        public virtual int Maximum { get; set; }
 
         /// <summary>
         /// Gets the timestamp at which the rate limit resets.
         /// </summary>
-        public DateTimeOffset Reset { get; internal set; }
+        public virtual DateTimeOffset Reset { get; internal set; }
 
         /// <summary>
         /// Gets the time interval to wait before the rate limit resets.

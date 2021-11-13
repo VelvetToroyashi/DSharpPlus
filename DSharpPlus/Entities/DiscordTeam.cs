@@ -31,17 +31,17 @@ namespace DSharpPlus.Entities
     /// <summary>
     /// Represents a team consisting of users. A team can own an application.
     /// </summary>
-    public sealed class DiscordTeam : SnowflakeObject, IEquatable<DiscordTeam>
+    public class DiscordTeam : SnowflakeObject, IEquatable<DiscordTeam>
     {
         /// <summary>
         /// Gets the team's name.
         /// </summary>
-        public string Name { get; internal set; }
+        public virtual string Name { get; internal set; }
 
         /// <summary>
         /// Gets the team's icon hash.
         /// </summary>
-        public string IconHash { get; internal set; }
+        public virtual string IconHash { get; internal set; }
 
         /// <summary>
         /// Gets the team's icon.
@@ -52,7 +52,7 @@ namespace DSharpPlus.Entities
         /// <summary>
         /// Gets the owner of the team.
         /// </summary>
-        public DiscordUser Owner { get; internal set; }
+        public virtual DiscordUser Owner { get; internal set; }
 
         /// <summary>
         /// Gets the members of this team.
@@ -106,12 +106,12 @@ namespace DSharpPlus.Entities
     /// <summary>
     /// Represents a member of <see cref="DiscordTeam"/>.
     /// </summary>
-    public sealed class DiscordTeamMember : IEquatable<DiscordTeamMember>
+    public class DiscordTeamMember : IEquatable<DiscordTeamMember>
     {
         /// <summary>
         /// Gets the member's membership status.
         /// </summary>
-        public DiscordTeamMembershipStatus MembershipStatus { get; internal set; }
+        public virtual DiscordTeamMembershipStatus MembershipStatus { get; internal set; }
 
         /// <summary>
         /// Gets the member's permissions within the team.
@@ -121,12 +121,12 @@ namespace DSharpPlus.Entities
         /// <summary>
         /// Gets the team this member belongs to.
         /// </summary>
-        public DiscordTeam Team { get; internal set; }
+        public virtual DiscordTeam Team { get; internal set; }
 
         /// <summary>
         /// Gets the user who is the team member.
         /// </summary>
-        public DiscordUser User { get; internal set; }
+        public virtual DiscordUser User { get; internal set; }
 
         internal DiscordTeamMember(TransportTeamMember ttm)
         {

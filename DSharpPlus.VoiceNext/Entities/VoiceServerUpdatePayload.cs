@@ -25,15 +25,15 @@ using Newtonsoft.Json;
 
 namespace DSharpPlus.VoiceNext.Entities
 {
-    internal sealed class VoiceServerUpdatePayload
+    internal class VoiceServerUpdatePayload
     {
         [JsonProperty("token")]
-        public string Token { get; set; }
+        public virtual string Token { get; set; }
 
         [JsonProperty("guild_id")]
-        public ulong GuildId { get; set; }
+        public virtual ulong GuildId { get; set; }
 
         [JsonProperty("endpoint")]
-        public string Endpoint { get; set; }
+        public virtual string Endpoint { get; set; }
     }
 }

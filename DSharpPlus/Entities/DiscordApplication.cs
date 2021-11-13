@@ -32,12 +32,12 @@ namespace DSharpPlus.Entities
     /// <summary>
     /// Represents an OAuth2 application.
     /// </summary>
-    public sealed class DiscordApplication : DiscordMessageApplication, IEquatable<DiscordApplication>
+    public class DiscordApplication : DiscordMessageApplication, IEquatable<DiscordApplication>
     {
         /// <summary>
         /// Gets the application's summary.
         /// </summary>
-        public string Summary { get; internal set; }
+        public virtual string Summary { get; internal set; }
 
         /// <summary>
         /// Gets the application's icon.
@@ -48,17 +48,17 @@ namespace DSharpPlus.Entities
         /// <summary>
         /// Gets the application's icon hash.
         /// </summary>
-        public string IconHash { get; internal set; }
+        public virtual string IconHash { get; internal set; }
 
         /// <summary>
         /// Gets the application's terms of service URL.
         /// </summary>
-        public string TermsOfServiceUrl { get; internal set; }
+        public virtual string TermsOfServiceUrl { get; internal set; }
 
         /// <summary>
         /// Gets the application's privacy policy URL.
         /// </summary>
-        public string PrivacyPolicyUrl { get; internal set; }
+        public virtual string PrivacyPolicyUrl { get; internal set; }
 
         /// <summary>
         /// Gets the application's allowed RPC origins.
@@ -88,7 +88,7 @@ namespace DSharpPlus.Entities
         /// <summary>
         /// Gets the hash of the application's cover image.
         /// </summary>
-        public string CoverImageHash { get; internal set; }
+        public virtual string CoverImageHash { get; internal set; }
 
         /// <summary>
         /// Gets this application's cover image URL.
@@ -99,7 +99,7 @@ namespace DSharpPlus.Entities
         /// <summary>
         /// Gets the team which owns this application.
         /// </summary>
-        public DiscordTeam Team { get; internal set; }
+        public virtual DiscordTeam Team { get; internal set; }
 
         private IReadOnlyList<DiscordApplicationAsset> Assets { get; set; }
 
@@ -236,7 +236,7 @@ namespace DSharpPlus.Entities
     /// <summary>
     /// Represents an asset for an OAuth2 application.
     /// </summary>
-    public sealed class DiscordApplicationAsset : DiscordAsset, IEquatable<DiscordApplicationAsset>
+    public class DiscordApplicationAsset : DiscordAsset, IEquatable<DiscordApplicationAsset>
     {
         /// <summary>
         /// Gets the Discord client instance for this asset.
@@ -247,18 +247,18 @@ namespace DSharpPlus.Entities
         /// Gets the asset's name.
         /// </summary>
         [JsonProperty("name")]
-        public string Name { get; internal set; }
+        public virtual string Name { get; internal set; }
 
         /// <summary>
         /// Gets the asset's type.
         /// </summary>
         [JsonProperty("type")]
-        public ApplicationAssetType Type { get; internal set; }
+        public virtual ApplicationAssetType Type { get; internal set; }
 
         /// <summary>
         /// Gets the application this asset belongs to.
         /// </summary>
-        public DiscordApplication Application { get; internal set; }
+        public virtual DiscordApplication Application { get; internal set; }
 
         /// <summary>
         /// Gets the Url of this asset.
@@ -326,7 +326,7 @@ namespace DSharpPlus.Entities
             => !(e1 == e2);
     }
 
-    public sealed class DiscordSpotifyAsset : DiscordAsset
+    public class DiscordSpotifyAsset : DiscordAsset
     {
         /// <summary>
         /// Gets the URL of this asset.

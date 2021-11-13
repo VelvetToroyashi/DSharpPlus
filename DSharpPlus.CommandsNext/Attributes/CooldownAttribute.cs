@@ -33,22 +33,22 @@ namespace DSharpPlus.CommandsNext.Attributes
     /// Defines a cooldown for this command. This allows you to define how many times can users execute a specific command
     /// </summary>
     [AttributeUsage(AttributeTargets.Method | AttributeTargets.Class, AllowMultiple = true, Inherited = false)]
-    public sealed class CooldownAttribute : CheckBaseAttribute
+    public class CooldownAttribute : CheckBaseAttribute
     {
         /// <summary>
         /// Gets the maximum number of uses before this command triggers a cooldown for its bucket.
         /// </summary>
-        public int MaxUses { get; }
+        public virtual int MaxUses { get; }
 
         /// <summary>
         /// Gets the time after which the cooldown is reset.
         /// </summary>
-        public TimeSpan Reset { get; }
+        public virtual TimeSpan Reset { get; }
 
         /// <summary>
         /// Gets the type of the cooldown bucket. This determines how cooldowns are applied.
         /// </summary>
-        public CooldownBucketType BucketType { get; }
+        public virtual CooldownBucketType BucketType { get; }
 
         /// <summary>
         /// Gets the cooldown buckets for this command.
@@ -168,27 +168,27 @@ namespace DSharpPlus.CommandsNext.Attributes
     /// <summary>
     /// Represents a cooldown bucket for commands.
     /// </summary>
-    public sealed class CommandCooldownBucket : IEquatable<CommandCooldownBucket>
+    public class CommandCooldownBucket : IEquatable<CommandCooldownBucket>
     {
         /// <summary>
         /// Gets the ID of the user with whom this cooldown is associated.
         /// </summary>
-        public ulong UserId { get; }
+        public virtual ulong UserId { get; }
 
         /// <summary>
         /// Gets the ID of the channel with which this cooldown is associated.
         /// </summary>
-        public ulong ChannelId { get; }
+        public virtual ulong ChannelId { get; }
 
         /// <summary>
         /// Gets the ID of the guild with which this cooldown is associated.
         /// </summary>
-        public ulong GuildId { get; }
+        public virtual ulong GuildId { get; }
 
         /// <summary>
         /// Gets the ID of the bucket. This is used to distinguish between cooldown buckets.
         /// </summary>
-        public string BucketId { get; }
+        public virtual string BucketId { get; }
 
         /// <summary>
         /// Gets the remaining number of uses before the cooldown is triggered.
@@ -201,17 +201,17 @@ namespace DSharpPlus.CommandsNext.Attributes
         /// <summary>
         /// Gets the maximum number of times this command can be used in given timespan.
         /// </summary>
-        public int MaxUses { get; }
+        public virtual int MaxUses { get; }
 
         /// <summary>
         /// Gets the date and time at which the cooldown resets.
         /// </summary>
-        public DateTimeOffset ResetsAt { get; internal set; }
+        public virtual DateTimeOffset ResetsAt { get; internal set; }
 
         /// <summary>
         /// Gets the time after which this cooldown resets.
         /// </summary>
-        public TimeSpan Reset { get; internal set; }
+        public virtual TimeSpan Reset { get; internal set; }
 
         /// <summary>
         /// Gets the semaphore used to lock the use value.

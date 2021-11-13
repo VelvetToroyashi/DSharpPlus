@@ -192,7 +192,7 @@ namespace DSharpPlus.Entities
         /// <exception cref="Exceptions.NotFoundException">Thrown when the user does not exist.</exception>
         /// <exception cref="Exceptions.BadRequestException">Thrown when an invalid parameter was provided.</exception>
         /// <exception cref="Exceptions.ServerErrorException">Thrown when Discord is unable to process the request.</exception>
-        public Task UnbanAsync(DiscordGuild guild, string reason = null)
+        public virtual Task UnbanAsync(DiscordGuild guild, string reason = null)
             => guild.UnbanMemberAsync(this, reason);
 
         /// <summary>

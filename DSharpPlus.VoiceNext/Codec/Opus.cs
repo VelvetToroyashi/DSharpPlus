@@ -26,9 +26,9 @@ using System.Collections.Generic;
 
 namespace DSharpPlus.VoiceNext.Codec
 {
-    internal sealed class Opus : IDisposable
+    internal class Opus : IDisposable
     {
-        public AudioFormat AudioFormat { get; }
+        public virtual AudioFormat AudioFormat { get; }
 
         private IntPtr Encoder { get; }
 
@@ -144,7 +144,7 @@ namespace DSharpPlus.VoiceNext.Codec
         /// <summary>
         /// Gets the audio format produced by this decoder.
         /// </summary>
-        public AudioFormat AudioFormat { get; private set; }
+        public virtual AudioFormat AudioFormat { get; private set; }
 
         internal Opus Opus { get; }
         internal IntPtr Decoder { get; private set; }

@@ -28,12 +28,12 @@ namespace DSharpPlus.VoiceNext.Entities
     internal class VoiceSelectProtocolPayloadData
     {
         [JsonProperty("address")]
-        public string Address { get; set; }
+        public virtual string Address { get; set; }
 
         [JsonProperty("port")]
-        public ushort Port { get; set; }
+        public virtual ushort Port { get; set; }
 
         [JsonProperty("mode")]
-        public string Mode { get; set; }
+        public virtual string Mode { get; set; }
     }
 }

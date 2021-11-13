@@ -28,12 +28,12 @@ namespace DSharpPlus.Net
     /// <summary>
     /// Represents a response sent by the remote HTTP party.
     /// </summary>
-    public sealed class RestResponse
+    public class RestResponse
     {
         /// <summary>
         /// Gets the response code sent by the remote party.
         /// </summary>
-        public int ResponseCode { get; internal set; }
+        public virtual int ResponseCode { get; internal set; }
 
         /// <summary>
         /// Gets the headers sent by the remote party.
@@ -43,7 +43,7 @@ namespace DSharpPlus.Net
         /// <summary>
         /// Gets the contents of the response sent by the remote party.
         /// </summary>
-        public string Response { get; internal set; }
+        public virtual string Response { get; internal set; }
 
         internal RestResponse() { }
     }

@@ -41,7 +41,7 @@ namespace DSharpPlus.Interactivity.EventHandling
         internal IEnumerable<DiscordEmoji> _emojis;
 
         /// <summary>
-        /// 
+        ///
         /// </summary>
         /// <param name="message"></param>
         /// <param name="timeout"></param>
@@ -124,6 +124,6 @@ namespace DSharpPlus.Interactivity.EventHandling
 
         public DiscordEmoji Emoji;
         public ConcurrentHashSet<DiscordUser> Voted;
-        public int Total => this.Voted.Count;
+        public virtual int Total => this.Voted.Count;
     }
 }

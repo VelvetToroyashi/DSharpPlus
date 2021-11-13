@@ -41,7 +41,7 @@ namespace DSharpPlus.Lavalink
     /// <summary>
     /// Represents a Lavalink connection to a channel.
     /// </summary>
-    public sealed class LavalinkGuildConnection
+    public class LavalinkGuildConnection
     {
         /// <summary>
         /// Triggered whenever Lavalink updates player status.
@@ -107,28 +107,28 @@ namespace DSharpPlus.Lavalink
         /// <summary>
         /// Gets whether this channel is still connected.
         /// </summary>
-        public bool IsConnected => !Volatile.Read(ref this._isDisposed) && this.Channel != null;
+        public virtual bool IsConnected => !Volatile.Read(ref this._isDisposed) && this.Channel != null;
         private bool _isDisposed = false;
 
         /// <summary>
         /// Gets the current player state.
         /// </summary>
-        public LavalinkPlayerState CurrentState { get; }
+        public virtual LavalinkPlayerState CurrentState { get; }
 
         /// <summary>
         /// Gets the voice channel associated with this connection.
         /// </summary>
-        public DiscordChannel Channel => this.VoiceStateUpdate.Channel;
+        public virtual DiscordChannel Channel => this.VoiceStateUpdate.Channel;
 
         /// <summary>
         /// Gets the guild associated with this connection.
         /// </summary>
-        public DiscordGuild Guild => this.Channel.Guild;
+        public virtual DiscordGuild Guild => this.Channel.Guild;
 
         /// <summary>
         /// Gets the Lavalink node associated with this connection.
         /// </summary>
-        public LavalinkNodeConnection Node { get; }
+        public virtual LavalinkNodeConnection Node { get; }
 
         internal string GuildIdString => this.GuildId.ToString(CultureInfo.InvariantCulture);
         internal ulong GuildId => this.Channel.Guild.Id;
@@ -157,7 +157,7 @@ namespace DSharpPlus.Lavalink
         /// </summary>
         /// <param name="shouldDestroy">Whether the connection should be destroyed on the Lavalink server when leaving.</param>
 
-        public Task DisconnectAsync(bool shouldDestroy = true)
+        public virtual Task DisconnectAsync(bool shouldDestroy = true)
             => this.DisconnectInternalAsync(shouldDestroy);
 
         internal async Task DisconnectInternalAsync(bool shouldDestroy, bool isManualDisconnection = false)
@@ -339,7 +339,7 @@ namespace DSharpPlus.Lavalink
             await this.Node.SendPayloadAsync(new LavalinkEqualizer(this, Enumerable.Range(0, 15).Select(x => new LavalinkBandAdjustment(x, 0)))).ConfigureAwait(false);
         }
 
-        internal Task InternalUpdatePlayerStateAsync(LavalinkState newState)
+        internal virtual Task InternalUpdatePlayerStateAsync(LavalinkState newState)
         {
             this.CurrentState.LastUpdate = newState.Time;
             this.CurrentState.PlaybackPosition = newState.Position;
@@ -347,13 +347,13 @@ namespace DSharpPlus.Lavalink
             return this._playerUpdated.InvokeAsync(this, new PlayerUpdateEventArgs(this, newState.Time, newState.Position));
         }
 
-        internal Task InternalPlaybackStartedAsync(string track)
+        internal virtual Task InternalPlaybackStartedAsync(string track)
         {
             var ea = new TrackStartEventArgs(this, LavalinkUtilities.DecodeTrack(track));
             return this._playbackStarted.InvokeAsync(this, ea);
         }
 
-        internal Task InternalPlaybackFinishedAsync(TrackFinishData e)
+        internal virtual Task InternalPlaybackFinishedAsync(TrackFinishData e)
         {
             if (e.Reason != TrackEndReason.Replaced)
                 this.CurrentState.CurrentTrack = default;
@@ -362,19 +362,19 @@ namespace DSharpPlus.Lavalink
             return this._playbackFinished.InvokeAsync(this, ea);
         }
 
-        internal Task InternalTrackStuckAsync(TrackStuckData e)
+        internal virtual Task InternalTrackStuckAsync(TrackStuckData e)
         {
             var ea = new TrackStuckEventArgs(this, e.Threshold, LavalinkUtilities.DecodeTrack(e.Track));
             return this._trackStuck.InvokeAsync(this, ea);
         }
 
-        internal Task InternalTrackExceptionAsync(TrackExceptionData e)
+        internal virtual Task InternalTrackExceptionAsync(TrackExceptionData e)
         {
             var ea = new TrackExceptionEventArgs(this, e.Error, LavalinkUtilities.DecodeTrack(e.Track));
             return this._trackException.InvokeAsync(this, ea);
         }
 
-        internal Task InternalWebSocketClosedAsync(WebSocketCloseEventArgs e)
+        internal virtual Task InternalWebSocketClosedAsync(WebSocketCloseEventArgs e)
             => this._webSocketClosed.InvokeAsync(this, e);
 
         internal event ChannelDisconnectedEventHandler ChannelDisconnected;

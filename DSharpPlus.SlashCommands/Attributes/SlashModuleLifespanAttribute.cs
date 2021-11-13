@@ -6,12 +6,12 @@ namespace DSharpPlus.SlashCommands
     /// Defines this slash command module's lifespan. Module lifespans are transient by default.
     /// </summary>
     [AttributeUsage(AttributeTargets.Class, AllowMultiple = false)]
-    public sealed class SlashModuleLifespanAttribute : Attribute
+    public class SlashModuleLifespanAttribute : Attribute
     {
         /// <summary>
         /// Gets the lifespan.
         /// </summary>
-        public SlashModuleLifespan Lifespan { get; }
+        public virtual SlashModuleLifespan Lifespan { get; }
 
         /// <summary>
         /// Defines this slash command module's lifespan.
@@ -32,7 +32,7 @@ namespace DSharpPlus.SlashCommands
         /// Whether this module should be initiated every time a command is run, with dependencies injected from a scope.
         /// </summary>
         Scoped,
-        
+
         /// <summary>
         /// Whether this module should be initiated every time a command is run.
         /// </summary>

@@ -29,19 +29,19 @@ namespace DSharpPlus.Entities
     /// <summary>
     /// Represents a command parameter choice for a <see cref="DiscordApplicationCommandOption"/>.
     /// </summary>
-    public sealed class DiscordApplicationCommandOptionChoice
+    public class DiscordApplicationCommandOptionChoice
     {
         /// <summary>
-        /// Gets the name of this choice parameter. 
+        /// Gets the name of this choice parameter.
         /// </summary>
         [JsonProperty("name")]
-        public string Name { get; set; }
+        public virtual string Name { get; set; }
 
         /// <summary>
         /// Gets the value of this choice parameter. This will either be a type of <see cref="int"/> / <see cref="long"/>, <see cref="double"/> or <see cref="string"/>.
         /// </summary>
         [JsonProperty("value")]
-        public object Value { get; set; }
+        public virtual object Value { get; set; }
 
         /// <summary>
         /// Creates a new instance of a <see cref="DiscordApplicationCommandOptionChoice"/>.

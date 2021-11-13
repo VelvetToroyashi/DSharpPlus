@@ -32,7 +32,7 @@ namespace DSharpPlus
     /// <summary>
     /// Represents configuration for <see cref="DiscordClient"/> and <see cref="DiscordShardedClient"/>.
     /// </summary>
-    public sealed class DiscordConfiguration
+    public class DiscordConfiguration
     {
         /// <summary>
         /// Sets the token used to identify the client.
@@ -54,13 +54,13 @@ namespace DSharpPlus
         /// <para>Sets the type of the token used to identify the client.</para>
         /// <para>Defaults to <see cref="TokenType.Bot"/>.</para>
         /// </summary>
-        public TokenType TokenType { internal get; set; } = TokenType.Bot;
+        public virtual TokenType TokenType { internal get; set; } = TokenType.Bot;
 
         /// <summary>
         /// <para>Sets the minimum logging level for messages.</para>
         /// <para>Typically, the default value of <see cref="LogLevel.Information"/> is ok for most uses.</para>
         /// </summary>
-        public LogLevel MinimumLogLevel { internal get; set; } = LogLevel.Information;
+        public virtual LogLevel MinimumLogLevel { internal get; set; } = LogLevel.Information;
 
         /// <summary>
         /// <para>Sets whether to rely on Discord for NTP (Network Time Protocol) synchronization with the "X-Ratelimit-Reset-After" header.</para>
@@ -68,70 +68,70 @@ namespace DSharpPlus
         /// <para>This should only be set to false if the system clock is synced with NTP.</para>
         /// <para>Defaults to true.</para>
         /// </summary>
-        public bool UseRelativeRatelimit { internal get; set; } = true;
+        public virtual bool UseRelativeRatelimit { internal get; set; } = true;
 
         /// <summary>
         /// <para>Allows you to overwrite the time format used by the internal debug logger.</para>
         /// <para>Only applicable when <see cref="LoggerFactory"/> is set left at default value. Defaults to ISO 8601-like format.</para>
         /// </summary>
-        public string LogTimestampFormat { internal get; set; } = "yyyy-MM-dd HH:mm:ss zzz";
+        public virtual string LogTimestampFormat { internal get; set; } = "yyyy-MM-dd HH:mm:ss zzz";
 
         /// <summary>
         /// <para>Sets the member count threshold at which guilds are considered large.</para>
         /// <para>Defaults to 250.</para>
         /// </summary>
-        public int LargeThreshold { internal get; set; } = 250;
+        public virtual int LargeThreshold { internal get; set; } = 250;
 
         /// <summary>
         /// <para>Sets whether to automatically reconnect in case a connection is lost.</para>
         /// <para>Defaults to true.</para>
         /// </summary>
-        public bool AutoReconnect { internal get; set; } = true;
+        public virtual bool AutoReconnect { internal get; set; } = true;
 
         /// <summary>
         /// <para>Sets the ID of the shard to connect to.</para>
         /// <para>If not sharding, or sharding automatically, this value should be left with the default value of 0.</para>
         /// </summary>
-        public int ShardId { internal get; set; } = 0;
+        public virtual int ShardId { internal get; set; } = 0;
 
         /// <summary>
         /// <para>Sets the total number of shards the bot is on. If not sharding, this value should be left with a default value of 1.</para>
         /// <para>If sharding automatically, this value will indicate how many shards to boot. If left default for automatic sharding, the client will determine the shard count automatically.</para>
         /// </summary>
-        public int ShardCount { internal get; set; } = 1;
+        public virtual int ShardCount { internal get; set; } = 1;
 
         /// <summary>
         /// <para>Sets the level of compression for WebSocket traffic.</para>
         /// <para>Disabling this option will increase the amount of traffic sent via WebSocket. Setting <see cref="GatewayCompressionLevel.Payload"/> will enable compression for READY and GUILD_CREATE payloads. Setting <see cref="GatewayCompressionLevel.Stream"/> will enable compression for the entire WebSocket stream, drastically reducing amount of traffic.</para>
         /// <para>Defaults to <see cref="GatewayCompressionLevel.Stream"/>.</para>
         /// </summary>
-        public GatewayCompressionLevel GatewayCompressionLevel { internal get; set; } = GatewayCompressionLevel.Stream;
+        public virtual GatewayCompressionLevel GatewayCompressionLevel { internal get; set; } = GatewayCompressionLevel.Stream;
 
         /// <summary>
         /// <para>Sets the size of the global message cache.</para>
         /// <para>Setting this to 0 will disable message caching entirely. Defaults to 1024.</para>
         /// </summary>
-        public int MessageCacheSize { internal get; set; } = 1024;
+        public virtual int MessageCacheSize { internal get; set; } = 1024;
 
         /// <summary>
         /// <para>Sets the proxy to use for HTTP and WebSocket connections to Discord.</para>
         /// <para>Defaults to null.</para>
         /// </summary>
-        public IWebProxy Proxy { internal get; set; } = null;
+        public virtual IWebProxy Proxy { internal get; set; } = null;
 
         /// <summary>
         /// <para>Sets the timeout for HTTP requests.</para>
         /// <para>Set to <see cref="System.Threading.Timeout.InfiniteTimeSpan"/> to disable timeouts.</para>
         /// <para>Defaults to 10 seconds.</para>
         /// </summary>
-        public TimeSpan HttpTimeout { internal get; set; } = TimeSpan.FromSeconds(100);
+        public virtual TimeSpan HttpTimeout { internal get; set; } = TimeSpan.FromSeconds(100);
 
         /// <summary>
         /// <para>Defines that the client should attempt to reconnect indefinitely.</para>
         /// <para>This is typically a very bad idea to set to <c>true</c>, as it will swallow all connection errors.</para>
         /// <para>Defaults to false.</para>
         /// </summary>
-        public bool ReconnectIndefinitely { internal get; set; } = false;
+        public virtual bool ReconnectIndefinitely { internal get; set; } = false;
 
         /// <summary>
         /// Sets whether the client should attempt to cache members if exclusively using unprivileged intents.
@@ -141,14 +141,14 @@ namespace DSharpPlus
         /// </para>
         /// <para>Defaults to true.</para>
         /// </summary>
-        public bool AlwaysCacheMembers { internal get; set; } = true;
+        public virtual bool AlwaysCacheMembers { internal get; set; } = true;
 
         /// <summary>
         /// <para>Sets the gateway intents for this client.</para>
         /// <para>If set, the client will only receive events that they specify with intents.</para>
         /// <para>Defaults to <see cref="DiscordIntents.AllUnprivileged"/>.</para>
         /// </summary>
-        public DiscordIntents Intents { internal get; set; } = DiscordIntents.AllUnprivileged;
+        public virtual DiscordIntents Intents { internal get; set; } = DiscordIntents.AllUnprivileged;
 
         /// <summary>
         /// <para>Sets the factory method used to create instances of WebSocket clients.</para>
@@ -185,7 +185,7 @@ namespace DSharpPlus
         /// <para>To create your own logger, implement the <see cref="ILoggerFactory"/> instance.</para>
         /// <para>Defaults to built-in implementation.</para>
         /// </summary>
-        public ILoggerFactory LoggerFactory { internal get; set; } = null;
+        public virtual ILoggerFactory LoggerFactory { internal get; set; } = null;
 
         /// <summary>
         /// Creates a new configuration with default values.

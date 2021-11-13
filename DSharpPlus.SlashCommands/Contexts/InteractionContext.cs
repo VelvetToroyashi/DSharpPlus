@@ -6,7 +6,7 @@ namespace DSharpPlus.SlashCommands
     /// <summary>
     /// Represents a context for an interaction.
     /// </summary>
-    public sealed class InteractionContext : BaseContext
+    public class InteractionContext : BaseContext
     {
         /// <summary>
         /// Gets the users mentioned in the command parameters.

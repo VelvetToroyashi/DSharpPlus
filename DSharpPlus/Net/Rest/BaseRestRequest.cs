@@ -39,17 +39,17 @@ namespace DSharpPlus.Net
         /// <summary>
         /// Gets the url to which this request is going to be made.
         /// </summary>
-        public Uri Url { get; }
+        public virtual Uri Url { get; }
 
         /// <summary>
         /// Gets the HTTP method used for this request.
         /// </summary>
-        public RestRequestMethod Method { get; }
+        public virtual RestRequestMethod Method { get; }
 
         /// <summary>
         /// Gets the generic path (no parameters) for this request.
         /// </summary>
-        public string Route { get; }
+        public virtual string Route { get; }
 
         /// <summary>
         /// Gets the headers sent with this request.

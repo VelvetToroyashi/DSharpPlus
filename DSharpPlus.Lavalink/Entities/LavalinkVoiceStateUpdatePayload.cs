@@ -25,10 +25,10 @@ using Newtonsoft.Json;
 
 namespace DSharpPlus.Lavalink.Entities
 {
-    internal sealed class VoiceStateUpdatePayload
+    internal class VoiceStateUpdatePayload
     {
         [JsonProperty("guild_id")]
-        public ulong GuildId { get; set; }
+        public virtual ulong GuildId { get; set; }
 
         [JsonProperty("channel_id")]
         public ulong? ChannelId { get; set; }
@@ -37,12 +37,12 @@ namespace DSharpPlus.Lavalink.Entities
         public ulong? UserId { get; set; }
 
         [JsonProperty("session_id", NullValueHandling = NullValueHandling.Ignore)]
-        public string SessionId { get; set; }
+        public virtual string SessionId { get; set; }
 
         [JsonProperty("self_deaf")]
-        public bool Deafened { get; set; }
+        public virtual bool Deafened { get; set; }
 
         [JsonProperty("self_mute")]
-        public bool Muted { get; set; }
+        public virtual bool Muted { get; set; }
     }
 }

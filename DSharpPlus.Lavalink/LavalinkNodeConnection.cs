@@ -47,7 +47,7 @@ namespace DSharpPlus.Lavalink
     /// <summary>
     /// Represents a connection to a Lavalink node.
     /// </summary>
-    public sealed class LavalinkNodeConnection
+    public class LavalinkNodeConnection
     {
         /// <summary>
         /// Triggered whenever Lavalink WebSocket throws an exception.
@@ -133,12 +133,12 @@ namespace DSharpPlus.Lavalink
         /// <summary>
         /// Gets the remote endpoint of this Lavalink node connection.
         /// </summary>
-        public ConnectionEndpoint NodeEndpoint => this.Configuration.SocketEndpoint;
+        public virtual ConnectionEndpoint NodeEndpoint => this.Configuration.SocketEndpoint;
 
         /// <summary>
         /// Gets whether the client is connected to Lavalink.
         /// </summary>
-        public bool IsConnected => !Volatile.Read(ref this._isDisposed);
+        public virtual bool IsConnected => !Volatile.Read(ref this._isDisposed);
         private bool _isDisposed = false;
         private int _backoff = 0;
         private const int MinimumBackoff = 7500;
@@ -147,7 +147,7 @@ namespace DSharpPlus.Lavalink
         /// <summary>
         /// Gets the current resource usage statistics.
         /// </summary>
-        public LavalinkStatistics Statistics { get; }
+        public virtual LavalinkStatistics Statistics { get; }
 
         /// <summary>
         /// Gets a dictionary of Lavalink guild connections for this node.
@@ -158,17 +158,17 @@ namespace DSharpPlus.Lavalink
         /// <summary>
         /// Gets the REST client for this Lavalink connection.
         /// </summary>
-        public LavalinkRestClient Rest { get; }
+        public virtual LavalinkRestClient Rest { get; }
 
         /// <summary>
         /// Gets the parent extension which this node connection belongs to.
         /// </summary>
-        public LavalinkExtension Parent { get; }
+        public virtual LavalinkExtension Parent { get; }
 
         /// <summary>
         /// Gets the Discord client this node connection belongs to.
         /// </summary>
-        public DiscordClient Discord { get; }
+        public virtual DiscordClient Discord { get; }
 
         internal LavalinkConfiguration Configuration { get; }
         internal DiscordVoiceRegion Region { get; }

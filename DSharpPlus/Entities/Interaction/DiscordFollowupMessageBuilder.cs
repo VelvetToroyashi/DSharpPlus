@@ -31,17 +31,17 @@ namespace DSharpPlus.Entities
     /// <summary>
     /// Constructs a followup message to an interaction.
     /// </summary>
-    public sealed class DiscordFollowupMessageBuilder
+    public class DiscordFollowupMessageBuilder
     {
         /// <summary>
         /// Whether this followup message is text-to-speech.
         /// </summary>
-        public bool IsTTS { get; set; }
+        public virtual bool IsTTS { get; set; }
 
         /// <summary>
         /// Whether this followup message should be ephemeral.
         /// </summary>
-        public bool IsEphemeral { get; set; }
+        public virtual bool IsEphemeral { get; set; }
 
         internal int? Flags
             => this.IsEphemeral ? 64 : null;

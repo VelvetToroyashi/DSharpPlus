@@ -7,7 +7,7 @@ namespace DSharpPlus.SlashCommands.Attributes
     /// Defines that this slash command is only usable within a guild.
     /// </summary>
     [AttributeUsage(AttributeTargets.Method | AttributeTargets.Class, AllowMultiple = false, Inherited = false)]
-    public sealed class SlashRequireGuildAttribute : SlashCheckBaseAttribute
+    public class SlashRequireGuildAttribute : SlashCheckBaseAttribute
     {
         /// <summary>
         /// Defines that this command is only usable within a guild.

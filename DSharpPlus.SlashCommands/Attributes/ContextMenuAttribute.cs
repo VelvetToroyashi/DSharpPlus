@@ -6,22 +6,22 @@ namespace DSharpPlus.SlashCommands
     /// Marks this method as a context menu.
     /// </summary>
     [AttributeUsage(AttributeTargets.Method, AllowMultiple = false)]
-    public sealed class ContextMenuAttribute : Attribute
+    public class ContextMenuAttribute : Attribute
     {
         /// <summary>
         /// Gets the name of this context menu.
         /// </summary>
-        public string Name { get; internal set; }
+        public virtual string Name { get; internal set; }
 
         /// <summary>
         /// Gets the type of this context menu.
         /// </summary>
-        public ApplicationCommandType Type { get; internal set; }
+        public virtual ApplicationCommandType Type { get; internal set; }
 
         /// <summary>
         /// Gets whether this command is enabled by default.
         /// </summary>
-        public bool DefaultPermission { get; internal set;}
+        public virtual bool DefaultPermission { get; internal set;}
 
         /// <summary>
         /// Marks this method as a context menu.

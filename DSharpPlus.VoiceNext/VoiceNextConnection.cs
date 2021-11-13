@@ -52,7 +52,7 @@ namespace DSharpPlus.VoiceNext
     /// <summary>
     /// VoiceNext connection to a voice channel.
     /// </summary>
-    public sealed class VoiceNextConnection : IDisposable
+    public class VoiceNextConnection : IDisposable
     {
         /// <summary>
         /// Triggered whenever a user speaks in the connected voice channel.
@@ -173,7 +173,7 @@ namespace DSharpPlus.VoiceNext
         /// <summary>
         /// Gets the audio format used by the Opus encoder.
         /// </summary>
-        public AudioFormat AudioFormat => this.Configuration.AudioFormat;
+        public virtual AudioFormat AudioFormat => this.Configuration.AudioFormat;
 
         /// <summary>
         /// Gets whether this connection is still playing audio.
@@ -200,7 +200,7 @@ namespace DSharpPlus.VoiceNext
         /// <summary>
         /// Gets the channel this voice client is connected to.
         /// </summary>
-        public DiscordChannel TargetChannel { get; internal set; }
+        public virtual DiscordChannel TargetChannel { get; internal set; }
 
         internal VoiceNextConnection(DiscordClient client, DiscordGuild guild, DiscordChannel channel, VoiceNextConfiguration config, VoiceServerUpdatePayload server, VoiceStateUpdatePayload state)
         {
@@ -265,7 +265,7 @@ namespace DSharpPlus.VoiceNext
         /// Connects to the specified voice channel.
         /// </summary>
         /// <returns>A task representing the connection operation.</returns>
-        internal Task ConnectAsync()
+        internal virtual Task ConnectAsync()
         {
             var gwuri = new UriBuilder
             {
@@ -277,7 +277,7 @@ namespace DSharpPlus.VoiceNext
             return this.VoiceWs.ConnectAsync(gwuri.Uri);
         }
 
-        internal Task ReconnectAsync()
+        internal virtual Task ReconnectAsync()
             => this.VoiceWs.DisconnectAsync();
 
         internal async Task StartAsync()
@@ -311,7 +311,7 @@ namespace DSharpPlus.VoiceNext
             await this.WsSendAsync(vdj).ConfigureAwait(false);
         }
 
-        internal Task WaitForReadyAsync()
+        internal virtual Task WaitForReadyAsync()
             => this.ReadyWait.Task;
 
         internal async Task EnqueuePacketAsync(RawVoicePacket packet, CancellationToken token = default)

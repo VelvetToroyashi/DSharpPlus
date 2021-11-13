@@ -29,7 +29,7 @@ namespace DSharpPlus.CommandsNext.Executors
     /// <summary>
     /// Executes commands using <see cref="Task.Run(Func{Task})"/>.
     /// </summary>
-    public sealed class AsynchronousCommandExecutor : ICommandExecutor
+    public class AsynchronousCommandExecutor : ICommandExecutor
     {
         Task ICommandExecutor.ExecuteAsync(CommandContext ctx)
         {

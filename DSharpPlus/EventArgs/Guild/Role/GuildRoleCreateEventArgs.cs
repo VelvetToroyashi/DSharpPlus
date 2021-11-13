@@ -33,12 +33,12 @@ namespace DSharpPlus.EventArgs
         /// <summary>
         /// Gets the guild in which the role was created.
         /// </summary>
-        public DiscordGuild Guild { get; internal set; }
+        public virtual DiscordGuild Guild { get; internal set; }
 
         /// <summary>
         /// Gets the role that was created.
         /// </summary>
-        public DiscordRole Role { get; internal set; }
+        public virtual DiscordRole Role { get; internal set; }
 
         internal GuildRoleCreateEventArgs() : base() { }
     }

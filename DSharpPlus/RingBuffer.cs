@@ -37,12 +37,12 @@ namespace DSharpPlus
         /// <summary>
         /// Gets the current index of the buffer items.
         /// </summary>
-        public int CurrentIndex { get; protected set; }
+        public virtual int CurrentIndex { get; protected set; }
 
         /// <summary>
         /// Gets the capacity of this ring buffer.
         /// </summary>
-        public int Capacity { get; protected set; }
+        public virtual int Capacity { get; protected set; }
 
         /// <summary>
         /// Gets the number of items in this ring buffer.

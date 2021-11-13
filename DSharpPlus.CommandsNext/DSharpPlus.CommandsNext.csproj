@@ -11,8 +11,8 @@
   </PropertyGroup>
 
   <PropertyGroup>
-    <PackageId>DSharpPlus.CommandsNext</PackageId>
-    <Description>Advanced command framework for DSharpPlus.</Description>
+    <PackageId>VTP.DSP.CommandsNext</PackageId>
+    <Description>Mangled version of CommandsNext. Not recommended to use.</Description>
     <PackageTags>discord, discord-api, bots, discord-bots, chat, dsharp, dsharpplus, csharp, dotnet, vb-net, fsharp, commands, commandsnext</PackageTags>
   </PropertyGroup>
 

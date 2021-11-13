@@ -39,7 +39,7 @@ using Newtonsoft.Json.Linq;
 
 namespace DSharpPlus
 {
-    public sealed partial class DiscordClient
+    public partial class DiscordClient
     {
         #region Private Fields
 
@@ -600,7 +600,7 @@ namespace DSharpPlus
             await this._ready.InvokeAsync(this, new ReadyEventArgs()).ConfigureAwait(false);
         }
 
-        internal Task OnResumedAsync()
+        internal virtual Task OnResumedAsync()
         {
             this.Logger.LogInformation(LoggerEvents.SessionUpdate, "Session resumed");
             return this._resumed.InvokeAsync(this, new ReadyEventArgs());

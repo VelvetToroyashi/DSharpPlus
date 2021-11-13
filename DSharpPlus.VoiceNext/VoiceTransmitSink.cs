@@ -38,7 +38,7 @@ namespace DSharpPlus.VoiceNext
     /// <summary>
     /// Sink used to transmit audio data via <see cref="VoiceNextConnection"/>.
     /// </summary>
-    public sealed class VoiceTransmitSink : IDisposable
+    public class VoiceTransmitSink : IDisposable
     {
         /// <summary>
         /// Gets the PCM sample duration for this sink.
@@ -47,7 +47,7 @@ namespace DSharpPlus.VoiceNext
             => this.PcmBufferDuration;
 
         /// <summary>
-        /// Gets the length of the PCM buffer for this sink. 
+        /// Gets the length of the PCM buffer for this sink.
         /// Written packets should adhere to this size, but the sink will adapt to fit.
         /// </summary>
         public int SampleLength

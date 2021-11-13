@@ -34,23 +34,23 @@ namespace DSharpPlus.EventArgs
         /// <summary>
         /// Gets the channel in which the indicator was triggered.
         /// </summary>
-        public DiscordChannel Channel { get; internal set; }
+        public virtual DiscordChannel Channel { get; internal set; }
 
         /// <summary>
         /// Gets the user that started typing.
         /// <para>This can be cast to a <see cref="DiscordMember"/> if the typing occurred in a guild.</para>
         /// </summary>
-        public DiscordUser User { get; internal set; }
+        public virtual DiscordUser User { get; internal set; }
 
         /// <summary>
         /// Gets the guild in which the indicator was triggered.
         /// </summary>
-        public DiscordGuild Guild { get; internal set; }
+        public virtual DiscordGuild Guild { get; internal set; }
 
         /// <summary>
         /// Gets the date and time at which the user started typing.
         /// </summary>
-        public DateTimeOffset StartedAt { get; internal set; }
+        public virtual DateTimeOffset StartedAt { get; internal set; }
 
         internal TypingStartEventArgs() : base() { }
     }

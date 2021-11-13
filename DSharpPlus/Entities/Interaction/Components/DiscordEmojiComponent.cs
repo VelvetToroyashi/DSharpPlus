@@ -28,19 +28,19 @@ namespace DSharpPlus.Entities
     /// <summary>
     /// Represents an emoji to add to a component.
     /// </summary>
-    public sealed class DiscordComponentEmoji
+    public class DiscordComponentEmoji
     {
         /// <summary>
         /// The Id of the emoji to use.
         /// </summary>
         [JsonProperty("id", NullValueHandling = NullValueHandling.Ignore)]
-        public ulong Id { get; set; }
+        public virtual ulong Id { get; set; }
 
         /// <summary>
         /// The name of the emoji to use. Ignored if <see cref="Id"/> is set.
         /// </summary>
         [JsonProperty("name", NullValueHandling = NullValueHandling.Ignore)]
-        public string Name { get; set; }
+        public virtual string Name { get; set; }
 
         /// <summary>
         /// Constructs a new component emoji to add to a <see cref="DiscordComponent"/>.

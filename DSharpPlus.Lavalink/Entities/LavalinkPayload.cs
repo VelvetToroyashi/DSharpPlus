@@ -28,10 +28,10 @@ namespace DSharpPlus.Lavalink.Entities
     internal abstract class LavalinkPayload
     {
         [JsonProperty("op")]
-        public string Operation { get; }
+        public virtual string Operation { get; }
 
         [JsonProperty("guildId", NullValueHandling = NullValueHandling.Ignore)]
-        public string GuildId { get; }
+        public virtual string GuildId { get; }
 
         internal LavalinkPayload(string opcode)
         {

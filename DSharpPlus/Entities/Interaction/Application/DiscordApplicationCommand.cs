@@ -32,31 +32,31 @@ namespace DSharpPlus.Entities
     /// <summary>
     /// Represents a command that is registered to an application.
     /// </summary>
-    public sealed class DiscordApplicationCommand : SnowflakeObject, IEquatable<DiscordApplicationCommand>
+    public class DiscordApplicationCommand : SnowflakeObject, IEquatable<DiscordApplicationCommand>
     {
         /// <summary>
         /// Gets the unique ID of this command's application.
         /// </summary>
         [JsonProperty("application_id")]
-        public ulong ApplicationId { get; internal set; }
+        public virtual ulong ApplicationId { get; internal set; }
 
         /// <summary>
         /// Gets the type of this application command.
         /// </summary>
         [JsonProperty("type")]
-        public ApplicationCommandType Type { get; internal set; }
+        public virtual ApplicationCommandType Type { get; internal set; }
 
         /// <summary>
         /// Gets the name of this command.
         /// </summary>
         [JsonProperty("name")]
-        public string Name { get; internal set; }
+        public virtual string Name { get; internal set; }
 
         /// <summary>
         /// Gets the description of this command.
         /// </summary>
         [JsonProperty("description")]
-        public string Description { get; internal set; }
+        public virtual string Description { get; internal set; }
 
         /// <summary>
         /// Gets the potential parameters for this command.
@@ -74,7 +74,7 @@ namespace DSharpPlus.Entities
         /// Gets the autoincrementing version number for this command.
         /// </summary>
         [JsonProperty("version")]
-        public ulong Version { get; internal set; }
+        public virtual ulong Version { get; internal set; }
 
         /// <summary>
         /// Creates a new instance of a <see cref="DiscordApplicationCommand"/>.

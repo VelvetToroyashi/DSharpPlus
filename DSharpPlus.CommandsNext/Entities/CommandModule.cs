@@ -51,7 +51,7 @@ namespace DSharpPlus.CommandsNext.Entities
         /// <summary>
         /// Gets the type of this module.
         /// </summary>
-        public Type ModuleType { get; }
+        public virtual Type ModuleType { get; }
 
         /// <summary>
         /// Creates a new transient module.
@@ -79,12 +79,12 @@ namespace DSharpPlus.CommandsNext.Entities
         /// <summary>
         /// Gets the type of this module.
         /// </summary>
-        public Type ModuleType { get; }
+        public virtual Type ModuleType { get; }
 
         /// <summary>
         /// Gets this module's instance.
         /// </summary>
-        public BaseCommandModule Instance { get; }
+        public virtual BaseCommandModule Instance { get; }
 
         /// <summary>
         /// Creates a new singleton module, and instantiates it.

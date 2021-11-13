@@ -28,25 +28,25 @@ namespace DSharpPlus.Net.Abstractions
     internal class TransportUser
     {
         [JsonProperty("id")]
-        public ulong Id { get; internal set; }
+        public virtual ulong Id { get; internal set; }
 
         [JsonProperty("username", NullValueHandling = NullValueHandling.Ignore)]
-        public string Username { get; internal set; }
+        public virtual string Username { get; internal set; }
 
         [JsonProperty("discriminator", NullValueHandling = NullValueHandling.Ignore)]
         internal string Discriminator { get; set; }
 
         [JsonProperty("avatar", NullValueHandling = NullValueHandling.Ignore)]
-        public string AvatarHash { get; internal set; }
+        public virtual string AvatarHash { get; internal set; }
 
         [JsonProperty("banner", NullValueHandling = NullValueHandling.Ignore)]
-        public string BannerHash { get; internal set; }
+        public virtual string BannerHash { get; internal set; }
 
         [JsonProperty("accent_color")]
         public int? BannerColor { get; internal set; }
 
         [JsonProperty("bot", NullValueHandling = NullValueHandling.Ignore)]
-        public bool IsBot { get; internal set; }
+        public virtual bool IsBot { get; internal set; }
 
         [JsonProperty("mfa_enabled", NullValueHandling = NullValueHandling.Ignore)]
         public bool? MfaEnabled { get; internal set; }
@@ -55,13 +55,13 @@ namespace DSharpPlus.Net.Abstractions
         public bool? Verified { get; internal set; }
 
         [JsonProperty("email", NullValueHandling = NullValueHandling.Ignore)]
-        public string Email { get; internal set; }
+        public virtual string Email { get; internal set; }
 
         [JsonProperty("premium_type", NullValueHandling = NullValueHandling.Ignore)]
         public PremiumType? PremiumType { get; internal set; }
 
         [JsonProperty("locale", NullValueHandling = NullValueHandling.Ignore)]
-        public string Locale { get; internal set; }
+        public virtual string Locale { get; internal set; }
 
         [JsonProperty("flags", NullValueHandling = NullValueHandling.Ignore)]
         public UserFlags? OAuthFlags { get; internal set; }

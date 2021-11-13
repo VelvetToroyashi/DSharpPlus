@@ -37,17 +37,17 @@ namespace DSharpPlus.Lavalink.EventArgs
     /// <summary>
     /// Represents arguments for a track playback start event.
     /// </summary>
-    public sealed class TrackStartEventArgs : AsyncEventArgs
+    public class TrackStartEventArgs : AsyncEventArgs
     {
         /// <summary>
         /// Gets the track that started playing.
         /// </summary>
-        public LavalinkTrack Track { get; }
+        public virtual LavalinkTrack Track { get; }
 
         /// <summary>
         /// Gets the player that started playback.
         /// </summary>
-        public LavalinkGuildConnection Player { get; }
+        public virtual LavalinkGuildConnection Player { get; }
 
         internal TrackStartEventArgs(LavalinkGuildConnection lvl, LavalinkTrack track)
         {
@@ -65,22 +65,22 @@ namespace DSharpPlus.Lavalink.EventArgs
     /// <summary>
     /// Represents arguments for a track playback finish event.
     /// </summary>
-    public sealed class TrackFinishEventArgs : AsyncEventArgs
+    public class TrackFinishEventArgs : AsyncEventArgs
     {
         /// <summary>
         /// Gets the track that finished playing.
         /// </summary>
-        public LavalinkTrack Track { get; }
+        public virtual LavalinkTrack Track { get; }
 
         /// <summary>
         /// Gets the reason why the track stopped playing.
         /// </summary>
-        public TrackEndReason Reason { get; }
+        public virtual TrackEndReason Reason { get; }
 
         /// <summary>
         /// Gets the player that finished playback.
         /// </summary>
-        public LavalinkGuildConnection Player { get; }
+        public virtual LavalinkGuildConnection Player { get; }
 
         internal TrackFinishEventArgs(LavalinkGuildConnection lvl, LavalinkTrack track, TrackEndReason reason)
         {
@@ -130,22 +130,22 @@ namespace DSharpPlus.Lavalink.EventArgs
     /// <summary>
     /// Represents event arguments for a track stuck event.
     /// </summary>
-    public sealed class TrackStuckEventArgs : AsyncEventArgs
+    public class TrackStuckEventArgs : AsyncEventArgs
     {
         /// <summary>
         /// Gets the millisecond threshold for the stuck event.
         /// </summary>
-        public long ThresholdMilliseconds { get; }
+        public virtual long ThresholdMilliseconds { get; }
 
         /// <summary>
         /// Gets the track that got stuck.
         /// </summary>
-        public LavalinkTrack Track { get; }
+        public virtual LavalinkTrack Track { get; }
 
         /// <summary>
         /// Gets the player that got stuck.
         /// </summary>
-        public LavalinkGuildConnection Player { get; }
+        public virtual LavalinkGuildConnection Player { get; }
 
         internal TrackStuckEventArgs(LavalinkGuildConnection lvl, long thresholdMs, LavalinkTrack track)
         {
@@ -164,22 +164,22 @@ namespace DSharpPlus.Lavalink.EventArgs
     /// <summary>
     /// Represents event arguments for a track exception event.
     /// </summary>
-    public sealed class TrackExceptionEventArgs : AsyncEventArgs
+    public class TrackExceptionEventArgs : AsyncEventArgs
     {
         /// <summary>
         /// Gets the error that occurred during playback.
         /// </summary>
-        public string Error { get; }
+        public virtual string Error { get; }
 
         /// <summary>
         /// Gets the track that got stuck.
         /// </summary>
-        public LavalinkTrack Track { get; }
+        public virtual LavalinkTrack Track { get; }
 
         /// <summary>
         /// Gets the player that got stuck.
         /// </summary>
-        public LavalinkGuildConnection Player { get; }
+        public virtual LavalinkGuildConnection Player { get; }
 
         internal TrackExceptionEventArgs(LavalinkGuildConnection lvl, string error, LavalinkTrack track)
         {

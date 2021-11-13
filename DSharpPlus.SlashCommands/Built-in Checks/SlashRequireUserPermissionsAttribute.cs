@@ -7,17 +7,17 @@ namespace DSharpPlus.SlashCommands.Attributes
     /// Defines that usage of this command is restricted to members with specified permissions.
     /// </summary>
     [AttributeUsage(AttributeTargets.Method | AttributeTargets.Class, AllowMultiple = false, Inherited = false)]
-    public sealed class SlashRequireUserPermissionsAttribute : SlashCheckBaseAttribute
+    public class SlashRequireUserPermissionsAttribute : SlashCheckBaseAttribute
     {
         /// <summary>
         /// Gets the permissions required by this attribute.
         /// </summary>
-        public Permissions Permissions { get; }
+        public virtual Permissions Permissions { get; }
 
         /// <summary>
         /// Gets or sets this check's behaviour in DMs. True means the check will always pass in DMs, whereas false means that it will always fail.
         /// </summary>
-        public bool IgnoreDms { get; } = true;
+        public virtual bool IgnoreDms { get; } = true;
 
         /// <summary>
         /// Defines that usage of this command is restricted to members with specified permissions.

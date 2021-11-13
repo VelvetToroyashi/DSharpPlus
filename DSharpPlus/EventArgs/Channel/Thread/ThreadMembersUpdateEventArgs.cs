@@ -34,7 +34,7 @@ namespace DSharpPlus.EventArgs
         /// <summary>
         /// Gets the approximate number of members in the thread, capped at 50.
         /// </summary>
-        public int MemberCount { get; internal set; }
+        public virtual int MemberCount { get; internal set; }
 
         /// <summary>
         /// Gets the members who were removed from the thread. These could be skeleton objects depending on cache state.
@@ -49,12 +49,12 @@ namespace DSharpPlus.EventArgs
         /// <summary>
         /// Gets the thread associated with the member changes.
         /// </summary>
-        public DiscordThreadChannel Thread { get; internal set; }
+        public virtual DiscordThreadChannel Thread { get; internal set; }
 
         /// <summary>
         /// Gets the guild.
         /// </summary>
-        public DiscordGuild Guild { get; internal set; }
+        public virtual DiscordGuild Guild { get; internal set; }
 
         internal ThreadMembersUpdateEventArgs() : base() { }
     }

@@ -33,7 +33,7 @@ namespace DSharpPlus.EventArgs
         /// <summary>
         /// Gets the stage instance that was created.
         /// </summary>
-        public DiscordStageInstance StageInstance { get; internal set; }
+        public virtual DiscordStageInstance StageInstance { get; internal set; }
 
         /// <summary>
         /// Gets the guild the stage instance was created in.

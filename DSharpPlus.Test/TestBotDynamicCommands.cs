@@ -35,7 +35,7 @@ using Microsoft.CodeAnalysis.CSharp;
 
 namespace DSharpPlus.Test
 {
-    public sealed class TestBotDynamicCommands : BaseCommandModule
+    public class TestBotDynamicCommands : BaseCommandModule
     {
         [Command("add"), Aliases("register"), Description("Dynamically registers a command from given source code."), Hidden, RequireOwner]
         public async Task AddCommandAsync(CommandContext ctx, string code)
@@ -52,7 +52,7 @@ namespace DSharpPlus.Test
             var cs = code.Substring(cs1, cs2 - cs1);
 
             // I hate this
-            cs = $"[ModuleLifespan(ModuleLifespan.Transient)]\npublic sealed class DynamicCommands : BaseCommandModule\n{{\n{cs}\n}}";
+            cs = $"[ModuleLifespan(ModuleLifespan.Transient)]\npublic class DynamicCommands : BaseCommandModule\n{{\n{cs}\n}}";
 
             msg = await ctx.RespondAsync(new DiscordEmbedBuilder()
                 .WithColor(new DiscordColor("#FF007F"))

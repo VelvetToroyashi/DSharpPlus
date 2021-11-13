@@ -38,7 +38,7 @@ namespace DSharpPlus.CommandsNext
         /// <summary>
         /// Gets this command's name.
         /// </summary>
-        public string Name { get; internal set; }
+        public virtual string Name { get; internal set; }
 
         /// <summary>
         /// Gets this command's qualified name (i.e. one that includes all module names).
@@ -54,17 +54,17 @@ namespace DSharpPlus.CommandsNext
         /// <summary>
         /// Gets this command's parent module, if any.
         /// </summary>
-        public CommandGroup Parent { get; internal set; }
+        public virtual CommandGroup Parent { get; internal set; }
 
         /// <summary>
         /// Gets this command's description.
         /// </summary>
-        public string Description { get; internal set; }
+        public virtual string Description { get; internal set; }
 
         /// <summary>
         /// Gets whether this command is hidden.
         /// </summary>
-        public bool IsHidden { get; internal set; }
+        public virtual bool IsHidden { get; internal set; }
 
         /// <summary>
         /// Gets a collection of pre-execution checks for this command.
@@ -79,7 +79,7 @@ namespace DSharpPlus.CommandsNext
         /// <summary>
         /// Gets the module in which this command is defined.
         /// </summary>
-        public ICommandModule Module { get; internal set; }
+        public virtual ICommandModule Module { get; internal set; }
 
         /// <summary>
         /// Gets the custom attributes defined on this command.

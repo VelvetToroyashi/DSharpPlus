@@ -33,7 +33,7 @@ namespace DSharpPlus.EventArgs
         /// <summary>
         /// Gets the message for which the update occurred.
         /// </summary>
-        public DiscordMessage Message { get; internal set; }
+        public virtual DiscordMessage Message { get; internal set; }
 
         /// <summary>
         /// Gets the channel to which this message belongs.

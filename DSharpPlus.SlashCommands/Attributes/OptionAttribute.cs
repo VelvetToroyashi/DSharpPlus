@@ -6,22 +6,22 @@ namespace DSharpPlus.SlashCommands
     /// Marks this parameter as an option for a slash command.
     /// </summary>
     [AttributeUsage(AttributeTargets.Parameter, AllowMultiple = false)]
-    public sealed class OptionAttribute : Attribute
+    public class OptionAttribute : Attribute
     {
         /// <summary>
         /// Gets the name of this option.
         /// </summary>
-        public string Name { get; }
+        public virtual string Name { get; }
 
         /// <summary>
         /// Gets the description of this option.
         /// </summary>
-        public string Description { get; }
+        public virtual string Description { get; }
 
         /// <summary>
         /// Gets whether this option should autocomplete.
         /// </summary>
-        public bool Autocomplete { get; }
+        public virtual bool Autocomplete { get; }
 
         /// <summary>
         /// Marks this parameter as an option for a slash command.

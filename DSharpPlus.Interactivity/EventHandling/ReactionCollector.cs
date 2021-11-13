@@ -232,8 +232,8 @@ namespace DSharpPlus.Interactivity.EventHandling
 
     public class Reaction
     {
-        public DiscordEmoji Emoji { get; internal set; }
+        public virtual DiscordEmoji Emoji { get; internal set; }
         public ConcurrentHashSet<DiscordUser> Users { get; internal set; }
-        public int Total => this.Users.Count;
+        public virtual int Total => this.Users.Count;
     }
 }

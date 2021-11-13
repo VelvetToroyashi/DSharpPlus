@@ -40,12 +40,12 @@ namespace DSharpPlus.Lavalink
     /// <summary>
     /// Represents a class for Lavalink REST calls.
     /// </summary>
-    public sealed class LavalinkRestClient
+    public class LavalinkRestClient
     {
         /// <summary>
         /// Gets the REST connection endpoint for this client.
         /// </summary>
-        public ConnectionEndpoint RestEndpoint { get; private set; }
+        public virtual ConnectionEndpoint RestEndpoint { get; private set; }
 
         private HttpClient _http;
 
@@ -195,7 +195,7 @@ namespace DSharpPlus.Lavalink
         /// </summary>
         /// <param name="address">The IP address name to unmark.</param>
         /// <returns></returns>
-        public Task FreeAddressAsync(string address)
+        public virtual Task FreeAddressAsync(string address)
         {
             var routeFreeAddressUri = new Uri($"{this.RestEndpoint.ToHttpString()}{Endpoints.ROUTE_PLANNER}{Endpoints.FREE_ADDRESS}");
             return this.InternalFreeAddressAsync(routeFreeAddressUri, address);
@@ -205,7 +205,7 @@ namespace DSharpPlus.Lavalink
         /// Unmarks all failed route planner IP Addresses.
         /// </summary>
         /// <returns></returns>
-        public Task FreeAllAddressesAsync()
+        public virtual Task FreeAllAddressesAsync()
         {
             var routeFreeAllAddressesUri = new Uri($"{this.RestEndpoint.ToHttpString()}{Endpoints.ROUTE_PLANNER}{Endpoints.FREE_ALL}");
             return this.InternalFreeAllAddressesAsync(routeFreeAllAddressesUri);

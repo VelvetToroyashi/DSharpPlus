@@ -30,27 +30,27 @@ namespace DSharpPlus.Entities
     /// <summary>
     /// Represents a Discord permission overwrite builder.
     /// </summary>
-    public sealed class DiscordOverwriteBuilder
+    public class DiscordOverwriteBuilder
     {
         /// <summary>
         /// Gets or sets the allowed permissions for this overwrite.
         /// </summary>
-        public Permissions Allowed { get; set; }
+        public virtual Permissions Allowed { get; set; }
 
         /// <summary>
         /// Gets or sets the denied permissions for this overwrite.
         /// </summary>
-        public Permissions Denied { get; set; }
+        public virtual Permissions Denied { get; set; }
 
         /// <summary>
         /// Gets the type of this overwrite's target.
         /// </summary>
-        public OverwriteType Type { get; private set; }
+        public virtual OverwriteType Type { get; private set; }
 
         /// <summary>
         /// Gets the target for this overwrite.
         /// </summary>
-        public SnowflakeObject Target { get; private set; }
+        public virtual SnowflakeObject Target { get; private set; }
 
         /// <summary>
         /// Creates a new Discord permission overwrite builder for a member. This class can be used to construct permission overwrites for guild channels, used when creating channels.

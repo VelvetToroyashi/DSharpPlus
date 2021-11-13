@@ -33,7 +33,7 @@ using Emzi0767.Utilities;
 
 namespace DSharpPlus.Lavalink
 {
-    public sealed class LavalinkExtension : BaseExtension
+    public class LavalinkExtension : BaseExtension
     {
         /// <summary>
         /// Triggered whenever a node disconnects.

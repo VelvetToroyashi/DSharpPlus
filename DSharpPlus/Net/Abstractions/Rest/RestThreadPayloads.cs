@@ -27,13 +27,13 @@ using Newtonsoft.Json;
 
 namespace DSharpPlus.Net.Abstractions
 {
-    internal sealed class RestThreadCreatePayload
+    internal class RestThreadCreatePayload
     {
         [JsonProperty("name")]
-        public string Name { get; set; }
+        public virtual string Name { get; set; }
 
         [JsonProperty("auto_archive_duration", NullValueHandling = NullValueHandling.Ignore)]
-        public AutoArchiveDuration ArchiveAfter { get; set; }
+        public virtual AutoArchiveDuration ArchiveAfter { get; set; }
 
         [JsonProperty("type", NullValueHandling = NullValueHandling.Ignore)]
         public ChannelType? Type { get; set; }

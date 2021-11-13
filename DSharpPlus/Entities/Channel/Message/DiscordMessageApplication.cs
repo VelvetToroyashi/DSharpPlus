@@ -40,7 +40,7 @@ namespace DSharpPlus.Entities
         /// Gets the application's description.
         /// </summary>
         [JsonProperty("description")]
-        public string Description { get; internal set; }
+        public virtual string Description { get; internal set; }
 
         /// <summary>
         /// Gets the ID of the application's icon.
@@ -52,7 +52,7 @@ namespace DSharpPlus.Entities
         /// Gets the application's name.
         /// </summary>
         [JsonProperty("name")]
-        public string Name { get; internal set; }
+        public virtual string Name { get; internal set; }
 
         internal DiscordMessageApplication() { }
 

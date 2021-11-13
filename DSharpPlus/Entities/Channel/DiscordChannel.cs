@@ -63,19 +63,19 @@ namespace DSharpPlus.Entities
         /// Gets the name of this channel.
         /// </summary>
         [JsonProperty("name", NullValueHandling = NullValueHandling.Ignore)]
-        public string Name { get; internal set; }
+        public virtual string Name { get; internal set; }
 
         /// <summary>
         /// Gets the type of this channel.
         /// </summary>
         [JsonProperty("type", NullValueHandling = NullValueHandling.Ignore)]
-        public ChannelType Type { get; internal set; }
+        public virtual ChannelType Type { get; internal set; }
 
         /// <summary>
         /// Gets the position of this channel.
         /// </summary>
         [JsonProperty("position", NullValueHandling = NullValueHandling.Ignore)]
-        public int Position { get; internal set; }
+        public virtual int Position { get; internal set; }
 
         /// <summary>
         /// Gets whether this channel is a DM channel.
@@ -121,7 +121,7 @@ namespace DSharpPlus.Entities
         /// Gets the channel's topic. This is applicable to text channels only.
         /// </summary>
         [JsonProperty("topic", NullValueHandling = NullValueHandling.Ignore)]
-        public string Topic { get; internal set; }
+        public virtual string Topic { get; internal set; }
 
         /// <summary>
         /// Gets the ID of the last message sent in this channel. This is applicable to text channels only.
@@ -221,7 +221,7 @@ namespace DSharpPlus.Entities
         /// Gets whether this channel is an NSFW channel.
         /// </summary>
         [JsonProperty("nsfw")]
-        public bool IsNSFW { get; internal set; }
+        public virtual bool IsNSFW { get; internal set; }
 
         [JsonProperty("rtc_region", NullValueHandling = NullValueHandling.Ignore)]
         internal string RtcRegionId { get; set; }
@@ -355,7 +355,7 @@ namespace DSharpPlus.Entities
         /// <exception cref="Exceptions.NotFoundException">Thrown when the channel does not exist.</exception>
         /// <exception cref="Exceptions.BadRequestException">Thrown when an invalid parameter was provided.</exception>
         /// <exception cref="Exceptions.ServerErrorException">Thrown when Discord is unable to process the request.</exception>
-        public Task DeleteAsync(string reason = null)
+        public virtual Task DeleteAsync(string reason = null)
             => this.Discord.ApiClient.DeleteChannelAsync(this.Id, reason);
 
         /// <summary>
@@ -421,7 +421,7 @@ namespace DSharpPlus.Entities
         /// <exception cref="Exceptions.NotFoundException">Thrown when the channel does not exist.</exception>
         /// <exception cref="Exceptions.BadRequestException">Thrown when an invalid parameter was provided.</exception>
         /// <exception cref="Exceptions.ServerErrorException">Thrown when Discord is unable to process the request.</exception>
-        public Task ModifyAsync(Action<ChannelEditModel> action)
+        public virtual Task ModifyAsync(Action<ChannelEditModel> action)
         {
             var mdl = new ChannelEditModel();
             action(mdl);
@@ -442,7 +442,7 @@ namespace DSharpPlus.Entities
         /// <exception cref="Exceptions.NotFoundException">Thrown when the channel does not exist.</exception>
         /// <exception cref="Exceptions.BadRequestException">Thrown when an invalid parameter was provided.</exception>
         /// <exception cref="Exceptions.ServerErrorException">Thrown when Discord is unable to process the request.</exception>
-        public Task ModifyPositionAsync(int position, string reason = null, bool? lockPermissions = null, ulong? parentId = null)
+        public virtual Task ModifyPositionAsync(int position, string reason = null, bool? lockPermissions = null, ulong? parentId = null)
         {
             if (this.Guild == null)
                 throw new InvalidOperationException("Cannot modify order of non-guild channels.");
@@ -647,7 +647,7 @@ namespace DSharpPlus.Entities
         /// <exception cref="Exceptions.NotFoundException">Thrown when the channel does not exist.</exception>
         /// <exception cref="Exceptions.BadRequestException">Thrown when an invalid parameter was provided.</exception>
         /// <exception cref="Exceptions.ServerErrorException">Thrown when Discord is unable to process the request.</exception>
-        public Task DeleteMessageAsync(DiscordMessage message, string reason = null)
+        public virtual Task DeleteMessageAsync(DiscordMessage message, string reason = null)
             => this.Discord.ApiClient.DeleteMessageAsync(this.Id, message.Id, reason);
 
         /// <summary>
@@ -693,7 +693,7 @@ namespace DSharpPlus.Entities
         /// <exception cref="Exceptions.NotFoundException">Thrown when the channel does not exist.</exception>
         /// <exception cref="Exceptions.BadRequestException">Thrown when an invalid parameter was provided.</exception>
         /// <exception cref="Exceptions.ServerErrorException">Thrown when Discord is unable to process the request.</exception>
-        public Task AddOverwriteAsync(DiscordMember member, Permissions allow = Permissions.None, Permissions deny = Permissions.None, string reason = null)
+        public virtual Task AddOverwriteAsync(DiscordMember member, Permissions allow = Permissions.None, Permissions deny = Permissions.None, string reason = null)
             => this.Discord.ApiClient.EditChannelPermissionsAsync(this.Id, member.Id, allow, deny, "member", reason);
 
         /// <summary>
@@ -708,7 +708,7 @@ namespace DSharpPlus.Entities
         /// <exception cref="Exceptions.NotFoundException">Thrown when the channel does not exist.</exception>
         /// <exception cref="Exceptions.BadRequestException">Thrown when an invalid parameter was provided.</exception>
         /// <exception cref="Exceptions.ServerErrorException">Thrown when Discord is unable to process the request.</exception>
-        public Task AddOverwriteAsync(DiscordRole role, Permissions allow = Permissions.None, Permissions deny = Permissions.None, string reason = null)
+        public virtual Task AddOverwriteAsync(DiscordRole role, Permissions allow = Permissions.None, Permissions deny = Permissions.None, string reason = null)
             => this.Discord.ApiClient.EditChannelPermissionsAsync(this.Id, role.Id, allow, deny, "role", reason);
 
         /// <summary>
@@ -721,7 +721,7 @@ namespace DSharpPlus.Entities
         /// <exception cref="Exceptions.NotFoundException">Thrown when the channel does not exist.</exception>
         /// <exception cref="Exceptions.BadRequestException">Thrown when an invalid parameter was provided.</exception>
         /// <exception cref="Exceptions.ServerErrorException">Thrown when Discord is unable to process the request.</exception>
-        public Task DeleteOverwriteAsync(DiscordMember member, string reason = null)
+        public virtual Task DeleteOverwriteAsync(DiscordMember member, string reason = null)
             => this.Discord.ApiClient.DeleteChannelPermissionAsync(this.Id, member.Id, reason);
 
         /// <summary>
@@ -734,7 +734,7 @@ namespace DSharpPlus.Entities
         /// <exception cref="Exceptions.NotFoundException">Thrown when the channel does not exist.</exception>
         /// <exception cref="Exceptions.BadRequestException">Thrown when an invalid parameter was provided.</exception>
         /// <exception cref="Exceptions.ServerErrorException">Thrown when Discord is unable to process the request.</exception>
-        public Task DeleteOverwriteAsync(DiscordRole role, string reason = null)
+        public virtual Task DeleteOverwriteAsync(DiscordRole role, string reason = null)
             => this.Discord.ApiClient.DeleteChannelPermissionAsync(this.Id, role.Id, reason);
 
         /// <summary>
@@ -744,7 +744,7 @@ namespace DSharpPlus.Entities
         /// <exception cref="Exceptions.NotFoundException">Thrown when the channel does not exist.</exception>
         /// <exception cref="Exceptions.BadRequestException">Thrown when an invalid parameter was provided.</exception>
         /// <exception cref="Exceptions.ServerErrorException">Thrown when Discord is unable to process the request.</exception>
-        public Task TriggerTypingAsync()
+        public virtual Task TriggerTypingAsync()
         {
             return this.Type != ChannelType.Text &&
                 this.Type != ChannelType.PublicThread &&
@@ -917,7 +917,7 @@ namespace DSharpPlus.Entities
         /// Deletes the stage instance in this stage channel.
         /// </summary>
         /// <param name="reason">The reason the stage instance was deleted.</param>
-        public Task DeleteStageInstanceAsync(string reason = null)
+        public virtual Task DeleteStageInstanceAsync(string reason = null)
             => this.Discord.ApiClient.DeleteStageInstanceAsync(this.Id, reason);
 
         /// <summary>

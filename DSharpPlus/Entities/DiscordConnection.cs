@@ -35,25 +35,25 @@ namespace DSharpPlus.Entities
         /// Gets the id of the connection account
         /// </summary>
         [JsonProperty("id")]
-        public string Id { get; internal set; }
+        public virtual string Id { get; internal set; }
 
         /// <summary>
         /// Gets the username of the connection account.
         /// </summary>
         [JsonProperty("name")]
-        public string Name { get; set; }
+        public virtual string Name { get; set; }
 
         /// <summary>
         /// Gets the service of the connection (twitch, youtube, steam, twitter, facebook, spotify, leagueoflegends, reddit)
         /// </summary>
         [JsonProperty("type")]
-        public string Type { get; set; }
+        public virtual string Type { get; set; }
 
         /// <summary>
         /// Gets whether the connection is revoked.
         /// </summary>
         [JsonProperty("revoked")]
-        public bool IsRevoked { get; internal set; }
+        public virtual bool IsRevoked { get; internal set; }
 
         /// <summary>
         /// Gets a collection of partial server integrations.

@@ -34,13 +34,13 @@ namespace DSharpPlus.Entities
         /// Gets the id of the channel.
         /// </summary>
         [JsonProperty("channel_id", NullValueHandling = NullValueHandling.Ignore)]
-        public ulong ChannelId { get; internal set; }
+        public virtual ulong ChannelId { get; internal set; }
 
         /// <summary>
         /// Gets the description shown for the channel.
         /// </summary>
         [JsonProperty("description", NullValueHandling = NullValueHandling.Ignore)]
-        public string Description { get; internal set; }
+        public virtual string Description { get; internal set; }
 
         /// <summary>
         /// Gets the emoji id if the emoji is custom, when applicable.
@@ -52,7 +52,7 @@ namespace DSharpPlus.Entities
         /// Gets the name of the emoji if custom or the unicode character if standard, when applicable.
         /// </summary>
         [JsonProperty("emoji_name", NullValueHandling = NullValueHandling.Ignore)]
-        public string EmojiName { get; internal set; }
+        public virtual string EmojiName { get; internal set; }
 
         public DiscordGuildWelcomeScreenChannel(ulong channelId, string description, DiscordEmoji emoji = null)
         {

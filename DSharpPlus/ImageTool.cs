@@ -30,7 +30,7 @@ namespace DSharpPlus
     /// <summary>
     /// Tool to detect image formats and convert from binary data to base64 strings.
     /// </summary>
-    public sealed class ImageTool : IDisposable
+    public class ImageTool : IDisposable
     {
         private const ulong PNG_MAGIC = 0x0A1A_0A0D_474E_5089;
         private const ushort JPEG_MAGIC_1 = 0xD8FF;
@@ -47,7 +47,7 @@ namespace DSharpPlus
         /// <summary>
         /// Gets the stream this tool is operating on.
         /// </summary>
-        public Stream SourceStream { get; }
+        public virtual Stream SourceStream { get; }
 
         private ImageFormat _ifcache;
         private string _b64cache;

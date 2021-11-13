@@ -41,25 +41,25 @@ namespace DSharpPlus.Entities
         /// Gets the ID of the guild this webhook belongs to.
         /// </summary>
         [JsonProperty("guild_id", NullValueHandling = NullValueHandling.Ignore)]
-        public ulong GuildId { get; internal set; }
+        public virtual ulong GuildId { get; internal set; }
 
         /// <summary>
         /// Gets the ID of the channel this webhook belongs to.
         /// </summary>
         [JsonProperty("channel_id", NullValueHandling = NullValueHandling.Ignore)]
-        public ulong ChannelId { get; internal set; }
+        public virtual ulong ChannelId { get; internal set; }
 
         /// <summary>
         /// Gets the user this webhook was created by.
         /// </summary>
         [JsonProperty("user", NullValueHandling = NullValueHandling.Ignore)]
-        public DiscordUser User { get; internal set; }
+        public virtual DiscordUser User { get; internal set; }
 
         /// <summary>
         /// Gets the default name of this webhook.
         /// </summary>
         [JsonProperty("name", NullValueHandling = NullValueHandling.Ignore)]
-        public string Name { get; internal set; }
+        public virtual string Name { get; internal set; }
 
         /// <summary>
         /// Gets hash of the default avatar for this webhook.
@@ -77,25 +77,25 @@ namespace DSharpPlus.Entities
         /// Gets the secure token of this webhook.
         /// </summary>
         [JsonProperty("token", NullValueHandling = NullValueHandling.Ignore)]
-        public string Token { get; internal set; }
+        public virtual string Token { get; internal set; }
 
         /// <summary>
         /// A partial guild object for the guild of the channel this channel follower webhook is following.
         /// </summary>
         [JsonProperty("source_guild", NullValueHandling = NullValueHandling.Ignore)]
-        public DiscordGuild SourceGuild { get; internal set; }
+        public virtual DiscordGuild SourceGuild { get; internal set; }
 
         /// <summary>
         /// A partial channel object for the channel this channel follower webhook is following.
         /// </summary>
         [JsonProperty("source_channel", NullValueHandling = NullValueHandling.Ignore)]
-        public DiscordChannel SourceChannel { get; internal set; }
+        public virtual DiscordChannel SourceChannel { get; internal set; }
 
         /// <summary>
         /// Gets the webhook's url. Only returned when using the webhook.incoming OAuth2 scope.
         /// </summary>
         [JsonProperty("url", NullValueHandling = NullValueHandling.Ignore)]
-        public string Url { get; internal set; }
+        public virtual string Url { get; internal set; }
 
         internal DiscordWebhook() { }
 
@@ -133,7 +133,7 @@ namespace DSharpPlus.Entities
         /// <exception cref="Exceptions.NotFoundException">Thrown when the webhook does not exist.</exception>
         /// <exception cref="Exceptions.BadRequestException">Thrown when an invalid parameter was provided.</exception>
         /// <exception cref="Exceptions.ServerErrorException">Thrown when Discord is unable to process the request.</exception>
-        public Task DeleteAsync()
+        public virtual Task DeleteAsync()
             => this.Discord.ApiClient.DeleteWebhookAsync(this.Id, this.Token);
 
         /// <summary>
@@ -154,7 +154,7 @@ namespace DSharpPlus.Entities
         /// <exception cref="Exceptions.NotFoundException">Thrown when the webhook does not exist.</exception>
         /// <exception cref="Exceptions.BadRequestException">Thrown when an invalid parameter was provided.</exception>
         /// <exception cref="Exceptions.ServerErrorException">Thrown when Discord is unable to process the request.</exception>
-        public Task ExecuteSlackAsync(string json)
+        public virtual Task ExecuteSlackAsync(string json)
             => (this.Discord?.ApiClient ?? this.ApiClient).ExecuteWebhookSlackAsync(this.Id, this.Token, json);
 
         /// <summary>
@@ -165,7 +165,7 @@ namespace DSharpPlus.Entities
         /// <exception cref="Exceptions.NotFoundException">Thrown when the webhook does not exist.</exception>
         /// <exception cref="Exceptions.BadRequestException">Thrown when an invalid parameter was provided.</exception>
         /// <exception cref="Exceptions.ServerErrorException">Thrown when Discord is unable to process the request.</exception>
-        public Task ExecuteGithubAsync(string json)
+        public virtual Task ExecuteGithubAsync(string json)
             => (this.Discord?.ApiClient ?? this.ApiClient).ExecuteWebhookGithubAsync(this.Id, this.Token, json);
 
         /// <summary>
@@ -202,7 +202,7 @@ namespace DSharpPlus.Entities
         /// <exception cref="Exceptions.NotFoundException">Thrown when the webhook does not exist.</exception>
         /// <exception cref="Exceptions.BadRequestException">Thrown when an invalid parameter was provided.</exception>
         /// <exception cref="Exceptions.ServerErrorException">Thrown when Discord is unable to process the request.</exception>
-        public Task DeleteMessageAsync(ulong messageId)
+        public virtual Task DeleteMessageAsync(ulong messageId)
             => (this.Discord?.ApiClient ?? this.ApiClient).DeleteWebhookMessageAsync(this.Id, this.Token, messageId);
 
         /// <summary>

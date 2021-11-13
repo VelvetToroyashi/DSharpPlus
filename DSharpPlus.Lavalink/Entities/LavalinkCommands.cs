@@ -27,13 +27,13 @@ using Newtonsoft.Json;
 
 namespace DSharpPlus.Lavalink.Entities
 {
-    internal sealed class LavalinkConfigureResume : LavalinkPayload
+    internal class LavalinkConfigureResume : LavalinkPayload
     {
         [JsonProperty("key")]
-        public string Key { get; }
+        public virtual string Key { get; }
 
         [JsonProperty("timeout")]
-        public int Timeout { get; }
+        public virtual int Timeout { get; }
 
         public LavalinkConfigureResume(string key, int timeout)
             : base("configureResuming")
@@ -43,17 +43,17 @@ namespace DSharpPlus.Lavalink.Entities
         }
     }
 
-    internal sealed class LavalinkDestroy : LavalinkPayload
+    internal class LavalinkDestroy : LavalinkPayload
     {
         public LavalinkDestroy(LavalinkGuildConnection lvl)
             : base("destroy", lvl.GuildIdString)
         { }
     }
 
-    internal sealed class LavalinkPlay : LavalinkPayload
+    internal class LavalinkPlay : LavalinkPayload
     {
         [JsonProperty("track")]
-        public string Track { get; }
+        public virtual string Track { get; }
 
         public LavalinkPlay(LavalinkGuildConnection lvl, LavalinkTrack track)
             : base("play", lvl.GuildIdString)
@@ -62,16 +62,16 @@ namespace DSharpPlus.Lavalink.Entities
         }
     }
 
-    internal sealed class LavalinkPlayPartial : LavalinkPayload
+    internal class LavalinkPlayPartial : LavalinkPayload
     {
         [JsonProperty("track")]
-        public string Track { get; }
+        public virtual string Track { get; }
 
         [JsonProperty("startTime")]
-        public long StartTime { get; }
+        public virtual long StartTime { get; }
 
         [JsonProperty("endTime")]
-        public long StopTime { get; }
+        public virtual long StopTime { get; }
 
         public LavalinkPlayPartial(LavalinkGuildConnection lvl, LavalinkTrack track, TimeSpan start, TimeSpan stop)
             : base("play", lvl.GuildIdString)
@@ -82,10 +82,10 @@ namespace DSharpPlus.Lavalink.Entities
         }
     }
 
-    internal sealed class LavalinkPause : LavalinkPayload
+    internal class LavalinkPause : LavalinkPayload
     {
         [JsonProperty("pause")]
-        public bool Pause { get; }
+        public virtual bool Pause { get; }
 
         public LavalinkPause(LavalinkGuildConnection lvl, bool pause)
             : base("pause", lvl.GuildIdString)
@@ -94,17 +94,17 @@ namespace DSharpPlus.Lavalink.Entities
         }
     }
 
-    internal sealed class LavalinkStop : LavalinkPayload
+    internal class LavalinkStop : LavalinkPayload
     {
         public LavalinkStop(LavalinkGuildConnection lvl)
             : base("stop", lvl.GuildIdString)
         { }
     }
 
-    internal sealed class LavalinkSeek : LavalinkPayload
+    internal class LavalinkSeek : LavalinkPayload
     {
         [JsonProperty("position")]
-        public long Position { get; }
+        public virtual long Position { get; }
 
         public LavalinkSeek(LavalinkGuildConnection lvl, TimeSpan position)
             : base("seek", lvl.GuildIdString)
@@ -113,10 +113,10 @@ namespace DSharpPlus.Lavalink.Entities
         }
     }
 
-    internal sealed class LavalinkVolume : LavalinkPayload
+    internal class LavalinkVolume : LavalinkPayload
     {
         [JsonProperty("volume")]
-        public int Volume { get; }
+        public virtual int Volume { get; }
 
         public LavalinkVolume(LavalinkGuildConnection lvl, int volume)
             : base("volume", lvl.GuildIdString)
@@ -125,7 +125,7 @@ namespace DSharpPlus.Lavalink.Entities
         }
     }
 
-    internal sealed class LavalinkEqualizer : LavalinkPayload
+    internal class LavalinkEqualizer : LavalinkPayload
     {
         [JsonProperty("bands")]
         public IEnumerable<LavalinkBandAdjustment> Bands { get; }

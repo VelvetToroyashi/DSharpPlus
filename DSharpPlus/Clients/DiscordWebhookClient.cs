@@ -57,12 +57,12 @@ namespace DSharpPlus
         /// <summary>
         /// Gets or sets the username override for registered webhooks. Note that this only takes effect when broadcasting.
         /// </summary>
-        public string Username { get; set; }
+        public virtual string Username { get; set; }
 
         /// <summary>
         /// Gets or set the avatar override for registered webhooks. Note that this only takes effect when broadcasting.
         /// </summary>
-        public string AvatarUrl { get; set; }
+        public virtual string AvatarUrl { get; set; }
 
         internal List<DiscordWebhook> _hooks;
         internal DiscordApiClient _apiclient;

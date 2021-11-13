@@ -42,7 +42,7 @@ namespace DSharpPlus.Net
     /// <summary>
     /// Represents a client used to make REST requests.
     /// </summary>
-    internal sealed class RestClient : IDisposable
+    internal class RestClient : IDisposable
     {
         private static Regex RouteArgumentRegex { get; } = new Regex(@":([a-z_]+)");
         private HttpClient HttpClient { get; }
@@ -163,7 +163,7 @@ namespace DSharpPlus.Net
             return bucket;
         }
 
-        public Task ExecuteRequestAsync(BaseRestRequest request)
+        public virtual Task ExecuteRequestAsync(BaseRestRequest request)
             => request == null ? throw new ArgumentNullException(nameof(request)) : this.ExecuteRequestAsync(request, null, null);
 
         // to allow proper rescheduling of the first request from a bucket

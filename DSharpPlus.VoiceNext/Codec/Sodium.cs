@@ -31,7 +31,7 @@ using System.Security.Cryptography;
 
 namespace DSharpPlus.VoiceNext.Codec
 {
-    internal sealed class Sodium : IDisposable
+    internal class Sodium : IDisposable
     {
         public static IReadOnlyDictionary<string, EncryptionMode> SupportedModes { get; }
 

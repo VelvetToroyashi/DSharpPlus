@@ -33,12 +33,12 @@ namespace DSharpPlus.EventArgs
         /// <summary>
         /// Gets the guild the member was removed from.
         /// </summary>
-        public DiscordGuild Guild { get; internal set; }
+        public virtual DiscordGuild Guild { get; internal set; }
 
         /// <summary>
         /// Gets the member that was removed.
         /// </summary>
-        public DiscordMember Member { get; internal set; }
+        public virtual DiscordMember Member { get; internal set; }
 
         internal GuildMemberRemoveEventArgs() : base() { }
     }

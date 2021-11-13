@@ -40,7 +40,7 @@ namespace DSharpPlus.Entities
         /// Gets the name of this role.
         /// </summary>
         [JsonProperty("name", NullValueHandling = NullValueHandling.Ignore)]
-        public string Name { get; internal set; }
+        public virtual string Name { get; internal set; }
 
         /// <summary>
         /// Gets the color of this role.
@@ -56,23 +56,23 @@ namespace DSharpPlus.Entities
         /// Gets whether this role is hoisted.
         /// </summary>
         [JsonProperty("hoist", NullValueHandling = NullValueHandling.Ignore)]
-        public bool IsHoisted { get; internal set; }
+        public virtual bool IsHoisted { get; internal set; }
 
         /// <summary>
         /// The url for this role's icon, if set.
         /// </summary>
-        public string IconUrl => this.IconHash != null ? $"https://cdn.discordapp.com/role-icons/{this.Id}/{this.IconHash}.png" : null;
+        public virtual string IconUrl => this.IconHash != null ? $"https://cdn.discordapp.com/role-icons/{this.Id}/{this.IconHash}.png" : null;
 
         /// <summary>
         /// The hash of this role's icon, if any.
         /// </summary>
         [JsonProperty("icon")]
-        public string IconHash { get; internal set; }
+        public virtual string IconHash { get; internal set; }
 
         /// <summary>
         /// The emoji associated with this role's icon, if set.
         /// </summary>
-        public DiscordEmoji Emoji => this._emoji != null ? DiscordEmoji.FromUnicode(this._emoji) : null;
+        public virtual DiscordEmoji Emoji => this._emoji != null ? DiscordEmoji.FromUnicode(this._emoji) : null;
 
         [JsonProperty("unicode_emoji")]
         internal string _emoji;
@@ -81,31 +81,31 @@ namespace DSharpPlus.Entities
         /// Gets the position of this role in the role hierarchy.
         /// </summary>
         [JsonProperty("position", NullValueHandling = NullValueHandling.Ignore)]
-        public int Position { get; internal set; }
+        public virtual int Position { get; internal set; }
 
         /// <summary>
         /// Gets the permissions set for this role.
         /// </summary>
         [JsonProperty("permissions", NullValueHandling = NullValueHandling.Ignore)]
-        public Permissions Permissions { get; internal set; }
+        public virtual Permissions Permissions { get; internal set; }
 
         /// <summary>
         /// Gets whether this role is managed by an integration.
         /// </summary>
         [JsonProperty("managed", NullValueHandling = NullValueHandling.Ignore)]
-        public bool IsManaged { get; internal set; }
+        public virtual bool IsManaged { get; internal set; }
 
         /// <summary>
         /// Gets whether this role is mentionable.
         /// </summary>
         [JsonProperty("mentionable", NullValueHandling = NullValueHandling.Ignore)]
-        public bool IsMentionable { get; internal set; }
+        public virtual bool IsMentionable { get; internal set; }
 
         /// <summary>
         /// Gets the tags this role has.
         /// </summary>
         [JsonProperty("tags", NullValueHandling = NullValueHandling.Ignore)]
-        public DiscordRoleTags Tags { get; internal set; }
+        public virtual DiscordRoleTags Tags { get; internal set; }
 
         [JsonIgnore]
         internal ulong _guild_id = 0;
@@ -127,7 +127,7 @@ namespace DSharpPlus.Entities
         /// <exception cref="Exceptions.NotFoundException">Thrown when the role does not exist.</exception>
         /// <exception cref="Exceptions.BadRequestException">Thrown when an invalid parameter was provided.</exception>
         /// <exception cref="Exceptions.ServerErrorException">Thrown when Discord is unable to process the request.</exception>
-        public Task ModifyPositionAsync(int position, string reason = null)
+        public virtual Task ModifyPositionAsync(int position, string reason = null)
         {
             var roles = this.Discord.Guilds[this._guild_id].Roles.Values.OrderByDescending(xr => xr.Position).ToArray();
             var pmds = new RestGuildRoleReorderPayload[roles.Length];
@@ -157,14 +157,14 @@ namespace DSharpPlus.Entities
         /// <exception cref="Exceptions.NotFoundException">Thrown when the role does not exist.</exception>
         /// <exception cref="Exceptions.BadRequestException">Thrown when an invalid parameter was provided.</exception>
         /// <exception cref="Exceptions.ServerErrorException">Thrown when Discord is unable to process the request.</exception>
-        public Task ModifyAsync(string name = null, Permissions? permissions = null, DiscordColor? color = null, bool? hoist = null, bool? mentionable = null, string reason = null, Stream icon = null, DiscordEmoji emoji = null)
+        public virtual Task ModifyAsync(string name = null, Permissions? permissions = null, DiscordColor? color = null, bool? hoist = null, bool? mentionable = null, string reason = null, Stream icon = null, DiscordEmoji emoji = null)
             => this.Discord.ApiClient.ModifyGuildRoleAsync(this._guild_id, this.Id, name, permissions, color?.Value, hoist, mentionable, reason, icon, emoji?.ToString());
 
         /// <exception cref = "Exceptions.UnauthorizedException" > Thrown when the client does not have the<see cref="Permissions.ManageRoles"/> permission.</exception>
         /// <exception cref="Exceptions.NotFoundException">Thrown when the role does not exist.</exception>
         /// <exception cref="Exceptions.BadRequestException">Thrown when an invalid parameter was provided.</exception>
         /// <exception cref="Exceptions.ServerErrorException">Thrown when Discord is unable to process the request.</exception>
-        public Task ModifyAsync(Action<RoleEditModel> action)
+        public virtual Task ModifyAsync(Action<RoleEditModel> action)
         {
             var mdl = new RoleEditModel();
             action(mdl);
@@ -181,7 +181,7 @@ namespace DSharpPlus.Entities
         /// <exception cref="Exceptions.NotFoundException">Thrown when the role does not exist.</exception>
         /// <exception cref="Exceptions.BadRequestException">Thrown when an invalid parameter was provided.</exception>
         /// <exception cref="Exceptions.ServerErrorException">Thrown when Discord is unable to process the request.</exception>
-        public Task DeleteAsync(string reason = null) => this.Discord.ApiClient.DeleteRoleAsync(this._guild_id, this.Id, reason);
+        public virtual Task DeleteAsync(string reason = null) => this.Discord.ApiClient.DeleteRoleAsync(this._guild_id, this.Id, reason);
         #endregion
 
         internal DiscordRole() { }

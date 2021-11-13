@@ -36,13 +36,13 @@ namespace DSharpPlus.Net.Abstractions
         /// Gets the gateway version the client is connectected to.
         /// </summary>
         [JsonProperty("v")]
-        public int GatewayVersion { get; private set; }
+        public virtual int GatewayVersion { get; private set; }
 
         /// <summary>
         /// Gets the current user.
         /// </summary>
         [JsonProperty("user")]
-        public TransportUser CurrentUser { get; private set; }
+        public virtual TransportUser CurrentUser { get; private set; }
 
         /// <summary>
         /// Gets the private channels available for this shard.
@@ -60,7 +60,7 @@ namespace DSharpPlus.Net.Abstractions
         /// Gets the current session's ID.
         /// </summary>
         [JsonProperty("session_id")]
-        public string SessionId { get; private set; }
+        public virtual string SessionId { get; private set; }
 
         /// <summary>
         /// Gets debug data sent by Discord. This contains a list of servers to which the client is connected.

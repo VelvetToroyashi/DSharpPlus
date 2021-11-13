@@ -31,7 +31,7 @@ namespace DSharpPlus.Net.Models
         /// <summary>
         /// Sets the channel's new name.
         /// </summary>
-        public string Name { internal get; set; }
+        public virtual string Name { internal get; set; }
 
         /// <summary>
         /// Sets the channel's new position.

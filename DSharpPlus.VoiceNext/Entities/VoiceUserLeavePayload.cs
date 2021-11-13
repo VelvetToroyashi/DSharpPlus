@@ -25,9 +25,9 @@ using Newtonsoft.Json;
 
 namespace DSharpPlus.VoiceNext.Entities
 {
-    internal sealed class VoiceUserLeavePayload
+    internal class VoiceUserLeavePayload
     {
         [JsonProperty("user_id")]
-        public ulong UserId { get; set; }
+        public virtual ulong UserId { get; set; }
     }
 }

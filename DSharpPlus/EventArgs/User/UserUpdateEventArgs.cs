@@ -33,12 +33,12 @@ namespace DSharpPlus.EventArgs
         /// <summary>
         /// Gets the post-update user.
         /// </summary>
-        public DiscordUser UserAfter { get; internal set; }
+        public virtual DiscordUser UserAfter { get; internal set; }
 
         /// <summary>
         /// Gets the pre-update user.
         /// </summary>
-        public DiscordUser UserBefore { get; internal set; }
+        public virtual DiscordUser UserBefore { get; internal set; }
 
         internal UserUpdateEventArgs() : base() { }
     }

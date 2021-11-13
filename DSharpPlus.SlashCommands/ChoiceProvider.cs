@@ -18,7 +18,7 @@ namespace DSharpPlus.SlashCommands
         /// <summary>
         /// Sets the service provider.
         /// </summary>
-        public IServiceProvider Services { get; set; }
+        public virtual IServiceProvider Services { get; set; }
 
         /// <summary>
         /// The optional ID of the Guild the command got registered for.

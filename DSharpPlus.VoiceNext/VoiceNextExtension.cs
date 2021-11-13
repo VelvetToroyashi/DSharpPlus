@@ -35,7 +35,7 @@ namespace DSharpPlus.VoiceNext
     /// <summary>
     /// Represents VoiceNext extension, which acts as Discord voice client.
     /// </summary>
-    public sealed class VoiceNextExtension : BaseExtension
+    public class VoiceNextExtension : BaseExtension
     {
         private VoiceNextConfiguration Configuration { get; set; }
 
@@ -46,7 +46,7 @@ namespace DSharpPlus.VoiceNext
         /// <summary>
         /// Gets whether this connection has incoming voice enabled.
         /// </summary>
-        public bool IsIncomingEnabled { get; }
+        public virtual bool IsIncomingEnabled { get; }
 
         internal VoiceNextExtension(VoiceNextConfiguration config)
         {

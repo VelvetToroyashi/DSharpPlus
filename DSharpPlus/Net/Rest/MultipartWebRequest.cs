@@ -32,7 +32,7 @@ namespace DSharpPlus.Net
     /// <summary>
     /// Represents a multipart HTTP request.
     /// </summary>
-    internal sealed class MultipartWebRequest : BaseRestRequest
+    internal class MultipartWebRequest : BaseRestRequest
     {
         /// <summary>
         /// Gets the dictionary of values attached to this request.

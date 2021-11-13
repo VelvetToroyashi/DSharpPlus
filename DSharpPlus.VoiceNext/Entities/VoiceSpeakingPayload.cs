@@ -25,10 +25,10 @@ using Newtonsoft.Json;
 
 namespace DSharpPlus.VoiceNext.Entities
 {
-    internal sealed class VoiceSpeakingPayload
+    internal class VoiceSpeakingPayload
     {
         [JsonProperty("speaking")]
-        public bool Speaking { get; set; }
+        public virtual bool Speaking { get; set; }
 
         [JsonProperty("delay", NullValueHandling = NullValueHandling.Ignore)]
         public int? Delay { get; set; }

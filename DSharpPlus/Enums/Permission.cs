@@ -280,7 +280,7 @@ namespace DSharpPlus
         [Obsolete("Replaced by UseApplicationCommands", false)]
         [PermissionString("Use slash commands")]
         UseSlashCommands = 0x0000000080000000,
-        
+
         /// <summary>
         /// Allows the user to use application commands.
         /// </summary>
@@ -312,7 +312,7 @@ namespace DSharpPlus
         [Obsolete("Replaced by CreatePrivateThreads and SendMessagesInThreads", false)]
         [PermissionString("Use Private Threads")]
         UsePrivateThreads = 0x0000001000000000,
-        
+
         /// <summary>
         /// Allows for creating public threads.
         /// </summary>
@@ -324,7 +324,7 @@ namespace DSharpPlus
         /// </summary>
         [PermissionString("Create Private Threads")]
         CreatePrivateThreads = 0x0000001000000000,
-        
+
         /// <summary>
         /// Allows the usage of custom stickers from other servers.
         /// </summary>
@@ -336,9 +336,9 @@ namespace DSharpPlus
         /// </summary>
         [PermissionString("Send messages in Threads")]
         SendMessagesInThreads = 0x0000004000000000,
-        
+
         /// <summary>
-        /// Allows for launching activities (applications with the `EMBEDDED` flag) in a voice channel.     
+        /// Allows for launching activities (applications with the `EMBEDDED` flag) in a voice channel.
         /// </summary>
         [PermissionString("Start Embedded Activities")]
         StartEmbeddedActivities = 0x0000008000000000
@@ -348,12 +348,12 @@ namespace DSharpPlus
     /// Defines a readable name for this permission.
     /// </summary>
     [AttributeUsage(AttributeTargets.Field, AllowMultiple = false)]
-    public sealed class PermissionStringAttribute : Attribute
+    public class PermissionStringAttribute : Attribute
     {
         /// <summary>
         /// Gets the readable name for this permission.
         /// </summary>
-        public string String { get; }
+        public virtual string String { get; }
 
         /// <summary>
         /// Defines a readable name for this permission.

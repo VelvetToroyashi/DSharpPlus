@@ -34,13 +34,13 @@ namespace DSharpPlus.Entities
         /// Gets the activity type.
         /// </summary>
         [JsonProperty("type")]
-        public MessageActivityType Type { get; internal set; }
+        public virtual MessageActivityType Type { get; internal set; }
 
         /// <summary>
         /// Gets the party id of the activity.
         /// </summary>
         [JsonProperty("party_id")]
-        public string PartyId { get; internal set; }
+        public virtual string PartyId { get; internal set; }
 
         internal DiscordMessageActivity() { }
     }

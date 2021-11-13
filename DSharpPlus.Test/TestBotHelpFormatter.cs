@@ -30,7 +30,7 @@ using DSharpPlus.CommandsNext.Entities;
 
 namespace DSharpPlus.Test
 {
-    public sealed class TestBotHelpFormatter : BaseHelpFormatter
+    public class TestBotHelpFormatter : BaseHelpFormatter
     {
         private StringBuilder Content { get; }
 

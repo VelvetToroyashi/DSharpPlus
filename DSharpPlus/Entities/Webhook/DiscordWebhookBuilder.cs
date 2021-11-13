@@ -32,7 +32,7 @@ namespace DSharpPlus.Entities
     /// <summary>
     /// Constructs ready-to-send webhook requests.
     /// </summary>
-    public sealed class DiscordWebhookBuilder
+    public class DiscordWebhookBuilder
     {
         /// <summary>
         /// Username to use for this webhook request.
@@ -47,7 +47,7 @@ namespace DSharpPlus.Entities
         /// <summary>
         /// Whether this webhook request is text-to-speech.
         /// </summary>
-        public bool IsTTS { get; set; }
+        public virtual bool IsTTS { get; set; }
 
         /// <summary>
         /// Message to send on this webhook request.

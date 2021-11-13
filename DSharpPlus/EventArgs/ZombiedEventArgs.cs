@@ -33,12 +33,12 @@ namespace DSharpPlus.EventArgs
         /// <summary>
         /// Gets how many heartbeat failures have occured.
         /// </summary>
-        public int Failures { get; internal set; }
+        public virtual int Failures { get; internal set; }
 
         /// <summary>
         /// Gets whether the zombie event occured whilst guilds are downloading.
         /// </summary>
-        public bool GuildDownloadCompleted { get; internal set; }
+        public virtual bool GuildDownloadCompleted { get; internal set; }
 
         internal ZombiedEventArgs() : base() { }
     }

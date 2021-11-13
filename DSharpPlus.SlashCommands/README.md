@@ -293,7 +293,7 @@ Property injection is implemented, however static properties will not be replace
 ```cs
 public class Commands : ApplicationCommandModule
 {
-    public Database Database { private get; set; } // The get accessor is optionally public, but the set accessor must be public.
+    public virtual Database Database { private get; set; } // The get accessor is optionally public, but the set accessor must be public.
 
     [SlashCommand("ping", "Checks the latency between the bot and it's database. Best used to see if the bot is lagging.")]
     public async Task Ping(InteractionContext context) => await context.CreateResponseAsync(InteractionResponseType.ChannelMessageWithSource, new()

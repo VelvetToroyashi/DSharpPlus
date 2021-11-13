@@ -26,13 +26,13 @@ using Newtonsoft.Json;
 
 namespace DSharpPlus.Net.Abstractions
 {
-    internal sealed class RestUserDmCreatePayload
+    internal class RestUserDmCreatePayload
     {
         [JsonProperty("recipient_id")]
-        public ulong Recipient { get; set; }
+        public virtual ulong Recipient { get; set; }
     }
 
-    internal sealed class RestUserGroupDmCreatePayload
+    internal class RestUserGroupDmCreatePayload
     {
         [JsonProperty("access_tokens")]
         public IEnumerable<string> AccessTokens { get; set; }
@@ -41,43 +41,43 @@ namespace DSharpPlus.Net.Abstractions
         public IDictionary<ulong, string> Nicknames { get; set; }
     }
 
-    internal sealed class RestUserUpdateCurrentPayload
+    internal class RestUserUpdateCurrentPayload
     {
         [JsonProperty("username", NullValueHandling = NullValueHandling.Ignore)]
-        public string Username { get; set; }
+        public virtual string Username { get; set; }
 
         [JsonProperty("avatar", NullValueHandling = NullValueHandling.Include)]
         public string AvatarBase64 { get; set; }
 
         [JsonIgnore]
-        public bool AvatarSet { get; set; }
+        public virtual bool AvatarSet { get; set; }
 
         public bool ShouldSerializeAvatarBase64()
             => this.AvatarSet;
     }
 
-    internal sealed class RestUserGuild
+    internal class RestUserGuild
     {
         [JsonProperty("avatar", NullValueHandling = NullValueHandling.Ignore)]
-        public ulong Id { get; set; }
+        public virtual ulong Id { get; set; }
 
         [JsonProperty("avatar", NullValueHandling = NullValueHandling.Ignore)]
-        public string Name { get; set; }
+        public virtual string Name { get; set; }
 
         [JsonProperty("avatar", NullValueHandling = NullValueHandling.Ignore)]
-        public string IconHash { get; set; }
+        public virtual string IconHash { get; set; }
 
         [JsonProperty("avatar", NullValueHandling = NullValueHandling.Ignore)]
-        public bool IsOwner { get; set; }
+        public virtual bool IsOwner { get; set; }
 
         [JsonProperty("avatar", NullValueHandling = NullValueHandling.Ignore)]
-        public Permissions Permissions { get; set; }
+        public virtual Permissions Permissions { get; set; }
     }
 
-    internal sealed class RestUserGuildListPayload
+    internal class RestUserGuildListPayload
     {
         [JsonProperty("limit", NullValueHandling = NullValueHandling.Ignore)]
-        public int Limit { get; set; }
+        public virtual int Limit { get; set; }
 
         [JsonProperty("before", NullValueHandling = NullValueHandling.Ignore)]
         public ulong? Before { get; set; }

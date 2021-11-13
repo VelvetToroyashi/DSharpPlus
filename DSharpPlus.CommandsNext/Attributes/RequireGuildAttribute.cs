@@ -29,7 +29,7 @@ namespace DSharpPlus.CommandsNext.Attributes
     /// <summary>
     /// Defines that a command is only usable within a guild.
     /// </summary>
-    public sealed class RequireGuildAttribute : CheckBaseAttribute
+    public class RequireGuildAttribute : CheckBaseAttribute
     {
         /// <summary>
         /// Defines that this command is only usable within a guild.

@@ -33,47 +33,47 @@ namespace DSharpPlus.Entities
         /// <summary>
         /// Gets the entry's action type.
         /// </summary>
-        public AuditLogActionType ActionType { get; internal set; }
+        public virtual AuditLogActionType ActionType { get; internal set; }
 
         /// <summary>
         /// Gets the user responsible for the action.
         /// </summary>
-        public DiscordUser UserResponsible { get; internal set; }
+        public virtual DiscordUser UserResponsible { get; internal set; }
 
         /// <summary>
         /// Gets the reason defined in the action.
         /// </summary>
-        public string Reason { get; internal set; }
+        public virtual string Reason { get; internal set; }
 
         /// <summary>
         /// Gets the category under which the action falls.
         /// </summary>
-        public AuditLogActionCategory ActionCategory { get; internal set; }
+        public virtual AuditLogActionCategory ActionCategory { get; internal set; }
     }
 
     /// <summary>
     /// Represents a description of how a property changed.
     /// </summary>
     /// <typeparam name="T">Type of the changed property.</typeparam>
-    public sealed class PropertyChange<T>
+    public class PropertyChange<T>
     {
         /// <summary>
         /// The property's value before it was changed.
         /// </summary>
-        public T Before { get; internal set; }
+        public virtual T Before { get; internal set; }
 
         /// <summary>
         /// The property's value after it was changed.
         /// </summary>
-        public T After { get; internal set; }
+        public virtual T After { get; internal set; }
     }
 
-    public sealed class DiscordAuditLogGuildEntry : DiscordAuditLogEntry
+    public class DiscordAuditLogGuildEntry : DiscordAuditLogEntry
     {
         /// <summary>
         /// Gets the affected guild.
         /// </summary>
-        public DiscordGuild Target { get; internal set; }
+        public virtual DiscordGuild Target { get; internal set; }
 
         /// <summary>
         /// Gets the description of guild name's change.
@@ -138,12 +138,12 @@ namespace DSharpPlus.Entities
         internal DiscordAuditLogGuildEntry() { }
     }
 
-    public sealed class DiscordAuditLogChannelEntry : DiscordAuditLogEntry
+    public class DiscordAuditLogChannelEntry : DiscordAuditLogEntry
     {
         /// <summary>
         /// Gets the affected channel.
         /// </summary>
-        public DiscordChannel Target { get; internal set; }
+        public virtual DiscordChannel Target { get; internal set; }
 
         /// <summary>
         /// Gets the description of channel's name change.
@@ -183,17 +183,17 @@ namespace DSharpPlus.Entities
         internal DiscordAuditLogChannelEntry() { }
     }
 
-    public sealed class DiscordAuditLogOverwriteEntry : DiscordAuditLogEntry
+    public class DiscordAuditLogOverwriteEntry : DiscordAuditLogEntry
     {
         /// <summary>
         /// Gets the affected overwrite.
         /// </summary>
-        public DiscordOverwrite Target { get; internal set; }
+        public virtual DiscordOverwrite Target { get; internal set; }
 
         /// <summary>
         /// Gets the channel for which the overwrite was changed.
         /// </summary>
-        public DiscordChannel Channel { get; internal set; }
+        public virtual DiscordChannel Channel { get; internal set; }
 
         /// <summary>
         /// Gets the description of overwrite's allow value change.
@@ -218,47 +218,47 @@ namespace DSharpPlus.Entities
         internal DiscordAuditLogOverwriteEntry() { }
     }
 
-    public sealed class DiscordAuditLogKickEntry : DiscordAuditLogEntry
+    public class DiscordAuditLogKickEntry : DiscordAuditLogEntry
     {
         /// <summary>
         /// Gets the kicked member.
         /// </summary>
-        public DiscordMember Target { get; internal set; }
+        public virtual DiscordMember Target { get; internal set; }
 
         internal DiscordAuditLogKickEntry() { }
     }
 
-    public sealed class DiscordAuditLogPruneEntry : DiscordAuditLogEntry
+    public class DiscordAuditLogPruneEntry : DiscordAuditLogEntry
     {
         /// <summary>
         /// Gets the number inactivity days after which members were pruned.
         /// </summary>
-        public int Days { get; internal set; }
+        public virtual int Days { get; internal set; }
 
         /// <summary>
         /// Gets the number of members pruned.
         /// </summary>
-        public int Toll { get; internal set; }
+        public virtual int Toll { get; internal set; }
 
         internal DiscordAuditLogPruneEntry() { }
     }
 
-    public sealed class DiscordAuditLogBanEntry : DiscordAuditLogEntry
+    public class DiscordAuditLogBanEntry : DiscordAuditLogEntry
     {
         /// <summary>
         /// Gets the banned member.
         /// </summary>
-        public DiscordMember Target { get; internal set; }
+        public virtual DiscordMember Target { get; internal set; }
 
         internal DiscordAuditLogBanEntry() { }
     }
 
-    public sealed class DiscordAuditLogMemberUpdateEntry : DiscordAuditLogEntry
+    public class DiscordAuditLogMemberUpdateEntry : DiscordAuditLogEntry
     {
         /// <summary>
         /// Gets the affected member.
         /// </summary>
-        public DiscordMember Target { get; internal set; }
+        public virtual DiscordMember Target { get; internal set; }
 
         /// <summary>
         /// Gets the description of member's nickname change.
@@ -288,12 +288,12 @@ namespace DSharpPlus.Entities
         internal DiscordAuditLogMemberUpdateEntry() { }
     }
 
-    public sealed class DiscordAuditLogRoleUpdateEntry : DiscordAuditLogEntry
+    public class DiscordAuditLogRoleUpdateEntry : DiscordAuditLogEntry
     {
         /// <summary>
         /// Gets the affected role.
         /// </summary>
-        public DiscordRole Target { get; internal set; }
+        public virtual DiscordRole Target { get; internal set; }
 
         /// <summary>
         /// Gets the description of role's name change.
@@ -328,12 +328,12 @@ namespace DSharpPlus.Entities
         internal DiscordAuditLogRoleUpdateEntry() { }
     }
 
-    public sealed class DiscordAuditLogInviteEntry : DiscordAuditLogEntry
+    public class DiscordAuditLogInviteEntry : DiscordAuditLogEntry
     {
         /// <summary>
         /// Gets the affected invite.
         /// </summary>
-        public DiscordInvite Target { get; internal set; }
+        public virtual DiscordInvite Target { get; internal set; }
 
         /// <summary>
         /// Gets the description of invite's max age change.
@@ -373,12 +373,12 @@ namespace DSharpPlus.Entities
         internal DiscordAuditLogInviteEntry() { }
     }
 
-    public sealed class DiscordAuditLogWebhookEntry : DiscordAuditLogEntry
+    public class DiscordAuditLogWebhookEntry : DiscordAuditLogEntry
     {
         /// <summary>
         /// Gets the affected webhook.
         /// </summary>
-        public DiscordWebhook Target { get; internal set; }
+        public virtual DiscordWebhook Target { get; internal set; }
 
         /// <summary>
         /// Gets the description of webhook's name change.
@@ -403,12 +403,12 @@ namespace DSharpPlus.Entities
         internal DiscordAuditLogWebhookEntry() { }
     }
 
-    public sealed class DiscordAuditLogEmojiEntry : DiscordAuditLogEntry
+    public class DiscordAuditLogEmojiEntry : DiscordAuditLogEntry
     {
         /// <summary>
         /// Gets the affected emoji.
         /// </summary>
-        public DiscordEmoji Target { get; internal set; }
+        public virtual DiscordEmoji Target { get; internal set; }
 
         /// <summary>
         /// Gets the description of emoji's name change.
@@ -418,12 +418,12 @@ namespace DSharpPlus.Entities
         internal DiscordAuditLogEmojiEntry() { }
     }
 
-    public sealed class DiscordAuditLogStickerEntry : DiscordAuditLogEntry
+    public class DiscordAuditLogStickerEntry : DiscordAuditLogEntry
     {
         /// <summary>
         /// Gets the affected sticker.
         /// </summary>
-        public DiscordMessageSticker Target { get; internal set; }
+        public virtual DiscordMessageSticker Target { get; internal set; }
 
         /// <summary>
         /// Gets the description of sticker's name change.
@@ -473,17 +473,17 @@ namespace DSharpPlus.Entities
         internal DiscordAuditLogStickerEntry() { }
     }
 
-    public sealed class DiscordAuditLogMessageEntry : DiscordAuditLogEntry
+    public class DiscordAuditLogMessageEntry : DiscordAuditLogEntry
     {
         /// <summary>
         /// Gets the affected message. Note that more often than not, this will only have ID specified.
         /// </summary>
-        public DiscordMessage Target { get; internal set; }
+        public virtual DiscordMessage Target { get; internal set; }
 
         /// <summary>
         /// Gets the channel in which the action occurred.
         /// </summary>
-        public DiscordChannel Channel { get; internal set; }
+        public virtual DiscordChannel Channel { get; internal set; }
 
         /// <summary>
         /// Gets the number of messages that were affected.
@@ -493,56 +493,56 @@ namespace DSharpPlus.Entities
         internal DiscordAuditLogMessageEntry() { }
     }
 
-    public sealed class DiscordAuditLogMessagePinEntry : DiscordAuditLogEntry
+    public class DiscordAuditLogMessagePinEntry : DiscordAuditLogEntry
     {
         /// <summary>
         /// Gets the affected message's user.
         /// </summary>
-        public DiscordUser Target { get; internal set; }
+        public virtual DiscordUser Target { get; internal set; }
 
         /// <summary>
         /// Gets the channel the message is in.
         /// </summary>
-        public DiscordChannel Channel { get; internal set; }
+        public virtual DiscordChannel Channel { get; internal set; }
 
         /// <summary>
         /// Gets the message the pin action was for.
         /// </summary>
-        public DiscordMessage Message { get; internal set; }
+        public virtual DiscordMessage Message { get; internal set; }
 
         internal DiscordAuditLogMessagePinEntry() { }
     }
 
-    public sealed class DiscordAuditLogBotAddEntry : DiscordAuditLogEntry
+    public class DiscordAuditLogBotAddEntry : DiscordAuditLogEntry
     {
         /// <summary>
         /// Gets the bot that has been added to the guild.
         /// </summary>
-        public DiscordUser TargetBot { get; internal set; }
+        public virtual DiscordUser TargetBot { get; internal set; }
     }
 
-    public sealed class DiscordAuditLogMemberMoveEntry : DiscordAuditLogEntry
+    public class DiscordAuditLogMemberMoveEntry : DiscordAuditLogEntry
     {
         /// <summary>
         /// Gets the channel the members were moved in.
         /// </summary>
-        public DiscordChannel Channel { get; internal set; }
+        public virtual DiscordChannel Channel { get; internal set; }
 
         /// <summary>
         /// Gets the amount of users that were moved out from the voice channel.
         /// </summary>
-        public int UserCount { get; internal set; }
+        public virtual int UserCount { get; internal set; }
     }
 
-    public sealed class DiscordAuditLogMemberDisconnectEntry : DiscordAuditLogEntry
+    public class DiscordAuditLogMemberDisconnectEntry : DiscordAuditLogEntry
     {
         /// <summary>
         /// Gets the amount of users that were disconnected from the voice channel.
         /// </summary>
-        public int UserCount { get; internal set; }
+        public virtual int UserCount { get; internal set; }
     }
 
-    public sealed class DiscordAuditLogIntegrationEntry : DiscordAuditLogEntry
+    public class DiscordAuditLogIntegrationEntry : DiscordAuditLogEntry
     {
         /// <summary>
         /// Gets the description of emoticons' change.

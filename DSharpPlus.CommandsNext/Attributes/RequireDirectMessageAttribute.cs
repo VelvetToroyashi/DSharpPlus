@@ -29,7 +29,7 @@ namespace DSharpPlus.CommandsNext.Attributes
     /// <summary>
     /// Defines that a command is only usable within a direct message channel.
     /// </summary>
-    public sealed class RequireDirectMessageAttribute : CheckBaseAttribute
+    public class RequireDirectMessageAttribute : CheckBaseAttribute
     {
         /// <summary>
         /// Defines that this command is only usable within a direct message channel.

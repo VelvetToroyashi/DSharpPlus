@@ -31,18 +31,18 @@ namespace DSharpPlus.CommandsNext.Attributes
     /// Defines that usage of this command is only allowed with specific prefixes.
     /// </summary>
     [AttributeUsage(AttributeTargets.Class | AttributeTargets.Method, AllowMultiple = false, Inherited = false)]
-    public sealed class RequirePrefixesAttribute : CheckBaseAttribute
+    public class RequirePrefixesAttribute : CheckBaseAttribute
     {
         /// <summary>
         /// Gets the array of prefixes with which execution of this command is allowed.
         /// </summary>
-        public string[] Prefixes { get; }
+        public virtual string[] Prefixes { get; }
 
         /// <summary>
         /// <para>Gets or sets default help behaviour for this check. When this is enabled, invoking help without matching prefix will show the commands.</para>
         /// <para>Defaults to false.</para>
         /// </summary>
-        public bool ShowInHelp { get; set; } = false;
+        public virtual bool ShowInHelp { get; set; } = false;
 
         /// <summary>
         /// Defines that usage of this command is only allowed with specific prefixes.

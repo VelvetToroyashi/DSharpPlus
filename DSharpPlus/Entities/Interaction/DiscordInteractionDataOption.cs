@@ -30,25 +30,25 @@ namespace DSharpPlus.Entities
     /// <summary>
     /// Represents parameters for interaction commands.
     /// </summary>
-    public sealed class DiscordInteractionDataOption
+    public class DiscordInteractionDataOption
     {
         /// <summary>
         /// Gets the name of this interaction parameter.
         /// </summary>
         [JsonProperty("name")]
-        public string Name { get; internal set; }
+        public virtual string Name { get; internal set; }
 
         /// <summary>
         /// Gets the type of this interaction parameter.
         /// </summary>
         [JsonProperty("type")]
-        public ApplicationCommandOptionType Type { get; internal set; }
+        public virtual ApplicationCommandOptionType Type { get; internal set; }
 
         /// <summary>
         /// If this is an autocomplete option: Whether this option is currently active.
         /// </summary>
         [JsonProperty("focused")]
-        public bool Focused { get; internal set; }
+        public virtual bool Focused { get; internal set; }
 
         [JsonProperty("value")]
         internal string InternalValue { get; set; }
@@ -58,7 +58,7 @@ namespace DSharpPlus.Entities
         /// <para>This can be cast to a <see langword="long"/>, <see langword="bool"></see>, <see langword="string"></see>, <see langword="double"></see> or <see langword="ulong"/> depending on the <see cref="Type"/></para>
         /// </summary>
         [JsonIgnore]
-        public object Value => this.Type switch
+        public virtual object Value => this.Type switch
         {
             ApplicationCommandOptionType.Boolean => bool.Parse(this.InternalValue),
             ApplicationCommandOptionType.Integer => long.Parse(this.InternalValue),

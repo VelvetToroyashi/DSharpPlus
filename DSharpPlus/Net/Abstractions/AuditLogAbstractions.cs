@@ -28,47 +28,47 @@ using Newtonsoft.Json.Linq;
 
 namespace DSharpPlus.Net.Abstractions
 {
-    internal sealed class AuditLogUser
+    internal class AuditLogUser
     {
         [JsonProperty("username")]
-        public string Username { get; set; }
+        public virtual string Username { get; set; }
 
         [JsonProperty("discriminator")]
-        public string Discriminator { get; set; }
+        public virtual string Discriminator { get; set; }
 
         [JsonProperty("id")]
-        public ulong Id { get; set; }
+        public virtual ulong Id { get; set; }
 
         [JsonProperty("avatar")]
-        public string AvatarHash { get; set; }
+        public virtual string AvatarHash { get; set; }
     }
 
-    internal sealed class AuditLogWebhook
+    internal class AuditLogWebhook
     {
         [JsonProperty("name")]
-        public string Name { get; set; }
+        public virtual string Name { get; set; }
 
         [JsonProperty("channel_id")]
-        public ulong ChannelId { get; set; }
+        public virtual ulong ChannelId { get; set; }
 
         [JsonProperty("token")]
-        public string Token { get; set; }
+        public virtual string Token { get; set; }
 
         [JsonProperty("avatar")]
-        public string AvatarHash { get; set; }
+        public virtual string AvatarHash { get; set; }
 
         [JsonProperty("guild_id")]
-        public ulong GuildId { get; set; }
+        public virtual ulong GuildId { get; set; }
 
         [JsonProperty("id")]
-        public ulong Id { get; set; }
+        public virtual ulong Id { get; set; }
     }
 
-    internal sealed class AuditLogActionChange
+    internal class AuditLogActionChange
     {
         // this can be a string or an array
         [JsonProperty("old_value")]
-        public object OldValue { get; set; }
+        public virtual object OldValue { get; set; }
 
         [JsonIgnore]
         public IEnumerable<JObject> OldValues
@@ -84,7 +84,7 @@ namespace DSharpPlus.Net.Abstractions
 
         // this can be a string or an array
         [JsonProperty("new_value")]
-        public object NewValue { get; set; }
+        public virtual object NewValue { get; set; }
 
         [JsonIgnore]
         public IEnumerable<JObject> NewValues
@@ -99,58 +99,58 @@ namespace DSharpPlus.Net.Abstractions
             => (string)this.NewValue;
 
         [JsonProperty("key")]
-        public string Key { get; set; }
+        public virtual string Key { get; set; }
     }
 
-    internal sealed class AuditLogActionOptions
+    internal class AuditLogActionOptions
     {
         [JsonProperty("type")]
-        public object Type { get; set; }
+        public virtual object Type { get; set; }
 
         [JsonProperty("id")]
-        public ulong Id { get; set; }
+        public virtual ulong Id { get; set; }
 
         [JsonProperty("channel_id")]
-        public ulong ChannelId { get; set; }
+        public virtual ulong ChannelId { get; set; }
 
         [JsonProperty("message_id")]
-        public ulong MessageId { get; set; }
+        public virtual ulong MessageId { get; set; }
 
         [JsonProperty("count")]
-        public int Count { get; set; }
+        public virtual int Count { get; set; }
 
         [JsonProperty("delete_member_days")]
-        public int DeleteMemberDays { get; set; }
+        public virtual int DeleteMemberDays { get; set; }
 
         [JsonProperty("members_removed")]
-        public int MembersRemoved { get; set; }
+        public virtual int MembersRemoved { get; set; }
     }
 
-    internal sealed class AuditLogAction
+    internal class AuditLogAction
     {
         [JsonProperty("target_id")]
         public ulong? TargetId { get; set; }
 
         [JsonProperty("user_id")]
-        public ulong UserId { get; set; }
+        public virtual ulong UserId { get; set; }
 
         [JsonProperty("id")]
-        public ulong Id { get; set; }
+        public virtual ulong Id { get; set; }
 
         [JsonProperty("action_type")]
-        public AuditLogActionType ActionType { get; set; }
+        public virtual AuditLogActionType ActionType { get; set; }
 
         [JsonProperty("changes")]
         public IEnumerable<AuditLogActionChange> Changes { get; set; }
 
         [JsonProperty("options")]
-        public AuditLogActionOptions Options { get; set; }
+        public virtual AuditLogActionOptions Options { get; set; }
 
         [JsonProperty("reason")]
-        public string Reason { get; set; }
+        public virtual string Reason { get; set; }
     }
 
-    internal sealed class AuditLog
+    internal class AuditLog
     {
         [JsonProperty("webhooks")]
         public IEnumerable<AuditLogWebhook> Webhooks { get; set; }

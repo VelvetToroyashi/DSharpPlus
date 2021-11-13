@@ -32,7 +32,7 @@ namespace DSharpPlus.Entities
         /// Gets whether additional calls will yield more threads.
         /// </summary>
         [JsonProperty("has_more", NullValueHandling = NullValueHandling.Ignore)]
-        public bool HasMore { get; internal set; }
+        public virtual bool HasMore { get; internal set; }
 
         /// <summary>
         /// Gets the list of threads returned by the query. Generally ordered by <seealso cref="DiscordThreadChannelMetadata.ArchiveTimestamp"/> in descending order.

@@ -33,12 +33,12 @@ namespace DSharpPlus.EventArgs
         /// <summary>
         /// Gets the exception thrown by the client.
         /// </summary>
-        public Exception Exception { get; internal set; }
+        public virtual Exception Exception { get; internal set; }
 
         /// <summary>
         /// Gets the name of the event that threw the exception.
         /// </summary>
-        public string EventName { get; internal set; }
+        public virtual string EventName { get; internal set; }
 
         internal ClientErrorEventArgs() : base() { }
     }

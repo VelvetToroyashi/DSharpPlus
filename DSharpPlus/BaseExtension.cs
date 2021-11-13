@@ -31,7 +31,7 @@ namespace DSharpPlus
         /// <summary>
         /// Gets the instance of <see cref="DiscordClient"/> this extension is attached to.
         /// </summary>
-        public DiscordClient Client { get; protected set; }
+        public virtual DiscordClient Client { get; protected set; }
 
         /// <summary>
         /// Initializes this extension for given <see cref="DiscordClient"/> instance.

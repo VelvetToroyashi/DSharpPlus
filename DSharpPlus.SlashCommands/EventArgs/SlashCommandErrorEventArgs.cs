@@ -6,16 +6,16 @@ namespace DSharpPlus.SlashCommands.EventArgs
     /// <summary>
     /// Represents arguments for a <see cref="SlashCommandsExtension.SlashCommandErrored"/> event.
     /// </summary>
-    public sealed class SlashCommandErrorEventArgs : AsyncEventArgs
+    public class SlashCommandErrorEventArgs : AsyncEventArgs
     {
         /// <summary>
         /// The context of the command.
         /// </summary>
-        public InteractionContext Context { get; internal set; }
+        public virtual InteractionContext Context { get; internal set; }
 
         /// <summary>
         /// The exception thrown.
         /// </summary>
-        public Exception Exception { get; internal set; }
+        public virtual Exception Exception { get; internal set; }
     }
 }

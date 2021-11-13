@@ -36,7 +36,7 @@ namespace DSharpPlus.CommandsNext.Builders
     /// <summary>
     /// Represents an interface to build a command overload.
     /// </summary>
-    public sealed class CommandOverloadBuilder
+    public class CommandOverloadBuilder
     {
         /// <summary>
         /// Gets a value that uniquely identifies an overload.
@@ -51,12 +51,12 @@ namespace DSharpPlus.CommandsNext.Builders
         /// <summary>
         /// Gets this overload's priority when picking a suitable one for execution.
         /// </summary>
-        public int Priority { get; set; }
+        public virtual int Priority { get; set; }
 
         /// <summary>
         /// Gets the overload's callable delegate.
         /// </summary>
-        public Delegate Callable { get; set; }
+        public virtual Delegate Callable { get; set; }
 
         private object InvocationTarget { get; }
 

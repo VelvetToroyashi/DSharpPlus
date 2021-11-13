@@ -41,13 +41,13 @@ namespace DSharpPlus.Entities
         /// Gets ID of the thread.
         /// </summary>
         [JsonProperty("id", NullValueHandling = NullValueHandling.Ignore)]
-        public ulong ThreadId { get; set; }
-        
+        public virtual ulong ThreadId { get; set; }
+
         /// <summary>
         /// Gets ID of the user.
         /// </summary>
         [JsonProperty("user_id", NullValueHandling = NullValueHandling.Ignore)]
-        public ulong Id { get; set; }
+        public virtual ulong Id { get; set; }
 
         /// <summary>
         /// Gets timestamp when the user joined the thread.

@@ -35,7 +35,7 @@ namespace DSharpPlus.VoiceNext.EventArgs
         /// <summary>
         /// Gets the SSRC of the audio source.
         /// </summary>
-        public uint SSRC { get; internal set; }
+        public virtual uint SSRC { get; internal set; }
 
 #pragma warning disable CS8632
 
@@ -62,12 +62,12 @@ namespace DSharpPlus.VoiceNext.EventArgs
         /// Important: This isn't always the format set in <see cref="VoiceNextConfiguration.AudioFormat"/>, and depends on the audio data recieved.
         /// </para>
         /// </summary>
-        public AudioFormat AudioFormat { get; internal set; }
+        public virtual AudioFormat AudioFormat { get; internal set; }
 
         /// <summary>
         /// Gets the millisecond duration of the PCM audio sample.
         /// </summary>
-        public int AudioDuration { get; internal set; }
+        public virtual int AudioDuration { get; internal set; }
 
         internal VoiceReceiveEventArgs() : base() { }
     }

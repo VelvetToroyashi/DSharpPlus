@@ -74,9 +74,9 @@ namespace DSharpPlus.Interactivity.EventHandling
             }
         }
 
-        public int PageCount => this._pages.Count;
+        public virtual int PageCount => this._pages.Count;
 
-        public PaginationDeletion PaginationDeletion { get; }
+        public virtual PaginationDeletion PaginationDeletion { get; }
 
         public async Task<Page> GetPageAsync()
         {
@@ -233,8 +233,8 @@ namespace DSharpPlus.Interactivity
 
     public class Page
     {
-        public string Content { get; set; }
-        public DiscordEmbed Embed { get; set; }
+        public virtual string Content { get; set; }
+        public virtual DiscordEmbed Embed { get; set; }
 
         public Page(string content = "", DiscordEmbedBuilder embed = null)
         {

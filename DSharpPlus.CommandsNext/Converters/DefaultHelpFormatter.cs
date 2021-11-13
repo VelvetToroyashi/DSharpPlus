@@ -34,7 +34,7 @@ namespace DSharpPlus.CommandsNext.Converters
     /// </summary>
     public class DefaultHelpFormatter : BaseHelpFormatter
     {
-        public DiscordEmbedBuilder EmbedBuilder { get; }
+        public virtual DiscordEmbedBuilder EmbedBuilder { get; }
         private Command Command { get; set; }
 
         /// <summary>

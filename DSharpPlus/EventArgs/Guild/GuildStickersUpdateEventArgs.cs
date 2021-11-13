@@ -43,7 +43,7 @@ namespace DSharpPlus.EventArgs
             /// <summary>
             /// Gets the guild in which the update occurred.
             /// </summary>
-            public DiscordGuild Guild { get; internal set; }
+            public virtual DiscordGuild Guild { get; internal set; }
 
             internal GuildStickersUpdateEventArgs() : base() { }
     }

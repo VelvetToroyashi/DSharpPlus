@@ -31,7 +31,7 @@ namespace DSharpPlus.Entities
     /// <summary>
     /// Represents a row of components. Acion rows can have up to five components.
     /// </summary>
-    public sealed class DiscordActionRowComponent : DiscordComponent
+    public class DiscordActionRowComponent : DiscordComponent
     {
         /// <summary>
         /// The components contained within the action row.

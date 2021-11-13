@@ -28,6 +28,6 @@ namespace DSharpPlus.Net.Models
         /// <summary>
         /// Reason given in audit logs
         /// </summary>
-        public string AuditLogReason { internal get; set; }
+        public virtual string AuditLogReason { internal get; set; }
     }
 }

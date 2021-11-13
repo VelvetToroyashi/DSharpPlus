@@ -34,7 +34,7 @@ namespace DSharpPlus.SlashCommands
         /// <summary>
         /// The value.
         /// </summary>
-        public object Value { get; internal set; }
+        public virtual object Value { get; internal set; }
 
         /// <summary>
         /// Sets a minimum value for this slash command option. Only valid for <see cref="long"/> or <see cref="double"/> parameters.

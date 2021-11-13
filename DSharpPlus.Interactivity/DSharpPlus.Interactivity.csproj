@@ -11,8 +11,8 @@
   </PropertyGroup>
 
   <PropertyGroup>
-    <PackageId>DSharpPlus.Interactivity</PackageId>
-    <Description>An addon that adds interactivity capabilities to commands.</Description>
+    <PackageId>VTP.DSP.Interactivity</PackageId>
+    <Description>Mangled version of Interactivity. Not recommended to use.</Description>
     <PackageTags>discord, discord-api, bots, discord-bots, chat, dsharp, dsharpplus, csharp, dotnet, vb-net, fsharp, interactive, pagination, reactions</PackageTags>
   </PropertyGroup>
 

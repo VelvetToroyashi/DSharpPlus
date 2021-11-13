@@ -39,7 +39,7 @@ namespace DSharpPlus.CommandsNext.Builders
         /// <summary>
         /// Gets the name set for this command.
         /// </summary>
-        public string Name { get; private set; }
+        public virtual string Name { get; private set; }
 
         /// <summary>
         /// Gets the aliases set for this command.
@@ -50,12 +50,12 @@ namespace DSharpPlus.CommandsNext.Builders
         /// <summary>
         /// Gets the description set for this command.
         /// </summary>
-        public string Description { get; private set; }
+        public virtual string Description { get; private set; }
 
         /// <summary>
         /// Gets whether this command will be hidden or not.
         /// </summary>
-        public bool IsHidden { get; private set; }
+        public virtual bool IsHidden { get; private set; }
 
         /// <summary>
         /// Gets the execution checks defined for this command.
@@ -73,7 +73,7 @@ namespace DSharpPlus.CommandsNext.Builders
         /// <summary>
         /// Gets the module on which this command is to be defined.
         /// </summary>
-        public ICommandModule Module { get; }
+        public virtual ICommandModule Module { get; }
 
         /// <summary>
         /// Gets custom attributes defined on this command.

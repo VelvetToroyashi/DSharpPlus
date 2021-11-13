@@ -34,13 +34,13 @@ namespace DSharpPlus.Entities
         /// Gets the name of the channel.
         /// </summary>
         [JsonProperty("name", NullValueHandling = NullValueHandling.Ignore)]
-        public string Name { get; internal set; }
+        public virtual string Name { get; internal set; }
 
         /// <summary>
         /// Gets the type of the channel.
         /// </summary>
         [JsonProperty("type", NullValueHandling = NullValueHandling.Ignore)]
-        public ChannelType Type { get; internal set; }
+        public virtual ChannelType Type { get; internal set; }
 
         internal DiscordInviteChannel() { }
     }

@@ -37,27 +37,27 @@ namespace DSharpPlus.Entities
         /// Gets the guild's name.
         /// </summary>
         [JsonProperty("name", NullValueHandling = NullValueHandling.Ignore)]
-        public string Name { get; internal set; }
+        public virtual string Name { get; internal set; }
 
         /// <summary>
         /// Gets the guild's icon.
         /// </summary>
         [JsonProperty("icon", NullValueHandling = NullValueHandling.Ignore)]
-        public string Icon { get; internal set; }
+        public virtual string Icon { get; internal set; }
 
 
         /// <summary>
         /// Gets the guild's splash.
         /// </summary>
         [JsonProperty("splash", NullValueHandling = NullValueHandling.Ignore)]
-        public string Splash { get; internal set; }
+        public virtual string Splash { get; internal set; }
 
 
         /// <summary>
         /// Gets the guild's discovery splash.
         /// </summary>
         [JsonProperty("discovery_splash", NullValueHandling = NullValueHandling.Ignore)]
-        public string DiscoverySplash { get; internal set; }
+        public virtual string DiscoverySplash { get; internal set; }
 
         /// <summary>
         /// Gets a collection of this guild's emojis.
@@ -79,20 +79,20 @@ namespace DSharpPlus.Entities
         /// Gets the approximate member count.
         /// </summary>
         [JsonProperty("approximate_member_count")]
-        public int ApproximateMemberCount { get; internal set; }
+        public virtual int ApproximateMemberCount { get; internal set; }
 
         /// <summary>
         /// Gets the approximate presence count.
         /// </summary>
         [JsonProperty("approximate_presence_count")]
-        public int ApproximatePresenceCount { get; internal set; }
+        public virtual int ApproximatePresenceCount { get; internal set; }
 
 
         /// <summary>
         /// Gets the description for the guild, if the guild is discoverable.
         /// </summary>
         [JsonProperty("description", NullValueHandling = NullValueHandling.Ignore)]
-        public string Description { get; internal set; }
+        public virtual string Description { get; internal set; }
 
         internal DiscordGuildPreview() { }
     }

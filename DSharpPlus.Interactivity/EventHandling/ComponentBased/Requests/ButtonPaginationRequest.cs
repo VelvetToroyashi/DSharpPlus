@@ -60,7 +60,7 @@ namespace DSharpPlus.Interactivity.EventHandling
             this._token.Register(() => this._tcs.TrySetResult(false));
         }
 
-        public int PageCount => this._pages.Count;
+        public virtual int PageCount => this._pages.Count;
 
         public Task<Page> GetPageAsync()
         {
@@ -91,7 +91,7 @@ namespace DSharpPlus.Interactivity.EventHandling
             return page;
         }
 
-        public Task SkipLeftAsync()
+        public virtual Task SkipLeftAsync()
         {
             if (this._wrapBehavior is PaginationBehaviour.WrapAround)
             {
@@ -104,7 +104,7 @@ namespace DSharpPlus.Interactivity.EventHandling
             return Task.CompletedTask;
         }
 
-        public Task SkipRightAsync()
+        public virtual Task SkipRightAsync()
         {
             if (this._wrapBehavior is PaginationBehaviour.WrapAround)
             {
@@ -117,7 +117,7 @@ namespace DSharpPlus.Interactivity.EventHandling
             return Task.CompletedTask;
         }
 
-        public Task NextPageAsync()
+        public virtual Task NextPageAsync()
         {
             this._index++;
 
@@ -134,7 +134,7 @@ namespace DSharpPlus.Interactivity.EventHandling
             return Task.CompletedTask;
         }
 
-        public Task PreviousPageAsync()
+        public virtual Task PreviousPageAsync()
         {
             this._index--;
 

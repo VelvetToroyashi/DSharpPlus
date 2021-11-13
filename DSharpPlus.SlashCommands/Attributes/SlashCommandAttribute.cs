@@ -6,22 +6,22 @@ namespace DSharpPlus.SlashCommands
     /// Marks this method as a slash command.
     /// </summary>
     [AttributeUsage(AttributeTargets.Method, AllowMultiple = false)]
-    public sealed class SlashCommandAttribute : Attribute
+    public class SlashCommandAttribute : Attribute
     {
         /// <summary>
         /// Gets the name of this command.
         /// </summary>
-        public string Name { get; }
+        public virtual string Name { get; }
 
         /// <summary>
         /// Gets the description of this command.
         /// </summary>
-        public string Description { get; }
+        public virtual string Description { get; }
 
         /// <summary>
         /// Gets whether this command is enabled by default.
         /// </summary>
-        public bool DefaultPermission { get; }
+        public virtual bool DefaultPermission { get; }
 
         /// <summary>
         /// Marks this method as a slash command.

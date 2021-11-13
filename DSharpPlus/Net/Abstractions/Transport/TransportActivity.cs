@@ -33,51 +33,51 @@ namespace DSharpPlus.Net.Abstractions
     /// <summary>
     /// Represents a game a user is playing.
     /// </summary>
-    internal sealed class TransportActivity
+    internal class TransportActivity
     {
         /// <summary>
         /// Gets or sets the name of the game the user is playing.
         /// </summary>
         [JsonProperty("name", NullValueHandling = NullValueHandling.Include)]
-        public string Name { get; internal set; }
+        public virtual string Name { get; internal set; }
 
         /// <summary>
         /// Gets or sets the stream URI, if applicable.
         /// </summary>
         [JsonProperty("url", NullValueHandling = NullValueHandling.Ignore)]
-        public string StreamUrl { get; internal set; }
+        public virtual string StreamUrl { get; internal set; }
 
         /// <summary>
         /// Gets or sets the livesteam type.
         /// </summary>
         [JsonProperty("type", NullValueHandling = NullValueHandling.Ignore)]
-        public ActivityType ActivityType { get; internal set; }
+        public virtual ActivityType ActivityType { get; internal set; }
 
         /// <summary>
         /// Gets or sets the details.
-        /// 
+        ///
         /// <para>This is a component of the rich presence, and, as such, can only be used by regular users.</para>
         /// </summary>
         [JsonProperty("details", NullValueHandling = NullValueHandling.Ignore)]
-        public string Details { get; internal set; }
+        public virtual string Details { get; internal set; }
 
         /// <summary>
         /// Gets or sets game state.
-        /// 
+        ///
         /// <para>This is a component of the rich presence, and, as such, can only be used by regular users.</para>
         /// </summary>
         [JsonProperty("state", NullValueHandling = NullValueHandling.Ignore)]
-        public string State { get; internal set; }
+        public virtual string State { get; internal set; }
 
         /// <summary>
         /// Gets the emoji details for a custom status, if any.
         /// </summary>
         [JsonProperty("emoji", NullValueHandling = NullValueHandling.Ignore)]
-        public DiscordEmoji Emoji { get; internal set; }
+        public virtual DiscordEmoji Emoji { get; internal set; }
 
         /// <summary>
         /// Gets ID of the application for which this rich presence is for.
-        /// 
+        ///
         /// This is a component of the rich presence, and, as such, can only be used by regular users.
         /// </summary>
         [JsonIgnore]
@@ -92,7 +92,7 @@ namespace DSharpPlus.Net.Abstractions
 
         /// <summary>
         /// Gets or sets instance status.
-        /// 
+        ///
         /// This is a component of the rich presence, and, as such, can only be used by regular users.
         /// </summary>
         [JsonProperty("instance", NullValueHandling = NullValueHandling.Ignore)]
@@ -100,35 +100,35 @@ namespace DSharpPlus.Net.Abstractions
 
         /// <summary>
         /// Gets or sets information about the current game's party.
-        /// 
+        ///
         /// This is a component of the rich presence, and, as such, can only be used by regular users.
         /// </summary>
         [JsonProperty("party", NullValueHandling = NullValueHandling.Ignore)]
-        public GameParty Party { get; internal set; }
+        public virtual GameParty Party { get; internal set; }
 
         /// <summary>
         /// Gets or sets information about assets related to this rich presence.
-        /// 
+        ///
         /// This is a component of the rich presence, and, as such, can only be used by regular users.
         /// </summary>
         [JsonProperty("assets", NullValueHandling = NullValueHandling.Ignore)]
-        public PresenceAssets Assets { get; internal set; }
+        public virtual PresenceAssets Assets { get; internal set; }
 
         /// <summary>
         /// Gets or sets information about current game's timestamps.
-        /// 
+        ///
         /// This is a component of the rich presence, and, as such, can only be used by regular users.
         /// </summary>
         [JsonProperty("timestamps", NullValueHandling = NullValueHandling.Ignore)]
-        public GameTimestamps Timestamps { get; internal set; }
+        public virtual GameTimestamps Timestamps { get; internal set; }
 
         /// <summary>
         /// Gets or sets information about current game's secret values.
-        /// 
+        ///
         /// This is a component of the rich presence, and, as such, can only be used by regular users.
         /// </summary>
         [JsonProperty("secrets", NullValueHandling = NullValueHandling.Ignore)]
-        public GameSecrets Secrets { get; internal set; }
+        public virtual GameSecrets Secrets { get; internal set; }
 
         [JsonProperty("buttons", NullValueHandling = NullValueHandling.Ignore)]
         public IReadOnlyList<string> Buttons { get; internal set; }
@@ -160,13 +160,13 @@ namespace DSharpPlus.Net.Abstractions
             /// Gets the large image asset ID.
             /// </summary>
             [JsonProperty("large_image")]
-            public string LargeImage { get; set; }
+            public virtual string LargeImage { get; set; }
 
             /// <summary>
             /// Gets the large image text.
             /// </summary>
             [JsonProperty("large_text", NullValueHandling = NullValueHandling.Ignore)]
-            public string LargeImageText { get; internal set; }
+            public virtual string LargeImageText { get; internal set; }
 
             /// <summary>
             /// Gets the small image asset ID.
@@ -178,7 +178,7 @@ namespace DSharpPlus.Net.Abstractions
             /// Gets the small image text.
             /// </summary>
             [JsonProperty("small_text", NullValueHandling = NullValueHandling.Ignore)]
-            public string SmallImageText { get; internal set; }
+            public virtual string SmallImageText { get; internal set; }
         }
 
         /// <summary>
@@ -190,13 +190,13 @@ namespace DSharpPlus.Net.Abstractions
             /// Gets the game party ID.
             /// </summary>
             [JsonProperty("id", NullValueHandling = NullValueHandling.Ignore)]
-            public string Id { get; internal set; }
+            public virtual string Id { get; internal set; }
 
             /// <summary>
             /// Gets the size of the party.
             /// </summary>
             [JsonProperty("size", NullValueHandling = NullValueHandling.Ignore)]
-            public GamePartySize Size { get; internal set; }
+            public virtual GamePartySize Size { get; internal set; }
 
             /// <summary>
             /// Represents information about party size.
@@ -207,12 +207,12 @@ namespace DSharpPlus.Net.Abstractions
                 /// <summary>
                 /// Gets the current number of players in the party.
                 /// </summary>
-                public long Current { get; internal set; }
+                public virtual long Current { get; internal set; }
 
                 /// <summary>
                 /// Gets the maximum party size.
                 /// </summary>
-                public long Maximum { get; internal set; }
+                public virtual long Maximum { get; internal set; }
             }
         }
 
@@ -251,23 +251,23 @@ namespace DSharpPlus.Net.Abstractions
             /// Gets the secret value for join action.
             /// </summary>
             [JsonProperty("join", NullValueHandling = NullValueHandling.Ignore)]
-            public string Join { get; internal set; }
+            public virtual string Join { get; internal set; }
 
             /// <summary>
             /// Gets the secret value for match action.
             /// </summary>
             [JsonProperty("match", NullValueHandling = NullValueHandling.Ignore)]
-            public string Match { get; internal set; }
+            public virtual string Match { get; internal set; }
 
             /// <summary>
             /// Gets the secret value for spectate action.
             /// </summary>
             [JsonProperty("spectate", NullValueHandling = NullValueHandling.Ignore)]
-            public string Spectate { get; internal set; }
+            public virtual string Spectate { get; internal set; }
         }
     }
 
-    internal sealed class GamePartySizeConverter : JsonConverter
+    internal class GamePartySizeConverter : JsonConverter
     {
         public override void WriteJson(JsonWriter writer, object value, JsonSerializer serializer)
         {

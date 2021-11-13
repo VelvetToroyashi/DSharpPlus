@@ -37,7 +37,7 @@ using Newtonsoft.Json.Linq;
 
 namespace DSharpPlus
 {
-    public sealed partial class DiscordClient
+    public partial class DiscordClient
     {
         #region Private Fields
 

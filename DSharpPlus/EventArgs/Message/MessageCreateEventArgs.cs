@@ -34,7 +34,7 @@ namespace DSharpPlus.EventArgs
         /// <summary>
         /// Gets the message that was created.
         /// </summary>
-        public DiscordMessage Message { get; internal set; }
+        public virtual DiscordMessage Message { get; internal set; }
 
         /// <summary>
         /// Gets the channel this message belongs to.

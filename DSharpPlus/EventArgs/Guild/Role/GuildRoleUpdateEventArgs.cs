@@ -33,17 +33,17 @@ namespace DSharpPlus.EventArgs
         /// <summary>
         /// Gets the guild in which the update occurred.
         /// </summary>
-        public DiscordGuild Guild { get; internal set; }
+        public virtual DiscordGuild Guild { get; internal set; }
 
         /// <summary>
         /// Gets the post-update role.
         /// </summary>
-        public DiscordRole RoleAfter { get; internal set; }
+        public virtual DiscordRole RoleAfter { get; internal set; }
 
         /// <summary>
         /// Gets the pre-update role.
         /// </summary>
-        public DiscordRole RoleBefore { get; internal set; }
+        public virtual DiscordRole RoleBefore { get; internal set; }
 
         internal GuildRoleUpdateEventArgs() : base() { }
     }

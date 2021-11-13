@@ -25,12 +25,12 @@ using Newtonsoft.Json;
 
 namespace DSharpPlus.VoiceNext.Entities
 {
-    internal sealed class VoiceSessionDescriptionPayload
+    internal class VoiceSessionDescriptionPayload
     {
         [JsonProperty("secret_key")]
-        public byte[] SecretKey { get; set; }
+        public virtual byte[] SecretKey { get; set; }
 
         [JsonProperty("mode")]
-        public string Mode { get; set; }
+        public virtual string Mode { get; set; }
     }
 }

@@ -44,7 +44,7 @@ namespace DSharpPlus
     /// <summary>
     /// A Discord client that shards automatically.
     /// </summary>
-    public sealed partial class DiscordShardedClient
+    public partial class DiscordShardedClient
     {
         #region Public Properties
 
@@ -61,17 +61,17 @@ namespace DSharpPlus
         /// <summary>
         /// Gets the gateway info for the client's session.
         /// </summary>
-        public GatewayInfo GatewayInfo { get; private set; }
+        public virtual GatewayInfo GatewayInfo { get; private set; }
 
         /// <summary>
         /// Gets the current user.
         /// </summary>
-        public DiscordUser CurrentUser { get; private set; }
+        public virtual DiscordUser CurrentUser { get; private set; }
 
         /// <summary>
         /// Gets the current application.
         /// </summary>
-        public DiscordApplication CurrentApplication { get; private set; }
+        public virtual DiscordApplication CurrentApplication { get; private set; }
 
         /// <summary>
         /// Gets the list of available voice regions. Note that this property will not contain VIP voice regions.
@@ -184,7 +184,7 @@ namespace DSharpPlus
         /// </summary>
         /// <returns></returns>
         /// <exception cref="InvalidOperationException"></exception>
-        public Task StopAsync()
+        public virtual Task StopAsync()
             => this.InternalStopAsync();
 
         /// <summary>

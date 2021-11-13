@@ -28,7 +28,7 @@ namespace DSharpPlus.Entities
     /// <summary>
     /// Represents a discord stage instance.
     /// </summary>
-    public sealed class DiscordStageInstance : SnowflakeObject
+    public class DiscordStageInstance : SnowflakeObject
     {
         /// <summary>
         /// Gets the guild this stage instance is in.
@@ -41,7 +41,7 @@ namespace DSharpPlus.Entities
         /// Gets the id of the guild this stage instance is in.
         /// </summary>
         [JsonProperty("guild_id")]
-        public ulong GuildId { get; internal set; }
+        public virtual ulong GuildId { get; internal set; }
 
         /// <summary>
         /// Gets the channel this stage instance is in.
@@ -54,24 +54,24 @@ namespace DSharpPlus.Entities
         /// Gets the id of the channel this stage instance is in.
         /// </summary>
         [JsonProperty("channel_id")]
-        public ulong ChannelId { get; internal set; }
+        public virtual ulong ChannelId { get; internal set; }
 
         /// <summary>
         /// Gets the topic of this stage instance.
         /// </summary>
         [JsonProperty("topic")]
-        public string Topic { get; internal set; }
+        public virtual string Topic { get; internal set; }
 
         /// <summary>
         /// Gets the privacy level of this stage instance.
         /// </summary>
         [JsonProperty("privacy_level")]
-        public PrivacyLevel PrivacyLevel { get; internal set; }
+        public virtual PrivacyLevel PrivacyLevel { get; internal set; }
 
         /// <summary>
         /// Gets whether or not stage discovery is disabled.
         /// </summary>
         [JsonProperty("discoverable_disabled")]
-        public bool DiscoverableDisabled { get; internal set; }
+        public virtual bool DiscoverableDisabled { get; internal set; }
     }
 }

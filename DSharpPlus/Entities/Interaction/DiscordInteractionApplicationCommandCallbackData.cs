@@ -32,7 +32,7 @@ namespace DSharpPlus.Entities
         public bool? IsTTS { get; internal set; }
 
         [JsonProperty("content", NullValueHandling = NullValueHandling.Ignore)]
-        public string Content { get; internal set; }
+        public virtual string Content { get; internal set; }
 
         [JsonProperty("embeds", NullValueHandling = NullValueHandling.Ignore)]
         public IEnumerable<DiscordEmbed> Embeds { get; internal set; }

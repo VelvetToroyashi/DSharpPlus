@@ -33,17 +33,17 @@ namespace DSharpPlus.EventArgs
         /// <summary>
         /// Gets the post-update channel.
         /// </summary>
-        public DiscordChannel ChannelAfter { get; internal set; }
+        public virtual DiscordChannel ChannelAfter { get; internal set; }
 
         /// <summary>
         /// Gets the pre-update channel.
         /// </summary>
-        public DiscordChannel ChannelBefore { get; internal set; }
+        public virtual DiscordChannel ChannelBefore { get; internal set; }
 
         /// <summary>
         /// Gets the guild in which the update occurred.
         /// </summary>
-        public DiscordGuild Guild { get; internal set; }
+        public virtual DiscordGuild Guild { get; internal set; }
 
         internal ChannelUpdateEventArgs() : base() { }
     }

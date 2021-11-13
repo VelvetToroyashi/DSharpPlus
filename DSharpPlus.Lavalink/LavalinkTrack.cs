@@ -37,31 +37,31 @@ namespace DSharpPlus.Lavalink
         /// Gets or sets the ID of the track to play.
         /// </summary>
         [JsonIgnore]
-        public string TrackString { get; set; }
+        public virtual string TrackString { get; set; }
 
         /// <summary>
         /// Gets the identifier of the track.
         /// </summary>
         [JsonProperty("identifier")]
-        public string Identifier { get; internal set; }
+        public virtual string Identifier { get; internal set; }
 
         /// <summary>
         /// Gets whether the track is seekable.
         /// </summary>
         [JsonProperty("isSeekable")]
-        public bool IsSeekable { get; internal set; }
+        public virtual bool IsSeekable { get; internal set; }
 
         /// <summary>
         /// Gets the author of the track.
         /// </summary>
         [JsonProperty("author")]
-        public string Author { get; internal set; }
+        public virtual string Author { get; internal set; }
 
         /// <summary>
         /// Gets the track's duration.
         /// </summary>
         [JsonIgnore]
-        public TimeSpan Length => !this.IsStream ? TimeSpan.FromMilliseconds(this._length) : TimeSpan.Zero;
+        public virtual TimeSpan Length => !this.IsStream ? TimeSpan.FromMilliseconds(this._length) : TimeSpan.Zero;
         [JsonProperty("length")]
         internal long _length;
 
@@ -69,13 +69,13 @@ namespace DSharpPlus.Lavalink
         /// Gets whether the track is a stream.
         /// </summary>
         [JsonProperty("isStream")]
-        public bool IsStream { get; internal set; }
+        public virtual bool IsStream { get; internal set; }
 
         /// <summary>
         /// Gets the starting position of the track.
         /// </summary>
         [JsonIgnore]
-        public TimeSpan Position => TimeSpan.FromMilliseconds(this._position);
+        public virtual TimeSpan Position => TimeSpan.FromMilliseconds(this._position);
         [JsonProperty("position")]
         internal long _position;
 
@@ -83,13 +83,13 @@ namespace DSharpPlus.Lavalink
         /// Gets the title of the track.
         /// </summary>
         [JsonProperty("title")]
-        public string Title { get; internal set; }
+        public virtual string Title { get; internal set; }
 
         /// <summary>
         /// Gets the source Uri of this track.
         /// </summary>
         [JsonProperty("uri")]
-        public Uri Uri { get; internal set; }
+        public virtual Uri Uri { get; internal set; }
     }
 
     /// <summary>
@@ -156,20 +156,20 @@ namespace DSharpPlus.Lavalink
         /// Gets the loading result type for this request.
         /// </summary>
         [JsonProperty("loadType")]
-        public LavalinkLoadResultType LoadResultType { get; internal set; }
+        public virtual LavalinkLoadResultType LoadResultType { get; internal set; }
 
         /// <summary>
         /// <para>Gets the information about the playlist loaded as a result of this request.</para>
         /// <para>Only applicable if <see cref="LoadResultType"/> is set to <see cref="LavalinkLoadResultType.PlaylistLoaded"/>.</para>
         /// </summary>
         [JsonProperty("playlistInfo")]
-        public LavalinkPlaylistInfo PlaylistInfo { get; internal set; }
+        public virtual LavalinkPlaylistInfo PlaylistInfo { get; internal set; }
 
         /// <summary>
         /// Gets the exception details if a track loading failed.
         /// </summary>
         [JsonProperty("exception", NullValueHandling = NullValueHandling.Ignore)]
-        public LavalinkLoadFailedInfo Exception { get; internal set; }
+        public virtual LavalinkLoadFailedInfo Exception { get; internal set; }
 
         /// <summary>
         /// Gets the tracks that were loaded as a result of this request.

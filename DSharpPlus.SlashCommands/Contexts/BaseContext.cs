@@ -14,27 +14,27 @@ namespace DSharpPlus.SlashCommands
         /// <summary>
         /// Gets the interaction that was created.
         /// </summary>
-        public DiscordInteraction Interaction { get; internal set; }
+        public virtual DiscordInteraction Interaction { get; internal set; }
 
         /// <summary>
         /// Gets the client for this interaction.
         /// </summary>
-        public DiscordClient Client { get; internal set; }
+        public virtual DiscordClient Client { get; internal set; }
 
         /// <summary>
         /// Gets the guild this interaction was executed in.
         /// </summary>
-        public DiscordGuild Guild { get; internal set; }
+        public virtual DiscordGuild Guild { get; internal set; }
 
         /// <summary>
         /// Gets the channel this interaction was executed in.
         /// </summary>
-        public DiscordChannel Channel { get; internal set; }
+        public virtual DiscordChannel Channel { get; internal set; }
 
         /// <summary>
         /// Gets the user which executed this interaction.
         /// </summary>
-        public DiscordUser User { get; internal set; }
+        public virtual DiscordUser User { get; internal set; }
 
         /// <summary>
         /// Gets the member which executed this interaction, or null if the command is in a DM.
@@ -45,34 +45,34 @@ namespace DSharpPlus.SlashCommands
         /// <summary>
         /// Gets the slash command module this interaction was created in.
         /// </summary>
-        public SlashCommandsExtension SlashCommandsExtension { get; internal set; }
+        public virtual SlashCommandsExtension SlashCommandsExtension { get; internal set; }
 
         /// <summary>
         /// Gets the token for this interaction.
         /// </summary>
-        public string Token { get; internal set; }
+        public virtual string Token { get; internal set; }
 
         /// <summary>
         /// Gets the id for this interaction.
         /// </summary>
-        public ulong InteractionId { get; internal set; }
+        public virtual ulong InteractionId { get; internal set; }
 
         /// <summary>
         /// Gets the name of the command.
         /// </summary>
-        public string CommandName { get; internal set; }
+        public virtual string CommandName { get; internal set; }
 
         /// <summary>
         /// Gets the type of this interaction.
         /// </summary>
-        public ApplicationCommandType Type { get; internal set;}
+        public virtual ApplicationCommandType Type { get; internal set;}
 
         /// <summary>
         /// <para>Gets the service provider.</para>
         /// <para>This allows passing data around without resorting to static members.</para>
         /// <para>Defaults to null.</para>
         /// </summary>
-        public IServiceProvider Services { get; internal set; } = new ServiceCollection().BuildServiceProvider(true);
+        public virtual IServiceProvider Services { get; internal set; } = new ServiceCollection().BuildServiceProvider(true);
 
         /// <summary>
         /// Creates a response to this interaction.
@@ -80,11 +80,11 @@ namespace DSharpPlus.SlashCommands
         /// </summary>
         /// <param name="type">The type of the response.</param>
         /// <param name="builder">The data to be sent, if any.</param>
-        public Task CreateResponseAsync(InteractionResponseType type, DiscordInteractionResponseBuilder builder = null)
+        public virtual Task CreateResponseAsync(InteractionResponseType type, DiscordInteractionResponseBuilder builder = null)
             => this.Interaction.CreateResponseAsync(type, builder);
 
         /// <inheritdoc cref="CreateResponseAsync(DSharpPlus.InteractionResponseType,DSharpPlus.Entities.DiscordInteractionResponseBuilder)"/>
-        public Task CreateResponseAsync(DiscordInteractionResponseBuilder builder)
+        public virtual Task CreateResponseAsync(DiscordInteractionResponseBuilder builder)
             => this.CreateResponseAsync(InteractionResponseType.ChannelMessageWithSource, builder);
 
         /// <summary>
@@ -94,22 +94,22 @@ namespace DSharpPlus.SlashCommands
         /// <param name="content">Content to send in the response.</param>
         /// <param name="embed">Embed to send in the response.</param>
         /// <param name="ephemeral">Whether the response should be ephemeral.</param>
-        public Task CreateResponseAsync(string content, DiscordEmbed embed, bool ephemeral = false)
+        public virtual Task CreateResponseAsync(string content, DiscordEmbed embed, bool ephemeral = false)
             => this.CreateResponseAsync(new DiscordInteractionResponseBuilder().WithContent(content).AddEmbed(embed).AsEphemeral(ephemeral));
 
         /// <inheritdoc cref="CreateResponseAsync(string, DiscordEmbed, bool)"/>
-        public Task CreateResponseAsync(string content, bool ephemeral = false)
+        public virtual Task CreateResponseAsync(string content, bool ephemeral = false)
             => this.CreateResponseAsync(new DiscordInteractionResponseBuilder().WithContent(content).AsEphemeral(ephemeral));
 
         /// <inheritdoc cref="CreateResponseAsync(string, DiscordEmbed, bool)"/>
-        public Task CreateResponseAsync(DiscordEmbed embed, bool ephemeral = false)
+        public virtual Task CreateResponseAsync(DiscordEmbed embed, bool ephemeral = false)
             => this.CreateResponseAsync(new DiscordInteractionResponseBuilder().AddEmbed(embed).AsEphemeral(ephemeral));
 
         /// <summary>
         /// Creates a deferred response to this interaction.
         /// </summary>
         /// <param name="ephemeral">Whether the response should be ephemeral.</param>
-        public Task DeferAsync(bool ephemeral = false)
+        public virtual Task DeferAsync(bool ephemeral = false)
             => this.CreateResponseAsync(InteractionResponseType.DeferredChannelMessageWithSource, new DiscordInteractionResponseBuilder().AsEphemeral(ephemeral));
 
         /// <summary>
@@ -125,7 +125,7 @@ namespace DSharpPlus.SlashCommands
         /// Deletes the interaction response.
         /// </summary>
         /// <returns></returns>
-        public Task DeleteResponseAsync()
+        public virtual Task DeleteResponseAsync()
             => this.Interaction.DeleteOriginalResponseAsync();
 
         /// <summary>
@@ -151,7 +151,7 @@ namespace DSharpPlus.SlashCommands
         /// </summary>
         /// <param name="followupMessageId">The id of the followup message to delete.</param>
         /// <returns></returns>
-        public Task DeleteFollowupAsync(ulong followupMessageId)
+        public virtual Task DeleteFollowupAsync(ulong followupMessageId)
             => this.Interaction.DeleteFollowupMessageAsync(followupMessageId);
 
         /// <summary>

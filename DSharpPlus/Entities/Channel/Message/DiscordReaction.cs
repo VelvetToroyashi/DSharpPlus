@@ -34,19 +34,19 @@ namespace DSharpPlus.Entities
         /// Gets the total number of users who reacted with this emoji.
         /// </summary>
         [JsonProperty("count", NullValueHandling = NullValueHandling.Ignore)]
-        public int Count { get; internal set; }
+        public virtual int Count { get; internal set; }
 
         /// <summary>
         /// Gets whether the current user reacted with this emoji.
         /// </summary>
         [JsonProperty("me", NullValueHandling = NullValueHandling.Ignore)]
-        public bool IsMe { get; internal set; }
+        public virtual bool IsMe { get; internal set; }
 
         /// <summary>
         /// Gets the emoji used to react to this message.
         /// </summary>
         [JsonProperty("emoji", NullValueHandling = NullValueHandling.Ignore)]
-        public DiscordEmoji Emoji { get; internal set; }
+        public virtual DiscordEmoji Emoji { get; internal set; }
 
         internal DiscordReaction() { }
     }

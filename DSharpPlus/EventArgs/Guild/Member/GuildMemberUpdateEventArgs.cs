@@ -34,7 +34,7 @@ namespace DSharpPlus.EventArgs
         /// <summary>
         /// Gets the guild in which the update occurred.
         /// </summary>
-        public DiscordGuild Guild { get; internal set; }
+        public virtual DiscordGuild Guild { get; internal set; }
 
         /// <summary>
         /// Gets a collection containing post-update roles.
@@ -49,22 +49,22 @@ namespace DSharpPlus.EventArgs
         /// <summary>
         /// Gets the member's new nickname.
         /// </summary>
-        public string NicknameAfter { get; internal set; }
+        public virtual string NicknameAfter { get; internal set; }
 
         /// <summary>
         /// Gets the member's old nickname.
         /// </summary>
-        public string NicknameBefore { get; internal set; }
+        public virtual string NicknameBefore { get; internal set; }
 
         /// <summary>
         /// Gets the member's old avatar hash.
         /// </summary>
-        public string AvatarHashBefore { get; internal set; }
+        public virtual string AvatarHashBefore { get; internal set; }
 
         /// <summary>
         /// Gets the member's new avatar hash.
         /// </summary>
-        public string AvatarHashAfter { get; internal set; }
+        public virtual string AvatarHashAfter { get; internal set; }
 
         /// <summary>
         /// Gets whether the member had passed membership screening before the update
@@ -79,7 +79,7 @@ namespace DSharpPlus.EventArgs
         /// <summary>
         /// Gets the member that was updated.
         /// </summary>
-        public DiscordMember Member { get; internal set; }
+        public virtual DiscordMember Member { get; internal set; }
 
         internal GuildMemberUpdateEventArgs() : base() { }
     }

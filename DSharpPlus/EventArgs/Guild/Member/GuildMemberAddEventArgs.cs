@@ -33,12 +33,12 @@ namespace DSharpPlus.EventArgs
         /// <summary>
         /// Gets the member that was added.
         /// </summary>
-        public DiscordMember Member { get; internal set; }
+        public virtual DiscordMember Member { get; internal set; }
 
         /// <summary>
         /// Gets the guild the member was added to.
         /// </summary>
-        public DiscordGuild Guild { get; internal set; }
+        public virtual DiscordGuild Guild { get; internal set; }
 
         internal GuildMemberAddEventArgs() : base() { }
     }

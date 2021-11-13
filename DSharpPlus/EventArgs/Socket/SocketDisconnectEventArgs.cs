@@ -33,12 +33,12 @@ namespace DSharpPlus.EventArgs
         /// <summary>
         /// Gets the close code sent by remote host.
         /// </summary>
-        public int CloseCode { get; internal set; }
+        public virtual int CloseCode { get; internal set; }
 
         /// <summary>
         /// Gets the close message sent by remote host.
         /// </summary>
-        public string CloseMessage { get; internal set; }
+        public virtual string CloseMessage { get; internal set; }
 
         public SocketCloseEventArgs() : base() { }
     }
@@ -51,7 +51,7 @@ namespace DSharpPlus.EventArgs
         /// <summary>
         /// Gets the exception thrown by websocket client.
         /// </summary>
-        public Exception Exception { get; internal set; }
+        public virtual Exception Exception { get; internal set; }
 
         public SocketErrorEventArgs() : base() { }
     }

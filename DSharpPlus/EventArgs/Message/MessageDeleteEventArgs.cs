@@ -33,17 +33,17 @@ namespace DSharpPlus.EventArgs
         /// <summary>
         /// Gets the message that was deleted.
         /// </summary>
-        public DiscordMessage Message { get; internal set; }
+        public virtual DiscordMessage Message { get; internal set; }
 
         /// <summary>
         /// Gets the channel this message belonged to.
         /// </summary>
-        public DiscordChannel Channel { get; internal set; }
+        public virtual DiscordChannel Channel { get; internal set; }
 
         /// <summary>
         /// Gets the guild this message belonged to.
         /// </summary>
-        public DiscordGuild Guild { get; internal set; }
+        public virtual DiscordGuild Guild { get; internal set; }
 
         internal MessageDeleteEventArgs() : base() { }
     }

@@ -37,13 +37,13 @@ namespace DSharpPlus.Entities
         /// Gets the id of the application the command belongs to.
         /// </summary>
         [JsonProperty("application_id")]
-        public ulong ApplicationId { get; internal set; }
+        public virtual ulong ApplicationId { get; internal set; }
 
         /// <summary>
         /// Gets the id of the guild.
         /// </summary>
         [JsonProperty("guild_id")]
-        public ulong GuildId { get; internal set; }
+        public virtual ulong GuildId { get; internal set; }
 
         /// <summary>
         /// Gets the guild.

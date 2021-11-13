@@ -33,12 +33,12 @@ namespace DSharpPlus.EventArgs
         /// <summary>
         /// Gets the member that just got unbanned.
         /// </summary>
-        public DiscordMember Member { get; internal set; }
+        public virtual DiscordMember Member { get; internal set; }
 
         /// <summary>
         /// Gets the guild this member was unbanned in.
         /// </summary>
-        public DiscordGuild Guild { get; internal set; }
+        public virtual DiscordGuild Guild { get; internal set; }
 
         internal GuildBanRemoveEventArgs() : base() { }
     }

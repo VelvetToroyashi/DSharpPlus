@@ -33,12 +33,12 @@ namespace DSharpPlus.EventArgs
         /// <summary>
         /// Gets the guild before it was updated.
         /// </summary>
-        public DiscordGuild GuildBefore { get; internal set; }
+        public virtual DiscordGuild GuildBefore { get; internal set; }
 
         /// <summary>
         /// Gets the guild after it was updated.
         /// </summary>
-        public DiscordGuild GuildAfter { get; internal set; }
+        public virtual DiscordGuild GuildAfter { get; internal set; }
 
         internal GuildUpdateEventArgs() : base() { }
     }

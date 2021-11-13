@@ -98,43 +98,43 @@ namespace DSharpPlus.Entities
         /// Gets whether this user is deafened.
         /// </summary>
         [JsonProperty("deaf", NullValueHandling = NullValueHandling.Ignore)]
-        public bool IsServerDeafened { get; internal set; }
+        public virtual bool IsServerDeafened { get; internal set; }
 
         /// <summary>
         /// Gets whether this user is muted.
         /// </summary>
         [JsonProperty("mute", NullValueHandling = NullValueHandling.Ignore)]
-        public bool IsServerMuted { get; internal set; }
+        public virtual bool IsServerMuted { get; internal set; }
 
         /// <summary>
         /// Gets whether this user is locally deafened.
         /// </summary>
         [JsonProperty("self_deaf", NullValueHandling = NullValueHandling.Ignore)]
-        public bool IsSelfDeafened { get; internal set; }
+        public virtual bool IsSelfDeafened { get; internal set; }
 
         /// <summary>
         /// Gets whether this user is locally muted.
         /// </summary>
         [JsonProperty("self_mute", NullValueHandling = NullValueHandling.Ignore)]
-        public bool IsSelfMuted { get; internal set; }
+        public virtual bool IsSelfMuted { get; internal set; }
 
         /// <summary>
         /// Gets whether this user's camera is enabled.
         /// </summary>
         [JsonProperty("self_video", NullValueHandling = NullValueHandling.Ignore)]
-        public bool IsSelfVideo { get; internal set; }
+        public virtual bool IsSelfVideo { get; internal set; }
 
         /// <summary>
         /// Gets whether this user is using the Go Live feature.
         /// </summary>
         [JsonProperty("self_stream", NullValueHandling = NullValueHandling.Ignore)]
-        public bool IsSelfStream { get; internal set; }
+        public virtual bool IsSelfStream { get; internal set; }
 
         /// <summary>
         /// Gets whether the current user has suppressed this user.
         /// </summary>
         [JsonProperty("suppress", NullValueHandling = NullValueHandling.Ignore)]
-        public bool IsSuppressed { get; internal set; }
+        public virtual bool IsSuppressed { get; internal set; }
 
         /// <summary>
         /// Gets the time at which this user requested to speak.

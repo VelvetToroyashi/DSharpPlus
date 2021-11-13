@@ -28,19 +28,19 @@ namespace DSharpPlus.Entities
     /// <summary>
     /// Represents an option for a user to select for auto-completion.
     /// </summary>
-    public sealed class DiscordAutoCompleteChoice
+    public class DiscordAutoCompleteChoice
     {
         /// <summary>
         /// Gets the name of this option which will be presented to the user.
         /// </summary>
         [JsonProperty("name")]
-        public string Name { get; internal set; }
+        public virtual string Name { get; internal set; }
 
         /// <summary>
         /// Gets the value of this option. This may be a string or an integer.
         /// </summary>
         [JsonProperty("value")]
-        public object Value { get; internal set; }
+        public virtual object Value { get; internal set; }
 
         /// <summary>
         /// Creates a new instance of <see cref="DiscordAutoCompleteChoice"/>.

@@ -33,12 +33,12 @@ namespace DSharpPlus.EventArgs
         /// <summary>
         /// Gets the stage instance before the update.
         /// </summary>
-        public DiscordStageInstance StageInstanceBefore { get; internal set; }
+        public virtual DiscordStageInstance StageInstanceBefore { get; internal set; }
 
         /// <summary>
         /// Gets the stage instance after the update.
         /// </summary>
-        public DiscordStageInstance StageInstanceAfter { get; internal set; }
+        public virtual DiscordStageInstance StageInstanceAfter { get; internal set; }
 
         /// <summary>
         /// Gets the guild the stage instance is in.

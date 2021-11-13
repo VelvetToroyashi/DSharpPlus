@@ -29,19 +29,19 @@ namespace DSharpPlus.Entities
     /// <summary>
     /// Represents an embed provider.
     /// </summary>
-    public sealed class DiscordEmbedProvider
+    public class DiscordEmbedProvider
     {
         /// <summary>
         /// Gets the name of the provider.
         /// </summary>
         [JsonProperty("name", NullValueHandling = NullValueHandling.Ignore)]
-        public string Name { get; internal set; }
+        public virtual string Name { get; internal set; }
 
         /// <summary>
         /// Gets the url of the provider.
         /// </summary>
         [JsonProperty("url", NullValueHandling = NullValueHandling.Ignore)]
-        public Uri Url { get; internal set; }
+        public virtual Uri Url { get; internal set; }
 
         internal DiscordEmbedProvider() { }
     }

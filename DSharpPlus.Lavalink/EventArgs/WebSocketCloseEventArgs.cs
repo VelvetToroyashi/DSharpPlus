@@ -28,22 +28,22 @@ namespace DSharpPlus.Lavalink.EventArgs
     /// <summary>
     /// Represents arguments for <see cref="LavalinkGuildConnection.DiscordWebSocketClosed"/> event.
     /// </summary>
-    public sealed class WebSocketCloseEventArgs : AsyncEventArgs
+    public class WebSocketCloseEventArgs : AsyncEventArgs
     {
         /// <summary>
         /// Gets the WebSocket close code.
         /// </summary>
-        public int Code { get; }
+        public virtual int Code { get; }
 
         /// <summary>
         /// Gets the WebSocket close reason.
         /// </summary>
-        public string Reason { get; }
+        public virtual string Reason { get; }
 
         /// <summary>
         /// Gets whether the termination was initiated by the remote party (i.e. Discord).
         /// </summary>
-        public bool Remote { get; }
+        public virtual bool Remote { get; }
 
         internal WebSocketCloseEventArgs(int code, string reason, bool remote)
         {

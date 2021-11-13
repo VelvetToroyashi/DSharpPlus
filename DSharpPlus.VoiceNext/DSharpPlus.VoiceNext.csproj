@@ -12,8 +12,8 @@
   </PropertyGroup>
 
   <PropertyGroup>
-    <PackageId>DSharpPlus.VoiceNext</PackageId>
-    <Description>Voice implementation for DSharpPlus.</Description>
+    <PackageId>VTP.DSP.VNext</PackageId>
+    <Description>Mangled version of VNext; do not use</Description>
     <PackageTags>discord, discord-api, bots, discord-bots, chat, dsharp, dsharpplus, csharp, dotnet, vb-net, fsharp, audio, voice, radio, music</PackageTags>
   </PropertyGroup>
 

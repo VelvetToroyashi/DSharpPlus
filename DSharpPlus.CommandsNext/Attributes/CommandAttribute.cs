@@ -30,12 +30,12 @@ namespace DSharpPlus.CommandsNext.Attributes
     /// Marks this method as a command.
     /// </summary>
     [AttributeUsage(AttributeTargets.Method, AllowMultiple = false)]
-    public sealed class CommandAttribute : Attribute
+    public class CommandAttribute : Attribute
     {
         /// <summary>
         /// Gets the name of this command.
         /// </summary>
-        public string Name { get; }
+        public virtual string Name { get; }
 
         /// <summary>
         /// Marks this method as a command, using the method's name as command name.
@@ -65,7 +65,7 @@ namespace DSharpPlus.CommandsNext.Attributes
     /// Marks this method as a group command.
     /// </summary>
     [AttributeUsage(AttributeTargets.Method, AllowMultiple = false)]
-    public sealed class GroupCommandAttribute : Attribute
+    public class GroupCommandAttribute : Attribute
     {
         /// <summary>
         /// Marks this method as a group command.

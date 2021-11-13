@@ -11,8 +11,8 @@
   </PropertyGroup>
 
   <PropertyGroup>
-    <PackageId>DSharpPlus.Rest</PackageId>
-    <Description>A Rest-only client for DSharpPlus.</Description>
+    <PackageId>VTP.DSP.Rest</PackageId>
+    <Description>Mangled version of The RestClient. Not recommended to use.</Description>
     <PackageTags>discord, discord-api, bots, discord-bots, chat, dsharp, dsharpplus, csharp, dotnet, vb-net, fsharp, rest-api, oauth2</PackageTags>
   </PropertyGroup>
 

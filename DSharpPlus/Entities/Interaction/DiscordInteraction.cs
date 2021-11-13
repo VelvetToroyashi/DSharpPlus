@@ -30,19 +30,19 @@ namespace DSharpPlus.Entities
     /// <summary>
     /// Represents an interaction that was invoked.
     /// </summary>
-    public sealed class DiscordInteraction : SnowflakeObject
+    public class DiscordInteraction : SnowflakeObject
     {
         /// <summary>
         /// Gets the type of interaction invoked.
         /// </summary>
         [JsonProperty("type")]
-        public InteractionType Type { get; internal set; }
+        public virtual InteractionType Type { get; internal set; }
 
         /// <summary>
         /// Gets the command data for this interaction.
         /// </summary>
         [JsonProperty("data", NullValueHandling = NullValueHandling.Ignore)]
-        public DiscordInteractionData Data { get; internal set; }
+        public virtual DiscordInteractionData Data { get; internal set; }
 
         /// <summary>
         /// Gets the Id of the guild that invoked this interaction.
@@ -61,7 +61,7 @@ namespace DSharpPlus.Entities
         /// Gets the Id of the channel that invoked this interaction.
         /// </summary>
         [JsonProperty("channel_id")]
-        public ulong ChannelId { get; internal set; }
+        public virtual ulong ChannelId { get; internal set; }
 
         /// <summary>
         /// Gets the channel that invoked this interaction.
@@ -75,25 +75,25 @@ namespace DSharpPlus.Entities
         /// <para>This can be cast to a <see cref="DiscordMember"/> if created in a guild.</para>
         /// </summary>
         [JsonIgnore]
-        public DiscordUser User { get; internal set; }
+        public virtual DiscordUser User { get; internal set; }
 
         /// <summary>
         /// Gets the continuation token for responding to this interaction.
         /// </summary>
         [JsonProperty("token")]
-        public string Token { get; internal set; }
+        public virtual string Token { get; internal set; }
 
         /// <summary>
         /// Gets the version number for this interaction type.
         /// </summary>
         [JsonProperty("version")]
-        public int Version { get; internal set; }
+        public virtual int Version { get; internal set; }
 
         /// <summary>
         /// Gets the ID of the application that created this interaction.
         /// </summary>
         [JsonProperty("application_id")]
-        public ulong ApplicationId { get; internal set; }
+        public virtual ulong ApplicationId { get; internal set; }
 
 
         /// <summary>
@@ -107,7 +107,7 @@ namespace DSharpPlus.Entities
         /// </summary>
         /// <param name="type">The type of the response.</param>
         /// <param name="builder">The data, if any, to send.</param>
-        public Task CreateResponseAsync(InteractionResponseType type, DiscordInteractionResponseBuilder builder = null) =>
+        public virtual Task CreateResponseAsync(InteractionResponseType type, DiscordInteractionResponseBuilder builder = null) =>
             this.Discord.ApiClient.CreateInteractionResponseAsync(this.Id, this.Token, type, builder);
 
         /// <summary>
@@ -133,7 +133,7 @@ namespace DSharpPlus.Entities
         /// <summary>
         /// Deletes the original interaction response.
         /// </summary>>
-        public Task DeleteOriginalResponseAsync() =>
+        public virtual Task DeleteOriginalResponseAsync() =>
             this.Discord.ApiClient.DeleteOriginalInteractionResponseAsync(this.Discord.CurrentApplication.Id, this.Token);
 
         /// <summary>
@@ -173,7 +173,7 @@ namespace DSharpPlus.Entities
         /// Deletes a follow up message.
         /// </summary>
         /// <param name="messageId">The id of the follow up message.</param>
-        public Task DeleteFollowupMessageAsync(ulong messageId) =>
+        public virtual Task DeleteFollowupMessageAsync(ulong messageId) =>
             this.Discord.ApiClient.DeleteFollowupMessageAsync(this.Discord.CurrentApplication.Id, this.Token, messageId);
     }
 }

@@ -28,12 +28,12 @@ namespace DSharpPlus.CommandsNext.Exceptions
     /// <summary>
     /// Thrown when the command service fails to find a command.
     /// </summary>
-    public sealed class CommandNotFoundException : Exception
+    public class CommandNotFoundException : Exception
     {
         /// <summary>
         /// Gets the name of the command that was not found.
         /// </summary>
-        public string CommandName { get; set; }
+        public virtual string CommandName { get; set; }
 
         /// <summary>
         /// Creates a new <see cref="CommandNotFoundException"/>.

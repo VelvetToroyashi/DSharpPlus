@@ -11,11 +11,11 @@ namespace DSharpPlus.SlashCommands.EventArgs
         /// <summary>
         /// The context of the command.
         /// </summary>
-        public ContextMenuContext Context { get; internal set; }
+        public virtual ContextMenuContext Context { get; internal set; }
 
         /// <summary>
         /// The exception thrown.
         /// </summary>
-        public Exception Exception { get; internal set; }
+        public virtual Exception Exception { get; internal set; }
     }
 }

@@ -30,12 +30,12 @@ namespace DSharpPlus.CommandsNext.Attributes
     /// Marks this class as a command group.
     /// </summary>
     [AttributeUsage(AttributeTargets.Class, AllowMultiple = false)]
-    public sealed class GroupAttribute : Attribute
+    public class GroupAttribute : Attribute
     {
         /// <summary>
         /// Gets the name of this group.
         /// </summary>
-        public string Name { get; }
+        public virtual string Name { get; }
 
         /// <summary>
         /// Marks this class as a command group, using the class' name as group name.

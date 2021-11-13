@@ -34,7 +34,7 @@ namespace DSharpPlus.CommandsNext.Attributes
         /// <summary>
         /// Gets the lifespan defined for this module.
         /// </summary>
-        public ModuleLifespan Lifespan { get; }
+        public virtual ModuleLifespan Lifespan { get; }
 
         /// <summary>
         /// Defines a lifespan for this command module.

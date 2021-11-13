@@ -32,7 +32,7 @@ namespace DSharpPlus.Entities
     /// <summary>
     /// Constructs embeds.
     /// </summary>
-    public sealed class DiscordEmbedBuilder
+    public class DiscordEmbedBuilder
     {
         /// <summary>
         /// Gets or sets the embed's title.
@@ -97,17 +97,17 @@ namespace DSharpPlus.Entities
         /// <summary>
         /// Gets or sets the embed's author.
         /// </summary>
-        public EmbedAuthor Author { get; set; }
+        public virtual EmbedAuthor Author { get; set; }
 
         /// <summary>
         /// Gets or sets the embed's footer.
         /// </summary>
-        public EmbedFooter Footer { get; set; }
+        public virtual EmbedFooter Footer { get; set; }
 
         /// <summary>
         /// Gets or sets the embed's thumbnail.
         /// </summary>
-        public EmbedThumbnail Thumbnail { get; set; }
+        public virtual EmbedThumbnail Thumbnail { get; set; }
 
         /// <summary>
         /// Gets the embed's fields.

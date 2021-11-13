@@ -40,7 +40,7 @@ namespace DSharpPlus.Net
         /// <summary>
         /// The type of this URI.
         /// </summary>
-        public DiscordUriType Type { get; }
+        public virtual DiscordUriType Type { get; }
 
         internal DiscordUri(Uri value)
         {
@@ -88,7 +88,7 @@ namespace DSharpPlus.Net
                 : throw new UriFormatException(
                     $@"DiscordUri ""{this._value}"" would be invalid as a regular URI, please the {nameof(this.Type)} property first.");
 
-        internal sealed class DiscordUriJsonConverter : JsonConverter
+        internal class DiscordUriJsonConverter : JsonConverter
         {
             public override void WriteJson(JsonWriter writer, object value, JsonSerializer serializer) => writer.WriteValue((value as DiscordUri)._value);
 

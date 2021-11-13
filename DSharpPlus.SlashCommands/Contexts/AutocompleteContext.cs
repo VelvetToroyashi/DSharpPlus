@@ -36,27 +36,27 @@ namespace DSharpPlus.SlashCommands
         /// <summary>
         /// The interaction created.
         /// </summary>
-        public DiscordInteraction Interaction { get; internal set; }
+        public virtual DiscordInteraction Interaction { get; internal set; }
 
         /// <summary>
         /// Gets the client for this interaction.
         /// </summary>
-        public DiscordClient Client { get; internal set; }
+        public virtual DiscordClient Client { get; internal set; }
 
         /// <summary>
         /// Gets the guild this interaction was executed in.
         /// </summary>
-        public DiscordGuild Guild { get; internal set; }
+        public virtual DiscordGuild Guild { get; internal set; }
 
         /// <summary>
         /// Gets the channel this interaction was executed in.
         /// </summary>
-        public DiscordChannel Channel { get; internal set; }
+        public virtual DiscordChannel Channel { get; internal set; }
 
         /// <summary>
         /// Gets the user which executed this interaction.
         /// </summary>
-        public DiscordUser User { get; internal set; }
+        public virtual DiscordUser User { get; internal set; }
 
         /// <summary>
         /// Gets the member which executed this interaction, or null if the command is in a DM.
@@ -67,14 +67,14 @@ namespace DSharpPlus.SlashCommands
         /// <summary>
         /// Gets the slash command module this interaction was created in.
         /// </summary>
-        public SlashCommandsExtension SlashCommandsExtension { get; internal set; }
+        public virtual SlashCommandsExtension SlashCommandsExtension { get; internal set; }
 
         /// <summary>
         /// <para>Gets the service provider.</para>
         /// <para>This allows passing data around without resorting to static members.</para>
         /// <para>Defaults to null.</para>
         /// </summary>
-        public IServiceProvider Services { get; internal set; } = new ServiceCollection().BuildServiceProvider(true);
+        public virtual IServiceProvider Services { get; internal set; } = new ServiceCollection().BuildServiceProvider(true);
 
         /// <summary>
         /// The options already provided.
@@ -84,7 +84,7 @@ namespace DSharpPlus.SlashCommands
         /// <summary>
         /// The option to auto-fill for.
         /// </summary>
-        public DiscordInteractionDataOption FocusedOption { get; internal set; }
+        public virtual DiscordInteractionDataOption FocusedOption { get; internal set; }
 
         /// <summary>
         /// The given value of the focused option.

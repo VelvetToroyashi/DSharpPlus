@@ -26,21 +26,21 @@ using Newtonsoft.Json;
 
 namespace DSharpPlus.VoiceNext.Entities
 {
-    internal sealed class VoiceReadyPayload
+    internal class VoiceReadyPayload
     {
         [JsonProperty("ssrc")]
-        public uint SSRC { get; set; }
+        public virtual uint SSRC { get; set; }
 
         [JsonProperty("ip")]
-        public string Address { get; set; }
+        public virtual string Address { get; set; }
 
         [JsonProperty("port")]
-        public ushort Port { get; set; }
+        public virtual ushort Port { get; set; }
 
         [JsonProperty("modes")]
         public IReadOnlyList<string> Modes { get; set; }
 
         [JsonProperty("heartbeat_interval")]
-        public int HeartbeatInterval { get; set; }
+        public virtual int HeartbeatInterval { get; set; }
     }
 }

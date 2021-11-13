@@ -45,7 +45,7 @@ namespace DSharpPlus.Net.WebSocket
         private const int IncomingChunkSize = 32768; // 32 KiB
 
         /// <inheritdoc />
-        public IWebProxy Proxy { get; }
+        public virtual IWebProxy Proxy { get; }
 
         /// <inheritdoc />
         public IReadOnlyDictionary<string, string> DefaultHeaders { get; }
@@ -237,7 +237,7 @@ namespace DSharpPlus.Net.WebSocket
                 using var bs = new MemoryStream();
                 while (!token.IsCancellationRequested)
                 {
-                    // See https://github.com/RogueException/Discord.Net/commit/ac389f5f6823e3a720aedd81b7805adbdd78b66d 
+                    // See https://github.com/RogueException/Discord.Net/commit/ac389f5f6823e3a720aedd81b7805adbdd78b66d
                     // for explanation on the cancellation token
 
                     WebSocketReceiveResult result;

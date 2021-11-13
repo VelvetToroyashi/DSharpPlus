@@ -34,17 +34,17 @@ namespace DSharpPlus.CommandsNext
     /// <summary>
     /// Represents a context in which a command is executed.
     /// </summary>
-    public sealed class CommandContext
+    public class CommandContext
     {
         /// <summary>
         /// Gets the client which received the message.
         /// </summary>
-        public DiscordClient Client { get; internal set; }
+        public virtual DiscordClient Client { get; internal set; }
 
         /// <summary>
         /// Gets the message that triggered the execution.
         /// </summary>
-        public DiscordMessage Message { get; internal set; }
+        public virtual DiscordMessage Message { get; internal set; }
 
         /// <summary>
         /// Gets the channel in which the execution was triggered,
@@ -75,22 +75,22 @@ namespace DSharpPlus.CommandsNext
         /// <summary>
         /// Gets the CommandsNext service instance that handled this command.
         /// </summary>
-        public CommandsNextExtension CommandsNext { get; internal set; }
+        public virtual CommandsNextExtension CommandsNext { get; internal set; }
 
         /// <summary>
         /// Gets the service provider for this CNext instance.
         /// </summary>
-        public IServiceProvider Services { get; internal set; }
+        public virtual IServiceProvider Services { get; internal set; }
 
         /// <summary>
         /// Gets the command that is being executed.
         /// </summary>
-        public Command Command { get; internal set; }
+        public virtual Command Command { get; internal set; }
 
         /// <summary>
         /// Gets the overload of the command that is being executed.
         /// </summary>
-        public CommandOverload Overload { get; internal set; }
+        public virtual CommandOverload Overload { get; internal set; }
 
         /// <summary>
         /// Gets the list of raw arguments passed to the command.
@@ -100,12 +100,12 @@ namespace DSharpPlus.CommandsNext
         /// <summary>
         /// Gets the raw string from which the arguments were extracted.
         /// </summary>
-        public string RawArgumentString { get; internal set; }
+        public virtual string RawArgumentString { get; internal set; }
 
         /// <summary>
         /// Gets the prefix used to invoke the command.
         /// </summary>
-        public string Prefix { get; internal set; }
+        public virtual string Prefix { get; internal set; }
 
         internal CommandsNextConfiguration Config { get; set; }
 
@@ -161,7 +161,7 @@ namespace DSharpPlus.CommandsNext
         /// Triggers typing in the channel containing the message that triggered the command.
         /// </summary>
         /// <returns></returns>
-        public Task TriggerTypingAsync()
+        public virtual Task TriggerTypingAsync()
             => this.Channel.TriggerTypingAsync();
 
         internal struct ServiceContext : IDisposable
