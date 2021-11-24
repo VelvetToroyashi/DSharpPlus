@@ -42,7 +42,7 @@ namespace DSharpPlus.Net
     /// <summary>
     /// Represents a client used to make REST requests.
     /// </summary>
-    internal sealed class RestClient : IDisposable
+    public sealed class RestClient : IDisposable
     {
         private static Regex RouteArgumentRegex { get; } = new Regex(@":([a-z_]+)");
         private HttpClient HttpClient { get; }

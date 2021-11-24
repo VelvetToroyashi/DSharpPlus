@@ -1002,16 +1002,11 @@ namespace DSharpPlus.Entities
             while (recd > 0)
             {
                 var tms = await this.Discord.ApiClient.ListGuildMembersAsync(this.Id, 1000, last == 0 ? null : (ulong?)last).ConfigureAwait(false);
+
                 recd = tms.Count;
 
-                foreach (var xtm in tms)
-                {
-                    var usr = new DiscordUser(xtm.User) { Discord = this.Discord };
-
-                    usr = this.Discord.UpdateUserCache(usr);
-
-                    recmbr.Add(new DiscordMember(xtm) { Discord = this.Discord, _guild_id = this.Id });
-                }
+                foreach (var mbr in tms)
+                    recmbr.Add(mbr);
 
                 var tm = tms.LastOrDefault();
                 last = tm?.User.Id ?? 0;

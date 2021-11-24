@@ -267,8 +267,7 @@ namespace DSharpPlus
                     if (this.UserCache.ContainsKey(xtm.User.Id))
                         continue;
 
-                    var usr = new DiscordUser(xtm.User) { Discord = this };
-                    this.UpdateUserCache(usr);
+                    this.UpdateUserCache(xtm);
                 }
 
                 recmbr.AddRange(tms.Select(xtm => new DiscordMember(xtm) { Discord = this, _guild_id = guild_id }));
@@ -894,8 +893,8 @@ namespace DSharpPlus
         /// <param name="username">New username</param>
         /// <param name="base64_avatar">New avatar (base64)</param>
         /// <returns></returns>
-        public async Task<DiscordUser> ModifyCurrentUserAsync(string username, string base64_avatar)
-            => new DiscordUser(await this.ApiClient.ModifyCurrentUserAsync(username, base64_avatar).ConfigureAwait(false)) { Discord = this };
+        public Task<DiscordUser> ModifyCurrentUserAsync(string username, string base64_avatar)
+            => this.ApiClient.ModifyCurrentUserAsync(username, base64_avatar);
 
         /// <summary>
         /// Modifies current user
@@ -910,7 +909,7 @@ namespace DSharpPlus
                 using (var imgtool = new ImageTool(avatar))
                     av64 = imgtool.GetBase64();
 
-            return new DiscordUser(await this.ApiClient.ModifyCurrentUserAsync(username, av64).ConfigureAwait(false)) { Discord = this };
+            return await this.ApiClient.ModifyCurrentUserAsync(username, av64).ConfigureAwait(false);
         }
 
         /// <summary>
@@ -2032,7 +2031,7 @@ namespace DSharpPlus
                 return;
             this._disposed = true;
             this._guilds = null;
-            this.ApiClient.Rest.Dispose();
+            this.ApiClient.Dispose();
         }
     }
 }

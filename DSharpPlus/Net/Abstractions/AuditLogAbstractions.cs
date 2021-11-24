@@ -150,15 +150,15 @@ namespace DSharpPlus.Net.Abstractions
         public string Reason { get; set; }
     }
 
-    internal sealed class AuditLog
+    public sealed class AuditLog
     {
         [JsonProperty("webhooks")]
-        public IEnumerable<AuditLogWebhook> Webhooks { get; set; }
+        internal IEnumerable<AuditLogWebhook> Webhooks { get; set; }
 
         [JsonProperty("users")]
-        public IEnumerable<AuditLogUser> Users { get; set; }
+        internal IEnumerable<AuditLogUser> Users { get; set; }
 
         [JsonProperty("audit_log_entries")]
-        public IEnumerable<AuditLogAction> Entries { get; set; }
+        internal IEnumerable<AuditLogAction> Entries { get; set; }
     }
 }

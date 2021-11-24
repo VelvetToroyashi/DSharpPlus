@@ -31,7 +31,7 @@ namespace DSharpPlus.Net
     /// <summary>
     /// Represents a rate limit bucket.
     /// </summary>
-    internal class RateLimitBucket : IEquatable<RateLimitBucket>
+    public sealed class RateLimitBucket : IEquatable<RateLimitBucket>
     {
         /// <summary>
         /// Gets the Id of the guild bucket.
