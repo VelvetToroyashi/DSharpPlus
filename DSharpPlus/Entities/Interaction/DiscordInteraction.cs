@@ -104,9 +104,9 @@ public sealed class DiscordInteraction : SnowflakeObject
     /// <summary>
     /// Gets the interactions that authorized the interaction.
     ///     <para>
-    ///         This dictionary contains the following:
-    ///             - If the interaction is installed to a user, a key of <see cref="ApplicationIntegrationType.User"/> and a value of the user's ID.
-    ///             - If the interaction is installed to a guild, a key of <see cref="ApplicationIntegrationType.Guild"/> and a value of the guild's ID.
+    ///         This dictionary contains the following: <br/>
+    ///             - If the interaction is installed to a user, a key of <see cref="ApplicationIntegrationType.UserInstall"/> and a value of the user's ID. <br/>
+    ///             - If the interaction is installed to a guild, a key of <see cref="ApplicationIntegrationType.GuildInstall"/> and a value of the guild's ID. <br/>
     ///                 - IF the interaction was sent from a guild context, the above holds true, otherwise the ID is 0. 
     ///     </para>
     /// </summary>

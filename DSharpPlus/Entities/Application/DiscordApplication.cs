@@ -7,7 +7,6 @@ using Newtonsoft.Json;
 
 namespace DSharpPlus.Entities;
 
-
 /// <summary>
 /// Represents an OAuth2 application.
 /// </summary>
@@ -80,6 +79,9 @@ public sealed class DiscordApplication : DiscordMessageApplication, IEquatable<D
     /// </summary>
     public DiscordTeam? Team { get; internal set; }
     
+    /// <summary>
+    /// Gets this application's integration type configurations.
+    /// </summary>
     [JsonProperty("integration_types_config")]
     public IReadOnlyDictionary<ApplicationIntegrationType, ApplicationIntegrationTypeConfiguration?> IntegrationTypeConfigurations { get; internal set; }
 

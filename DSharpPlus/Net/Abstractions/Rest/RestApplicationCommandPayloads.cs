@@ -39,9 +39,15 @@ internal class RestApplicationCommandCreatePayload
     [JsonProperty("nsfw", NullValueHandling = NullValueHandling.Ignore)]
     public bool? NSFW { get; set; }
     
+    /// <summary>
+    /// Gets or sets the contexts in which this command is allowed to be used.
+    /// </summary>
     [JsonProperty("contexts", NullValueHandling = NullValueHandling.Ignore)]
     public IEnumerable<InteractionContextType> AllowedContexts { get; set; }
     
+    /// <summary>
+    /// Gets or sets the integration types that this command can be installed to.
+    /// </summary>
     [JsonProperty("integration_types", NullValueHandling = NullValueHandling.Ignore)]
     public IEnumerable<ApplicationIntegrationType> InstallTypes { get; set; }
 }
@@ -75,9 +81,15 @@ internal class RestApplicationCommandEditPayload
     [JsonProperty("nsfw", NullValueHandling = NullValueHandling.Ignore)]
     public Optional<bool?> NSFW { get; set; }
     
+    /// <summary>
+    /// Gets or sets the contexts in which this command is allowed to be used.
+    /// </summary>
     [JsonProperty("contexts", NullValueHandling = NullValueHandling.Ignore)]
     public Optional<IEnumerable<InteractionContextType>> AllowedContexts { get; set; }
     
+    /// <summary>
+    /// Gets or sets the integration types that this command can be installed to.
+    /// </summary>
     [JsonProperty("integration_types", NullValueHandling = NullValueHandling.Ignore)]
     public Optional<IEnumerable<ApplicationIntegrationType>> InstallTypes { get; set; }
 }
