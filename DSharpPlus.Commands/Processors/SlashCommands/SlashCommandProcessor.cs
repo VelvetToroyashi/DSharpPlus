@@ -2,6 +2,7 @@ using System;
 using System.Collections.Frozen;
 using System.Collections.Generic;
 using System.ComponentModel;
+using System.Diagnostics;
 using System.Diagnostics.CodeAnalysis;
 using System.Linq;
 using System.Text;
@@ -31,7 +32,7 @@ public sealed class SlashCommandProcessor : BaseCommandProcessor<InteractionCrea
     public const DiscordIntents RequiredIntents = DiscordIntents.Guilds;
 
     public IReadOnlyDictionary<Type, DiscordApplicationCommandOptionType> TypeMappings { get; private set; } = new Dictionary<Type, DiscordApplicationCommandOptionType>();
-    public IReadOnlyDictionary<ulong, Command> Commands => applicationCommandsMapping;
+    public IReadOnlyDictionary<ulong, Command> Commands => applicationCommandsMapping is null ? ThrowForUninitializedExtension() : applicationCommandsMapping;
 
     private static readonly List<DiscordApplicationCommand> applicationCommands = [];
     private static IReadOnlyDictionary<ulong, Command> applicationCommandsMapping;
@@ -751,4 +752,13 @@ public sealed class SlashCommandProcessor : BaseCommandProcessor<InteractionCrea
 
         return CreateCommandContext(converterContext, eventArgs, parsedArguments);
     }
+
+    /// <summary>
+    /// Throws an exception indicating that the extension has not been initialized.
+    /// </summary>
+    // Opaque throw methods are used to prevent the JIT from avoiding inlining them.
+    [DoesNotReturn]
+    [StackTraceHidden]
+    private static void ThrowForUninitializedExtension()
+        => throw new InvalidOperationException("Slash commands have not been registered yet.");
 }
